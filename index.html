@@ -88,13 +88,23 @@ window._vwo_pc_custom = {
         a:hover {
             text-decoration: underline;
         }
-        #spaPage {
+        #colorChangeSection {
             border: 1px solid #ccc;
             padding: 20px;
             margin-top: 20px;
             background-color: #f8f8f8;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #colorChangeButton {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -148,11 +158,10 @@ window._vwo_pc_custom = {
         <li><a href="https://vwo.com/">Vwo</a></li>
         <li><a href="https://wingify.com/">Wingify</a></li>
     </ul>
-    <button onclick="navigateToSpaPage()">Go to SPA Page</button>
-
-    <div id="spaPage">
-        <h2>SPA Page</h2>
-        <p>This is the SPA Page content. You can add more content here.</p>
+     <div id="colorChangeSection">
+        <h2>SPA Page - Color Change</h2>
+        <p>This SPA page allows you to change the background color of the entire page.</p>
+        <button id="colorChangeButton" onclick="changeBackgroundColor()">Change Color</button>
     </div>
 
     <script>
@@ -169,10 +178,18 @@ window._vwo_pc_custom = {
             outputDiv.innerHTML = '<p><strong>Username:</strong> ' + username + '</p>' +
                                   '<p><strong>Password:</strong> ' + password + '</p>';
         }
-        function navigateToSpaPage() {
-            // Scroll to the SPA Page section when the button is clicked
-            var spaPage = document.getElementById('spaPage');
-            spaPage.scrollIntoView({ behavior: 'smooth' });
+        function changeBackgroundColor() {
+            const randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
         }
 
     </script>
