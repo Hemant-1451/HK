@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <!-- Start VWO SmartCode --> 
+<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/848489.js" id="vwoCode"></script> 
+<!-- End VWO SmartCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Kumar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #007BFF;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #loginBox {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Web Page</h1>
+
+    <h2>Hello !!</h2>
+    <p>Welcome to this site.</p>
+
+    <p>Here is a textbox: <input type="text" placeholder="Type something..."></p>
+
+    <div id="loginBox">
+        <h2>Login</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+
+            <label for="rememberMe">Remember me:</label>
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <br>
+
+            <p>Choose a role:</p>
+            <select name="role">
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+            </select>
+            <br>
+
+            <p>Select your preference:</p>
+            <input type="radio" id="preference1" name="preference" value="preference1">
+            <label for="preference1">Preference 1</label>
+
+            <input type="radio" id="preference2" name="preference" value="preference2">
+            <label for="preference2">Preference 2</label>
+            <br>
+
+            <button type="button" onclick="submitLogin()">Login</button>
+        </form>
+    </div>
+
+    <div id="output"></div>
+
+    <h2>Useful Links</h2>
+    <ul>
+        <li><a href="https://vwo.com/">Vwo</a></li>
+        <li><a href="https://wingify.com/">Wingify</a></li>
+    </ul>
+
+    <script>
+        function submitLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username === '' || password === '') {
+                alert('Please enter both username and password');
+                return;
+            }
+
+            var outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<p><strong>Username:</strong> ' + username + '</p>' +
+                                  '<p><strong>Password:</strong> ' + password + '</p>';
+        }
+    </script>
+
+</body>
+</html>
