@@ -1,186 +1,69 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hemant Kumar</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        h1, h2, h3 {
-            color: #007BFF;
-        }
-
-        button {
-            padding: 10px;
-            margin-top: 10px;
-            cursor: pointer;
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #loginBox {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin-top: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #output {
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        input, select {
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            color: #007BFF;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-       #spaPage {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin-top: 20px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Popup with Widget</title>
+<style>
+.popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    border: 2px solid #ccc; /* Add border style */
+}
+.popup-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.widget-content {
+    font-size: 16px;
+    color: #333;
+}
+</style>
 </head>
 <body>
-    <script type="text/javascript" id="vwoCode">
-const params = new URLSearchParams(window.location.search);
-const accId = parseInt(params.get("id"));
-const accountId = accId || 886843;
-console.log("Account-Id -->", accountId);
-window._vwo_code=window._vwo_code || (function() {
-var account_id= accountId,
-version = 1.5,
-settings_tolerance=2000,
-library_tolerance=2500,
-use_existing_jquery=true,
-is_spa=1,
-hide_element='body',
-hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
-/* DO NOT EDIT BELOW THIS LINE */
-f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},hide_element_style:function(){return'{'+hide_element_style+'}'},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},getVersion:function(){return version},getMatchedCookies:function(e){var t=[];if(document.cookie){t=document.cookie.match(e)||[]}return t},getCombinationCookie:function(){var e=code.getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);e=e.map(function(e){try{var t=decodeURIComponent(e);if(!/_vis_opt_exp_\d+_combi=(?:\d+,?)+\s*$/.test(t)){return''}return t}catch(e){return''}});var i=[];e.forEach(function(e){var t=e.match(/([\d,]+)/g);t&&i.push(t.join('-'))});return i.join('|')},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{'+hide_element_style+'}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');vwoCodeEl&&e.setAttribute('nonce',vwoCodeEl.nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);var n=this.getCombinationCookie();this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version+(n?'&c='+n:''));return settings_timer}};window._vwo_settings_timer = code.init();return code;}());
-window._vwo_pc_custom = {
-        a: 100,
-        t: 100
-    };
-    </script>
-    <h1>Web Page</h1>
 
-    <h2>Hello !!</h2>
-    <p>Welcome to this site.</p>
+<button onclick="openPopup()">Open Popup</button>
 
-    <p>Here is a textbox: <input type="text" placeholder="Type something..."></p>
-
-    <div id="loginBox">
-        <h2>Login</h2>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-
-            <label for="rememberMe">Remember me:</label>
-            <input type="checkbox" id="rememberMe" name="rememberMe">
-            <br>
-
-            <p>Choose a role:</p>
-            <select name="role">
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
-            <br>
-
-            <p>Select your preference:</p>
-            <input type="radio" id="preference1" name="preference" value="preference1">
-            <label for="preference1">Preference 1</label>
-
-            <input type="radio" id="preference2" name="preference" value="preference2">
-            <label for="preference2">Preference 2</label>
-            <br>
-
-            <button type="button" onclick="submitLogin()">Login</button>
-        </form>
+<div class="popup-wrapper" id="popup">
+    <div class="popup-content">
+        <div class="popup-title">Popup Content</div>
+        <div class="widget-content">
+            <!-- Your widget content goes here -->
+            <h2>Widget Content</h2>
+            <p>This is the content of your widget.</p>
+        </div>
+        <button onclick="closePopup()">Close</button>
     </div>
+</div>
 
-    <div id="output"></div>
+<script>
+// Function to open the popup
+function openPopup() {
+    document.getElementById('popup').style.display = 'flex';
+}
 
-    <h2>Useful Links</h2>
-    <ul>
-        <li><a href="https://vwo.com/">Vwo</a></li>
-        <li><a href="https://wingify.com/">Wingify</a></li>
-    </ul>
-    <button onclick="navigateToSpaPage()">Go to SPA Page</button>
-
-    <div id="spaPage">
-        <h2>SPA Page</h2>
-        <p>This is the SPA Page content. You can add more content here.</p>
-    </div>
-
-    <script>
-        function submitLogin() {
-            var username = document.getElementById('username').value;
-            var password = document.getElementById('password').value;
-
-            if (username === '' || password === '') {
-                alert('Please enter both username and password');
-                return;
-            }
-
-            var outputDiv = document.getElementById('output');
-            outputDiv.innerHTML = '<p><strong>Username:</strong> ' + username + '</p>' +
-                                  '<p><strong>Password:</strong> ' + password + '</p>';
-        }
-
-       function navigateToSpaPage() {
-            // Scroll to the SPA Page section when the button is clicked
-            var spaPage = document.getElementById('spaPage');
-            spaPage.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+// Function to close the popup
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+</script>
 
 </body>
 </html>
