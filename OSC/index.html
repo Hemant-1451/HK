@@ -1,82 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Start VWO Async SmartCode -->
-<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-<script type='text/javascript' id='vwoCode'>
-window._vwo_code || (function() {
-var account_id=30000039,
-version=2.1,
-settings_tolerance=2000,
-hide_element='body',
-hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
-/* DO NOT EDIT BELOW THIS LINE */
-f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:o})}else{this.load(o+'&x=true')}}};w._vwo_code=code;code.init();})();
-</script>
-<!-- End VWO Async SmartCode -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Button Popup with Widget</title>
-<style>
-.popup-wrapper {
-    position: static;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none; /* Initially hidden */
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    max-width: 80%;
-    max-height: 80%;
-    overflow: auto;
-    border: 2px solid #ccc; /* Add border style */
-}
-.popup-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-.widget-content {
-    font-size: 16px;
-    color: #333;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Kumar Page</title>
+    <style>
+          #contact_us,
+      #about,
+      #suggestions {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        border: 2px outset black;
+        background-color: white;
+        text-align: center;
+        color: black;
+        text-decoration: none;
+        border-radius: 100px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 20px;
+      }
+      .wrapper {
+        position: absolute;
+        top: 100px;
+        left: 450px;
+        background: #fff;
+        max-width: 365px;
+        border-radius: 15px;
+        text-align: center;
+        padding: 25px 25px 30px 25px;
+        box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.15);
+      }
+      .wrapper.hide {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+      }
+      .wrapper img {
+        max-width: 150px;
+      }
+      .wrapper .content {
+        margin-top: 20px;
+      }
+      .wrapper header {
+        font-size: 25px;
+        font-weight: 600;
+      }
+/* Define styles for shadow DOM */
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .scenario-label {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* CSS styles for all scenarios */
+        .scenario-container {
+            margin-bottom: 20px;
+        }
+
+        /* CSS styles for Scenario 1 */
+        .scenario1-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario1-child {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 2 */
+        .scenario2-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario2-child {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 3 */
+        .scenario3-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario3-shadowContainer {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 4 */
+        .scenario4-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario4-child {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 5 */
+        .scenario5-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario5-shadowContainerChild {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        .scenario6-parent {
+            background-color: lightgray;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .scenario6-child-container {
+            margin-top: 10px;
+        }
+
+        .scenario6-child {
+            background-color: lightblue;
+            padding: 10px;
+            border: 1px solid #ccc;
+    </style>
 </head>
 <body>
-
-<button onclick="openPopup()">Open Popup</button>
-
-<div class="popup-wrapper" id="popup">
-    <div class="popup-content">
-        <div class="popup-title">Popup Content</div>
-        <div class="widget-content">
-            <!-- Your widget content goes here -->
-            <h2>Widget Content</h2>
-            <p>This is the content of your widget.</p>
-        </div>
-        <button onclick="closePopup()">Close</button>
+<h1 id="registration-heading" style="text-align: center">
+      Registration Form
+    </h1>
+    <div class="div1">
+      <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
+      <p id="Welpara">
+        Let's start now, just try to fill in the details carefully and
+        correctly.<br /><br />
+        <b>NOTE:-</b>Please enter a password that is at least 8 characters long.
+      </p>
     </div>
-</div>
+    <p id="p2"><strong>SPA BUTTON</strong></p>
+    <button onclick="historyPushUrl()">SPA URL</button>
+    <br />
+    <br />
+    <form action="contact_us1.html" id="registrationForm">
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" placeholder="Name" name="" />
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td>
+            <input type="phone" placeholder="9867******" />
+          </td>
+        </tr>
+        <tr>
+          <td>Email Id:</td>
+          <td>
+            <input type="email" placeholder="example1@*8" />
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" placeholder="Password" />
+          </td>
+        </tr>
+        <tr>
+          <td>Gender:</td>
+          <td>
+            <input type="radio" name="gender" />Male
+            <input type="radio" name="gender" />Female
+          </td>
+        </tr>
+        <tr>
+          <td>Date of Birth:</td>
+          <td>
+            <input type="date" />
+          </td>
+        </tr>
+        <tr>
+          <td>Hobbies:</td>
+          <td>
+            <input type="checkbox" singing />Singing
+            <input type="checkbox" Dancing />Dancing
+            <input type="checkbox" playing />Sports
+          </td>
+        </tr>
+        <tr>
+          <td>Education Qualification:</td>
+          <td>
+            <select>
+              <option>Select Option</option>
+              <option>10+2</option>
+              <option>Graduation</option>
+              <option>Postgraduation</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>
+            <textarea rows="5" col="17" placeholder="Address"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <h3>
+      By clicking submit, you agree to our terms of service and privacy policy.
+    </h3>
+    <p>
+      After registering please check your email for a confirmation message.<br /><br />
+      Already a registered user? <a href="#">Click here</a>
+    </p>
+    <br />
+    <p id="p1"><strong>FEEDBACK-FORM</strong></p>
+    <div>
+      <form action="feedback.html" id="feedbackForm">
+        <label for="question"
+          >If you're facing any problem please write to us.We'll solve the issue
+          at the earliest.</label
+        ><br />
+        <br />
+        <br />
+        <input
+          class="feedBackForm"
+          id="answer"
+          name="feedback"
+          placeholder="Text"
+          size="100"
+          style="height: 100px"
+          type="text"
+          value=""
+        /><br />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <br />
+    <button onclick="spaNavigation()">SPA Navigation</button>
+    <br />
+    <br />
+    <a href="javascript:void(0)" onclick="location.hash='spa/1.html'"
+      >Change hash</a
+    >
+    <p></p>
+    <button id="clickonlinkDummy">ClickElement</button>
+    <button id="testelement2">ClickElement2</button>
+    <button id="testelement3">ClickElement3</button>
+    <button id="testelement4">ClickElement4</button>
+    <button id="activateButton" onclick="activateVWO()">Activate API</button>
 
-<script>
-// Function to open the popup
-function openPopup() {
-    document.getElementById('popup').style.display = 'flex';
-}
+    <p>
+      <br />
+      <br />
+      <a href="suggestions.html" id="suggestions">Suggestions</a><br />
+      <br />
+      <br />
+      <br />
+      <a href="contact_us.html" id="contact_us">Contact us</a><br />
+      <br />
+      <br />
+      <br />
+      <a href="about.html" id="about">About</a>
 
-// Function to close the popup
-function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-}
-</script>
+      <br />
+      <br />
+      <br />
+    </p>
 
+    <div style="height: 30px"></div>
+    <a id="dynamicLink"></a>
+    <p>
+      <button onclick="myFunction()">Generate Link</button>
+      <input id="input" />
+    <h2 class="scenario-label">Scenario 1: Parent and its child both are in shadow DOM</h2>
+    <div class="scenario-container" id="scenario1-container">
+        <div class="scenario1-parent" id="scenario1-parent">
+            <slot name="scenario1-content"></slot>
+            <div class="scenario1-child"></div>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 2: Parent and its child both are outside shadow DOM</h2>
+    <div class="scenario-container" id="scenario2-container">
+        <div class="scenario2-parent" id="scenario2-parent">
+            <slot name="scenario2-content"></slot>
+            <div class="scenario2-child"></div>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 3: Parent in outside shadow DOM and child in inside shadow DOM</h2>
+    <div class="scenario-container" id="scenario3-container">
+        <div class="scenario3-parent" id="scenario3-parent">
+            <slot name="scenario3-content"></slot>
+            <div class="scenario3-shadowContainer"></div>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 4: Parent inside shadow DOM and child outside shadow DOM</h2>
+    <div class="scenario-container" id="scenario4-container">
+        <div class="scenario4-shadowContainer" id="scenario4-shadow">
+            <div class="scenario4-parent">
+                <slot name="scenario4-content"></slot>
+            </div>
+        </div>
+        <div class="scenario4-child"></div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 5: Parent and child both have shadow DOM</h2>
+    <div class="scenario-container" id="scenario5-container">
+        <div class="scenario5-parent" id="scenario5-parent">
+            <slot name="scenario5-content"></slot>
+        </div>
+        <div class="scenario5-child" id="scenario5-child">
+            <slot name="scenario5-content-child"></slot>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 6: Nested Shadow DOM</h2>
+    <div class="scenario-container" id="scenario6-container">
+        <div class="scenario6-parent" id="scenario6-parent">
+            <!-- Add content for the parent in nested shadow DOM -->
+            <slot name="scenario6-parent-content"></slot>
+
+            <!-- Start of nested shadow DOM for child -->
+            <div class="scenario6-child-container" id="scenario6-child">
+                <!-- Add content for the child in nested shadow DOM -->
+            </div>
+            <!-- End of nested shadow DOM for child -->
+        </div>
+    </div>
+
+     <script>
+        function myFunction() {
+          document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
+          document.getElementById("dynamicLink").href =
+            document.getElementById("input").value;
+          //   location.href=document.getElementById("input").value;
+        }
+      </script>
+    </p>
+<h1>Shadow DOM Example</h1>
+    <!-- Create a container for shadow DOM elements -->
+    <div class="container">
+        <!-- Shadow DOM with a button -->
+        <div id="shadow-container">
+            <!-- Button under shadow DOM -->
+            <button id="shadow-button">Button under Shadow DOM</button>
+            <!-- Nested Shadow DOM -->
+            <div id="nested-shadow-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Create a shadow root
+        const shadowContainer = document.getElementById('shadow-container');
+        const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside shadow DOM
+        const shadowButton = document.createElement('button');
+        shadowButton.textContent = 'Button under Shadow DOM';
+        shadowRoot.appendChild(shadowButton);
+
+        // Create a nested shadow root
+        const nestedShadowContainer = shadowRoot.querySelector('#nested-shadow-container');
+        const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside nested shadow DOM
+        const nestedShadowButton = document.createElement('button');
+        nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
+        nestedShadowRoot.appendChild(nestedShadowButton);
+    </script>
+    <script>
+      let spaCount = 1;
+
+      function historyPushUrl() {
+        const url = new URL(window.location);
+        url.searchParams.set("spa", spaCount);
+        window.history.pushState({}, "", url);
+        spaCount++;
+      }
+
+      function spaNavigation() {
+        history.pushState(null, null, "?query=" + Date.now());
+      }
+    </script>
+
+    <script>
+      /* function activateVWO() {
+        window.VWO = window.VWO || [];
+        window.VWO.push(['activate', {virtualPageUrl: 'https://testing-base.vercel.app/'}])
+        }
+
+      // Attach DOMContentLoaded event listener
+      document.addEventListener('DOMContentLoaded', activateVWO);
+      */
+    </script>
+    <script>
+        // Shadow DOM for Scenario 1
+        const scenario1Parent = document.getElementById('scenario1-parent');
+        const scenario1Root = scenario1Parent.attachShadow({ mode: 'open' });
+        scenario1Root.innerHTML = `
+            <style>
+                .scenario1-parent {
+                    background-color: lightgray;
+                    padding: 10px;
+                }
+
+                .scenario1-child {
+                    background-color: lightblue;
+                    padding: 10px;
+                }
+            </style>
+            <slot name="scenario1-content"></slot>
+            <div class="scenario1-child"></div>
+        `;
+
+        // Shadow DOM for Scenario 3
+        const scenario3Parent = document.getElementById('scenario3-parent');
+        const scenario3ShadowRoot = scenario3Parent.attachShadow({ mode: 'open' });
+        scenario3ShadowRoot.innerHTML = `
+            <style>
+                .scenario3-parent {
+                    background-color: lightgray;
+                    padding: 10px;
+                }
+
+                .scenario3-shadowContainer {
+                    background-color: lightblue;
+                    padding: 10px;
+                }
+            </style>
+            <slot name="scenario3-content"></slot>
+            <div class="scenario3-shadowContainer"></div>
+        `;
+
+        // Shadow DOM for Scenario 5
+        const scenario5Parent = document.getElementById('scenario5-parent');
+        const scenario5Child = document.getElementById('scenario5-child');
+        const scenario5ParentShadowRoot = scenario5Parent.attachShadow({ mode: 'open' });
+        const scenario5ChildShadowRoot = scenario5Child.attachShadow({ mode: 'open' });
+        scenario5ParentShadowRoot.innerHTML = `
+            <style>
+                .scenario5-parent {
+                    background-color: lightgray;
+                    padding: 10px;
+                }
+            </style>
+            <slot name="scenario5-content"></slot>
+        `;
+        scenario5ChildShadowRoot.innerHTML = `
+            <style>
+                .scenario5-child {
+                    background-color: lightblue;
+                    padding: 10px;
+                }
+            </style>
+            <slot name="scenario5-content-child"></slot>
+        `;
+
+        // Create the outer shadow DOM
+        const scenario6Parent = document.getElementById('scenario6-parent');
+        const scenario6ParentRoot = scenario6Parent.attachShadow({ mode: 'open' });
+
+        // Create the inner shadow DOM within the outer shadow DOM
+        const scenario6ChildContainer = document.createElement('div');
+        const scenario6ChildRoot = scenario6ChildContainer.attachShadow({ mode: 'open' });
+
+        // Add content to the inner shadow DOM
+        scenario6ChildRoot.innerHTML = `
+            <style>
+                /* CSS styles for the inner shadow DOM */
+                .scenario6-child {
+                    background-color: lightblue;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                }
+                .scenario6-child-content {
+                    color: blue;
+                }
+            </style>
+            <div class="scenario6-child">
+                <!-- Content within the inner shadow DOM -->
+                <p class="scenario6-child-content">This is content within the inner shadow DOM.</p>
+                <button>Click me</button>
+            </div>
+        `;
+
+        // Append the inner shadow DOM to the outer shadow DOM
+        scenario6ParentRoot.appendChild(scenario6ChildContainer);
+
+        // Add event listener for the button inside the inner shadow DOM
+        scenario6ChildRoot.querySelector('button').addEventListener('click', () => {
+            alert('Button inside inner shadow DOM clicked!');
+        });
+    </script>
 </body>
 </html>
+
