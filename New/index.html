@@ -394,8 +394,14 @@ window._vwo_pc_custom = {
     </div>
 
     <script>
+       // Wait for the DOM content to be fully loaded before executing the script
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the element with the id 'shadow-container'
+    const shadowContainer = document.getElementById('shadow-container');
+
+    // Check if the element exists before proceeding
+    if (shadowContainer) {
         // Create a shadow root
-        const shadowContainer = document.getElementById('shadow-container');
         const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
 
         // Create a button inside shadow DOM
@@ -404,13 +410,20 @@ window._vwo_pc_custom = {
         shadowRoot.appendChild(shadowButton);
 
         // Create a nested shadow root
-        const nestedShadowContainer = shadowRoot.querySelector('#nested-shadow-container');
+        const nestedShadowContainer = document.createElement('div');
+        nestedShadowContainer.id = 'nested-shadow-container'; // Set the id
+        shadowRoot.appendChild(nestedShadowContainer); // Append to shadow DOM
+
         const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
 
         // Create a button inside nested shadow DOM
         const nestedShadowButton = document.createElement('button');
         nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
         nestedShadowRoot.appendChild(nestedShadowButton);
+    } else {
+        console.error("Element with id 'shadow-container' not found");
+    }
+});
     </script>
     <script>
       let spaCount = 1;
