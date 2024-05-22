@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
         nestedShadowRoot.appendChild(nestedShadowButton);
     } else {
-        console.error("Element with id 'shadow-container' not found");
+        console.error("Element  not found");
     }
 });
 
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario3-shadowContainer"></div>
         `;
     } else {
-        console.error("Element with id not found");
+        console.error("Element not found");
     }
 });
 
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <slot name="scenario5-content"></slot>
         `;
     } else {
-        console.error("Element with id 'scenario5-parent' not found");
+        console.error("Element not found");
     }
 
     // Check if the child element exists
@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <slot name="scenario5-content-child"></slot>
         `;
     } else {
-        console.error("Element with id  not found");
+        console.error("Element not found");
     }
 });
 
