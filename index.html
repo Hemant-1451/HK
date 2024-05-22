@@ -472,8 +472,12 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario001-child"></div>
         `;
 
-        // Shadow DOM for Scenario 3
-        const scenario3Parent = document.getElementById('scenario3-parent');
+        document.addEventListener('DOMContentLoaded', function() {
+    // Shadow DOM for Scenario 3
+    const scenario3Parent = document.getElementById('scenario3-parent');
+
+    // Check if the element exists before proceeding
+    if (scenario3Parent) {
         const scenario3ShadowRoot = scenario3Parent.attachShadow({ mode: 'open' });
         scenario3ShadowRoot.innerHTML = `
             <style>
@@ -490,6 +494,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <slot name="scenario3-content"></slot>
             <div class="scenario3-shadowContainer"></div>
         `;
+    } else {
+        console.error("Element with id 'scenario3-parent' not found");
+    }
+});
 
         // Shadow DOM for Scenario 5
         const scenario5Parent = document.getElementById('scenario5-parent');
