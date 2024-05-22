@@ -330,7 +330,7 @@ window._vwo_pc_custom = {
         </div>
     </div>
 
-    <h2 class="scenario-label">Scenario 3: Parent in outside shadow DOM and child in inside shadow DOM</h2>
+    <h2 class="scenario-label">Scenario 3: Parent in onto shadow DOM and child in inside shadow DOM</h2>
     <div class="scenario-container" id="scenario3-container">
         <div class="scenario3-parent" id="scenario3-parent">
             <slot name="scenario3-content"></slot>
@@ -338,27 +338,9 @@ window._vwo_pc_custom = {
         </div>
     </div>
 
-    <h2 class="scenario-label">Scenario 4: Parent inside shadow DOM and child outside shadow DOM</h2>
-    <div class="scenario-container" id="scenario4-container">
-        <div class="scenario4-shadowContainer" id="scenario4-shadow">
-            <div class="scenario4-parent">
-                <slot name="scenario4-content"></slot>
-            </div>
-        </div>
-        <div class="scenario4-child"></div>
-    </div>
+    
 
-    <h2 class="scenario-label">Scenario 5: Parent and child both have shadow DOM</h2>
-    <div class="scenario-container" id="scenario5-container">
-        <div class="scenario5-parent" id="scenario5-parent">
-            <slot name="scenario5-content"></slot>
-        </div>
-        <div class="scenario5-child" id="scenario5-child">
-            <slot name="scenario5-content-child"></slot>
-        </div>
-    </div>
-
-    <h2 class="scenario-label">Scenario 6: Nested Shadow DOM</h2>
+    <h2 class="scenario-label">Scenario 4: Nested Shadow DOM</h2>
     <div class="scenario-container" id="scenario6-container">
         <div class="scenario6-parent" id="scenario6-parent">
             <!-- Add content for the parent in nested shadow DOM -->
@@ -485,29 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario3-shadowContainer"></div>
         `;
 
-        // Shadow DOM for Scenario 5
-        const scenario5Parent = document.getElementById('scenario5-parent');
-        const scenario5Child = document.getElementById('scenario5-child');
-        const scenario5ParentShadowRoot = scenario5Parent.attachShadow({ mode: 'open' });
-        const scenario5ChildShadowRoot = scenario5Child.attachShadow({ mode: 'open' });
-        scenario5ParentShadowRoot.innerHTML = `
-            <style>
-                .scenario5-parent {
-                    background-color: lightgray;
-                    padding: 10px;
-                }
-            </style>
-            <slot name="scenario5-content"></slot>
-        `;
-        scenario5ChildShadowRoot.innerHTML = `
-            <style>
-                .scenario5-child {
-                    background-color: lightblue;
-                    padding: 10px;
-                }
-            </style>
-            <slot name="scenario5-content-child"></slot>
-        `;
+        
 
         // Create the outer shadow DOM
         const scenario6Parent = document.getElementById('scenario6-parent');
@@ -533,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario6-child">
                 <!-- Content within the inner shadow DOM -->
                 <p class="scenario6-child-content">This is content within the inner shadow DOM.</p>
-                <button>Click me</button>
+                <button id="nested-shadow-clickme-button>Click me</button>
             </div>
         `;
 
