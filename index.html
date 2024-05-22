@@ -4,7 +4,7 @@
 <script type='text/javascript' id='vwoCode'>
 const params = new URLSearchParams(window.location.search);
 const accId = parseInt(params.get("id"));
-const accountId = accId || 30000039;
+const accountId = accId || 848489;
 console.log("Account-Id -->", accountId);
 window._vwo_code=window._vwo_code || (function() {
 var account_id= accountId,
@@ -495,15 +495,18 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario3-shadowContainer"></div>
         `;
     } else {
-        console.error("Element with id 'scenario3-parent' not found");
+        console.error("Element with id not found");
     }
 });
 
         // Shadow DOM for Scenario 5
-        const scenario5Parent = document.getElementById('scenario5-parent');
-        const scenario5Child = document.getElementById('scenario5-child');
+       document.addEventListener('DOMContentLoaded', function() {
+    const scenario5Parent = document.getElementById('scenario5-parent');
+    const scenario5Child = document.getElementById('scenario5-child');
+
+    // Check if the parent element exists
+    if (scenario5Parent) {
         const scenario5ParentShadowRoot = scenario5Parent.attachShadow({ mode: 'open' });
-        const scenario5ChildShadowRoot = scenario5Child.attachShadow({ mode: 'open' });
         scenario5ParentShadowRoot.innerHTML = `
             <style>
                 .scenario5-parent {
@@ -513,6 +516,13 @@ document.addEventListener('DOMContentLoaded', function() {
             </style>
             <slot name="scenario5-content"></slot>
         `;
+    } else {
+        console.error("Element with id 'scenario5-parent' not found");
+    }
+
+    // Check if the child element exists
+    if (scenario5Child) {
+        const scenario5ChildShadowRoot = scenario5Child.attachShadow({ mode: 'open' });
         scenario5ChildShadowRoot.innerHTML = `
             <style>
                 .scenario5-child {
@@ -522,6 +532,10 @@ document.addEventListener('DOMContentLoaded', function() {
             </style>
             <slot name="scenario5-content-child"></slot>
         `;
+    } else {
+        console.error("Element with id  not found");
+    }
+});
 
         // Create the outer shadow DOM
         const scenario003Parent = document.getElementById('scenario003-parent');
