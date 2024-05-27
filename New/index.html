@@ -409,56 +409,136 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     </script>
 
-
-    <script>
-        // Shadow DOM for Scenario 1
-        const scenario01Parent = document.getElementById('scenario01-parent');
-        const scenario01Root = scenario01Parent.attachShadow({ mode: 'open' });
-        scenario01Root.innerHTML = `
-            <style>
-                .scenario01-parent {
-                    background-color: lightgray;
-                    padding: 10px;
-                }
-
-                .scenario01-child {
-                    background-color: lightblue;
-                    padding: 10px;
-                }
-            </style>
+   <h2 class="scenario-label">Scenario 1: Parent onto Shadow DOM and its child is inside Shadow DOM</h2>
+    <div class="scenario-container" id="scenario01-container">
+        <div class="scenario01-parent" id="scenario01-parent">
             <slot name="scenario01-content"></slot>
             <div class="scenario01-child"></div>
-        `;
+        </div>
+    </div>
 
-        class CustomElement extends HTMLElement {
-            constructor() {
-                super();
-                this.attachShadow({ mode: 'open' });
-                this.shadowRoot.innerHTML = `
-                    <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
-                    <button>Click Me</button>
+    <h2 class="scenario-label">Scenario 2: Parent and its child both are outside Shadow DOM</h2>
+    <div class="scenario-container" id="scenario02-container">
+        <div class="scenario02-parent" id="scenario02-parent">
+            <slot name="scenario02-content"></slot>
+            <div class="scenario02-child"></div>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 3: Nested Shadow DOM</h2>
+    <div class="scenario-container" id="scenario03-container">
+        <div class="scenario03-parent" id="scenario03-parent">
+            <slot name="scenario03-parent-content"></slot>
+            <div class="scenario03-child-container" id="scenario03-child">
+                <!-- Nested shadow DOM content will go here -->
+            </div>
+        </div>
+    </div>
+
+    <h1>Shadow DOM Example</h1>
+    <div class="container">
+        <div id="shadow-container"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scenario 1: Parent with Shadow DOM, and child inside Shadow DOM
+            const scenario01Parent = document.getElementById('scenario01-parent');
+            if (scenario01Parent) {
+                const scenario01Root = scenario01Parent.attachShadow({ mode: 'open' });
+                scenario01Root.innerHTML = `
+                    <style>
+                        .scenario01-parent {
+                            background-color: lightgray;
+                            padding: 10px;
+                        }
+                        .scenario01-child {
+                            background-color: lightblue;
+                            padding: 10px;
+                        }
+                    </style>
+                    <slot name="scenario01-content"></slot>
+                    <div class="scenario01-child">Child inside Shadow DOM</div>
                 `;
+            } else {
+                console.error("Scenario 1 parent not found");
             }
-        }
 
-        customElements.define('custom-element', CustomElement);
+            // Scenario 3: Nested Shadow DOM
+            const scenario03Parent = document.getElementById('scenario03-parent');
+            if (scenario03Parent) {
+                const scenario03Root = scenario03Parent.attachShadow({ mode: 'open' });
+                scenario03Root.innerHTML = `
+                    <style>
+                        .scenario03-parent {
+                            background-color: lightcoral;
+                            padding: 10px;
+                        }
+                    </style>
+                    <slot name="scenario03-parent-content"></slot>
+                    <div class="scenario03-child-container" id="scenario03-child-container"></div>
+                `;
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const customElement = document.querySelector('custom-element');
-            if (customElement && customElement.shadowRoot) {
-                const button = customElement.shadowRoot.querySelector('button');
-                if (button) {
-                    button.addEventListener('click', () => {
-                        alert('Button inside inner shadow DOM clicked!');
-                    });
+                const scenario03ChildContainer = scenario03Root.getElementById('scenario03-child-container');
+                if (scenario03ChildContainer) {
+                    const scenario03ChildRoot = scenario03ChildContainer.attachShadow({ mode: 'open' });
+                    scenario03ChildRoot.innerHTML = `
+                        <style>
+                            .scenario03-child-content {
+                                background-color: lightgreen;
+                                padding: 10px;
+                            }
+                        </style>
+                        <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
+                        <button>Click Me</button>
+                    `;
+
+                    const button = scenario03ChildRoot.querySelector('button');
+                    if (button) {
+                        button.addEventListener('click', () => {
+                            alert('Button inside inner shadow DOM clicked!');
+                        });
+                    }
                 } else {
-                    console.error('Button not found in shadow DOM');
+                    console.error("Scenario 3 child container not found");
                 }
             } else {
-                console.error('Shadow host not found');
+                console.error("Scenario 3 parent not found");
             }
-        });
-   
+
+            // Separate Shadow DOM with a button
+            const shadowContainer = document.getElementById('shadow-container');
+            if (shadowContainer) {
+                const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
+                shadowRoot.innerHTML = `
+                    <style>
+                        button {
+                            display: block;
+                            margin: 10px 0;
+                        }
+                    </style>
+                    <button>Button under Shadow DOM</button>
+                    <div id="nested-shadow-container"></div>
+                `;
+
+                const nestedShadowContainer = shadowRoot.getElementById('nested-shadow-container');
+                if (nestedShadowContainer) {
+                    const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
+                    nestedShadowRoot.innerHTML = `
+                        <style>
+                            button {
+                                display: block;
+                                margin: 10px 0;
+                            }
+                        </style>
+                        <button>Button under Nested Shadow DOM</button>
+                    `;
+                } else {
+                    console.error("Nested shadow container not found");
+                }
+            } else {
+                console.error("Element with id 'shadow-container' not found");
+            }
         });
     </script>
 </body>
