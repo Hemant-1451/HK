@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -580,6 +581,49 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
+<div class="section canvas-section">
+    <h2>Canvas Drawing</h2>
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw a blue rectangle
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(50, 50, 150, 100);
+
+        // Draw a red circle
+        ctx.beginPath();
+        ctx.arc(400, 200, 50, 0, Math.PI * 2);
+        ctx.fillStyle = 'red';
+        ctx.fill();
+
+        // Draw a green triangle
+        ctx.beginPath();
+        ctx.moveTo(600, 50);
+        ctx.lineTo(700, 150);
+        ctx.lineTo(500, 150);
+        ctx.closePath();
+        ctx.fillStyle = 'green';
+        ctx.fill();
+
+        // Draw text
+        ctx.font = '30px Arial';
+        ctx.fillStyle = 'black';
+        ctx.fillText('Hello, Canvas!', 100, 300);
+
+        // Handle mouse interactions
+        canvas.addEventListener('mousedown', handleMouseDown);
+
+        function handleMouseDown(event) {
+            const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+            const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+            console.log('Mouse clicked at:', mouseX, mouseY);
+            // You can add more complex interactions here
+        }
+    </script>
+</div>
+
 <p>
     <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
     <a href="https://saiganesh98.github.io/?id=1000072">Ganesh's Page Version 1.5</a><br>
