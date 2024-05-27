@@ -363,7 +363,8 @@
 
     <div id="about-section" class="div1">
         <h2>About</h2>
-        <p>Welcome to the Hemant Kumar page! This page serves as a showcase for the talents and interests of Hemant Kumar. Here you can find information about various topics related to Hemant Kumar's expertise.</p>
+        <p>Welcome to the Hemant's Page! This page serves as a showcase for various features and functionalities. Here you can explore different components and elements used for testing purposes.</p>
+
     </div>
 
     <div id="suggestions-section" class="feedback-form">
@@ -582,47 +583,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 <div class="section canvas-section">
-    <h2>Canvas Drawing</h2>
+    
     <canvas id="myCanvas" width="800" height="400"></canvas>
     <script>
         const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Draw a blue rectangle
-        ctx.fillStyle = 'blue';
-        ctx.fillRect(50, 50, 150, 100);
+        // Draw a gradient background
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'lightblue');
+        gradient.addColorStop(1, 'lightpink');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Draw a red circle
+        // Draw a complex pattern
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        for (let x = 0; x < canvas.width; x += 20) {
+            for (let y = 0; y < canvas.height; y += 20) {
+                ctx.fillRect(x, y, 10, 10);
+            }
+        }
+
+        // Draw a colorful circle
         ctx.beginPath();
-        ctx.arc(400, 200, 50, 0, Math.PI * 2);
-        ctx.fillStyle = 'red';
+        ctx.arc(400, 200, 100, 0, Math.PI * 2);
+        const circleGradient = ctx.createRadialGradient(400, 200, 50, 400, 200, 100);
+        circleGradient.addColorStop(0, 'red');
+        circleGradient.addColorStop(0.5, 'yellow');
+        circleGradient.addColorStop(1, 'orange');
+        ctx.fillStyle = circleGradient;
         ctx.fill();
 
-        // Draw a green triangle
-        ctx.beginPath();
-        ctx.moveTo(600, 50);
-        ctx.lineTo(700, 150);
-        ctx.lineTo(500, 150);
-        ctx.closePath();
-        ctx.fillStyle = 'green';
-        ctx.fill();
-
-        // Draw text
-        ctx.font = '30px Arial';
-        ctx.fillStyle = 'black';
-        ctx.fillText('Hello, Canvas!', 100, 300);
+        // Draw text with shadow
+        ctx.font = 'bold 40px Arial';
+        ctx.fillStyle = 'white';
+        ctx.shadowColor = 'black';
+        ctx.shadowBlur = 10;
+        ctx.fillText('       Canvas!', 250, 350);
 
         // Handle mouse interactions
-        canvas.addEventListener('mousedown', handleMouseDown);
+        canvas.addEventListener('mousemove', handleMouseMove);
 
-        function handleMouseDown(event) {
+        function handleMouseMove(event) {
             const mouseX = event.clientX - canvas.getBoundingClientRect().left;
             const mouseY = event.clientY - canvas.getBoundingClientRect().top;
-            console.log('Mouse clicked at:', mouseX, mouseY);
-            // You can add more complex interactions here
+            console.log('Mouse moved at:', mouseX, mouseY);
+            // You can add more interactive features based on mouse movement
         }
     </script>
 </div>
+
 
 <p>
     <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
