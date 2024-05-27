@@ -505,40 +505,6 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.error("Scenario 3 parent not found");
             }
-
-            // Separate Shadow DOM with a button
-            const shadowContainer = document.getElementById('shadow-container');
-            if (shadowContainer) {
-                const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
-                shadowRoot.innerHTML = `
-                    <style>
-                        button {
-                            display: block;
-                            margin: 10px 0;
-                        }
-                    </style>
-                    <button>Button under Shadow DOM</button>
-                    <div id="nested-shadow-container"></div>
-                `;
-
-                const nestedShadowContainer = shadowRoot.getElementById('nested-shadow-container');
-                if (nestedShadowContainer) {
-                    const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
-                    nestedShadowRoot.innerHTML = `
-                        <style>
-                            button {
-                                display: block;
-                                margin: 10px 0;
-                            }
-                        </style>
-                        <button>Button under Nested Shadow DOM</button>
-                    `;
-                } else {
-                    console.error("Nested shadow container not found");
-                }
-            } else {
-                console.error("Element with id 'shadow-container' not found");
-            }
         });
     </script>
 </body>
