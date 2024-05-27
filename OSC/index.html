@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Start VWO SmartCode --> 
-<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/2000520.js" id="vwoCode"></script> 
+<!-- Start VWO SmartCode -->
+<script type="text/javascript">
+    const params = new URLSearchParams(window.location.search);
+    const accId = parseInt(params.get("id"));
+    const accountId = accId || 2000520; // Default account ID if "id" parameter is not provided
+    console.log("Account-Id ->", accountId);
+    const script = document.createElement('script');
+    script.referrerPolicy = "no-referrer-when-downgrade";
+    script.src = `https://dev.visualwebsiteoptimizer.com/lib/${accountId}.js`;
+    script.id = 'vwoCode';
+    document.head.appendChild(script);
+</script>
 <!-- End VWO SmartCode -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
