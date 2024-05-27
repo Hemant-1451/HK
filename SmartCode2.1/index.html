@@ -501,20 +501,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-    <script>
-      let spaCount = 1;
-
-      function historyPushUrl() {
-        const url = new URL(window.location);
-        url.searchParams.set("spa", spaCount);
-        window.history.pushState({}, "", url);
-        spaCount++;
-      }
-
-      function spaNavigation() {
-        history.pushState(null, null, "?query=" + Date.now());
-      }
-    </script>
+    
 
   
 
