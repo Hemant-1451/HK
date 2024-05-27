@@ -120,27 +120,6 @@ window._vwo_pc_custom = {
             padding: 10px;
         }
 
-        /* CSS styles for Scenario 4 */
-        .scenario4-parent {
-            background-color: lightgray;
-            padding: 10px;
-        }
-
-        .scenario4-child {
-            background-color: lightblue;
-            padding: 10px;
-        }
-
-        /* CSS styles for Scenario 5 */
-        .scenario5-parent {
-            background-color: lightgray;
-            padding: 10px;
-        }
-
-        .scenario5-shadowContainerChild {
-            background-color: lightblue;
-            padding: 10px;
-        }
 
         .scenario03-parent {
             background-color: lightgray;
@@ -409,36 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     </script>
 
-   <h2 class="scenario-label">Scenario 1: Parent onto Shadow DOM and its child is inside Shadow DOM</h2>
-    <div class="scenario-container" id="scenario01-container">
-        <div class="scenario01-parent" id="scenario01-parent">
-            <slot name="scenario01-content"></slot>
-            <div class="scenario01-child"></div>
-        </div>
-    </div>
-
-    <h2 class="scenario-label">Scenario 2: Parent and its child both are outside Shadow DOM</h2>
-    <div class="scenario-container" id="scenario02-container">
-        <div class="scenario02-parent" id="scenario02-parent">
-            <slot name="scenario02-content"></slot>
-            <div class="scenario02-child"></div>
-        </div>
-    </div>
-
-    <h2 class="scenario-label">Scenario 3: Nested Shadow DOM</h2>
-    <div class="scenario-container" id="scenario03-container">
-        <div class="scenario03-parent" id="scenario03-parent">
-            <slot name="scenario03-parent-content"></slot>
-            <div class="scenario03-child-container" id="scenario03-child">
-                <!-- Nested shadow DOM content will go here -->
-            </div>
-        </div>
-    </div>
-
-    <h1>Shadow DOM Example</h1>
-    <div class="container">
-        <div id="shadow-container"></div>
-    </div>
+  
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -483,10 +433,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (scenario03ChildContainer) {
                     const scenario03ChildRoot = scenario03ChildContainer.attachShadow({ mode: 'open' });
                     scenario03ChildRoot.innerHTML = `
-                        <style>
+                       <style>
                             .scenario03-child-content {
                                 background-color: lightgreen;
                                 padding: 10px;
+                                border: 2px solid darkgreen;
+                            }
+                            button {
+                                margin-top: 10px;
+                                background-color: lightgreen;
+                                padding: 10px;
+                                border: 2px solid darkgreen;
+                                cursor: pointer;
                             }
                         </style>
                         <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
@@ -496,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const button = scenario03ChildRoot.querySelector('button');
                     if (button) {
                         button.addEventListener('click', () => {
-                            alert('Button inside inner shadow DOM clicked!');
+                            alert('Button inside nested shadow DOM clicked!');
                         });
                     }
                 } else {
