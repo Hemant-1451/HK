@@ -135,6 +135,36 @@ window._vwo_pc_custom = {
             background-color: lightblue;
             padding: 10px;
             border: 1px solid #ccc;
+        .container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .shadow-button, .nested-shadow-button {
+            display: inline-block;
+            padding: 12px 24px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-right: 20px; /* Add margin between buttons */
+            text-decoration: none; /* Remove default underline */
+        }
+
+        .shadow-button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+        }
+
+        .nested-shadow-button {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            margin-right: 0; /* Remove margin from last button */
+        }
+
+        .shadow-button:hover, .nested-shadow-button:hover {
+            filter: brightness(110%); /* Add brightness on hover */
+        }
     </style>
 </head>
 <body>
@@ -333,7 +363,8 @@ window._vwo_pc_custom = {
         }
       </script>
     </p>
-<h1>Shadow DOM Example</h1>
+  
+<h1>Shadow Buttons</h1>
     <!-- Create a container for shadow DOM elements -->
     <div class="container">
         <!-- Shadow DOM with a button -->
@@ -355,6 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create a button inside shadow DOM
         const shadowButton = document.createElement('button');
         shadowButton.textContent = 'Button under Shadow DOM';
+        shadowButton.className = 'shadow-button'; // Add class for styling
         shadowRoot.appendChild(shadowButton);
 
         // Create a nested shadow root
@@ -367,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create a button inside nested shadow DOM
         const nestedShadowButton = document.createElement('button');
         nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
+        nestedShadowButton.className = 'nested-shadow-button'; // Add class for styling
         nestedShadowRoot.appendChild(nestedShadowButton);
     } else {
         console.error("Element with id not found");
