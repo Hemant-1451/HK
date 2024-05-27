@@ -409,16 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     </script>
 
-    <script>
-      /* function activateVWO() {
-        window.VWO = window.VWO || [];
-        window.VWO.push(['activate', {virtualPageUrl: 'https://testing-base.vercel.app/'}])
-        }
 
-      // Attach DOMContentLoaded event listener
-      document.addEventListener('DOMContentLoaded', activateVWO);
-      */
-    </script>
     <script>
         // Shadow DOM for Scenario 1
         const scenario01Parent = document.getElementById('scenario01-parent');
@@ -439,44 +430,35 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="scenario01-child"></div>
         `;
 
-       
+        class CustomElement extends HTMLElement {
+            constructor() {
+                super();
+                this.attachShadow({ mode: 'open' });
+                this.shadowRoot.innerHTML = `
+                    <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
+                    <button>Click Me</button>
+                `;
+            }
+        }
 
-        
+        customElements.define('custom-element', CustomElement);
 
-        // Create the outer shadow DOM
-        const scenario03Parent = document.getElementById('scenario03-parent');
-        const scenario03ParentRoot = scenario03Parent.attachShadow({ mode: 'open' });
-
-        // Create the inner shadow DOM within the outer shadow DOM
-        const scenario03ChildContainer = document.createElement('div');
-        const scenario03ChildRoot = scenario03ChildContainer.attachShadow({ mode: 'open' });
-
-        // Add content to the inner shadow DOM
-        scenario03ChildRoot.innerHTML = `
-            <style>
-                /* CSS styles for the inner shadow DOM */
-                .scenario03-child {
-                    background-color: lightblue;
-                    padding: 10px;
-                    border: 1px solid #ccc;
+        document.addEventListener('DOMContentLoaded', () => {
+            const customElement = document.querySelector('custom-element');
+            if (customElement && customElement.shadowRoot) {
+                const button = customElement.shadowRoot.querySelector('button');
+                if (button) {
+                    button.addEventListener('click', () => {
+                        alert('Button inside inner shadow DOM clicked!');
+                    });
+                } else {
+                    console.error('Button not found in shadow DOM');
                 }
-                .scenario03-child-content {
-                    color: blue;
-                }
-            </style>
-            <div class="scenario03-child">
-                <!-- Content within the inner shadow DOM -->
-                <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
-                <button id="nested-shadow-clickme-button>Click me</button>
-            </div>
-        `;
-
-        // Append the inner shadow DOM to the outer shadow DOM
-        scenario03ParentRoot.appendChild(scenario03ChildContainer);
-
-        // Add event listener for the button inside the inner shadow DOM
-        scenario03ChildRoot.querySelector('button').addEventListener('click', () => {
-            alert('Button inside inner shadow DOM clicked!');
+            } else {
+                console.error('Shadow host not found');
+            }
+        });
+   
         });
     </script>
 </body>
