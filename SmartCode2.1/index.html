@@ -268,7 +268,15 @@
         .shadow-button:hover, .nested-shadow-button:hover {
             filter: brightness(110%); /* Add brightness on hover */
         }
-
+            #hostElement {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #000;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -460,7 +468,74 @@
 
     
     </p>
-  
+  <div id="hostElement"></div>
+
+    <script>
+        // Main Shadow DOM
+        const hostElement = document.getElementById('hostElement');
+        const shadowRoot = hostElement.attachShadow({ mode: 'open' });
+
+        // Adding content to the main shadow DOM
+        shadowRoot.innerHTML = `
+            <style>
+                .shadow-container {
+                    border: 2px solid #1e90ff;
+                    padding: 20px;
+                    margin: 10px 0;
+                    border-radius: 8px;
+                    background-color: #e6f7ff;
+                }
+                .shadow-container a {
+                    color: #1e90ff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .shadow-container a:hover {
+                    text-decoration: underline;
+                }
+                .shadow-container p {
+                    margin: 0 0 10px;
+                }
+            </style>
+            <div class="shadow-container">
+                <p>Main Shadow DOM Content</p>
+                <a href="https://hemant-1451.github.io/HK/?id=848489&test=sdmclick" target="_blank">Click here for Shadow DOM link</a>
+                <div id="nestedHost"></div>
+            </div>
+        `;
+
+        // Nested Shadow DOM
+        const nestedHost = shadowRoot.getElementById('nestedHost');
+        const nestedShadowRoot = nestedHost.attachShadow({ mode: 'open' });
+
+        // Adding content to the nested shadow DOM
+        nestedShadowRoot.innerHTML = `
+            <style>
+                .nested-shadow-container {
+                    border: 2px dashed #ff6347;
+                    padding: 15px;
+                    margin: 15px 0;
+                    border-radius: 8px;
+                    background-color: #ffe6e6;
+                }
+                .nested-shadow-container a {
+                    color: #ff6347;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .nested-shadow-container a:hover {
+                    text-decoration: underline;
+                }
+                .nested-shadow-container p {
+                    margin: 0 0 10px;
+                }
+            </style>
+            <div class="nested-shadow-container">
+                <p>Nested Shadow DOM Content</p>
+                <a href="https://hemant-1451.github.io/HK/?id=848489&test=nstdsdmclick" target="_blank">Click here for Nested Shadow DOM link</a>
+            </div>
+        `;
+    </script>
 <h1>Shadow Buttons</h1>
     <!-- Create a container for shadow DOM elements -->
     <div class="container">
