@@ -193,108 +193,100 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     <br />
     <br />
     <form action="contact_us1.html" id="registrationForm">
-      <table>
+    <table>
         <tr>
-          <td>Name:</td>
-          <td>
-            <input type="text" placeholder="Name" name="" />
-          </td>
+            <td>Name:</td>
+            <td>
+                <input type="text" placeholder="Name" name="" autocomplete="name" />
+            </td>
         </tr>
         <tr>
-          <td>Phone Number:</td>
-          <td>
-            <input type="phone" placeholder="9867******" />
-          </td>
+            <td>Phone Number:</td>
+            <td>
+                <input type="tel" placeholder="9867******" autocomplete="tel" />
+            </td>
         </tr>
         <tr>
-          <td>Email Id:</td>
-          <td>
-            <input type="email" placeholder="example1@*8" />
-          </td>
+            <td>Email Id:</td>
+            <td>
+                <input type="email" placeholder="example@example.com" autocomplete="email" />
+            </td>
         </tr>
         <tr>
-          <td>Password:</td>
-          <td>
-            <input type="password" placeholder="Password" autocomplete="current-password" />
-          </td>
+            <td>Password:</td>
+            <td>
+                <input type="password" placeholder="Password" autocomplete="current-password" />
+            </td>
         </tr>
         <tr>
-          <td>Gender:</td>
-          <td>
-            <input type="radio" name="gender" />Male
-            <input type="radio" name="gender" />Female
-          </td>
+            <td>Gender:</td>
+            <td>
+                <input type="radio" name="gender" />Male
+                <input type="radio" name="gender" />Female
+            </td>
         </tr>
         <tr>
-          <td>Date of Birth:</td>
-          <td>
-            <input type="date" />
-          </td>
+            <td>Date of Birth:</td>
+            <td>
+                <input type="date" />
+            </td>
         </tr>
         <tr>
-          <td>Hobbies:</td>
-          <td>
-            <input type="checkbox" singing />Singing
-            <input type="checkbox" Dancing />Dancing
-            <input type="checkbox" playing />Sports
-          </td>
+            <td>Hobbies:</td>
+            <td>
+                <input type="checkbox" singing />Singing
+                <input type="checkbox" Dancing />Dancing
+                <input type="checkbox" playing />Sports
+            </td>
         </tr>
         <tr>
-          <td>Education Qualification:</td>
-          <td>
-            <select>
-              <option>Select Option</option>
-              <option>10+2</option>
-              <option>Graduation</option>
-              <option>Postgraduation</option>
-            </select>
-          </td>
+            <td>Education Qualification:</td>
+            <td>
+                <select autocomplete="education">
+                    <option>Select Option</option>
+                    <option>10+2</option>
+                    <option>Graduation</option>
+                    <option>Postgraduation</option>
+                </select>
+            </td>
         </tr>
         <tr>
-          <td>Address:</td>
-          <td>
-            <textarea rows="5" col="17" placeholder="Address"></textarea>
-          </td>
+            <td>Address:</td>
+            <td>
+                <textarea rows="5" col="17" placeholder="Address" autocomplete="street-address"></textarea>
+            </td>
         </tr>
         <tr>
-          <td>
-            <input type="submit" value="Submit" />
-            <input type="reset" value="Reset" />
-          </td>
+            <td>
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+            </td>
         </tr>
-      </table>
-    </form>
-    <h3>
-      By clicking submit, you agree to our terms of service and privacy policy.
-    </h3>
-    <p>
-      After registering please check your email for a confirmation message.<br /><br />
-      Already a registered user? <a href="#">Click here</a>
-    </p>
-    <br />
-    <p id="p1"><strong>FEEDBACK-FORM</strong></p>
-    <div>
-      <form action="feedback.html" id="feedbackForm">
-        <label for="question"
-          >If you're facing any problem please write to us.We'll solve the issue
-          at the earliest.</label
-        ><br />
+    </table>
+</form>
+<h3>
+    By clicking submit, you agree to our terms of service and privacy policy.
+</h3>
+<p>
+    After registering please check your email for a confirmation message.<br /><br />
+    Already a registered user? <a href="#">Click here</a>
+</p>
+<br />
+<p id="p1"><strong>FEEDBACK-FORM</strong></p>
+<div>
+    <form action="feedback.html" id="feedbackForm">
+        <label for="question">
+            If you're facing any problem please write to us. We'll solve the issue at the earliest.
+        </label>
         <br />
         <br />
-        <input
-          class="feedBackForm"
-          id="answer"
-          name="feedback"
-          placeholder="Text"
-          size="100"
-          style="height: 100px"
-          type="text"
-          value=""
-        /><br />
+        <br />
+        <input class="feedBackForm" id="answer" name="feedback" placeholder="Text" size="100" style="height: 100px" type="text" value="" autocomplete="off" />
+        <br />
         <br />
         <input type="submit" value="Submit" />
-      </form>
-    </div>
+    </form>
+</div>
     <br />
     <button onclick="spaNavigation()">SPA Navigation</button>
     <br />
