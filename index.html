@@ -1,80 +1,184 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type='text/javascript' id='vwoCode'>
-const params = new URLSearchParams(window.location.search);
-const accId = parseInt(params.get("id"));
-const accountId = accId || 848489;
-console.log("Account-Id -->", accountId);
-window._vwo_code=window._vwo_code || (function() {
-var account_id= accountId,
-version = 1.5,
-settings_tolerance=2000,
-library_tolerance=2500,
-use_existing_jquery=false,
-is_spa=1,
-hide_element='body',
-hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
-/* DO NOT EDIT BELOW THIS LINE */
-f=false,d=document,vwoCodeEl=d.querySelector('#vwoCode'),code={use_existing_jquery:function(){return use_existing_jquery},library_tolerance:function(){return library_tolerance},hide_element_style:function(){return'{'+hide_element_style+'}'},finish:function(){if(!f){f=true;var e=d.getElementById('_vis_opt_path_hides');if(e)e.parentNode.removeChild(e)}},finished:function(){return f},load:function(e){var t=d.createElement('script');t.fetchPriority='high';t.src=e;t.type='text/javascript';t.onerror=function(){_vwo_code.finish()};d.getElementsByTagName('head')[0].appendChild(t)},getVersion:function(){return version},getMatchedCookies:function(e){var t=[];if(document.cookie){t=document.cookie.match(e)||[]}return t},getCombinationCookie:function(){var e=code.getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);e=e.map(function(e){try{var t=decodeURIComponent(e);if(!/_vis_opt_exp_\d+_combi=(?:\d+,?)+\s*$/.test(t)){return''}return t}catch(e){return''}});var i=[];e.forEach(function(e){var t=e.match(/([\d,]+)/g);t&&i.push(t.join('-'))});return i.join('|')},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;window.settings_timer=setTimeout(function(){_vwo_code.finish()},settings_tolerance);var e=d.createElement('style'),t=hide_element?hide_element+'{'+hide_element_style+'}':'',i=d.getElementsByTagName('head')[0];e.setAttribute('id','_vis_opt_path_hides');vwoCodeEl&&e.setAttribute('nonce',vwoCodeEl.nonce);e.setAttribute('type','text/css');if(e.styleSheet)e.styleSheet.cssText=t;else e.appendChild(d.createTextNode(t));i.appendChild(e);var n=this.getCombinationCookie();this.load('https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&f='+ +is_spa+'&vn='+version+(n?'&c='+n:''));return settings_timer}};window._vwo_settings_timer = code.init();return code;}());
-window._vwo_pc_custom = {
-        a: 100,
-        t: 100
-    };
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <!-- Start VWO Async SmartCode -->
+    <script type="text/javascript">
+        const params = new URLSearchParams(window.location.search);
+        const accId = parseInt(params.get("id"));
+        const accountId = accId || 848489;
+        console.log("Account-Id ->", accountId);
+        /* eslint-disable no-undef */
+        window._vwo_code || (function() {
+            var account_id=accountId,
+            version=2.1,
+            settings_tolerance=2000,
+            hide_element='body',
+            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+            /* DO NOT EDIT BELOW THIS LINE */
+            f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:o})}else{this.load(o+'&x=true')}}};w._vwo_code=code;code.init();})();
+        window._vwo_pc_custom = {
+            a: 100,
+            t: 100
+        };	    
     </script>
-<!-- End VWO Async SmartCode -->
+    <!-- End VWO Async SmartCode -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
     <style>
-          #contact_us,
-      #about,
-      #suggestions {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
-        border: 2px outset black;
-        background-color: white;
-        text-align: center;
-        color: black;
-        text-decoration: none;
-        border-radius: 100px;
-        box-sizing: border-box;
-        padding: 10px;
-        font-size: 20px;
-      }
-      .wrapper {
-        position: absolute;
-        top: 100px;
-        left: 450px;
-        background: #fff;
-        max-width: 365px;
-        border-radius: 15px;
-        text-align: center;
-        padding: 25px 25px 30px 25px;
-        box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.15);
-      }
-      .wrapper.hide {
-        opacity: 0;
-        pointer-events: none;
-        transform: scale(0.8);
-        transition: all 0.3s ease;
-      }
-      .wrapper img {
-        max-width: 150px;
-      }
-      .wrapper .content {
-        margin-top: 20px;
-      }
-      .wrapper header {
-        font-size: 25px;
-        font-weight: 600;
-      }
-/* Define styles for shadow DOM */
+        body {
+    background-color: #E6E6FA; /* Light purple color */
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        .div1 {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
         .container {
-            display: flex;
-            justify-content: space-around;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .container button, .container a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .container button:hover, .container a:hover {
+            background: #0056b3;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .form-container table {
+            width: 100%;
+        }
+
+        .form-container table td {
+            padding: 10px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="phone"],
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container input[type="date"],
+        .form-container textarea,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container input[type="submit"],
+        .form-container input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #28a745;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-container input[type="submit"]:hover,
+        .form-container input[type="reset"]:hover {
+            background: #218838;
+        }
+
+        .feedback-form {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .feedback-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .feedback-form input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #ffc107;
+            color: #333;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .feedback-form input[type="submit"]:hover {
+            background: #e0a800;
+        }
+
+        #contact_us, #about, #suggestions {
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+            border: 2px outset black;
+            background-color: white;
+            text-align: center;
+            color: black;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+
+        #contact_us:hover, #about:hover, #suggestions:hover {
+            background-color: #ddd;
+        }
+
+        .section-header {
+            text-align: center;
+            padding: 20px;
+            background: #007bff;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .scenario-label {
@@ -165,13 +269,20 @@ window._vwo_pc_custom = {
         .shadow-button:hover, .nested-shadow-button:hover {
             filter: brightness(110%); /* Add brightness on hover */
         }
+            #hostElement {
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #000;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
-<h1 id="registration-heading" style="text-align: center">
-      Registration Form
-    </h1>
-    <div class="div1">
+    <div class="container">
+        <div class="div1">
       <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
       <p id="Welpara">
         Let's start now, just try to fill in the details carefully and
@@ -179,151 +290,153 @@ window._vwo_pc_custom = {
         <b>NOTE:-</b>Please enter a password that is at least 8 characters long.
       </p>
     </div>
-    <p id="p2"><strong>SPA BUTTON</strong></p>
-    <button onclick="historyPushUrl()">SPA URL</button>
-    <br />
-    <br />
-    <form action="contact_us1.html" id="registrationForm">
-      <table>
-        <tr>
-          <td>Name:</td>
-          <td>
-            <input type="text" placeholder="Name" name="" />
-          </td>
-        </tr>
-        <tr>
-          <td>Phone Number:</td>
-          <td>
-            <input type="phone" placeholder="9867******" />
-          </td>
-        </tr>
-        <tr>
-          <td>Email Id:</td>
-          <td>
-            <input type="email" placeholder="example1@*8" />
-          </td>
-        </tr>
-        <tr>
-          <td>Password:</td>
-          <td>
-            <input type="password" placeholder="Password" />
-          </td>
-        </tr>
-        <tr>
-          <td>Gender:</td>
-          <td>
-            <input type="radio" name="gender" />Male
-            <input type="radio" name="gender" />Female
-          </td>
-        </tr>
-        <tr>
-          <td>Date of Birth:</td>
-          <td>
-            <input type="date" />
-          </td>
-        </tr>
-        <tr>
-          <td>Hobbies:</td>
-          <td>
-            <input type="checkbox" singing />Singing
-            <input type="checkbox" Dancing />Dancing
-            <input type="checkbox" playing />Sports
-          </td>
-        </tr>
-        <tr>
-          <td>Education Qualification:</td>
-          <td>
-            <select>
-              <option>Select Option</option>
-              <option>10+2</option>
-              <option>Graduation</option>
-              <option>Postgraduation</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Address:</td>
-          <td>
-            <textarea rows="5" col="17" placeholder="Address"></textarea>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="submit" value="Submit" />
-            <input type="reset" value="Reset" />
-          </td>
-        </tr>
-      </table>
-    </form>
-    <h3>
-      By clicking submit, you agree to our terms of service and privacy policy.
-    </h3>
-    <p>
-      After registering please check your email for a confirmation message.<br /><br />
-      Already a registered user? <a href="#">Click here</a>
-    </p>
-    <br />
-    <p id="p1"><strong>FEEDBACK-FORM</strong></p>
-    <div>
-      <form action="feedback.html" id="feedbackForm">
-        <label for="question"
-          >If you're facing any problem please write to us.We'll solve the issue
-          at the earliest.</label
-        ><br />
-        <br />
-        <br />
-        <input
-          class="feedBackForm"
-          id="answer"
-          name="feedback"
-          placeholder="Text"
-          size="100"
-          style="height: 100px"
-          type="text"
-          value=""
-        /><br />
-        <br />
-        <input type="submit" value="Submit" />
-      </form>
+        <a id="contact_us" href="#contact">Contact Us</a>
+        <a id="about" href="#about-section">About</a>
+        <a id="suggestions" href="#suggestions-section">Suggestions</a>
     </div>
-    <br />
-    <button onclick="spaNavigation()">SPA Navigation</button>
-    <br />
-    <br />
-    <a href="javascript:void(0)" onclick="location.hash='spa/1.html'"
-      >Change hash</a
-    >
-    <p></p>
-    <button id="clickonlinkDummy">ClickElement</button>
-    <button id="testelement2">ClickElement2</button>
-    <button id="testelement3">ClickElement3</button>
-    <button id="testelement4">ClickElement4</button>
-    <button id="activateButton" onclick="activateVWO()">Activate API</button>
+    
+    <div class="form-container">
+        <div id="contact" class="section-header">
+            <h2>Contact Form</h2>
+        </div>
+        <form method="POST" action="form_receiver.py">
+            <table>
+                <tr>
+                    <td><label for="firstname">First Name:</label></td>
+                    <td><input type="text" id="firstname" name="firstname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="lastname">Last Name:</label></td>
+                    <td><input type="text" id="lastname" name="lastname" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone:</label></td>
+                    <td><input type="phone" id="phone" name="phone" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td><label for="dob">DOB:</label></td>
+                    <td><input type="date" id="dob" name="dob" required></td>
+                </tr>
+                <tr>
+                    <td><label for="gender">Gender:</label></td>
+                    <td>
+                        <select id="gender" name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="address">Address:</label></td>
+                    <td><textarea id="address" name="address" rows="4" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="state">State:</label></td>
+                    <td>
+                        <select id="state" name="state">
+                            <option value="Haryana">Haryana</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Delhi">Delhi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="hobbies">Hobbies:</label></td>
+                    <td>
+                        <input type="checkbox" id="playing" name="hobbies" value="Playing">
+                        <label for="playing">Playing</label>
+                        <input type="checkbox" id="singing" name="hobbies" value="Singing">
+                        <label for="singing">Singing</label>
+                        <input type="checkbox" id="reading" name="hobbies" value="Reading">
+                        <label for="reading">Reading</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 
-    <p>
-      <br />
-      <br />
-      <a href="suggestions.html" id="suggestions">Suggestions</a><br />
-      <br />
-      <br />
-      <br />
-      <a href="contact_us.html" id="contact_us">Contact us</a><br />
-      <br />
-      <br />
-      <br />
-      <a href="about.html" id="about">About</a>
+    <div id="about-section" class="div1">
+        <h2>About</h2>
+        <p>Welcome to the Hemant's Page! This page serves as a showcase for various features and functionalities. Here you can explore different components and elements used for testing purposes.</p>
 
-      <br />
-      <br />
-      <br />
-    </p>
+    </div>
 
-    <div style="height: 30px"></div>
-    <a id="dynamicLink"></a>
-    <p>
-      <button onclick="myFunction()">Generate Link</button>
-      <input id="input" />
-    <h2 class="scenario-label">Scenario 1: Parent onto Shadow DOM and its child is inside Shadow DOM</h2>
+    <div id="suggestions-section" class="feedback-form">
+        <h2>Suggestions</h2>
+        <p>Your feedback is important to us. Please leave your suggestions below:</p>
+        <form method="POST" action="feedback_receiver.py">
+            <input type="text" id="suggestion" name="suggestion" placeholder="Enter your suggestion here..." required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+ <div class="container">
+        <h2>Single Page Application Navigation</h2>
+        <p id="p2"><strong>SPA BUTTON</strong></p>
+        <button onclick="historyPushUrl()">SPA URL</button>
+        <br /><br />
+        <button onclick="spaNavigation()">SPA Navigation</button>
+        <br /><br />
+        <a href="javascript:void(0)" onclick="location.hash='spa/1.html'">Change hash</a>
+        <br /><br />
+        <button id="clickonlinkDummy">ClickElement</button>
+        <button id="testelement2">ClickElement2</button>
+        <button id="testelement3">ClickElement3</button>
+        <button id="testelement4">ClickElement4</button>
+        <button id="activateButton" onclick="activateVWO()">Activate API</button>
+        <br /><br />
+        <div>
+            <!-- Add the provided links -->
+
+        </div>
+        <br /><br />
+        <div>
+            <a id="dynamicLink"></a>
+            <p>
+                <button onclick="myFunction()">Generate Link</button>
+                <input id="input" placeholder="Enter URL" />
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function myFunction() {
+            document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
+            document.getElementById("dynamicLink").href = document.getElementById("input").value;
+        }
+
+        let spaCount = 1;
+
+        function historyPushUrl() {
+            const url = new URL(window.location);
+            url.searchParams.set("spa", spaCount);
+            window.history.pushState({}, "", url);
+            spaCount++;
+        }
+
+        function spaNavigation() {
+            history.pushState(null, null, "?query=" + Date.now());
+        }
+
+        function activateVWO() {
+            console.log('VWO activated');
+        }
+    </script>
+<h2 class="scenario-label">Scenario 1: Parent onto Shadow DOM and its child is inside Shadow DOM</h2>
     <div class="scenario-container" id="scenario01-container">
         <div class="scenario01-parent" id="scenario01-parent">
             <slot name="scenario01-content"></slot>
@@ -354,16 +467,76 @@ window._vwo_pc_custom = {
         </div>
     </div>
 
-     <script>
-        function myFunction() {
-          document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
-          document.getElementById("dynamicLink").href =
-            document.getElementById("input").value;
-          //   location.href=document.getElementById("input").value;
-        }
-      </script>
+    
     </p>
-  
+  <div id="hostElement"></div>
+
+    <script>
+        // Main Shadow DOM
+        const hostElement = document.getElementById('hostElement');
+        const shadowRoot = hostElement.attachShadow({ mode: 'open' });
+
+        // Adding content to the main shadow DOM
+        shadowRoot.innerHTML = `
+            <style>
+                .shadow-container {
+                    border: 2px solid #1e90ff;
+                    padding: 20px;
+                    margin: 10px 0;
+                    border-radius: 8px;
+                    background-color: #e6f7ff;
+                }
+                .shadow-container a {
+                    color: #1e90ff;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .shadow-container a:hover {
+                    text-decoration: underline;
+                }
+                .shadow-container p {
+                    margin: 0 0 10px;
+                }
+            </style>
+            <div class="shadow-container">
+                <p>Main Shadow DOM Content</p>
+                <a href="https://hemant-1451.github.io/HK/?id=848489&test=sdmclick" target="_blank">Click here for Shadow DOM link</a>
+                <div id="nestedHost"></div>
+            </div>
+        `;
+
+        // Nested Shadow DOM
+        const nestedHost = shadowRoot.getElementById('nestedHost');
+        const nestedShadowRoot = nestedHost.attachShadow({ mode: 'open' });
+
+        // Adding content to the nested shadow DOM
+        nestedShadowRoot.innerHTML = `
+            <style>
+                .nested-shadow-container {
+                    border: 2px dashed #ff6347;
+                    padding: 15px;
+                    margin: 15px 0;
+                    border-radius: 8px;
+                    background-color: #ffe6e6;
+                }
+                .nested-shadow-container a {
+                    color: #ff6347;
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                .nested-shadow-container a:hover {
+                    text-decoration: underline;
+                }
+                .nested-shadow-container p {
+                    margin: 0 0 10px;
+                }
+            </style>
+            <div class="nested-shadow-container">
+                <p>Nested Shadow DOM Content</p>
+                <a href="https://hemant-1451.github.io/HK/?id=848489&test=nstdsdmclick" target="_blank">Click here for Nested Shadow DOM link</a>
+            </div>
+        `;
+    </script>
 <h1>Shadow Buttons</h1>
     <!-- Create a container for shadow DOM elements -->
     <div class="container">
@@ -406,20 +579,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
     </script>
-    <script>
-      let spaCount = 1;
-
-      function historyPushUrl() {
-        const url = new URL(window.location);
-        url.searchParams.set("spa", spaCount);
-        window.history.pushState({}, "", url);
-        spaCount++;
-      }
-
-      function spaNavigation() {
-        history.pushState(null, null, "?query=" + Date.now());
-      }
-    </script>
+    
 
   
 
@@ -498,6 +658,73 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
+<div class="section canvas-section">
+    
+    <canvas id="myCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Draw a gradient background
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'lightblue');
+        gradient.addColorStop(1, 'lightpink');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw a complex pattern
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        for (let x = 0; x < canvas.width; x += 20) {
+            for (let y = 0; y < canvas.height; y += 20) {
+                ctx.fillRect(x, y, 10, 10);
+            }
+        }
+
+        // Draw a colorful circle
+        ctx.beginPath();
+        ctx.arc(400, 200, 100, 0, Math.PI * 2);
+        const circleGradient = ctx.createRadialGradient(400, 200, 50, 400, 200, 100);
+        circleGradient.addColorStop(0, 'red');
+        circleGradient.addColorStop(0.5, 'yellow');
+        circleGradient.addColorStop(1, 'orange');
+        ctx.fillStyle = circleGradient;
+        ctx.fill();
+
+        // Draw text with shadow
+        ctx.font = 'bold 40px Arial';
+        ctx.fillStyle = 'white';
+        ctx.shadowColor = 'black';
+        ctx.shadowBlur = 10;
+        ctx.fillText('       Canvas!', 250, 350);
+
+        // Handle mouse interactions
+        canvas.addEventListener('mousemove', handleMouseMove);
+
+        function handleMouseMove(event) {
+            const mouseX = event.clientX - canvas.getBoundingClientRect().left;
+            const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+            console.log('Mouse moved at:', mouseX, mouseY);
+            // You can add more interactive features based on mouse movement
+        }
+    </script>
+</div>
+
+
+<p>
+    <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
+    <a href="https://saiganesh98.github.io/?id=1000072">Ganesh's Page Version 1.5</a><br>
+    <a href="https://hemant-1451.github.io/HK/SmartCode1.5/?id=848489&test=attributeSupport">Hemant's Page Version 1.5</a><br>
+    <a href="https://hemant-1451.github.io/HK/SmartCode2.0/?id=848489&test=attributeSupport">Hemant's Page Version 2.0</a><br>
+    <a href="https://hemant-1451.github.io/HK/SmartCode2.1/?id=848489&test=attributeSupport">Hemant's Page Version 2.1</a><br>
+<a href="https://mohdarman2000.github.io/?id=848489">Arman's Page Version 1.5</a><br>
+    <a href="https://mohdarman2000.github.io/smartcodev2/?id=848489">Arman's Page SmartCode 2.0</a><br>
+    <a href="https://mohdarman2000.github.io/Smartcode2.1WithoutGTM/?id=848489">Arman's Page SmartCode 2.1</a><br>
+    <a href="https://ritakumari.wingified.com/?id=31000012">Rita's Page Version 1.4</a><br>
+    <a href="https://amitshankhwar.wingified.com/page2.1/?id=848489">Amit's Page Version 2.1</a><br>
+    
+    <a href="https://mohitkhanna.wingified.com/?id=621087">Mohit's Page</a><br>
+    <a href="https://homeboy445.github.io/Testing-Site/?accountId=636231">Akshit's Page</a><br>
+   
+</p>
 </body>
 </html>
-
