@@ -3,6 +3,18 @@
 <html lang="en">
 <head>
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <!-- Start Visitor Property Script -->
+    <script type="text/javascript">
+        // Do not change anything in the following two lines
+        window.VWO = window.VWO || [];
+        VWO.visitor = VWO.visitor || function () {
+            VWO.push(["visitor"].concat([].slice.call(arguments)));
+        };
+
+        // Replace <number_value> with your actual attribute value
+        VWO.visitor({ "test": 100 });
+    </script>
+    <!-- End Visitor Property Script -->
     <!-- Start VWO Async SmartCode -->
     <script type="text/javascript">
         const params = new URLSearchParams(window.location.search);
