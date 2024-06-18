@@ -23,6 +23,31 @@
             t: 100
         };	    
     </script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="4b889842-5aed-48e6-8d07-2571b2bccd1e" data-blockingmode="auto" type="text/javascript"></script>
+<script>
+		window.addEventListener('CookiebotOnAccept', function () {
+        window.VWO = window.VWO || [];
+window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
+window.VWO.init(1)
+		console.log('Cookies are Accepted!')
+        });
+		
+	</script>
+	  <script>
+		  window.addEventListener('CookiebotOnDecline', function () {
+           	window.VWO = window.VWO || [];
+window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
+window.VWO.init(3)
+		  console.log('Cookies are Rejected!')
+        });
+		
+	</script>
+	  
+	  <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            console.log("DOM content loaded");
+        });
+    </script>
     <!-- End VWO Async SmartCode -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
