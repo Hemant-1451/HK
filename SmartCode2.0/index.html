@@ -23,31 +23,6 @@ t: 100
 };
 </script>
 <!-- End VWO Async SmartCode -->
-<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="4b889842-5aed-48e6-8d07-2571b2bccd1e" data-blockingmode="auto" type="text/javascript"></script>
-<script>
-		window.addEventListener('CookiebotOnAccept', function () {
-        window.VWO = window.VWO || [];
-window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
-window.VWO.init(1)
-		console.log('Cookies are Accepted!')
-        });
-		
-	</script>
-	  <script>
-		  window.addEventListener('CookiebotOnDecline', function () {
-           	window.VWO = window.VWO || [];
-window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
-window.VWO.init(3)
-		  console.log('Cookies are Rejected!')
-        });
-		
-	</script>
-	  
-	  <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            console.log("DOM content loaded");
-        });
-    </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hemant Kumar Page</title>
@@ -109,6 +84,11 @@ height: 100px;
 </head>
 <body>
 <h1 id="registration-heading">Registration Form</h1>
+
+<!-- Added iframe below -->
+<iframe src="https://mohdarman2000.github.io/Smartcode2.1WithoutGTM/?id=29000032&test=db
+" width="600" height="400" title="Example Iframe"></iframe>
+
 <div class="div1">
 <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
 <p id="Welpara">
@@ -221,13 +201,11 @@ If you're facing any problem please write to us. We'll solve the issue at the ea
 <br />
 <br />
 <a href="javascript:void(0)" onclick="location.hash='spa/1.html'">Change hash</a>
-
 <button id="clickonlinkDummy">ClickElement</button>
 <button id="testelement2">ClickElement2</button>
 <button id="testelement3">ClickElement3</button>
 <button id="testelement4">ClickElement4</button>
 <button id="activateButton" onclick="activateVWO()">Activate API</button>
-
 <p>
 <br />
 <br />
@@ -244,10 +222,8 @@ If you're facing any problem please write to us. We'll solve the issue at the ea
 <br />
 <br />
 </p>
-
 <div class="custom-height"></div>
 <a id="dynamicLink"></a>
-
 <p>
 <button onclick="myFunction()">Generate Link</button>
 <input id="input" />
@@ -260,20 +236,14 @@ document.getElementById("input").value;
 }
 </script>
 </p>
-
-
-
-
 <script>
 let spaCount = 1;
-
 function historyPushUrl() {
 const url = new URL(window.location);
 url.searchParams.set("spa", spaCount);
 window.history.pushState({}, "", url);
 spaCount++;
 }
-
 function spaNavigation() {
 history.pushState(null, null, "?query=" + Date.now());
 }
