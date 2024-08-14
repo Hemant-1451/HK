@@ -449,6 +449,7 @@ window.VWO.init(3)
     <div id="orderValue">120</div>
 
     <script>
+       window.dataLayer = window.dataLayer || [];
         function myFunction() {
             document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
             document.getElementById("dynamicLink").href = document.getElementById("input").value;
