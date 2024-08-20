@@ -305,6 +305,24 @@ window.VWO.init(3)
     </style>
 </head>
 <body class="ce20v2-template">
+<script>
+        window.VWO = window.VWO || [];
+        window.VWO.data = window.VWO.data || {};
+        window.VWO.data.acquia = {
+            "drupal": {
+                "title": "Deep mediterranean quiche (VWO data)",
+                "content-type": "recipe",
+                "taxonomy": {
+                    "content_section": ["Desserts", "Main courses"],
+                    "content_keywords": ["Pastry", "Egg", "Mushrooms"],
+                    "persona": ["Experienced chef"]
+                }
+            }
+        };
+
+        // Just to verify the data is correctly integrated
+        console.log("VWO Data:", window.VWO.data);
+    </script>
     <div class="container">
         <div class="div1">
       <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
