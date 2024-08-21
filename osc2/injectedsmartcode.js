@@ -1,2 +1,8 @@
-<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/918943.js" id="vwoCode"></script> 
+// Create a script element
+var script = document.createElement('script');
+script.referrerPolicy = 'no-referrer-when-downgrade';
+script.src = 'https://dev.visualwebsiteoptimizer.com/lib/30000112.js';
+script.id = 'vwoCode';
 
+// Append the script element to the document head or body
+document.head.appendChild(script);
