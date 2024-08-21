@@ -1,3 +1,4 @@
+//injectedsmartcode.js
 const script = document.createElement('script');
 script.src = "https://dev.visualwebsiteoptimizer.com/lib/918943.js";
 script.id = "vwoCode";
