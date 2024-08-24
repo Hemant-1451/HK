@@ -302,9 +302,30 @@ window.VWO.init(3)
             padding: 20px;
             border-radius: 10px;
         }
+/* Button styling */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
     </style>
 </head>
 <body class="ce20v2-template">
+<button id="cta-click-element" class="btn btn-primary">Click Here to Start Campaign 41</button>
+
 <script>
         window.VWO = window.VWO || [];
         window.VWO.data = window.VWO.data || {};
