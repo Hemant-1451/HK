@@ -481,5 +481,105 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
+<div id="root">
+        <!-- Root element to host the Shadow DOM layers -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the root element for Shadow DOM
+            const rootElement = document.getElementById('root');
+            
+            // Attach the first layer of Shadow DOM
+            const rootShadow = rootElement.attachShadow({ mode: 'open' });
+            rootShadow.innerHTML = `
+                <style>
+                    .layer1 {
+                        background-color: lightcoral;
+                        padding: 10px;
+                        border: 2px solid darkred;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer1">
+                    <button class="button" id="layer1-button">Layer 1 Button</button>
+                    <slot name="layer1-content"></slot>
+                    <div id="layer2-container"></div>
+                </div>
+            `;
+
+            // Attach the second layer of Shadow DOM
+            const layer2Container = rootShadow.getElementById('layer2-container');
+            const layer2Shadow = layer2Container.attachShadow({ mode: 'open' });
+            layer2Shadow.innerHTML = `
+                <style>
+                    .layer2 {
+                        background-color: lightseagreen;
+                        padding: 10px;
+                        border: 2px solid darkgreen;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer2">
+                    <button class="button" id="layer2-button">Layer 2 Button</button>
+                    <slot name="layer2-content"></slot>
+                    <div id="layer3-container"></div>
+                </div>
+            `;
+
+            // Attach the third layer of Shadow DOM
+            const layer3Container = layer2Shadow.getElementById('layer3-container');
+            const layer3Shadow = layer3Container.attachShadow({ mode: 'open' });
+            layer3Shadow.innerHTML = `
+                <style>
+                    .layer3 {
+                        background-color: lightgoldenrodyellow;
+                        padding: 10px;
+                        border: 2px solid goldenrod;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer3">
+                    <button class="button" id="layer3-button">Layer 3 Button</button>
+                    <slot name="layer3-content"></slot>
+                    <p class="message">Click the button in this layer!</p>
+                </div>
+            `;
+
+            // Add event listeners to buttons in each Shadow DOM layer
+            const layer1Button = rootShadow.querySelector('#layer1-button');
+            if (layer1Button) {
+                layer1Button.addEventListener('click', () => {
+                    alert('Button in the first Shadow DOM layer clicked!');
+                });
+            }
+
+            const layer2Button = layer2Shadow.querySelector('#layer2-button');
+            if (layer2Button) {
+                layer2Button.addEventListener('click', () => {
+                    alert('Button in the second Shadow DOM layer clicked!');
+                });
+            }
+
+            const layer3Button = layer3Shadow.querySelector('#layer3-button');
+            if (layer3Button) {
+                layer3Button.addEventListener('click', () => {
+                    alert('Button in the third Shadow DOM layer clicked!');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
