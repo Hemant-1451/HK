@@ -861,6 +861,69 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </div>
 
+<!-- First occurrence of the ID -->
+<div id="wrapper">
+  <div>
+    <span id="jumppoint">
+      <span>
+        <div>
+          <div id="sidebar"></div>
+          <main id="main">
+            <section>
+              <div></div>
+              <div>
+                <div></div>
+                <div>
+                  <div></div>
+                  <div>
+                    <p>
+                      <label for="cbSurvey">
+                        <input type="checkbox" id="cbSurvey">
+                        <span>First survey option</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
+      </span>
+    </span>
+  </div>
+</div>
+
+<!-- Second occurrence of the same ID, which creates the problem -->
+<div id="wrapper">
+  <div>
+    <span id="jumppoint">
+      <span>
+        <div>
+          <div id="sidebar"></div>
+          <main id="main">
+            <section>
+              <div></div>
+              <div>
+                <div></div>
+                <div>
+                  <div></div>
+                  <div>
+                    <p>
+                      <label for="cbSurvey">
+                        <input type="checkbox" id="cbSurvey">
+                        <span>Second survey option</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
+      </span>
+    </span>
+  </div>
+</div>
 
 <p>
     <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
