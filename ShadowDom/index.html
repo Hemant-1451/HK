@@ -77,7 +77,7 @@ window._vwo_pc_custom = {
 
 </head>
 <body>
-    <h1>Shadow DOM Test Cases</h1> 
+    <h1>Shadow DOM Test Cases</h1>
     <div id="test-cases"></div>
     <script>
         const createBlock = (title, content) => {
@@ -120,19 +120,15 @@ console.log('Case 1 - Inside SDM Link Clicked');
 
  
 
-
-
-
-
 createBlock('Case 2 - Link Inside Nested Shadow Dom', `
 <p>
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
 </p>
-    <div id="shadow-host3" class="shadow-host">
+    <div id="shadow-host2" class="shadow-host">
         
     </div>
 `);
-const firstLevelShadowRoot1 = document.querySelector('#shadow-host3').attachShadow({ mode: 'open' });
+const firstLevelShadowRoot1 = document.querySelector('#shadow-host2').attachShadow({ mode: 'open' });
 firstLevelShadowRoot1.innerHTML = `
     <div id="nested-shadow-host1">
      <div id="nested-shadow-container1"></div>
@@ -147,13 +143,12 @@ console.log('Case 2 - Inside NSDM link clicked');
 });
 
 
-
 createBlock('Case 3 - Button Inside Shadow Dom', `
-            <div id="shadow-host2" class="shadow-host">
-                <div id="shadow-container2"></div>
+            <div id="shadow-host3" class="shadow-host">
+                <div id="shadow-container3"></div>
             </div>
         `);
-addShadowDom('shadow-container2', `
+addShadowDom('shadow-container3', `
 <div id ="inside-shadow-case 2">
 <p>
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
@@ -161,11 +156,9 @@ addShadowDom('shadow-container2', `
 <button id="button-inside-shadow">Click Me</button>
 </div>
 `);
-document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => {
+document.querySelector('#shadow-container3').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => {
 console.log('Case 3 - Inside SDM Button Clicked');
 });
-
-
 
 
 
@@ -193,18 +186,7 @@ console.log('Case 4 - Inside NSDM Button Clicked');
 
 
 
-createBlock('Case 5 - Parent Element Outside Shadow Dom and Child Element Attached To Shadow DOM', `<p>
-<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-</p>
-    <div id="parent-host7" class="shadow-host">
-        <div id="shadow-child7"></div>
-    </div>
-`);
-addShadowDom('shadow-child7', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
-document.querySelector('#shadow-child7').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
-
-
-createBlock('Case 6 - Parent Element Outside Shadow Dom and Child Element Inside Shadow DOM', `<p>
+createBlock('Case 5 - Parent Element Outside Shadow Dom and Child Element Inside Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>
     <div id="parent-host8" class="shadow-host">
@@ -216,7 +198,7 @@ document.querySelector('#shadow-child8').shadowRoot.querySelector('#button-child
 
 
 
-createBlock('Case 7 - Parent Element Outside Shadow Dom and Child Element Inside Nested Shadow DOM', `<p>
+createBlock('Case 6 - Parent Element Outside Shadow Dom and Child Element Inside Nested Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>
     <div id="parent-host9" class="shadow-host">
@@ -228,52 +210,8 @@ document.querySelector('#nested-shadow-child9').shadowRoot.querySelector('#butto
 
 
 
-createBlock('Case 8 - Parent Element Attached To Shadow Dom and Child Element Inside Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>    
-    <div id="parent-host10" class="shadow-host">
-        <div id="shadow-child10"></div>
-    </div>
-`);
-addShadowDom('shadow-child10', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
-document.querySelector('#shadow-child10').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
 
-
-createBlock('Case 9 - Parent Element Attached To Shadow Dom and Child Element Inside Nested Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>    
-    <div id="parent-host11" class="shadow-host">
-        <div id="nested-shadow-child11"></div>
-    </div>
-`);
-addShadowDom('nested-shadow-child11', '<button id="button-nested-shadow">Button Nested Shadow DOM</button>');
-document.querySelector('#nested-shadow-child11').shadowRoot.querySelector('#button-nested-shadow').addEventListener('click', () => alert('Button nested shadow DOM clicked'));
-       
-
-
-createBlock('Case 10 - Parent Element Attached To Shadow Dom and Child Element Attached To Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>    
-    <div id="parent-host12" class="shadow-host">
-        <div id="shadow-child12"></div>
-    </div>
-`);
-addShadowDom('shadow-child12', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
-document.querySelector('#shadow-child12').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
-
-
-createBlock('Case 11 - Parent Element Inside Shadow Dom and Child Element Attached To Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>    
-    <div id="shadow-host13" class="shadow-host">
-        <div id="shadow-child13"></div>
-    </div>
-`);
-addShadowDom('shadow-child13', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
-document.querySelector('#shadow-child13').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
-
-
-createBlock('Case 12 - Parent Element Inside Shadow Dom and Child Element Inside Shadow DOM', `<p>
+createBlock('Case 7 - Parent Element Inside Shadow Dom and Child Element Inside Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>        
     <div id="shadow-host14" class="shadow-host">
@@ -285,7 +223,7 @@ document.querySelector('#nested-shadow-child14').shadowRoot.querySelector('#butt
 
 
 
-createBlock('Case 13 - Parent Element Inside Shadow Dom and Child Element Inside Nested Shadow DOM', `<p>
+createBlock('Case 8 - Parent Element Inside Shadow Dom and Child Element Inside Nested Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>        
     <div id="shadow-host15" class="shadow-host">
@@ -297,20 +235,9 @@ document.querySelector('#nested-shadow-child15').shadowRoot.querySelector('#butt
 
 
 
-createBlock('Case 14 - Parent Element Inside Nested Shadow DOM and Child Element Attached to Shadow Dom', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>        
-    <div id="nested-shadow-host16" class="shadow-host">
-        <div id="shadow-child16"></div>
-    </div>
-`);
-addShadowDom('shadow-child16', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
-document.querySelector('#shadow-child16').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
 
 
-
-
-createBlock('Case 15 - Parent Element Inside Nested Shadow DOM and Child Element Inside Shadow Dom', `<p>
+createBlock('Case 9 - Parent Element Inside Nested Shadow DOM and Child Element Inside Shadow Dom', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>        
         <div id="nested-shadow-host17" class="shadow-host">
@@ -323,7 +250,7 @@ document.querySelector('#shadow-child17').shadowRoot.querySelector('#button-chil
 
 
 
-createBlock('Case 16 - Parent Element Inside Nested Shadow DOM and Child Element Inside Nested Shadow Dom', `<p>
+createBlock('Case 10 - Parent Element Inside Nested Shadow DOM and Child Element Inside Nested Shadow Dom', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>        
         <div id="nested-shadow-host18" class="shadow-host">
@@ -334,37 +261,8 @@ addShadowDom('nested-shadow-child18', '<button id="button-child-nested-shadow">B
 document.querySelector('#nested-shadow-child18').shadowRoot.querySelector('#button-child-nested-shadow').addEventListener('click', () => alert('Button child nested shadow DOM clicked'));
 
 
-createBlock('Case 17 - Button within Triple-Nested Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>        
-        <div id="shadow-host19" class="shadow-host">
-            <div id="shadow-container19" class="shadow-host">
-                <div id="shadow-inner-container19" class="shadow-host">
-                    <div id="shadow-inner-inner-container19"></div>
-                </div>
-            </div>
-        </div>
-    `);
-addShadowDom('shadow-inner-inner-container19', '<button id="button-under-three-layers">Button Under Three Layers</button>');
-document.querySelector('#shadow-inner-inner-container19').shadowRoot.querySelector('#button-under-three-layers').addEventListener('click', () => alert('Button under three layers clicked'));
 
-
-
-createBlock('Case 18 - Link within Triple-Nested Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>      
-            <div id="shadow-host20" class="shadow-host">
-            <div id="shadow-container20" class="shadow-host">
-                <div id="shadow-inner-container20" class="shadow-host">
-                    <div id="shadow-inner-inner-container20"></div>
-                </div>
-            </div>
-        </div>
-    `);
-addShadowDom('shadow-inner-inner-container20', '<a id="link-under-three-layers" href="https://www.google.com" target="_blank">Link Under Three Layers</a>');
-document.querySelector('#shadow-inner-inner-container20').shadowRoot.querySelector('#link-under-three-layers').addEventListener('click', () => alert('Link under three layers clicked'));
-
-createBlock('Case 19 - Form Inside Shadow DOM', `<p>
+createBlock('Case 11 - Form Inside Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>      
         <div id="shadow-host21" class="shadow-host">
@@ -382,8 +280,7 @@ createBlock('Case 19 - Form Inside Shadow DOM', `<p>
         e.preventDefault();
         alert('Form inside shadow DOM submitted');
     });
-
-    createBlock('Case 20 - Form Inside Nested Shadow DOM', `<p>
+    createBlock('Case 12 - Form Inside Nested Shadow DOM', `<p>
     <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>      
         <div id="shadow-host22" class="shadow-host">
