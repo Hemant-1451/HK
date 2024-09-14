@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Start VWO Async SmartCode -->
+<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+<script type='text/javascript' id='vwoCode'>
+const params = new URLSearchParams(window.location.search);
+const accId = parseInt(params.get("id"));
+const accountId = accId || 848489;
+console.log("Account-Id ->", accountId);
+/* eslint-disable no-undef */
+window._vwo_code || (function() {
+var account_id=accountId,
+version=2.1,
+settings_tolerance=2000,
+hide_element='body',
+hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
+window._vwo_pc_custom = {
+        a: 100,
+        t: 100
+    };
+</script>
+<!-- End VWO Async SmartCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow DOM Test Cases</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    #test-cases {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .block {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 18px;
+        color: #333;
+        margin-top: 0;
+    }
+
+    .shadow-host {
+        margin-bottom: 20px;
+    }
+
+    button, a {
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    button:hover, a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+</head>
+<body>
+    <h1>Shadow DOM Test Cases</h1>
+    <div id="test-cases"></div>
+    <script>
+        const createBlock = (title, content) => {
+            const block = document.createElement('div');
+            block.className = 'block';
+            const header = document.createElement('h2');
+            header.textContent = title;
+            block.appendChild(header);
+            block.innerHTML += content;
+            document.getElementById('test-cases').appendChild(block);
+        };
+
+        const addShadowDom = (hostId, shadowContent) => {
+            const host = document.getElementById(hostId);
+            const shadowRoot = host.attachShadow({ mode: 'open' });
+            shadowRoot.innerHTML = shadowContent;
+        };
+
+const initializeTestCases = () => {
+createBlock('1. Clicking on a Link Inside the Shadow DOM', `
+                <div id="shadow-host1" class="shadow-host">
+                    <div id="shadow-container1"></div>
+                </div>
+            `);
+addShadowDom('shadow-container1', '<a id="link-inside-shadow1" href="https://www.google.com" target="_blank">Link Inside Shadow DOM</a>');
+document.querySelector('#shadow-container1').shadowRoot.querySelector('#link-inside-shadow1').addEventListener('click', () => alert('Link inside shadow DOM clicked'));
+
+                  
+createBlock('2. Clicking on a Button Inside Shadow DOM', `
+            <div id="shadow-host2" class="shadow-host">
+                <div id="shadow-container2"></div>
+            </div>
+        `);
+addShadowDom('shadow-container2', '<button id="button-inside-shadow">Button Inside Shadow DOM</button>');
+document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => alert('Button inside shadow DOM clicked'));
+
+       
+  
+createBlock('3. Clicking on a Link onto which Shadow DOM is attached', `
+                <div id="shadow-host3" class="shadow-host">
+                    <div id="shadow-container3"></div>
+                </div>
+            `);
+addShadowDom('shadow-container3', '<a id="link-shadow-attached" href="https://www.google.com" target="_blank">Link Shadow Attached</a>');
+document.querySelector('#shadow-container3').shadowRoot.querySelector('#link-shadow-attached').addEventListener('click', () => alert('Link shadow attached clicked'));
+
+
+
+createBlock('4. Clicking on a Button onto which the Shadow DOM is attached', `
+                <div id="shadow-host4" class="shadow-host">
+                    <div id="shadow-container4"></div>
+                </div>
+            `);
+addShadowDom('shadow-container4', '<button id="button-shadow-attached">Button Shadow Attached</button>');
+document.querySelector('#shadow-container4').shadowRoot.querySelector('#button-shadow-attached').addEventListener('click', () => alert('Button shadow attached clicked'));
+
+
+createBlock('5. Clicking on a Link that is inside nested Shadow DOM', `
+    <div id="shadow-host5" class="shadow-host">
+        <div id="nested-shadow-container5"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-container5', '<a id="link-nested-shadow" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>');
+document.querySelector('#nested-shadow-container5').shadowRoot.querySelector('#link-nested-shadow').addEventListener('click', () => alert('Link nested shadow DOM clicked'));
+
+
+
+createBlock('6. Clicking on a Button that is inside nested Shadow DOM', `
+    <div id="shadow-host6" class="shadow-host">
+        <div id="nested-shadow-container6"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-container6', '<button id="button-nested-shadow">Button Nested Shadow DOM</button>');
+document.querySelector('#nested-shadow-container6').shadowRoot.querySelector('#button-nested-shadow').addEventListener('click', () => alert('Button nested shadow DOM clicked'));
+
+
+createBlock('7. Clicking on a Parent Element that is outside the Shadow DOM and whose Child Element is attached to the Shadow DOM', `
+    <div id="parent-host7" class="shadow-host">
+        <div id="shadow-child7"></div>
+    </div>
+`);
+addShadowDom('shadow-child7', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
+document.querySelector('#shadow-child7').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+
+createBlock('8. Clicking on a Parent Element that is outside the Shadow DOM and whose Child Element is inside the Shadow DOM', `
+    <div id="parent-host8" class="shadow-host">
+        <div id="shadow-child8"></div>
+    </div>
+`);
+addShadowDom('shadow-child8', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
+document.querySelector('#shadow-child8').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+
+
+createBlock('9. Clicking on a Parent Element that is outside the Shadow DOM and whose Child Element is inside the Nested Shadow DOM', `
+    <div id="parent-host9" class="shadow-host">
+        <div id="nested-shadow-child9"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-child9', '<button id="button-nested-shadow">Button Nested Shadow DOM</button>');
+document.querySelector('#nested-shadow-child9').shadowRoot.querySelector('#button-nested-shadow').addEventListener('click', () => alert('Button nested shadow DOM clicked'));
+
+
+
+createBlock('10. Clicking on a Parent Element onto which the Shadow DOM is attached and whose Child Element is inside the Shadow DOM', `
+    <div id="parent-host10" class="shadow-host">
+        <div id="shadow-child10"></div>
+    </div>
+`);
+addShadowDom('shadow-child10', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
+document.querySelector('#shadow-child10').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+
+createBlock('11. Clicking on a Parent Element onto which the Shadow DOM is attached but the Child Element is in Nested Shadow DOM', `
+    <div id="parent-host11" class="shadow-host">
+        <div id="nested-shadow-child11"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-child11', '<button id="button-nested-shadow">Button Nested Shadow DOM</button>');
+document.querySelector('#nested-shadow-child11').shadowRoot.querySelector('#button-nested-shadow').addEventListener('click', () => alert('Button nested shadow DOM clicked'));
+       
+
+
+createBlock('12. Clicking on a Parent Element onto which the Shadow DOM is attached and who has a Child Element onto which the Shadow DOM is attached', `
+    <div id="parent-host12" class="shadow-host">
+        <div id="shadow-child12"></div>
+    </div>
+`);
+addShadowDom('shadow-child12', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
+document.querySelector('#shadow-child12').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
+
+
+createBlock('13. Clicking on a Parent Element that is already inside the Shadow DOM and whose Child Element is onto which Shadow DOM is applied', `
+    <div id="shadow-host13" class="shadow-host">
+        <div id="shadow-child13"></div>
+    </div>
+`);
+addShadowDom('shadow-child13', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
+document.querySelector('#shadow-child13').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
+
+
+createBlock('14. Clicking on a Parent Element that is already inside the Shadow DOM and whose Child Element is inside the Shadow DOM', `
+    <div id="shadow-host14" class="shadow-host">
+        <div id="nested-shadow-child14"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-child14', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
+document.querySelector('#nested-shadow-child14').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+
+
+createBlock('15. Clicking on a Parent Element that is already inside the Shadow DOM and whose Child Element is inside the Nested Shadow DOM', `
+    <div id="shadow-host15" class="shadow-host">
+        <div id="nested-shadow-child15"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-child15', '<button id="button-child-nested-shadow">Button Child Nested Shadow DOM</button>');
+document.querySelector('#nested-shadow-child15').shadowRoot.querySelector('#button-child-nested-shadow').addEventListener('click', () => alert('Button child nested shadow DOM clicked'));
+
+
+
+createBlock('16. Clicking on a Parent Element that is already inside the Nested Shadow DOM and whose Child Element is onto which Shadow DOM is applied', `
+    <div id="nested-shadow-host16" class="shadow-host">
+        <div id="shadow-child16"></div>
+    </div>
+`);
+addShadowDom('shadow-child16', '<button id="button-child-shadow-attached">Button Child Shadow Attached</button>');
+document.querySelector('#shadow-child16').shadowRoot.querySelector('#button-child-shadow-attached').addEventListener('click', () => alert('Button child shadow attached clicked'));
+
+
+
+
+createBlock('17. Clicking on a Parent Element that is already inside the Nested Shadow DOM and whose Child Element is inside the Shadow DOM', `
+    <div id="nested-shadow-host17" class="shadow-host">
+        <div id="shadow-child17"></div>
+    </div>
+`);
+addShadowDom('shadow-child17', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
+document.querySelector('#shadow-child17').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+
+
+createBlock('18. Clicking on a Parent Element that is already inside the Nested Shadow DOM and whose Child Element is inside the Nested Shadow DOM', `
+    <div id="nested-shadow-host18" class="shadow-host">
+        <div id="nested-shadow-child18"></div>
+    </div>
+`);
+addShadowDom('nested-shadow-child18', '<button id="button-child-nested-shadow">Button Child Nested Shadow DOM</button>');
+document.querySelector('#nested-shadow-child18').shadowRoot.querySelector('#button-child-nested-shadow').addEventListener('click', () => alert('Button child nested shadow DOM clicked'));
+
+
+createBlock('19. Clicking on a Button which is under three layers of Shadow DOM', `
+        <div id="shadow-host19" class="shadow-host">
+            <div id="shadow-container19" class="shadow-host">
+                <div id="shadow-inner-container19" class="shadow-host">
+                    <div id="shadow-inner-inner-container19"></div>
+                </div>
+            </div>
+        </div>
+    `);
+addShadowDom('shadow-inner-inner-container19', '<button id="button-under-three-layers">Button Under Three Layers</button>');
+document.querySelector('#shadow-inner-inner-container19').shadowRoot.querySelector('#button-under-three-layers').addEventListener('click', () => alert('Button under three layers clicked'));
+
+
+
+createBlock('20. Clicking on a Link which is under three layers of Shadow DOM', `
+        <div id="shadow-host20" class="shadow-host">
+            <div id="shadow-container20" class="shadow-host">
+                <div id="shadow-inner-container20" class="shadow-host">
+                    <div id="shadow-inner-inner-container20"></div>
+                </div>
+            </div>
+        </div>
+    `);
+addShadowDom('shadow-inner-inner-container20', '<a id="link-under-three-layers" href="https://www.google.com" target="_blank">Link Under Three Layers</a>');
+document.querySelector('#shadow-inner-inner-container20').shadowRoot.querySelector('#link-under-three-layers').addEventListener('click', () => alert('Link under three layers clicked'));
+
+createBlock('21. Form Within Shadow DOM', `
+        <div id="shadow-host21" class="shadow-host">
+            <div id="shadow-form-container21"></div>
+        </div>
+    `);
+    addShadowDom('shadow-form-container21', `
+        <form id="form-inside-shadow">
+            <label for="input-name">Name:</label>
+            <input type="text" id="input-name" name="name">
+            <button type="submit">Submit</button>
+        </form>
+    `);
+    document.querySelector('#shadow-form-container21').shadowRoot.querySelector('#form-inside-shadow').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form inside shadow DOM submitted');
+    });
+
+    createBlock('22. Form Within Nested Shadow DOM', `
+        <div id="shadow-host22" class="shadow-host">
+            <div id="shadow-container22" class="shadow-host">
+                <div id="shadow-inner-container22"></div>
+            </div>
+        </div>
+    `);
+    addShadowDom('shadow-inner-container22', `
+        <form id="form-nested-shadow">
+            <label for="input-email">Email:</label>
+            <input type="email" id="input-email" name="email">
+            <button type="submit">Submit</button>
+        </form>
+    `);
+    document.querySelector('#shadow-inner-container22').shadowRoot.querySelector('#form-nested-shadow').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form inside nested shadow DOM submitted');
+    });
+
+    createBlock('23. Form Onto Which Shadow DOM is Attached', `
+        <form id="form-shadow-attached">
+            <label for="input-phone">Phone:</label>
+            <input type="tel" id="input-phone" name="phone">
+            <button type="submit">Submit</button>
+        </form>
+    `);
+    addShadowDom('form-shadow-attached', `
+        <label for="input-address">Address:</label>
+        <input type="text" id="input-address" name="address">
+        <button type="submit">Submit</button>
+    `);
+    document.querySelector('#form-shadow-attached').shadowRoot.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Form with shadow DOM attached submitted');
+    });
+};
+
+document.addEventListener('DOMContentLoaded', initializeTestCases);
+</script>
+</body>
+</html>
