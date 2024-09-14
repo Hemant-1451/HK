@@ -138,6 +138,7 @@ console.log('Case 2 - Inside SDM Button Clicked');
 
 
 createBlock('Case 3 - Link Inside Nested Shadow Dom', `
+
     <div id="shadow-host5" class="shadow-host">
         <div id="nested-shadow-container5"></div>
     </div>
@@ -145,8 +146,9 @@ createBlock('Case 3 - Link Inside Nested Shadow Dom', `
 const firstLevelShadowRoot = document.querySelector('#shadow-host5').attachShadow({ mode: 'open' });
 firstLevelShadowRoot.innerHTML = `
     <div id="nested-shadow-host">
-        <p>Click the link below which is in nested Shadow DOM:</p>
-        <div id="nested-shadow-container"></div>
+<p>
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+</p>
     </div>
 `;
 const secondLevelShadowRoot = firstLevelShadowRoot.querySelector('#nested-shadow-container').attachShadow({ mode: 'open' });
