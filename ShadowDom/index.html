@@ -98,9 +98,6 @@ window._vwo_pc_custom = {
 
 const initializeTestCases = () => {
 
-
-
-
 createBlock('Case 1 - Link Inside Shadow Dom', `
  <div id="shadow-host1" class="shadow-host">
 <div id="shadow-container1"></div>
@@ -117,14 +114,11 @@ addShadowDom('shadow-container1', `
 
 document.querySelector('#shadow-container1').shadowRoot.querySelector('#link-inside-shadow1')
 .addEventListener('click', () => {
-console.log('Case 1 - Inside SDM link clicked');
+console.log('Case 1 - Inside SDM Link Clicked');
 });
 
 
-
-
-
-                  
+ 
 createBlock('Case 2 - Button Inside Shadow Dom', `
             <div id="shadow-host2" class="shadow-host">
                 <div id="shadow-container2"></div>
@@ -138,21 +132,30 @@ addShadowDom('shadow-container2', `
 <button id="button-inside-shadow">Click Me</button>
 </div>
 `);
-document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => alert('Button inside shadow DOM clicked'));
+document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => {
+console.log('Case 2 - Inside SDM Button Clicked');
+});
 
 
-
-     
-  
-
-
-createBlock('3. Clicking on a Link onto which Shadow DOM is attached', `
-                <div id="shadow-host3" class="shadow-host">
-                    <div id="shadow-container3"></div>
-                </div>
-            `);
-addShadowDom('shadow-container3', '<a id="link-shadow-attached" href="https://www.google.com" target="_blank">Link Shadow Attached</a>');
-document.querySelector('#shadow-container3').shadowRoot.querySelector('#link-shadow-attached').addEventListener('click', () => alert('Link shadow attached clicked'));
+createBlock('Case 3 - Link Inside Nested Shadow Dom', `
+    <div id="shadow-host5" class="shadow-host">
+        <div id="nested-shadow-container5"></div>
+    </div>
+`);
+const firstLevelShadowRoot = document.querySelector('#shadow-host5').attachShadow({ mode: 'open' });
+firstLevelShadowRoot.innerHTML = `
+    <div id="nested-shadow-host">
+        <p>Click the link below which is in nested Shadow DOM:</p>
+        <div id="nested-shadow-container"></div>
+    </div>
+`;
+const secondLevelShadowRoot = firstLevelShadowRoot.querySelector('#nested-shadow-container').attachShadow({ mode: 'open' });
+secondLevelShadowRoot.innerHTML = `
+    <a id="link-nested-shadow" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>
+`;
+secondLevelShadowRoot.querySelector('#link-nested-shadow').addEventListener('click', () => {
+console.log('Case 3 - Inside NSDM link clicked');
+});
 
 
 
