@@ -102,7 +102,12 @@ createBlock('1. Clicking on a Link Inside the Shadow DOM', `
                     <div id="shadow-container1"></div>
                 </div>
             `);
-addShadowDom('shadow-container1', '<a id="link-inside-shadow1" href="https://www.google.com" target="_blank">Link Inside Shadow DOM</a>');
+  addShadowDom('shadow-container1', `
+                <div id="inside-shadow-abc">
+                    <p>This is inside shadow dom para and the link given below is inside the shadow dom</p>
+                    <a id="link-inside-shadow1" href="https://www.google.com" target="_blank">Link Inside Shadow DOM</a>
+                </div>
+            `);
 document.querySelector('#shadow-container1').shadowRoot.querySelector('#link-inside-shadow1').addEventListener('click', () => alert('Link inside shadow DOM clicked'));
 
                   
