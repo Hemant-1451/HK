@@ -77,7 +77,7 @@ window._vwo_pc_custom = {
 
 </head>
 <body>
-    <h1>Shadow DOM Test Cases</h1>
+    <h1>Shadow DOM Test Cases</h1> 
     <div id="test-cases"></div>
     <script>
         const createBlock = (title, content) => {
@@ -119,28 +119,12 @@ console.log('Case 1 - Inside SDM Link Clicked');
 
 
  
-createBlock('Case 2 - Button Inside Shadow Dom', `
-            <div id="shadow-host2" class="shadow-host">
-                <div id="shadow-container2"></div>
-            </div>
-        `);
-addShadowDom('shadow-container2', `
-<div id ="inside-shadow-case 2">
-<p>
-<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-</p>
-<button id="button-inside-shadow">Click Me</button>
-</div>
-`);
-document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => {
-console.log('Case 2 - Inside SDM Button Clicked');
-});
 
 
 
 
 
-createBlock('Case 3 - Link Inside Nested Shadow Dom', `
+createBlock('Case 2 - Link Inside Nested Shadow Dom', `
 <p>
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
 </p>
@@ -159,8 +143,30 @@ secondLevelShadowRoot1.innerHTML = `
     <a id="link-nested-shadow1" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>
 `;
 secondLevelShadowRoot1.querySelector('#link-nested-shadow1').addEventListener('click', () => {
-console.log('Case 3 - Inside NSDM link clicked');
+console.log('Case 2 - Inside NSDM link clicked');
 });
+
+
+
+createBlock('Case 3 - Button Inside Shadow Dom', `
+            <div id="shadow-host2" class="shadow-host">
+                <div id="shadow-container2"></div>
+            </div>
+        `);
+addShadowDom('shadow-container2', `
+<div id ="inside-shadow-case 2">
+<p>
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+</p>
+<button id="button-inside-shadow">Click Me</button>
+</div>
+`);
+document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => {
+console.log('Case 3 - Inside SDM Button Clicked');
+});
+
+
+
 
 
 createBlock('Case 4 - Button Inside Nested Shadow Dom', `
