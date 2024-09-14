@@ -137,57 +137,53 @@ console.log('Case 2 - Inside SDM Button Clicked');
 });
 
 
-createBlock('Case 3 - Link Inside Nested Shadow Dom', `
 
-    <div id="shadow-host5" class="shadow-host">
-        <div id="nested-shadow-container5"></div>
-    </div>
-`);
-const firstLevelShadowRoot = document.querySelector('#shadow-host5').attachShadow({ mode: 'open' });
-firstLevelShadowRoot.innerHTML = `
-    <div id="nested-shadow-host">
+
+
+createBlock('Case 3 - Link Inside Nested Shadow Dom', `
 <p>
 <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
 </p>
+    <div id="shadow-host3" class="shadow-host">
+        
+    </div>
+`);
+const firstLevelShadowRoot1 = document.querySelector('#shadow-host3').attachShadow({ mode: 'open' });
+firstLevelShadowRoot1.innerHTML = `
+    <div id="nested-shadow-host1">
+     <div id="nested-shadow-container1"></div>
     </div>
 `;
-const secondLevelShadowRoot = firstLevelShadowRoot.querySelector('#nested-shadow-container').attachShadow({ mode: 'open' });
-secondLevelShadowRoot.innerHTML = `
-    <a id="link-nested-shadow" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>
+const secondLevelShadowRoot1 = firstLevelShadowRoot1.querySelector('#nested-shadow-container1').attachShadow({ mode: 'open' });
+secondLevelShadowRoot1.innerHTML = `
+    <a id="link-nested-shadow1" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>
 `;
-secondLevelShadowRoot.querySelector('#link-nested-shadow').addEventListener('click', () => {
+secondLevelShadowRoot1.querySelector('#link-nested-shadow1').addEventListener('click', () => {
 console.log('Case 3 - Inside NSDM link clicked');
 });
 
 
-
-createBlock('4. Clicking on a Button onto which the Shadow DOM is attached', `
-                <div id="shadow-host4" class="shadow-host">
-                    <div id="shadow-container4"></div>
-                </div>
-            `);
-addShadowDom('shadow-container4', '<button id="button-shadow-attached">Button Shadow Attached</button>');
-document.querySelector('#shadow-container4').shadowRoot.querySelector('#button-shadow-attached').addEventListener('click', () => alert('Button shadow attached clicked'));
-
-
-createBlock('5. Clicking on a Link that is inside nested Shadow DOM', `
-    <div id="shadow-host5" class="shadow-host">
-        <div id="nested-shadow-container5"></div>
+createBlock('Case 4 - Button Inside Nested Shadow Dom', `
+<p>
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+</p>
+    <div id="shadow-host4" class="shadow-host">
+        
     </div>
 `);
-addShadowDom('nested-shadow-container5', '<a id="link-nested-shadow" href="https://www.google.com" target="_blank">Link Nested Shadow DOM</a>');
-document.querySelector('#nested-shadow-container5').shadowRoot.querySelector('#link-nested-shadow').addEventListener('click', () => alert('Link nested shadow DOM clicked'));
-
-
-
-createBlock('6. Clicking on a Button that is inside nested Shadow DOM', `
-    <div id="shadow-host6" class="shadow-host">
-        <div id="nested-shadow-container6"></div>
+const firstLevelShadowRoot2 = document.querySelector('#shadow-host4').attachShadow({ mode: 'open' });
+firstLevelShadowRoot2.innerHTML = `
+    <div id="nested-shadow-host2">
+     <div id="nested-shadow-container2"></div>
     </div>
-`);
-addShadowDom('nested-shadow-container6', '<button id="button-nested-shadow">Button Nested Shadow DOM</button>');
-document.querySelector('#nested-shadow-container6').shadowRoot.querySelector('#button-nested-shadow').addEventListener('click', () => alert('Button nested shadow DOM clicked'));
-
+`;
+const secondLevelShadowRoot2 = firstLevelShadowRoot2.querySelector('#nested-shadow-container2').attachShadow({ mode: 'open' });
+secondLevelShadowRoot2.innerHTML = `
+    <button id="link-nested-shadow2">Button Shadow Attached</button>
+`;
+secondLevelShadowRoot2.querySelector('#link-nested-shadow2').addEventListener('click', () => {
+console.log('Case 4 - Inside NSDM Button Clicked');
+});
 
 createBlock('7. Clicking on a Parent Element that is outside the Shadow DOM and whose Child Element is attached to the Shadow DOM', `
     <div id="parent-host7" class="shadow-host">
