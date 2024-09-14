@@ -97,30 +97,55 @@ window._vwo_pc_custom = {
         };
 
 const initializeTestCases = () => {
-createBlock('1. Clicking on a Link Inside the Shadow DOM', `
-                <div id="shadow-host1" class="shadow-host">
-                    <div id="shadow-container1"></div>
-                </div>
-            `);
-  addShadowDom('shadow-container1', `
-                <div id="inside-shadow-abc">
-                    <p>This is inside shadow dom para and the link given below is inside the shadow dom</p>
-                    <a id="link-inside-shadow1" href="https://www.google.com" target="_blank">Link Inside Shadow DOM</a>
-                </div>
-            `);
-document.querySelector('#shadow-container1').shadowRoot.querySelector('#link-inside-shadow1').addEventListener('click', () => alert('Link inside shadow DOM clicked'));
+
+
+
+
+createBlock('Case 1 - Link Inside Shadow Dom', `
+ <div id="shadow-host1" class="shadow-host">
+<div id="shadow-container1"></div>
+ </div>
+ `);
+addShadowDom('shadow-container1', `
+<div id="inside-shadow-case1">
+<p>
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+</p>
+<a id="link-inside-shadow1" href="https://www.google.com" target="_blank">Visit Page</a>
+</div>
+`);
+
+document.querySelector('#shadow-container1').shadowRoot.querySelector('#link-inside-shadow1')
+.addEventListener('click', () => {
+console.log('Case 1 - Inside SDM link clicked');
+});
+
+
+
+
 
                   
-createBlock('2. Clicking on a Button Inside Shadow DOM', `
+createBlock('Case 2 - Button Inside Shadow Dom', `
             <div id="shadow-host2" class="shadow-host">
                 <div id="shadow-container2"></div>
             </div>
         `);
-addShadowDom('shadow-container2', '<button id="button-inside-shadow">Button Inside Shadow DOM</button>');
+addShadowDom('shadow-container2', `
+<div id ="inside-shadow-case 2">
+<p>
+<hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+</p>
+<button id="button-inside-shadow">Click Me</button>
+</div>
+`);
 document.querySelector('#shadow-container2').shadowRoot.querySelector('#button-inside-shadow').addEventListener('click', () => alert('Button inside shadow DOM clicked'));
 
-       
+
+
+     
   
+
+
 createBlock('3. Clicking on a Link onto which Shadow DOM is attached', `
                 <div id="shadow-host3" class="shadow-host">
                     <div id="shadow-container3"></div>
