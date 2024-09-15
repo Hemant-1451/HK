@@ -217,37 +217,53 @@ createBlock('Case 6 - Parent Element Outside Shadow Dom and Child Element Inside
 </div>
 `);
 
-const firstLevelShadowRoot = document.querySelector('#parent-host6').attachShadow({ mode: 'open' });
-firstLevelShadowRoot.innerHTML = `
+const firstLevelShadowRoot3 = document.querySelector('#parent-host6').attachShadow({ mode: 'open' });
+firstLevelShadowRoot3.innerHTML = `
     <div id="shadow-inner6" style="background-color: lightblue; padding: 15px;">
     </div>
 `;
 
-const secondLevelShadowRoot = firstLevelShadowRoot.querySelector('#shadow-inner6').attachShadow({ mode: 'open' });
-secondLevelShadowRoot.innerHTML = `
+const secondLevelShadowRoot3 = firstLevelShadowRoot3.querySelector('#shadow-inner6').attachShadow({ mode: 'open' });
+secondLevelShadowRoot3.innerHTML = `
     <div id ="nested-shadow-inner6" style="background-color: lightgreen; padding: 10px;">
         <button id="button-nested-shadow6" style="background-color: coral; color: white; padding: 5px 10px; border: none; cursor: pointer;">
-            Button Inside Nested Shadow DOM
+            Nested Child Element
         </button>
     </div>
 `;
 
-secondLevelShadowRoot.querySelector('#button-nested-shadow6').addEventListener('click', () => {
+secondLevelShadowRoot3.querySelector('#button-nested-shadow6').addEventListener('click', () => {
     console.log('Button inside nested shadow DOM clicked');
 });
 
 
-
-
-createBlock('Case 7 - Parent Element Inside Shadow Dom and Child Element Inside Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
-    </p>        
-    <div id="shadow-host14" class="shadow-host">
-        <div id="nested-shadow-child14"></div>
-    </div>
+createBlock('Case 7 - Parent Element Inside Shadow Dom and Child Element Inside Nested Shadow DOM', `
+    <p>
+        <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+    </p>
+   <div id="parent7" style="background-color: orange; padding: 15px;">
+    <div id="parent-host7" class="shadow-host" style="background-color: blue; padding: 15px;"></div>
+</div>
 `);
-addShadowDom('nested-shadow-child14', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
-document.querySelector('#nested-shadow-child14').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+
+const firstLevelShadowRoot4 = document.querySelector('#parent-host7').attachShadow({ mode: 'open' });
+firstLevelShadowRoot4.innerHTML = `
+    <div id="shadow-parent7" style="background-color: lightblue; padding: 15px;">
+    </div>
+`;
+
+const secondLevelShadowRoot4 = firstLevelShadowRoot4.querySelector('#shadow-parent7').attachShadow({ mode: 'open' });
+secondLevelShadowRoot4.innerHTML = `
+    <div id ="shadow-child7" style="background-color: lightgreen; padding: 10px;">
+        <button id="button-nested-shadow7" style="background-color: coral; color: white; padding: 5px 10px; border: none; cursor: pointer;">
+            Nested Child Element
+        </button>
+    </div>
+`;
+
+secondLevelShadowRoot4.querySelector('#button-nested-shadow7').addEventListener('click', () => {
+    console.log('Button inside nested shadow DOM clicked');
+});
 
 
 
@@ -260,7 +276,6 @@ createBlock('Case 8 - Parent Element Inside Shadow Dom and Child Element Inside 
 `);
 addShadowDom('nested-shadow-child15', '<button id="button-child-nested-shadow">Button Child Nested Shadow DOM</button>');
 document.querySelector('#nested-shadow-child15').shadowRoot.querySelector('#button-child-nested-shadow').addEventListener('click', () => alert('Button child nested shadow DOM clicked'));
-
 
 
 
