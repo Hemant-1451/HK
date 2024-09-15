@@ -185,16 +185,26 @@ console.log('Case 4 - Inside NSDM Button Clicked');
 });
 
 
-
-createBlock('Case 5 - Parent Element Outside Shadow Dom and Child Element Inside Shadow DOM', `<p>
-    <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
+createBlock('Case 5 - Parent Element Outside Shadow Dom and Child Element Inside Shadow DOM', `
+    <p>
+        <hr style="border: 0; height: 1px; background: linear-gradient(to right, #ccc, #101, #ccc);">
     </p>
     <div id="parent-host8" class="shadow-host">
-        <div id="shadow-child8"></div>
+        <div id="shadow-child8" style="background-color: blue; padding: 15px;">
+        </div>
     </div>
 `);
-addShadowDom('shadow-child8', '<button id="button-child-shadow">Button Child Shadow DOM</button>');
-document.querySelector('#shadow-child8').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => alert('Button child shadow DOM clicked'));
+addShadowDom('shadow-child8', `
+    <div id="shadow-inner" style="background-color: lightgreen; padding: 10px;">
+        <button id="button-child-shadow" style="background-color: coral; color: white; padding: 5px 10px; border: none; cursor: pointer;">
+            Child Element
+        </button>
+    </div>
+`);
+document.querySelector('#shadow-child8').shadowRoot.querySelector('#button-child-shadow').addEventListener('click', () => {
+    console.log('Button inside child shadow DOM clicked');
+});
+
 
 
 
