@@ -242,5 +242,48 @@ function spaNavigation() {
 history.pushState(null, null, "?query=" + Date.now());
 }
 </script>
+<h1>Shadow Buttons</h1>
+    <!-- Create a container for shadow DOM elements -->
+    <div class="container">
+        <!-- Shadow DOM with a button -->
+        <div id="shadow-container">
+        </div>
+    </div>
+
+    <script>
+       // Wait for the DOM content to be fully loaded before executing the script
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the element with the id 'shadow-container'
+    const shadowContainer = document.getElementById('shadow-container');
+
+    // Check if the element exists before proceeding
+    if (shadowContainer) {
+        // Create a shadow root
+        const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside shadow DOM
+        const shadowButton = document.createElement('button');
+        shadowButton.textContent = 'Button under Shadow DOM';
+        shadowButton.className = 'shadow-button'; // Add class for styling
+        shadowRoot.appendChild(shadowButton);
+
+        // Create a nested shadow root
+        const nestedShadowContainer = document.createElement('div');
+        nestedShadowContainer.id = 'nested-shadow-container'; // Set the id
+        shadowRoot.appendChild(nestedShadowContainer); // Append to shadow DOM
+
+        const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside nested shadow DOM
+        const nestedShadowButton = document.createElement('button');
+        nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
+        nestedShadowButton.className = 'nested-shadow-button'; // Add class for styling
+        nestedShadowRoot.appendChild(nestedShadowButton);
+    } else {
+        console.error("Element with id not found");
+    }
+});
+    </script>
+    
 </body>
 </html>
