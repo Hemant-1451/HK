@@ -3,53 +3,28 @@
 <html lang="en">
 <head>
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Start VWO Async SmartCode -->
 <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 <script type='text/javascript' id='vwoCode'>
-        const params = new URLSearchParams(window.location.search);
-        const accId = parseInt(params.get("id"));
-        const accountId = accId || 848489;
-        console.log("Account-Id ->", accountId);
-        /* eslint-disable no-undef */
-        window._vwo_code || (function() {
-            var account_id=accountId,
-            version=2.1,
-            settings_tolerance=2000,
-            hide_element='body',
-            hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
-            /* DO NOT EDIT BELOW THIS LINE */
-            f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:o})}else{this.load(o+'&x=true')}}};w._vwo_code=code;code.init();})();
-        window._vwo_pc_custom = {
-            a: 100,
-            t: 100
-        };	    
-    </script>
-   
-<!-- <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="7a635584-6a29-4b6b-8f6a-4138c93da1f6" data-blockingmode="auto" type="text/javascript"></script>
-<script>
-		window.addEventListener('CookiebotOnAccept', function () {
-        window.VWO = window.VWO || [];
-window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
-window.VWO.init(1)
-		console.log('Cookies are Accepted!')
-        });
-		
-	</script>
-	  <script>
-		  window.addEventListener('CookiebotOnDecline', function () {
-           	window.VWO = window.VWO || [];
-window.VWO.init = window.VWO.init || function(state) {window.VWO.consentState = state;}
-window.VWO.init(3)
-		  console.log('Cookies are Rejected!')
-        });
-		
-	</script>
-	  
-	  <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
-            console.log("DOM content loaded");
-        });
-    </script> -->
-    <!-- End VWO Async SmartCode -->
+const params = new URLSearchParams(window.location.search);
+const accId = parseInt(params.get("id"));
+const accountId = accId || 848489;
+console.log("Account-Id ->", accountId);
+/* eslint-disable no-undef */
+window._vwo_code || (function() {
+var account_id=accountId,
+version=2.1,
+settings_tolerance=2000,
+hide_element='body',
+hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;transition:none !important;',
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
+window._vwo_pc_custom = {
+        a: 100,
+        t: 100
+    };
+</script>
+<!-- End VWO Async SmartCode -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
@@ -304,10 +279,48 @@ window.VWO.init(3)
             padding: 20px;
             border-radius: 10px;
         }
+/* Button styling */
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
     </style>
 </head>
-<body>
- 
+<body class="ce20v2-template">
+<button id="cta-click-element" class="btn btn-primary">Click to Start Campaign Button</button>
+
+<script>
+        window.VWO = window.VWO || [];
+        window.VWO.data = window.VWO.data || {};
+        window.VWO.data.acquia = {
+            "drupal": {
+                "title": "Deep mediterranean quiche (VWO data)",
+                "content-type": "recipe",
+                "taxonomy": {
+                    "content_section": ["Desserts", "Main courses"],
+                    "content_keywords": ["Pastry", "Egg", "Mushrooms"],
+                    "persona": ["Experienced chef"]
+                }
+            }
+        };
+
+        // Just to verify the data is correctly integrated
+        console.log("VWO Data:", window.VWO.data);
+    </script>
     <div class="container">
         <div class="div1">
       <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
@@ -396,6 +409,16 @@ window.VWO.init(3)
             </table>
         </form>
     </div>
+    <div class="ce20v2 ce-event-content">
+        <div class="ce-book-now-wrapper">
+            <div class="ce-cancellation-wrapper">
+                <div>
+                    <strong>Free Cancellation with Ticket Assurance</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="about-section" class="div1">
         <h2>About</h2>
@@ -425,6 +448,25 @@ window.VWO.init(3)
         <button id="testelement3">ClickElement3</button>
         <button id="testelement4">ClickElement4</button>
         <button id="activateButton" onclick="activateVWO()">Activate API</button>
+<!-- Container where the new button will be inserted -->
+    <div id="button-container"></div>
+
+    <script>
+        // JavaScript to handle the button click and generation
+        document.getElementById("testelement2").addEventListener("click", function() {
+            // Create a new button element
+            var newButton = document.createElement("button");
+
+            // Set the ID to #testelement5
+            newButton.id = "testelement5";
+
+            // Set the inner text for the button
+            newButton.innerText = "I am Button #testelement5";
+
+            // Append the new button to the container
+            document.getElementById("button-container").appendChild(newButton);
+        });
+    </script>
         <br /><br />
         <div>
             <!-- Add the provided links -->
@@ -439,8 +481,10 @@ window.VWO.init(3)
             </p>
         </div>
     </div>
-    
+    <div id="orderValue">120</div>
+
     <script>
+       window.dataLayer = window.dataLayer || [];
         function myFunction() {
             document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
             document.getElementById("dynamicLink").href = document.getElementById("input").value;
@@ -685,6 +729,106 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
+<div id="root">
+        <!-- Root element to host the Shadow DOM layers -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create the root element for Shadow DOM
+            const rootElement = document.getElementById('root');
+            
+            // Attach the first layer of Shadow DOM
+            const rootShadow = rootElement.attachShadow({ mode: 'open' });
+            rootShadow.innerHTML = `
+                <style>
+                    .layer1 {
+                        background-color: lightcoral;
+                        padding: 10px;
+                        border: 2px solid darkred;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer1">
+                    <button class="button" id="layer1-button">Layer 1 Button</button>
+                    <slot name="layer1-content"></slot>
+                    <div id="layer2-container"></div>
+                </div>
+            `;
+
+            // Attach the second layer of Shadow DOM
+            const layer2Container = rootShadow.getElementById('layer2-container');
+            const layer2Shadow = layer2Container.attachShadow({ mode: 'open' });
+            layer2Shadow.innerHTML = `
+                <style>
+                    .layer2 {
+                        background-color: lightseagreen;
+                        padding: 10px;
+                        border: 2px solid darkgreen;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer2">
+                    <button class="button" id="layer2-button">Layer 2 Button</button>
+                    <slot name="layer2-content"></slot>
+                    <div id="layer3-container"></div>
+                </div>
+            `;
+
+            // Attach the third layer of Shadow DOM
+            const layer3Container = layer2Shadow.getElementById('layer3-container');
+            const layer3Shadow = layer3Container.attachShadow({ mode: 'open' });
+            layer3Shadow.innerHTML = `
+                <style>
+                    .layer3 {
+                        background-color: lightgoldenrodyellow;
+                        padding: 10px;
+                        border: 2px solid goldenrod;
+                    }
+                    .button {
+                        margin-top: 10px;
+                        padding: 5px;
+                        cursor: pointer;
+                    }
+                </style>
+                <div class="layer3">
+                    <button class="button" id="layer3-button">Layer 3 Button</button>
+                    <slot name="layer3-content"></slot>
+                    <p class="message">Click the button in this layer!</p>
+                </div>
+            `;
+
+            // Add event listeners to buttons in each Shadow DOM layer
+            const layer1Button = rootShadow.querySelector('#layer1-button');
+            if (layer1Button) {
+                layer1Button.addEventListener('click', () => {
+                    alert('Button in the first Shadow DOM layer clicked!');
+                });
+            }
+
+            const layer2Button = layer2Shadow.querySelector('#layer2-button');
+            if (layer2Button) {
+                layer2Button.addEventListener('click', () => {
+                    alert('Button in the second Shadow DOM layer clicked!');
+                });
+            }
+
+            const layer3Button = layer3Shadow.querySelector('#layer3-button');
+            if (layer3Button) {
+                layer3Button.addEventListener('click', () => {
+                    alert('Button in the third Shadow DOM layer clicked!');
+                });
+            }
+        });
+    </script>
 <div class="section canvas-section">
     
     <canvas id="myCanvas" width="800" height="400"></canvas>
@@ -736,10 +880,74 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
 </div>
 
+<!-- First occurrence of the ID -->
+<div id="wrapper">
+  <div>
+    <span id="jumppoint">
+      <span>
+        <div>
+          <div id="sidebar"></div>
+          <main id="main">
+            <section>
+              <div></div>
+              <div>
+                <div></div>
+                <div>
+                  <div></div>
+                  <div>
+                    <p>
+                      <label for="cbSurvey">
+                        <input type="checkbox" id="cbSurvey">
+                        <span>First survey option</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
+      </span>
+    </span>
+  </div>
+</div>
+
+<!-- Second occurrence of the same ID, which creates the problem -->
+<div id="wrapper">
+  <div>
+    <span id="jumppoint">
+      <span>
+        <div>
+          <div id="sidebar"></div>
+          <main id="main">
+            <section>
+              <div></div>
+              <div>
+                <div></div>
+                <div>
+                  <div></div>
+                  <div>
+                    <p>
+                      <label for="cbSurvey">
+                        <input type="checkbox" id="cbSurvey">
+                        <span>Second survey option</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+        </div>
+      </span>
+    </span>
+  </div>
+</div>
 
 <p>
     <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
     <a href="https://saiganesh98.github.io/?id=1000072">Ganesh's Page Version 1.5</a><br>
+    <a href="https://hemant-1451.github.io/HK/SmartCode2.1/?id=918943&test=anand">Campaign 31 Mocking Test</a><br>
     <a href="https://hemant-1451.github.io/HK/SmartCode1.5/?id=848489&test=attributeSupport">Hemant's Page Version 1.5</a><br>
     <a href="https://hemant-1451.github.io/HK/SmartCode2.0/?id=848489&test=attributeSupport">Hemant's Page Version 2.0</a><br>
     <a href="https://hemant-1451.github.io/HK/SmartCode2.1/?id=848489&test=attributeSupport">Hemant's Page Version 2.1</a><br>
@@ -753,5 +961,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <a href="https://homeboy445.github.io/Testing-Site/?accountId=636231">Akshit's Page</a><br>
    
 </p>
+
 </body>
 </html>
