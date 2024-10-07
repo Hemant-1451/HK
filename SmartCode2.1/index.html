@@ -448,6 +448,25 @@ window._vwo_pc_custom = {
         <button id="testelement3">ClickElement3</button>
         <button id="testelement4">ClickElement4</button>
         <button id="activateButton" onclick="activateVWO()">Activate API</button>
+<!-- Container where the new button will be inserted -->
+    <div id="button-container"></div>
+
+    <script>
+        // JavaScript to handle the button click and generation
+        document.getElementById("testelement2").addEventListener("click", function() {
+            // Create a new button element
+            var newButton = document.createElement("button");
+
+            // Set the ID to #testelement5
+            newButton.id = "testelement5";
+
+            // Set the inner text for the button
+            newButton.innerText = "I am Button #testelement5";
+
+            // Append the new button to the container
+            document.getElementById("button-container").appendChild(newButton);
+        });
+    </script>
         <br /><br />
         <div>
             <!-- Add the provided links -->
