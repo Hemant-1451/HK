@@ -80,7 +80,7 @@ try {
     )();
     ;;if (window._vwo_mt === "live") {
         window.VWO = window.VWO || [];
-        var _vwo_cookieDomain = "vwo.com";
+        var _vwo_cookieDomain = "hemant-1451.github.io";
         ;(function() {
             var push_api = [{
                 "api": "modifyClickPauseTime",
