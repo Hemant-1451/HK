@@ -80,7 +80,7 @@ try {
     )();
     ;;if (window._vwo_mt === "live") {
         window.VWO = window.VWO || [];
-        var _vwo_cookieDomain = "vwo.com";
+        var _vwo_cookieDomain = "hemant-1451.github.io";
         ;(function() {
             var push_api = [{
                 "api": "modifyClickPauseTime",
@@ -171,7 +171,7 @@ try {
             };
             loadScript(url)
         }
-        )(document, "https://dev.visualwebsiteoptimizer.com/gv.gif?a=30000130&uuid=D8260851050DC77356FD8668763DD94FB&u=" + encodeURIComponent(document.URL));
+        )(document, "https://dev.visualwebsiteoptimizer.com/gv.gif?a=30000130&uuid=D82C9A30A77F7CA967FF27AD8031781D4&u=" + encodeURIComponent(document.URL));
         ;;;var vwo_CIF = false;
         ;window.VWO = window.VWO || [],
         window.VWO._ = window.VWO._ || {},
@@ -390,6 +390,26 @@ try {
                                     "type": "CUSTOM_GOAL",
                                     "identifier": "vwo_pageView",
                                     "mca": false
+                                },
+                                "2": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_dom_click",
+                                    "mca": false
+                                },
+                                "3": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_dom_submit",
+                                    "mca": false
+                                },
+                                "4": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_engagement",
+                                    "mca": false
+                                },
+                                "5": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_bounce",
+                                    "mca": false
                                 }
                             },
                             "pgre": true,
@@ -398,12 +418,32 @@ try {
                                 "id": 1,
                                 "type": "m",
                                 "metricId": 228
+                            }, {
+                                "id": 2,
+                                "type": "m",
+                                "metricId": 229
+                            }, {
+                                "id": 3,
+                                "type": "m",
+                                "metricId": 230
+                            }, {
+                                "id": 4,
+                                "type": "m",
+                                "metricId": 231
+                            }, {
+                                "id": 5,
+                                "type": "m",
+                                "metricId": 232
                             }],
                             "id": 1,
                             "pg_config": ["1391"],
                             "triggers": [1573],
                             "mt": {
-                                "1": "1574"
+                                "1": "1574",
+                                "2": "1575",
+                                "3": "1576",
+                                "4": "1577",
+                                "5": "1578"
                             }
                         }
                     },
@@ -483,8 +523,22 @@ try {
                     crossDomain: {},
                     integrations: {},
                     events: {
+                        "vwo_zoomIn": {},
+                        "vwo_appComesInForeground": {},
+                        "vwo_flingRight": {},
+                        "vwo_flingLeft": {},
+                        "vwo_networkChanged": {},
+                        "vwo_flingUp": {},
+                        "vwo_scrollRight": {},
+                        "vwo_scrollLeft": {},
+                        "vwo_scrollDown": {},
+                        "vwo_scrollUp": {},
+                        "vwo_doubleTap": {},
+                        "vwo_singleTap": {},
+                        "vwo_appNotResponding": {},
+                        "vwo_appCrashed": {},
                         "vwo_rC": {},
-                        "vwo_screenViewed": {},
+                        "vwo_vA": {},
                         "vwo_survey_surveyCompleted": {},
                         "vwo_survey_submit": {},
                         "vwo_survey_reachedThankyou": {},
@@ -506,45 +560,31 @@ try {
                         "vwo_dom_scroll": {
                             "nS": ["top", "bottom", "pxTop", "pxBottom"]
                         },
-                        "vwo_appLaunched": {},
-                        "vwo_dom_submit": {},
-                        "vwo_sessionSync": {},
-                        "vwo_newSessionCreated": {},
-                        "vwo_trackGoalVisited": {},
-                        "vwo_analyzeRecording": {},
-                        "vwo_analyzeHeatmap": {},
-                        "vwo_analyzeForm": {},
                         "vwo_variationShown": {},
-                        "vwo_vA": {},
                         "vwo_dom_click": {
                             "nS": ["target.innerText", "target"]
                         },
+                        "vwo_trackGoalVisited": {},
+                        "vwo_newSessionCreated": {},
+                        "vwo_syncVisitorProp": {},
+                        "vwo_dom_submit": {},
+                        "vwo_analyzeHeatmap": {},
+                        "vwo_analyzeRecording": {},
+                        "vwo_analyzeForm": {},
+                        "vwo_orientationChanged": {},
+                        "vwo_screenViewed": {},
                         "vwo_appTerminated": {},
                         "vwo_appInForeground": {},
                         "vwo_appGoesInBackground": {},
-                        "vwo_syncVisitorProp": {},
+                        "vwo_appLaunched": {},
                         "vwo_networkChange": {},
                         "vwo_goalVisit": {
                             "nS": ["expId"]
                         },
-                        "vwo_orientationChanged": {},
-                        "vwo_zoomIn": {},
-                        "vwo_appComesInForeground": {},
-                        "vwo_flingRight": {},
-                        "vwo_flingLeft": {},
-                        "vwo_networkChanged": {},
-                        "vwo_flingUp": {},
-                        "vwo_scrollRight": {},
-                        "vwo_scrollLeft": {},
-                        "vwo_scrollDown": {},
-                        "vwo_scrollUp": {},
-                        "vwo_doubleTap": {},
-                        "vwo_singleTap": {},
-                        "vwo_appNotResponding": {},
-                        "vwo_appCrashed": {}
+                        "vwo_sessionSync": {}
                     },
                     visitorProps: {},
-                    uuid: "D8260851050DC77356FD8668763DD94FB",
+                    uuid: "D82C9A30A77F7CA967FF27AD8031781D4",
                     syV: {},
                     syE: {},
                     cSE: {},
@@ -553,16 +593,12 @@ try {
                     syncAttr: "sessionCreated"
                 },
                 triggers: {
-                    "2": {
+                    "1576": {
+                        "dslv": 2,
                         "cnds": [{
-                            "event": "vwo_variationShown",
-                            "id": 100
-                        }]
-                    },
-                    "75": {
-                        "cnds": [{
-                            "event": "vwo_urlChange",
-                            "id": 99
+                            "id": 1000,
+                            "event": "vwo_dom_submit",
+                            "filters": {}
                         }]
                     },
                     "5": {
@@ -571,18 +607,16 @@ try {
                             "id": 101
                         }]
                     },
-                    "1574": {
+                    "1577": {
                         "dslv": 2,
-                        "cnds": [{
+                        "cnds": ["o", {
                             "id": 1000,
-                            "filters": {},
-                            "event": "vwo_pageView"
-                        }]
-                    },
-                    "9": {
-                        "cnds": [{
-                            "event": "vwo_groupCampTriggered",
-                            "id": 105
+                            "event": "vwo_dom_click",
+                            "filters": [["event.userEngagement", "eq", true]]
+                        }, {
+                            "id": 1001,
+                            "event": "vwo_dom_submit",
+                            "filters": [["event.userEngagement", "eq", true]]
                         }]
                     },
                     "8": {
@@ -598,24 +632,79 @@ try {
                             "id": 2
                         }, {
                             "event": "vwo_notRedirecting",
-                            "filters": {},
-                            "id": 4
+                            "id": 4,
+                            "filters": {}
                         }, {
                             "event": "vwo_visibilityTriggered",
-                            "filters": {},
-                            "id": 5
+                            "id": 5,
+                            "filters": {}
                         }, {
                             "id": 1000,
-                            "filters": {},
-                            "event": "vwo_pageView"
+                            "event": "vwo_pageView",
+                            "filters": {}
                         }, {
                             "id": 1002,
-                            "filters": {},
-                            "event": "vwo_pageView"
+                            "event": "vwo_pageView",
+                            "filters": {}
+                        }]
+                    },
+                    "1578": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_pageView",
+                            "filters": {}
+                        }]
+                    },
+                    "1574": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_pageView",
+                            "filters": {}
+                        }]
+                    },
+                    "1575": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_dom_click",
+                            "filters": {}
+                        }]
+                    },
+                    "9": {
+                        "cnds": [{
+                            "event": "vwo_groupCampTriggered",
+                            "id": 105
+                        }]
+                    },
+                    "2": {
+                        "cnds": [{
+                            "event": "vwo_variationShown",
+                            "id": 100
+                        }]
+                    },
+                    "75": {
+                        "cnds": [{
+                            "event": "vwo_urlChange",
+                            "id": 99
                         }]
                     }
                 },
                 tags: {
+                    R_30000130_1_1_2_0: {
+                        fn: function(log, nonce='') {
+                            return (function(x) {
+                                if (!vwo_$.fn.vwoRevertHtml) {
+                                    return;
+                                }
+                                ;var el, ctx = vwo_$(x);
+                                /*vwo_debug log("Revert","editElement","H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)"); vwo_debug*/
+                                (el = vwo_$("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")).vwoRevertCss();
+                            }
+                            )("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")
+                        }
+                    },
                     C_30000130_1_1_2_0: {
                         fn: function(log, nonce='') {
                             return (function(x) {
@@ -630,22 +719,22 @@ try {
                             }
                             )("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")
                         }
-                    },
-                    R_30000130_1_1_2_0: {
-                        fn: function(log, nonce='') {
-                            return (function(x) {
-                                if (!vwo_$.fn.vwoRevertHtml) {
-                                    return;
-                                }
-                                ;var el, ctx = vwo_$(x);
-                                /*vwo_debug log("Revert","editElement","H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)"); vwo_debug*/
-                                (el = vwo_$("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")).vwoRevertCss();
-                            }
-                            )("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")
-                        }
                     }
                 },
                 rules: [{
+                    "triggers": ["1576"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 230,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 3
+                            }]
+                        }
+                    }]
+                }, {
                     "triggers": ["1574"],
                     "tags": [{
                         "id": "metric",
@@ -669,15 +758,54 @@ try {
                         }
                     }]
                 }, {
+                    "triggers": ["1575"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 229,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 2
+                            }]
+                        }
+                    }]
+                }, {
+                    "triggers": ["1578"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 232,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 5
+                            }]
+                        }
+                    }]
+                }, {
+                    "triggers": ["1577"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 231,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 4
+                            }]
+                        }
+                    }]
+                }, {
                     "triggers": ["1573"],
                     "tags": [{
                         "id": "runCampaign",
-                        "data": "campaigns.2",
-                        "priority": 4
+                        "priority": 4,
+                        "data": "campaigns.2"
                     }, {
                         "id": "runCampaign",
-                        "data": "campaigns.1",
-                        "priority": 4
+                        "priority": 4,
+                        "data": "campaigns.1"
                     }]
                 }, {
                     "triggers": ["2"],
@@ -712,16 +840,16 @@ try {
                 }],
                 pages: {
                     "ec": [{
-                        "1392": {
-                            "inc": ["o", ["url", "urlReg", "^https?\\:\\\/\\\/(w{3}\\.)?hemant\\-1451\\.github\\.io\\\/HK\\\/osc1\\\/?\\?id\\=30000130&test\\=sdma$"]]
-                        }
-                    }, {
                         "1390": {
                             "inc": ["o", ["url", "urlReg", "(?i).*"]]
                         }
                     }, {
                         "1391": {
                             "inc": ["o", ["url", "urlReg", "^https?\\:\\\/\\\/(w{3}\\.)?hemant\\-1451\\.github\\.io\\\/HK\\\/SmartCode2\\.1\\\/?\\?id\\=30000130&test\\=sdma$"]]
+                        }
+                    }, {
+                        "1392": {
+                            "inc": ["o", ["url", "urlReg", "^https?\\:\\\/\\\/(w{3}\\.)?hemant\\-1451\\.github\\.io\\\/HK\\\/osc1\\\/?\\?id\\=30000130&test\\=sdma$"]]
                         }
                     }]
                 },
@@ -961,7 +1089,7 @@ try {
                     }
                 }
             },
-            as: "rec2.visualwebsiteoptimizer.com",
+            as: "rec1.visualwebsiteoptimizer.com",
             dacdnUrl: "https://dev.visualwebsiteoptimizer.com",
             accountJSInfo: {
                 "pvn": 0,
@@ -971,7 +1099,7 @@ try {
                     "t": 0,
                     "a": 0
                 },
-                "ts": 1729087053
+                "ts": 1729092185
             }
         };
         for (var k in vD) {
