@@ -171,22 +171,105 @@ try {
             };
             loadScript(url)
         }
-        )(document, "https://dev.visualwebsiteoptimizer.com/gv.gif?a=30000130&uuid=D020CA200111C9A75BD8984B7B74C537A&u=" + encodeURIComponent(document.URL));
+        )(document, "https://dev.visualwebsiteoptimizer.com/gv.gif?a=30000130&uuid=D82C9A30A77F7CA967FF27AD8031781D4&u=" + encodeURIComponent(document.URL));
         ;;;var vwo_CIF = false;
+        ;window.VWO = window.VWO || [],
+        window.VWO._ = window.VWO._ || {},
+        window.VWO._.txtCfg = window.VWO._.txtCfg || {
+            t: [],
+            tgStr: {},
+            txtSelMap: {}
+        };
+        window.VWO._.txtCfg.f = (function(e=[]) {
+            var t = []
+              , o = window.VWO._.txtCfg.tgStr
+              , n = window.VWO._.txtCfg.txtSelMap;
+            function i(t=document.body, n=e) {
+                try {
+                    for (var i = document.createTreeWalker(t, NodeFilter.SHOW_TEXT, {
+                        acceptNode: e => o[e.parentElement.tagName] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP
+                    }, !1), a = {
+                        SCRIPT: 1,
+                        STYLE: 1,
+                        NOSCRIPT: 1
+                    }; i.nextNode(); ) {
+                        var s = i.currentNode.parentElement
+                          , r = i.currentNode.textContent && i.currentNode.textContent.trim() || "";
+                        if (s && !a[s.tagName] && r)
+                            for (var d = 0; d < n.length; d++)
+                                if ((!n[d].e || n[d].e == s.tagName) && (n[d].iT ? s.innerText.trim() : r) === n[d].t) {
+                                    for (var l = s, c = n[d].d || 0; --c >= 0 && l.parentElement; )
+                                        l = l.parentElement;
+                                    c < 0 && l && !l.classList.contains(n[d].s) && l.classList.add(n[d].s)
+                                }
+                    }
+                } catch (e) {}
+            }
+            for (var a = 0; a < e.length; a++) {
+                e[a].s = "_vis_opt_text_" + (Date.now() + a),
+                t.push("." + e[a].s),
+                o[e[a].e] = 1;
+                var s = [e[a].e, e[a].t].join(".");
+                n[s] = n[s] || [],
+                n[s].push(a)
+            }
+            var r = document.querySelector("body")
+              , d = !0;
+            r ? (d = !1,
+            i(r)) : window.addEventListener("DOMContentLoaded", (function() {
+                d = !1
+            }
+            ));
+            var l = new MutationObserver((e => {
+                if (d) {
+                    var t = document.querySelector("body");
+                    t && i(t)
+                } else
+                    for (var o = 0; o < e.length; o++)
+                        e[o].target != document.querySelector("head") && i(e[o].target)
+            }
+            ));
+            if (window.VWO._.txtCfg.o = {
+                c: function(e="html") {
+                    l.observe(document.querySelector(e), {
+                        subtree: !0,
+                        childList: !0,
+                        attributes: !0,
+                        attributeFilter: ["class"]
+                    })
+                },
+                d: l.disconnect.bind(l)
+            },
+            window.VWO._.txtCfg.o.c(),
+            "undefined" != typeof _vwo_text) {
+                var c = _vwo_text.split("{");
+                c[0] += (c[0] && ",") + t.join(","),
+                _vwo_text = c[0] + _vwo_css
+            }
+            window.VWO._.txtCfg.t = window.VWO._.txtCfg.t.concat(e),
+            e = window.VWO._.txtCfg.t
+        }
+        );
+        window.VWO._.txtCfg.f([{
+            "t": "Welcome to the website, Registration Starts Here...",
+            "iT": true,
+            "e": "H2",
+            "d": 1
+        }]);
         ;window._vwo_clicks = false;
         VWO._.allSettings = (function() {
             return {
                 dataStore: {
                     campaigns: {
-                        1: {
+                        2: {
                             "version": 4,
-                            "ep": 1729078706000,
+                            "ep": 1729086615000,
                             "clickmap": 1,
                             "globalCode": [],
                             "type": "VISUAL_AB",
                             "status": "RUNNING",
                             "pc_traffic": 100,
-                            "name": "Campaign 1",
+                            "name": "Campaign 2",
                             "manual": false,
                             "urlRegex": "",
                             "exclude_url": "",
@@ -241,11 +324,126 @@ try {
                                 "type": "m",
                                 "metricId": 228
                             }],
+                            "id": 2,
+                            "pg_config": ["1392"],
+                            "triggers": [1573],
+                            "mt": {
+                                "1": "1574"
+                            }
+                        },
+                        1: {
+                            "version": 4,
+                            "ep": 1729078706000,
+                            "clickmap": 1,
+                            "globalCode": [],
+                            "type": "VISUAL_AB",
+                            "status": "RUNNING",
+                            "pc_traffic": 100,
+                            "name": "Campaign 1",
+                            "manual": false,
+                            "urlRegex": "",
+                            "exclude_url": "",
+                            "multiple_domains": 0,
+                            "segment_code": "true",
+                            "ss": null,
+                            "ibe": 1,
+                            "muts": {
+                                "post": {
+                                    "enabled": true,
+                                    "refresh": true
+                                }
+                            },
+                            "sections": {
+                                "1": {
+                                    "path": "",
+                                    "variations": {
+                                        "1": [],
+                                        "2": [{
+                                            "tag": "C_30000130_1_1_2_0",
+                                            "xpath": "H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)",
+                                            "iT": true,
+                                            "rtag": "R_30000130_1_1_2_0"
+                                        }]
+                                    },
+                                    "segment": {
+                                        "1": 1,
+                                        "2": 1
+                                    },
+                                    "variation_names": {
+                                        "1": "Control",
+                                        "2": "Variation-1"
+                                    },
+                                    "triggers": []
+                                }
+                            },
+                            "varSegAllowed": false,
+                            "combs": {
+                                "1": 0.5,
+                                "2": 0.5
+                            },
+                            "comb_n": {
+                                "1": "Control",
+                                "2": "Variation-1"
+                            },
+                            "goals": {
+                                "1": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_pageView",
+                                    "mca": false
+                                },
+                                "2": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_dom_click",
+                                    "mca": false
+                                },
+                                "3": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_dom_submit",
+                                    "mca": false
+                                },
+                                "4": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_engagement",
+                                    "mca": false
+                                },
+                                "5": {
+                                    "type": "CUSTOM_GOAL",
+                                    "identifier": "vwo_bounce",
+                                    "mca": false
+                                }
+                            },
+                            "pgre": true,
+                            "ps": true,
+                            "metrics": [{
+                                "id": 1,
+                                "type": "m",
+                                "metricId": 228
+                            }, {
+                                "id": 2,
+                                "type": "m",
+                                "metricId": 229
+                            }, {
+                                "id": 3,
+                                "type": "m",
+                                "metricId": 230
+                            }, {
+                                "id": 4,
+                                "type": "m",
+                                "metricId": 231
+                            }, {
+                                "id": 5,
+                                "type": "m",
+                                "metricId": 232
+                            }],
                             "id": 1,
                             "pg_config": ["1391"],
                             "triggers": [1573],
                             "mt": {
-                                "1": "1574"
+                                "1": "1574",
+                                "2": "1575",
+                                "3": "1576",
+                                "4": "1577",
+                                "5": "1578"
                             }
                         }
                     },
@@ -325,6 +523,18 @@ try {
                     crossDomain: {},
                     integrations: {},
                     events: {
+                        "vwo_zoomIn": {},
+                        "vwo_appComesInForeground": {},
+                        "vwo_flingRight": {},
+                        "vwo_flingLeft": {},
+                        "vwo_networkChanged": {},
+                        "vwo_flingUp": {},
+                        "vwo_scrollRight": {},
+                        "vwo_scrollLeft": {},
+                        "vwo_scrollDown": {},
+                        "vwo_scrollUp": {},
+                        "vwo_doubleTap": {},
+                        "vwo_singleTap": {},
                         "vwo_appNotResponding": {},
                         "vwo_appCrashed": {},
                         "vwo_rC": {},
@@ -348,45 +558,33 @@ try {
                             "nS": ["timeSpent"]
                         },
                         "vwo_dom_scroll": {
-                            "nS": ["pxBottom", "bottom", "top", "pxTop"]
+                            "nS": ["top", "bottom", "pxTop", "pxBottom"]
                         },
-                        "vwo_singleTap": {},
+                        "vwo_variationShown": {},
+                        "vwo_dom_click": {
+                            "nS": ["target.innerText", "target"]
+                        },
+                        "vwo_trackGoalVisited": {},
+                        "vwo_newSessionCreated": {},
+                        "vwo_syncVisitorProp": {},
                         "vwo_dom_submit": {},
                         "vwo_analyzeHeatmap": {},
-                        "vwo_newSessionCreated": {},
-                        "vwo_appInForeground": {},
                         "vwo_analyzeRecording": {},
-                        "vwo_variationShown": {},
                         "vwo_analyzeForm": {},
-                        "vwo_dom_click": {
-                            "nS": ["target", "target.innerText"]
-                        },
+                        "vwo_orientationChanged": {},
                         "vwo_screenViewed": {},
-                        "vwo_trackGoalVisited": {},
                         "vwo_appTerminated": {},
-                        "vwo_syncVisitorProp": {},
+                        "vwo_appInForeground": {},
                         "vwo_appGoesInBackground": {},
                         "vwo_appLaunched": {},
                         "vwo_networkChange": {},
                         "vwo_goalVisit": {
                             "nS": ["expId"]
                         },
-                        "vwo_orientationChanged": {},
-                        "vwo_zoomIn": {},
-                        "vwo_appComesInForeground": {},
-                        "vwo_flingRight": {},
-                        "vwo_flingLeft": {},
-                        "vwo_networkChanged": {},
-                        "vwo_flingUp": {},
-                        "vwo_scrollRight": {},
-                        "vwo_scrollLeft": {},
-                        "vwo_scrollDown": {},
-                        "vwo_scrollUp": {},
-                        "vwo_doubleTap": {},
                         "vwo_sessionSync": {}
                     },
                     visitorProps: {},
-                    uuid: "D020CA200111C9A75BD8984B7B74C537A",
+                    uuid: "D82C9A30A77F7CA967FF27AD8031781D4",
                     syV: {},
                     syE: {},
                     cSE: {},
@@ -395,18 +593,12 @@ try {
                     syncAttr: "sessionCreated"
                 },
                 triggers: {
-                    "1574": {
+                    "1576": {
+                        "dslv": 2,
                         "cnds": [{
                             "id": 1000,
-                            "event": "vwo_pageView",
+                            "event": "vwo_dom_submit",
                             "filters": {}
-                        }],
-                        "dslv": 2
-                    },
-                    "75": {
-                        "cnds": [{
-                            "event": "vwo_urlChange",
-                            "id": 99
                         }]
                     },
                     "5": {
@@ -415,16 +607,16 @@ try {
                             "id": 101
                         }]
                     },
-                    "9": {
-                        "cnds": [{
-                            "event": "vwo_groupCampTriggered",
-                            "id": 105
-                        }]
-                    },
-                    "2": {
-                        "cnds": [{
-                            "event": "vwo_variationShown",
-                            "id": 100
+                    "1577": {
+                        "dslv": 2,
+                        "cnds": ["o", {
+                            "id": 1000,
+                            "event": "vwo_dom_click",
+                            "filters": [["event.userEngagement", "eq", true]]
+                        }, {
+                            "id": 1001,
+                            "event": "vwo_dom_submit",
+                            "filters": [["event.userEngagement", "eq", true]]
                         }]
                     },
                     "8": {
@@ -434,6 +626,7 @@ try {
                         }]
                     },
                     "1573": {
+                        "dslv": 2,
                         "cnds": ["a", {
                             "event": "vwo_mutationObserved",
                             "id": 2
@@ -453,14 +646,107 @@ try {
                             "id": 1002,
                             "event": "vwo_pageView",
                             "filters": {}
-                        }],
-                        "dslv": 2
+                        }]
+                    },
+                    "1578": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_pageView",
+                            "filters": {}
+                        }]
+                    },
+                    "1574": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_pageView",
+                            "filters": {}
+                        }]
+                    },
+                    "1575": {
+                        "dslv": 2,
+                        "cnds": [{
+                            "id": 1000,
+                            "event": "vwo_dom_click",
+                            "filters": {}
+                        }]
+                    },
+                    "9": {
+                        "cnds": [{
+                            "event": "vwo_groupCampTriggered",
+                            "id": 105
+                        }]
+                    },
+                    "2": {
+                        "cnds": [{
+                            "event": "vwo_variationShown",
+                            "id": 100
+                        }]
+                    },
+                    "75": {
+                        "cnds": [{
+                            "event": "vwo_urlChange",
+                            "id": 99
+                        }]
                     }
                 },
-                tags: {},
+                tags: {
+                    R_30000130_1_1_2_0: {
+                        fn: function(log, nonce='') {
+                            return (function(x) {
+                                if (!vwo_$.fn.vwoRevertHtml) {
+                                    return;
+                                }
+                                ;var el, ctx = vwo_$(x);
+                                /*vwo_debug log("Revert","editElement","H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)"); vwo_debug*/
+                                (el = vwo_$("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")).vwoRevertCss();
+                            }
+                            )("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")
+                        }
+                    },
+                    C_30000130_1_1_2_0: {
+                        fn: function(log, nonce='') {
+                            return (function(x) {
+                                var el, ctx = vwo_$(x);
+                                /*vwo_debug log("editElement","H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)"); vwo_debug*/
+                                (el = vwo_$("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")).vwoCss({
+                                    "background-color": "#ff0000 !important"
+                                }),
+                                el.vwoCss({
+                                    transition: "none !important"
+                                });
+                            }
+                            )("H2:tm('Welcome to the website, Registration Starts Here...'):nth-parent(1)")
+                        }
+                    }
+                },
                 rules: [{
+                    "triggers": ["1576"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 230,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 3
+                            }]
+                        }
+                    }]
+                }, {
                     "triggers": ["1574"],
                     "tags": [{
+                        "id": "metric",
+                        "metricId": 228,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 2,
+                                "g": 1
+                            }]
+                        }
+                    }, {
                         "id": "metric",
                         "metricId": 228,
                         "data": {
@@ -472,8 +758,51 @@ try {
                         }
                     }]
                 }, {
+                    "triggers": ["1575"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 229,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 2
+                            }]
+                        }
+                    }]
+                }, {
+                    "triggers": ["1578"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 232,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 5
+                            }]
+                        }
+                    }]
+                }, {
+                    "triggers": ["1577"],
+                    "tags": [{
+                        "id": "metric",
+                        "metricId": 231,
+                        "data": {
+                            "type": "m",
+                            "campaigns": [{
+                                "c": 1,
+                                "g": 4
+                            }]
+                        }
+                    }]
+                }, {
                     "triggers": ["1573"],
                     "tags": [{
+                        "id": "runCampaign",
+                        "priority": 4,
+                        "data": "campaigns.2"
+                    }, {
                         "id": "runCampaign",
                         "priority": 4,
                         "data": "campaigns.1"
@@ -511,12 +840,16 @@ try {
                 }],
                 pages: {
                     "ec": [{
+                        "1390": {
+                            "inc": ["o", ["url", "urlReg", "(?i).*"]]
+                        }
+                    }, {
                         "1391": {
                             "inc": ["o", ["url", "urlReg", "^https?\\:\\\/\\\/(w{3}\\.)?hemant\\-1451\\.github\\.io\\\/HK\\\/SmartCode2\\.1\\\/?\\?id\\=30000130&test\\=sdma$"]]
                         }
                     }, {
-                        "1390": {
-                            "inc": ["o", ["url", "urlReg", "(?i).*"]]
+                        "1392": {
+                            "inc": ["o", ["url", "urlReg", "^https?\\:\\\/\\\/(w{3}\\.)?hemant\\-1451\\.github\\.io\\\/HK\\\/osc1\\\/?\\?id\\=30000130&test\\=sdma$"]]
                         }
                     }]
                 },
@@ -766,7 +1099,7 @@ try {
                     "t": 0,
                     "a": 0
                 },
-                "ts": 1729086227
+                "ts": 1729092185
             }
         };
         for (var k in vD) {
