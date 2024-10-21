@@ -304,6 +304,7 @@ window._vwo_pc_custom = {
 <button id="cta-click-element" class="btn btn-primary">Click to Start Campaign Button</button>
 
 <script>
+window.VWO = window.VWO || []
 window.VWO.push(['onSplitRedirectionDecided', (data) => {
     console.log(data);
 }]);
