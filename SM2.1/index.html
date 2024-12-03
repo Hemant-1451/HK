@@ -110,9 +110,10 @@ window._vwo_pc_custom = {
       // Show the target section
       const targetSection = document.getElementById(route);
       if (targetSection) {
-        targetSection.classList.add('active');
+       
         // Update the browser's URL without reloading
         window.history.pushState({ route }, "", `#${route}`);
+ targetSection.classList.add('active');
       }
     }
 
