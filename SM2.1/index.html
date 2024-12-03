@@ -25,9 +25,10 @@ window._vwo_pc_custom = {
     };
 </script>
 <!-- End VWO Async SmartCode -->
+ 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPA Navigation Example</title>
+  <title>SPA-like Navigation</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -35,14 +36,14 @@ window._vwo_pc_custom = {
       padding: 0;
     }
     .content {
-      height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: #f5f5f5;
+      height: 100vh;
     }
-    #feedbackForm {
-      margin-top: 50px;
+    .hidden {
+      display: none;
     }
     button {
       padding: 10px 20px;
@@ -79,31 +80,34 @@ window._vwo_pc_custom = {
   </style>
 </head>
 <body>
-  <!-- Section for the Button -->
-  <div class="content">
+  <!-- Home Section -->
+  <div id="home" class="content">
+    <h1>Welcome to Our SPA Example</h1>
     <button id="navigateToForm">Go to Feedback Form</button>
   </div>
 
-  <!-- Section for the Feedback Form -->
-  <div class="content" id="formContainer">
+  <!-- Feedback Form Section -->
+  <div id="form" class="content hidden">
     <form action="feedback.html" id="feedbackForm">
       <label for="question">
         If you're facing any problem, please write to us. We'll solve the issue at the earliest.
       </label>
-      <br><br><br>
+      <br><br>
       <input class="feedBackForm" id="answer" name="feedback" placeholder="Text" size="100" type="text" value="" autocomplete="off">
       <br><br>
       <input type="submit" value="Submit">
     </form>
   </div>
 
-  <!-- JavaScript for SPA Navigation -->
+  <!-- JavaScript for SPA-like Navigation -->
   <script>
     document.getElementById("navigateToForm").addEventListener("click", function () {
-      const formContainer = document.getElementById("formContainer");
-      formContainer.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("home").classList.add("hidden"); // Hide the home section
+      document.getElementById("form").classList.remove("hidden"); // Show the form section
     });
   </script>
 </body>
+</html>
+
 </html>
 
