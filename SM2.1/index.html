@@ -26,9 +26,10 @@ window._vwo_pc_custom = {
 </script>
 <!-- End VWO Async SmartCode -->
  
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPA-like Navigation</title>
+  <title>True SPA Example</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -36,14 +37,14 @@ window._vwo_pc_custom = {
       padding: 0;
     }
     .content {
-      display: flex;
-      flex-direction: column;
+      display: none;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      text-align: center;
     }
-    .hidden {
-      display: none;
+    .content.active {
+      display: flex;
     }
     button {
       padding: 10px 20px;
@@ -81,13 +82,13 @@ window._vwo_pc_custom = {
 </head>
 <body>
   <!-- Home Section -->
-  <div id="home" class="content">
+  <div id="home" class="content active">
     <h1>Welcome to Our SPA Example</h1>
-    <button id="navigateToForm">Go to Feedback Form</button>
+    <button data-route="form">Go to Feedback Form</button>
   </div>
 
   <!-- Feedback Form Section -->
-  <div id="form" class="content hidden">
+  <div id="form" class="content">
     <form action="feedback.html" id="feedbackForm">
       <label for="question">
         If you're facing any problem, please write to us. We'll solve the issue at the earliest.
@@ -99,15 +100,41 @@ window._vwo_pc_custom = {
     </form>
   </div>
 
-  <!-- JavaScript for SPA-like Navigation -->
+  <!-- JavaScript for True SPA -->
   <script>
-    document.getElementById("navigateToForm").addEventListener("click", function () {
-      document.getElementById("home").classList.add("hidden"); // Hide the home section
-      document.getElementById("form").classList.remove("hidden"); // Show the form section
+    // Function to handle routing
+    function navigateTo(route) {
+      // Hide all sections
+      document.querySelectorAll('.content').forEach(section => section.classList.remove('active'));
+      
+      // Show the target section
+      const targetSection = document.getElementById(route);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        // Update the browser's URL without reloading
+        window.history.pushState({ route }, "", `#${route}`);
+      }
+    }
+
+    // Event Listener for buttons
+    document.querySelectorAll('button[data-route]').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const route = event.target.getAttribute('data-route');
+        navigateTo(route);
+      });
     });
+
+    // Handle browser navigation (Back/Forward)
+    window.addEventListener('popstate', (event) => {
+      const route = event.state?.route || "home";
+      navigateTo(route);
+    });
+
+    // On page load, navigate to the current route in the URL hash
+    const initialRoute = window.location.hash.replace("#", "") || "home";
+    navigateTo(initialRoute);
   </script>
 </body>
 </html>
 
-</html>
 
