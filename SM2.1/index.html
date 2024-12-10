@@ -46,18 +46,25 @@ window._vwo_pc_custom = {
     .content.active {
       display: flex;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
+   button {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  z-index: 1000; /* Ensures the button stays above other elements */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
     form {
       text-align: center;
     }
@@ -145,5 +152,4 @@ window._vwo_pc_custom = {
 </script>
 </body>
 </html>
-
 
