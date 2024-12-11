@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-<!-- Start VWO SmartCode --> 
-<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/30000160.js" id="vwoCode"></script> 
-<!-- End VWO SmartCode -->
+<script>
+    (function () {
+        // Extract query parameters
+        var params = new URLSearchParams(window.location.search);
+        var accountId = params.get('id');
+        
+        // Check if accountId exists and is valid
+        if (accountId) {
+            var script = document.createElement('script');
+            script.src = `https://dev.visualwebsiteoptimizer.com/lib/${accountId}.js`;
+            script.id = "vwoCode";
+            script.referrerPolicy = "no-referrer-when-downgrade";
+            document.head.appendChild(script); // Append the script to the document head
+        } else {
+            console.error('Account ID is missing in the query parameters.');
+        }
+    })();
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
