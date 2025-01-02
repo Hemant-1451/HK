@@ -21,57 +21,55 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 
 </script>
 <!-- End VWO Async SmartCode -->
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Blob URL Example</title>
+  <title>Blob URL Example</title>
 </head>
 <body>
-  <h1>Apply CSS Using Blob URL</h1>
+  <h1>This is a Blob Website</h1>
+  <a id="divele">This is a link</a>
 
-  <p>Enter CSS (e.g., "color: red" or "background-color: blue"):</p>
-  <input type="text" id="cssInput" placeholder="Enter CSS like color: red" />
-
-  <button onclick="applyCSS()">Apply CSS with Blob URL</button>
-
-  <h2>Styled Box:</h2>
-  <div id="styledBox">
-    <p>Styled Box</p>
-  </div>
-
-  <h2>Blob URL in Action:</h2>
-  <p>Blob URL for CSS: <span id="blobUrlDisplay"></span></p>
+  <div id="myDiv">This is div</div>
 
   <script>
-    // Function to apply CSS entered in the input using Blob and apply it via URL
-    function applyCSS() {
-      const cssInput = document.getElementById('cssInput').value;  // Get the input value
+    // Create a Blob for the text content
+    const a = document.querySelector("#divele");
+    const data = "Some data to display";
 
-      if (cssInput.trim() === "") {
-        alert('Please enter valid CSS!');
-        return;
+    const blob = new Blob([data], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    // Set the Blob URL as the href for the link
+    a.href = url;
+
+    // CSS data for styling
+    const cssData = `
+      #myDiv {
+        color: blue;
+        font-size: 22px;
+        background-color: lightpink;
+        border: 2px solid black;
+        text-align: center;
+        padding: 20px;
       }
+    `;
 
-      // Create a Blob from the CSS input
-      const cssBlob = new Blob([cssInput], { type: 'text/css' });
+    // Create a Blob from the CSS
+    const cssBlob = new Blob([cssData], { type: "text/css" });
+    const cssUrl = URL.createObjectURL(cssBlob);
 
-      // Create a Blob URL from the Blob
-      const cssURL = URL.createObjectURL(cssBlob);
+    // Dynamically apply the Blob URL for the CSS
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cssUrl;
+    document.head.appendChild(link);
 
-      // Create a <style> element to dynamically inject the Blob URL as a stylesheet
-      const styleElement = document.createElement('style');
-      styleElement.setAttribute('href', cssURL);
-      document.head.appendChild(styleElement);
-
-      // Display the Blob URL in the page
-      document.getElementById('blobUrlDisplay').textContent = cssURL;
-
-      // Apply the CSS by dynamically adding it to the page
-      alert('CSS Applied from Blob URL: ' + cssURL);
-    }
+    // Modify content in the div
+    const div = document.querySelector("#myDiv");
+    div.innerHTML = "This div uses a Blob URL for its styles!";
   </script>
 </body>
 </html>
+
 
 
