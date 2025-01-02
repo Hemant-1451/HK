@@ -21,143 +21,62 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 
 </script>
 <!-- End VWO Async SmartCode -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stylish Dark Website</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #0d1117; /* Black background */
-            color: #c9d1d9; /* Subtle light grey text */
-        }
 
-        /* Header */
-        header {
-            background-color: #161b22; /* Dark grey */
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        header h1 {
-            color: #58a6ff; /* Vibrant blue */
-            margin: 0;
-        }
-
-        /* Hero Section */
-        .hero {
-            background-color: #0d1117; /* Matches body for seamless look */
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            color: #39d353; /* Green accent */
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            color: #8b949e; /* Softer grey */
-            margin-bottom: 30px;
-        }
-
-        .hero a {
-            display: inline-block;
-            padding: 10px 20px;
-            color: #ffffff;
-            background-color: #21262d; /* Dark grey button */
-            border: 1px solid #58a6ff;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .hero a:hover {
-            background-color: #58a6ff;
-            transform: scale(1.05);
-        }
-
-        /* Features Section */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
-            justify-content: center;
-            background-color: #161b22; /* Dark grey */
-        }
-
-        .feature {
-            background-color: #21262d; /* Slightly lighter dark grey */
-            color: #c9d1d9;
-            border-radius: 8px;
-            padding: 20px;
-            width: 250px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .feature h3 {
-            color: #ff7b72; /* Red accent */
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #0d1117; /* Matches body */
-            color: #8b949e;
-        }
-
-        footer a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blob with Text and CSS Example</title>
+  <style>
+    #styledBox {
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #ccc;
+      margin-top: 20px;
+      background-color: #f0f0f0;
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Stylish Dark Website</h1>
-    </header>
+  <h1>Blob with Text and CSS Example</h1>
 
-    <section class="hero">
-        <h2>Welcome to the Future of Design</h2>
-        <p>Explore sleek dark tones and vibrant accents that make content shine.</p>
-        <a href="#">Get Started</a>
-    </section>
+  <p>Enter a CSS property (e.g., "color: red" or "background-color: blue"):</p>
+  <input type="text" id="cssInput" placeholder="Enter CSS like color: red" />
 
-    <section class="features">
-        <div class="feature">
-            <h3>Feature One</h3>
-            <p>Modern designs with seamless dark elements for a premium feel.</p>
-        </div>
-        <div class="feature">
-            <h3>Feature Two</h3>
-            <p>Responsive layouts optimized for all devices and screen sizes.</p>
-        </div>
-        <div class="feature">
-            <h3>Feature Three</h3>
-            <p>Lightweight code with vibrant accents to draw attention.</p>
-        </div>
-    </section>
+  <button onclick="applyCSS()">Apply CSS with Blob</button>
 
-    <footer>
-        &copy; 2024 Stylish Dark Website. All rights reserved. 
-        <a href="#">Privacy Policy</a>
-    </footer>
+  <h2>Styled Box:</h2>
+  <div id="styledBox">
+    <p>Styled Box</p>
+  </div>
+
+  <script>
+    // Function to apply CSS entered in the input using Blob
+    function applyCSS() {
+      const cssInput = document.getElementById('cssInput').value;  // Get the input value
+
+      // Create a Blob from the CSS text input
+      const cssBlob = new Blob([cssInput], { type: 'text/css' });
+
+      // Create a URL for the Blob (not typically used directly with style, but used here for the sake of the example)
+      const cssURL = URL.createObjectURL(cssBlob);
+
+      // Get the element to apply styles to
+      const styledBox = document.getElementById('styledBox');
+
+      // Use the Blob's content as inline CSS (for this example, we directly apply it)
+      try {
+        styledBox.style.cssText = cssInput;  // Apply the user-entered CSS to the box
+        alert('CSS Applied from Blob: ' + cssURL);  // Alert to confirm Blob URL creation
+      } catch (error) {
+        alert('Invalid CSS property! Please try again.');
+      }
+    }
+  </script>
 </body>
+</html>
+
 </html>
 
