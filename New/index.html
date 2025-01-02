@@ -22,61 +22,56 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 </script>
 <!-- End VWO Async SmartCode -->
 
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blob with Text and CSS Example</title>
-  <style>
-    #styledBox {
-      width: 300px;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 2px solid #ccc;
-      margin-top: 20px;
-      background-color: #f0f0f0;
-      font-size: 20px;
-    }
-  </style>
+  <title>CSS Blob URL Example</title>
 </head>
 <body>
-  <h1>Blob with Text and CSS Example</h1>
+  <h1>Apply CSS Using Blob URL</h1>
 
-  <p>Enter a CSS property (e.g., "color: red" or "background-color: blue"):</p>
+  <p>Enter CSS (e.g., "color: red" or "background-color: blue"):</p>
   <input type="text" id="cssInput" placeholder="Enter CSS like color: red" />
 
-  <button onclick="applyCSS()">Apply CSS with Blob</button>
+  <button onclick="applyCSS()">Apply CSS with Blob URL</button>
 
   <h2>Styled Box:</h2>
   <div id="styledBox">
     <p>Styled Box</p>
   </div>
 
+  <h2>Blob URL in Action:</h2>
+  <p>Blob URL for CSS: <span id="blobUrlDisplay"></span></p>
+
   <script>
-    // Function to apply CSS entered in the input using Blob
+    // Function to apply CSS entered in the input using Blob and apply it via URL
     function applyCSS() {
       const cssInput = document.getElementById('cssInput').value;  // Get the input value
 
-      // Create a Blob from the CSS text input
+      if (cssInput.trim() === "") {
+        alert('Please enter valid CSS!');
+        return;
+      }
+
+      // Create a Blob from the CSS input
       const cssBlob = new Blob([cssInput], { type: 'text/css' });
 
-      // Create a URL for the Blob (not typically used directly with style, but used here for the sake of the example)
+      // Create a Blob URL from the Blob
       const cssURL = URL.createObjectURL(cssBlob);
 
-      // Get the element to apply styles to
-      const styledBox = document.getElementById('styledBox');
+      // Create a <style> element to dynamically inject the Blob URL as a stylesheet
+      const styleElement = document.createElement('style');
+      styleElement.setAttribute('href', cssURL);
+      document.head.appendChild(styleElement);
 
-      // Use the Blob's content as inline CSS (for this example, we directly apply it)
-      try {
-        styledBox.style.cssText = cssInput;  // Apply the user-entered CSS to the box
-        alert('CSS Applied from Blob: ' + cssURL);  // Alert to confirm Blob URL creation
-      } catch (error) {
-        alert('Invalid CSS property! Please try again.');
-      }
+      // Display the Blob URL in the page
+      document.getElementById('blobUrlDisplay').textContent = cssURL;
+
+      // Apply the CSS by dynamically adding it to the page
+      alert('CSS Applied from Blob URL: ' + cssURL);
     }
   </script>
 </body>
 </html>
 
-</html>
 
