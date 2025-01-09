@@ -21,9 +21,13 @@ window._vwo_code || (function() {
         cc = {};
 
     try {
-        var c = JSON.parse(localStorage.getItem("_vwo_" + account_id + "_config"));
-        cc = c && typeof c === "object" ? c : {};
-    } catch (e) {}
+    var configItem = localStorage.getItem("_vwo_" + account_id + "_config");
+    var c = configItem ? JSON.parse(configItem) : null;
+    cc = c && typeof c === "object" ? c : {};
+} catch (e) {
+    cc = {}; // Fallback to an empty object in case of an error
+}
+
 
     var stT = cc.stT === "session" ? w.sessionStorage : w.localStorage;
 
