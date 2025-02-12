@@ -304,11 +304,65 @@ window._vwo_pc_custom = { a: 100, t: 100 };
     </style>
 </head>
 <body class="ce20v2-template">
-<button onclick="triggerError()">Click me to trigger a console error</button>
+    <button onclick="triggerAllErrors()">Click me to trigger multiple errors</button>
 
     <script>
-        function triggerError() {
-            console.error("This is a triggered console error!");
+        function triggerAllErrors() {
+            // 1. Simulate a network error
+            fetch('https://nonexistent-url.com')
+                .then(response => {
+                    // This won't happen because the URL is invalid.
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.error('Network error:', error); // This triggers a network error
+                });
+
+            // 2. Simulate a console error
+            console.error('This is a manual console error!');
+
+            // 3. Simulate an uncaught exception
+            throw new Error('This is an uncaught exception!');
+
+            // 4. Simulate a Syntax Error (invalid JavaScript)
+            // Uncommenting the next line would cause a SyntaxError
+            // eval('var x = ;'); // SyntaxError: Unexpected token ;
+
+            // 5. Simulate a TypeError (incompatible operation)
+            try {
+                null.funct(); // Trying to call a method on null
+            } catch (e) {
+                console.error('TypeError:', e);
+            }
+
+            // 6. Simulate a ReferenceError (undefined variable)
+            try {
+                console.log(nonExistentVar); // Trying to log an undefined variable
+            } catch (e) {
+                console.error('ReferenceError:', e);
+            }
+
+            // 7. Simulate a RangeError (invalid array size)
+            try {
+                let arr = new Array(-1); // Array size cannot be negative
+            } catch (e) {
+                console.error('RangeError:', e);
+            }
+
+            // 8. Simulate a Custom Error
+            try {
+                throw new CustomError('This is a custom error');
+            } catch (e) {
+                console.error('Custom Error:', e);
+            }
+        }
+
+        // Custom error class
+        class CustomError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = 'CustomError';
+            }
         }
     </script>
 <div id = "abc">
