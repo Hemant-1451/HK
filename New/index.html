@@ -23,53 +23,211 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 <!-- End VWO Async SmartCode -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blob URL Example</title>
+  <title>Stylish Page with Animations</title>
+  <style type="text/html">
+    /* Basic Reset */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Body Styling */
+    body {
+        line-height: 1.6;
+        background-color: #f0f4f8;
+        color: #333;
+        padding: 20px;
+        font-size: 18px;
+    }
+
+    /* Header Styling */
+    header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        animation: fadeInHeader 3s ease-out;
+    }
+
+    header h1 {
+        font-size: 3rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: slideInFromLeft 3s ease-out;
+    }
+
+    header p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        opacity: 0;
+        animation: fadeInText 3s ease-out 1s forwards;
+    }
+
+    /* Animation for Header Text */
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInHeader {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInText {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Main Section Styling */
+    main {
+        margin-top: 40px;
+    }
+
+    section {
+        margin-bottom: 40px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transform: translateY(100px);
+        opacity: 0;
+        animation: fadeUp 2s ease-out forwards;
+    }
+
+    section h2 {
+        color: #444;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    section ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    section ul li {
+        font-size: 1.3rem;
+        margin: 15px 0;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    section ul li:hover {
+        transform: translateX(15px);
+        color: #e74c3c;
+    }
+
+    /* Footer Styling */
+    footer {
+        text-align: center;
+        padding: 30px;
+        background-color: #333;
+        color: white;
+        margin-top: 40px;
+        border-radius: 8px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        animation: fadeInFooter 2.5s ease-out forwards;
+    }
+
+    /* Hover Animation on Footer Text */
+    footer:hover {
+        background-color: #2c3e50;
+    }
+
+    /* Keyframe for Section Animation */
+    @keyframes fadeUp {
+        0% {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInFooter {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    /* Button Styling */
+    .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        margin-top: 20px;
+        background-color: #3498db;
+        color: white;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none;
+    }
+
+    .btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+    }
+
+    /* Additional Styling */
+    h1, h2 {
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    }
+
+  </style>
 </head>
 <body>
-  <h1>This is a Blob Website</h1>
-  <a id="divele">This is a link</a>
+  <header>
+    <h1>Welcome to My Stylish Page</h1>
+    <p>Experience smooth animations and modern styling!</p>
+  </header>
+  
+  <main>
+    <section>
+      <h2>About</h2>
+      <p>This page demonstrates various animations and design elements like hover effects and smooth transitions. It's all about providing a modern and engaging experience for users.</p>
+    </section>
 
-  <div id="myDiv">This is div</div>
+    <section>
+      <h2>Services</h2>
+      <ul>
+        <li>Web Development</li>
+        <li>Graphic Design</li>
+        <li>Consultation</li>
+      </ul>
+      <a href="#" class="btn">Learn More</a>
+    </section>
+  </main>
 
-  <script>
-    // Create a Blob for the text content
-    const a = document.querySelector("#divele");
-    const data = "Some data to display";
-
-    const blob = new Blob([data], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-
-    // Set the Blob URL as the href for the link
-    a.href = url;
-
-    // CSS data for styling
-    const cssData = `
-      #myDiv {
-        color: blue;
-        font-size: 22px;
-        background-color: lightpink;
-        border: 2px solid black;
-        text-align: center;
-        padding: 20px;
-      }
-    `;
-
-    // Create a Blob from the CSS
-    const cssBlob = new Blob([cssData], { type: "text/css" });
-    const cssUrl = URL.createObjectURL(cssBlob);
-
-    // Dynamically apply the Blob URL for the CSS
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = cssUrl;
-    document.head.appendChild(link);
-
-    // Modify content in the div
-    const div = document.querySelector("#myDiv");
-    div.innerHTML = "This div uses a Blob URL for its styles!";
-  </script>
+  <footer>
+    <p>&copy; 2025 My Stylish Website. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
-
-
-
