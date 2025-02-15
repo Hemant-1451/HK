@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- Start VWO Async SmartCode -->
 <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 <script type='text/javascript' id='vwoCode'>
@@ -23,211 +23,96 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 <!-- End VWO Async SmartCode -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stylish Page with Animations</title>
-  <style type="text/html">
-    /* Basic Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
-
-    /* Body Styling */
+  <title>Button Inside 20th Nested Div</title>
+  <style>
     body {
-        line-height: 1.6;
-        background-color: #f0f4f8;
-        color: #333;
-        padding: 20px;
-        font-size: 18px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
     }
 
-    /* Header Styling */
-    header {
-        background-color: #333;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        animation: fadeInHeader 3s ease-out;
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    header h1 {
-        font-size: 3rem;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        animation: slideInFromLeft 3s ease-out;
+    .box {
+      background-color: #e0e0e0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      font-size: 18px;
     }
 
-    header p {
-        font-size: 1.2rem;
-        margin-top: 10px;
-        opacity: 0;
-        animation: fadeInText 3s ease-out 1s forwards;
-    }
-
-    /* Animation for Header Text */
-    @keyframes slideInFromLeft {
-        0% {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        100% {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInHeader {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInText {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    /* Main Section Styling */
-    main {
-        margin-top: 40px;
-    }
-
-    section {
-        margin-bottom: 40px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        transform: translateY(100px);
-        opacity: 0;
-        animation: fadeUp 2s ease-out forwards;
-    }
-
-    section h2 {
-        color: #444;
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        font-weight: bold;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    section ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    section ul li {
-        font-size: 1.3rem;
-        margin: 15px 0;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    section ul li:hover {
-        transform: translateX(15px);
-        color: #e74c3c;
-    }
-
-    /* Footer Styling */
-    footer {
-        text-align: center;
-        padding: 30px;
-        background-color: #333;
-        color: white;
-        margin-top: 40px;
-        border-radius: 8px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        opacity: 0;
-        animation: fadeInFooter 2.5s ease-out forwards;
-    }
-
-    /* Hover Animation on Footer Text */
-    footer:hover {
-        background-color: #2c3e50;
-    }
-
-    /* Keyframe for Section Animation */
-    @keyframes fadeUp {
-        0% {
-            transform: translateY(100px);
-            opacity: 0;
-        }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeInFooter {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    /* Button Styling */
     .btn {
-        display: inline-block;
-        padding: 12px 30px;
-        margin-top: 20px;
-        background-color: #3498db;
-        color: white;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+      transition: background-color 0.3s;
     }
 
     .btn:hover {
-        background-color: #2980b9;
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+      background-color: #2980b9;
     }
-
-    /* Additional Styling */
-    h1, h2 {
-        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
-    }
-
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to My Stylish Page</h1>
-    <p>Experience smooth animations and modern styling!</p>
-  </header>
-  
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>This page demonstrates various animations and design elements like hover effects and smooth transitions. It's all about providing a modern and engaging experience for users.</p>
-    </section>
 
-    <section>
-      <h2>Services</h2>
-      <ul>
-        <li>Web Development</li>
-        <li>Graphic Design</li>
-        <li>Consultation</li>
-      </ul>
-      <a href="#" class="btn">Learn More</a>
-    </section>
-  </main>
+  <div class="container">
+    <!-- Start with the first div -->
+    <div class="box" id="div1">
+      <div class="box" id="div2">
+        <div class="box" id="div3">
+          <div class="box" id="div4">
+            <div class="box" id="div5">
+              <div class="box" id="div6">
+                <div class="box" id="div7">
+                  <div class="box" id="div8">
+                    <div class="box" id="div9">
+                      <div class="box" id="div10">
+                        <div class="box" id="div11">
+                          <div class="box" id="div12">
+                            <div class="box" id="div13">
+                              <div class="box" id="div14">
+                                <div class="box" id="div15">
+                                  <div class="box" id="div16">
+                                    <div class="box" id="div17">
+                                      <div class="box" id="div18">
+                                        <div class="box" id="div19">
+                                          <!-- The 20th div with the button inside -->
+                                          <div class="box" id="div20">
+                                            <p>This is the 20th div.</p>
+                                            <button class="btn">Click Me!</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 My Stylish Website. All Rights Reserved.</p>
-  </footer>
 </body>
 </html>
