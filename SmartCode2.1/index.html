@@ -304,7 +304,11 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     </style>
 </head>
 <body class="ce20v2-template">
-    <button onclick="triggerAllErrors()">Click me to trigger multiple errors</button>
+<button id="submitButton" class="btn-primary btn-large" type="button">
+  Submit
+</button>
+
+    <button id="errorclickid" class ="errorclickclass" type="button" onclick="triggerAllErrors()">Click me to trigger multiple errors</button>
 
     <script>
         function triggerAllErrors() {
