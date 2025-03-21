@@ -304,6 +304,158 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     </style>
 </head>
 <body class="ce20v2-template">
+
+<!-- Standard Text Input -->
+<input type="text" id="text-input" placeholder="Enter text" class="input text form-control" />
+
+<!-- Text Input with Multiple Classes -->
+<input type="text" class="input text form-control" id="text-input-multiple-classes" placeholder="Text with multiple classes" />
+
+<!-- Disabled Text Input -->
+<input type="text" id="disabled-text-input" disabled placeholder="This is disabled" />
+
+<!-- Readonly Text Input -->
+<input type="text" id="readonly-text-input" readonly value="Readonly text" />
+
+<!-- Text Input with Placeholder -->
+<input type="text" id="input-with-placeholder" placeholder="This is a placeholder" />
+<!-- Password Input -->
+<input type="password" id="password-input" placeholder="Enter password" />
+
+<!-- Disabled Password Input -->
+<input type="password" id="disabled-password-input" disabled placeholder="Disabled password input" />
+<!-- Email Input -->
+<input type="email" id="email-input" placeholder="Enter your email" />
+
+<!-- Email Input with Placeholder -->
+<input type="email" id="email-input-placeholder" placeholder="Email placeholder" />
+<!-- Single Radio Button -->
+<input type="radio" name="radio-group" id="radio-button" value="option1" />
+
+<!-- Radio Button Group -->
+<input type="radio" name="radio-group" id="radio1" value="option1" checked />
+<input type="radio" name="radio-group" id="radio2" value="option2" />
+
+<!-- Disabled Radio Button -->
+<input type="radio" name="radio-group" id="disabled-radio-button" disabled value="disabled" />
+<!-- Single Checkbox -->
+<input type="checkbox" id="checkbox" />
+
+<!-- Checkbox Group -->
+<input type="checkbox" name="checkbox-group" id="checkbox1" />
+<input type="checkbox" name="checkbox-group" id="checkbox2" checked />
+
+<!-- Disabled Checkbox -->
+<input type="checkbox" id="disabled-checkbox" disabled />
+<!-- File Upload -->
+<input type="file" id="file-upload" />
+
+<!-- File Upload with Multiple Files -->
+<input type="file" id="file-upload-multiple" multiple />
+
+<!-- Disabled File Upload -->
+<input type="file" id="disabled-file-upload" disabled />
+<!-- File Upload -->
+<input type="file" id="file-upload" />
+
+<!-- File Upload with Multiple Files -->
+<input type="file" id="file-upload-multiple" multiple />
+
+<!-- Disabled File Upload -->
+<input type="file" id="disabled-file-upload" disabled />
+<!-- Textarea -->
+<textarea id="textarea" placeholder="Enter some text here"></textarea>
+
+<!-- Textarea with Placeholder -->
+<textarea id="textarea-placeholder" placeholder="Textarea with placeholder"></textarea>
+
+<!-- Disabled Textarea -->
+<textarea id="disabled-textarea" disabled placeholder="This textarea is disabled"></textarea>
+<!-- Select Dropdown -->
+<select id="dropdown">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3" selected>Option 3</option>
+</select>
+
+<!-- Multiple Select Dropdown -->
+<select id="multi-dropdown" multiple>
+  <option value="option1" selected>Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3" selected>Option 3</option>
+</select>
+
+<!-- Disabled Select Dropdown -->
+<select id="disabled-dropdown" disabled>
+  <option value="option1">Option 1</option>
+  <option value="option2" selected>Option 2</option>
+</select>
+<!-- Hidden Input -->
+<input type="hidden" id="hidden-input" value="Hidden value" />
+<!-- Submit Button -->
+<button type="submit" id="submit-button">Submit</button>
+
+<!-- Disabled Submit Button -->
+<button type="submit" id="disabled-submit-button" disabled>Submit</button>
+
+<!-- Button with Custom Attribute -->
+<button type="button" id="custom-button" custom-attr="value">Custom Button</button>
+<!-- Create a Shadow DOM container -->
+<div id="shadow-host"></div>
+
+<script>
+  const shadowRoot = document.getElementById('shadow-host').attachShadow({mode: 'open'});
+
+  shadowRoot.innerHTML = `
+    <!-- Text Input Inside Shadow DOM -->
+    <input type="text" id="shadow-input" placeholder="Enter text inside Shadow DOM" />
+    
+    <!-- Password Input Inside Shadow DOM -->
+    <input type="password" id="shadow-password" placeholder="Password inside Shadow DOM" />
+    
+    <!-- Email Input Inside Shadow DOM -->
+    <input type="email" id="shadow-email" placeholder="Email inside Shadow DOM" />
+    
+    <!-- Checkbox Inside Shadow DOM -->
+    <input type="checkbox" id="shadow-checkbox" />
+    
+    <!-- Radio Button Inside Shadow DOM -->
+    <input type="radio" name="radio-group-shadow" id="shadow-radio" value="option1" />
+    
+    <!-- File Upload Inside Shadow DOM -->
+    <input type="file" id="shadow-file-upload" />
+    
+    <!-- Textarea Inside Shadow DOM -->
+    <textarea id="shadow-textarea" placeholder="Enter text inside Shadow DOM"></textarea>
+    
+    <!-- Select Dropdown Inside Shadow DOM -->
+    <select id="shadow-dropdown">
+      <option value="option1">Option 1</option>
+      <option value="option2" selected>Option 2</option>
+    </select>
+
+    <!-- Input with Custom Attribute Inside Shadow DOM -->
+    <input type="text" id="shadow-input-custom" custom-attr="value" />
+  `;
+</script>
+<!-- Multiple Inputs with the Same Selector -->
+<input type="text" class="input-field" placeholder="First input" />
+<input type="text" class="input-field" placeholder="Second input" />
+<input type="text" class="input-field" placeholder="Third input" />
+<!-- Dynamically Added Input Field -->
+<div id="dynamic-container"></div>
+
+<script>
+  // Dynamically add input field
+  const dynamicInput = document.createElement('input');
+  dynamicInput.type = 'text';
+  dynamicInput.id = 'dynamic-input';
+  dynamicInput.placeholder = 'Dynamically added input';
+  document.getElementById('dynamic-container').appendChild(dynamicInput);
+</script>
+<!-- Input with JavaScript Event Listeners -->
+<input type="text" id="event-input" placeholder="Type something" oninput="console.log(this.value)" />
+
 <button id="submitButton" class="btn-primary btn-large" type="button">
   Submit
 </button>
