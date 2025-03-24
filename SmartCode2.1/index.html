@@ -438,6 +438,57 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     <input type="text" id="shadow-input-custom" custom-attr="value" />
   `;
 </script>
+<div id="host1"></div>
+    <script>
+        // Create the first shadow root
+        const host1 = document.getElementById('host1');
+        const shadowRoot1 = host1.attachShadow({mode: 'open'});
+
+        // Add some content inside the first shadow DOM
+        shadowRoot1.innerHTML = `
+            <div>
+                <h3>First Shadow DOM</h3>
+                <div id="host2"></div>
+            </div>
+        `;
+
+        // Create the second shadow root inside the first shadow DOM
+        const host2 = shadowRoot1.getElementById('host2');
+        const shadowRoot2 = host2.attachShadow({mode: 'open'});
+
+        // Add input fields inside the second shadow DOM
+        shadowRoot2.innerHTML = `
+            <label for="input1">Input 1: </label>
+            <input type="text" id="input1" name="input1"><br><br>
+            <label for="input2">Input 2: </label>
+            <input type="text" id="input2" name="input2">
+    <!-- Email Input Inside Shadow DOM -->
+    <input type="email" id="shadow-email" placeholder="Email inside Shadow DOM" />
+    
+    <!-- Checkbox Inside Shadow DOM -->
+    <input type="checkbox" id="shadow-checkbox" />
+    
+    <!-- Radio Button Inside Shadow DOM -->
+    <input type="radio" name="radio-group-shadow" id="shadow-radio" value="option1" />
+    
+    <!-- File Upload Inside Shadow DOM -->
+    <input type="file" id="shadow-file-upload" />
+    
+    <!-- Textarea Inside Shadow DOM -->
+    <textarea id="shadow-textarea" placeholder="Enter text inside Shadow DOM"></textarea>
+    
+    <!-- Select Dropdown Inside Shadow DOM -->
+    <select id="shadow-dropdown">
+      <option value="option1">Option 1</option>
+      <option value="option2" selected>Option 2</option>
+    </select>
+
+    <!-- Input with Custom Attribute Inside Shadow DOM -->
+    <input type="text" id="shadow-input-custom" custom-attr="value" />
+        `;
+    </script>
+
+
 <!-- Multiple Inputs with the Same Selector -->
 <input type="text" class="input-field" placeholder="First input" />
 <input type="text" class="input-field" placeholder="Second input" />
