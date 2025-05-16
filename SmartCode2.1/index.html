@@ -304,7 +304,28 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     </style>
 </head>
 <body class="ce20v2-template">
+  <div id="shadow-host"></div>
 
+  <script>
+    const host = document.querySelector("#shadow-host");
+    const shadowRoot = host.attachShadow({ mode: "open" });
+
+    shadowRoot.innerHTML = `
+      <style>
+        form {
+          padding: 1rem;
+          border: 1px solid #ccc;
+        }
+      </style>
+      <form action="https://httpbin.org/post" method="POST">
+        <label>
+          Name:
+          <input type="text" name="name" required />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    `;
+  </script>
 <div id="root12">
     <div class="app">
       <div class="dashboard">
