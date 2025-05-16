@@ -304,29 +304,16 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
     </style>
 </head>
 <body class="ce20v2-template">
-  <custom-form></custom-form>
+ <form id="shadowForm" method="POST" action="contact_us1.html"></form>
 
   <script>
-    class CustomForm extends HTMLElement {
-      constructor() {
-        super();
-        const shadow = this.attachShadow({ mode: 'open' });
+    const form = document.getElementById('shadowForm');
+    const shadow = form.attachShadow({ mode: 'open' });
 
-        // Create form element inside Shadow DOM
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = 'contact_us1.html';
-
-        form.innerHTML = `
-          <input type="text" id="suggestion" name="suggestion" placeholder="Enter your suggestion here..." required>
-          <input type="submit" value="Submit">
-        `;
-
-        shadow.appendChild(form);
-      }
-    }
-
-    customElements.define('custom-form', CustomForm);
+    shadow.innerHTML = `
+      <input type="text" id="suggestion" name="suggestion" placeholder="Enter your suggestion here..." required>
+      <input type="submit" value="Submit">
+    `;
   </script>
 <div id="root12">
     <div class="app">
