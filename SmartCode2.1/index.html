@@ -1339,55 +1339,58 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 <button id="openModal">Open Bottom Modal (Shadow DOM)</button>
-  <div id="shadow-host"></div>
+  <div id="shadow-host-modal"></div>
 
   <script>
-    const host = document.getElementById('shadow-host');
-    const shadowRoot = host.attachShadow({ mode: 'open' });
+document.addEventListener('DOMContentLoaded', function () {
+  const host = document.getElementById('shadow-host-modal');
+  const shadowRoot = host.attachShadow({ mode: 'open' });
 
-    const modalHTML = `
-      <style>
-        .modal-container {
-          position: fixed;
-          bottom: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: white;
-          padding: 16px 24px;
-          border-radius: 12px;
-          box-shadow: 0 0 10px rgba(0,0,0,0.3);
-          z-index: 1000;
-        }
-        .modal-container[hidden] {
-          display: none;
-        }
-        .close-btn {
-          margin-top: 10px;
-        }
-      </style>
-      <div class="modal-container" id="modalOverlay" hidden>
-        <div class="modal-content">
-          <h4>Bottom Modal</h4>
-          <p>This modal is fixed at the bottom and inside Shadow DOM.</p>
-          <button class="close-btn" id="closeModal">Close</button>
-        </div>
+  const modalHTML = `
+    <style>
+      .modal-container {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 16px 24px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+      }
+      .modal-container[hidden] {
+        display: none;
+      }
+      .close-btn {
+        margin-top: 10px;
+      }
+    </style>
+    <div class="modal-container" id="modalOverlay" hidden>
+      <div class="modal-content">
+        <h4>Bottom Modal</h4>
+        <p>This modal is fixed at the bottom and inside Shadow DOM.</p>
+        <button class="close-btn" id="closeModal">Close</button>
       </div>
-    `;
+    </div>
+  `;
 
-    shadowRoot.innerHTML = modalHTML;
+  shadowRoot.innerHTML = modalHTML;
 
-    const overlay = shadowRoot.getElementById('modalOverlay');
-    const openBtn = document.getElementById('openModal');
-    const closeBtn = shadowRoot.getElementById('closeModal');
+  const overlay = shadowRoot.getElementById('modalOverlay');
+  const closeBtn = shadowRoot.getElementById('closeModal');
+  const openBtn = document.getElementById('openModal');
 
-    openBtn.addEventListener('click', () => {
-      overlay.hidden = false;
-    });
+  openBtn.addEventListener('click', () => {
+    overlay.hidden = false;
+  });
 
-    closeBtn.addEventListener('click', () => {
-      overlay.hidden = true;
-    });
-  </script>
+  closeBtn.addEventListener('click', () => {
+    overlay.hidden = true;
+  });
+});
+</script>
+
 
 <p>
     <a href="https://saiganesh98.github.io/latestsc20/?id=29000013">Ganesh's Page Version 2.0</a><br>
