@@ -3,8 +3,16 @@
 <head>     
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- Start VWO SmartCode --> 
-<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/918943.js" id="vwoCode"></script> 
+<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/848489.js" id="vwoCode"></script> 
 <!-- End VWO SmartCode -->
+<script>
+window.VWO = window.VWO || [];
+VWO.push(['onEventReceive', 'tSC', ()=>{
+     const uuid = VWO.get('visitor.id');
+     const sessionId = VWO._.sessionInfoService.getSessionId();
+     console.log('VWO data', uuid, sessionId)
+}]);
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
