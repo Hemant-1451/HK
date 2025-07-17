@@ -309,6 +309,15 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
     </style>
 </head>
 <body class="ce20v2-template">
+<script type="text/javascript">
+
+window.VWO = window.VWO || [];
+VWO.push(['onEventReceive', 'nSC', ()=>{
+     const uuid = VWO.get('visitor.id');
+     const sessionId = VWO._.sessionInfoService.getSessionId();
+     console.log('VWO data', uuid, sessionId)
+}]);
+</script>
  <form id="shadowForm" method="POST" action="contact_us1.html"></form>
 
   <script>
