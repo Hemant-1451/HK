@@ -6,6 +6,14 @@
 <!-- Start VWO SmartCode --> 
 <script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/4000506.js" id="vwoCode">
 </script>
+<script>
+window.VWO = window.VWO || [];
+VWO.push(['onEventReceive', 'nSC', ()=>{
+     const uuid = VWO.get('visitor.id');
+     const sessionId = VWO._.sessionInfoService.getSessionId();
+     console.log('VWO data', uuid, sessionId)
+}]);
+</script>
 <!-- End VWO SmartCode -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
