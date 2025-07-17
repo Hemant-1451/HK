@@ -24,8 +24,13 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 <!-- End VWO Async SmartCode -->
 
 <script type="text/javascript">
-    window._vis_opt_queue = window._vis_opt_queue || [];
-    window._vis_opt_queue.push(function() {_vis_opt_goal_conversion(200);});
+
+window.VWO = window.VWO || [];
+VWO.push(['onEventReceive', 'nSC', ()=>{
+     const uuid = VWO.get('visitor.id');
+     const sessionId = VWO._.sessionInfoService.getSessionId();
+     console.log('VWO data', uuid, sessionId)
+}]);
 </script>
     
 <meta charset="UTF-8">
