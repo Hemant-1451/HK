@@ -26,7 +26,7 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 <script type="text/javascript">
 
 window.VWO = window.VWO || [];
-VWO.push(['onEventReceive', 'nSC', ()=>{
+VWO.push(['onEventReceive', 'tSC', ()=>{
      const uuid = VWO.get('visitor.id');
      const sessionId = VWO._.sessionInfoService.getSessionId();
      console.log('VWO data', uuid, sessionId)
