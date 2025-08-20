@@ -21,16 +21,13 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 </head>
 <body>
   <h1>Nested CSS Test Page</h1>
-  <p>If everything is correct, you should see:</p>
-  <ul>
-    <li>Green background</li>
-    <li>Custom font applied</li>
-    <li>Background image visible</li>
-    <li>Icon loaded via nested CSS</li>
-    <li>No 404s in DevTools</li>
-  </ul>
+  <p>If everything loads correctly, you should see distinct styles below:</p>
 
-  <div class="test-box">Box with background image</div>
-  <div class="icon"></div>
+  <div class="case case1">Case 1: main.css</div>
+  <div class="case case2">Case 2: secondary.css</div>
+  <div class="case case3">Case 3: deeper.css (font)</div>
+  <div class="case case4">Case 4: rootbased.css</div>
+  <div class="case case5">Case 5: Background image</div>
+  <div class="case case6">Case 6: Icon</div>
 </body>
 </html>
