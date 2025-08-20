@@ -1,0 +1,13 @@
+/* ✅ Root CSS (new import) */
+
+/* Case 1: Direct @import (relative path) */
+@import url("nested/secondary.css");
+
+/* Case 2: Direct @import (absolute path from root) */
+@import url("/css/nested/rootbased.css");
+
+/* Base styles */
+body {
+  background: lightgreen; /* should show green */
+  font-family: 'CustomFont', sans-serif;
+}
