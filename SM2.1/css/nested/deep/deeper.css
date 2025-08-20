@@ -3,7 +3,7 @@
   font-family: 'CustomFont';
   src: url("../../assets/fonts/custom.woff2") format("woff2");
 }
-
+ 
 .case3 {
   background: pink;
   border: 3px dotted red;
