@@ -1,3 +1,6 @@
+/* Nested import to deeper.css */
+@import url("deep/deeper.css");
+
 /* Case 2: Loaded via @import (relative) */
 .case2 {
   background: lightblue;
@@ -5,8 +8,7 @@
   color: navy;
 }
  
-/* Nested import to deeper.css */
-@import url("deep/deeper.css");
+
 
 /* Background image test */
 .case5 {
