@@ -4,7 +4,8 @@
 @import url("nested/secondary.css");
 
 /* Case 2: Direct @import (absolute path from root) */
-@import url("/css/nested/rootbased.css");
+@import url("nested/rootbased.css");
+
 
 /* Base styles */
 body {
