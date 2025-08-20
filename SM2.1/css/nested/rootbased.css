@@ -1,4 +1,6 @@
-/* ✅ Absolute/root-based CSS import */
-h1 {
-  color: darkblue;
+/* Case 4: Rootbased import */
+.case4 {
+  background: lightyellow;
+  border: 3px solid orange;
+  color: orange;
 }
