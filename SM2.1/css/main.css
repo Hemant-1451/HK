@@ -1,11 +1,9 @@
-/* Case 1: Base new import */
+/* @import must come first */
+@import url("./nested/secondary.css");
+@import url("./nested/rootbased.css");
+
+/* Now your base styles */
 .case1 { 
   background: lightgreen;
   border: 3px solid darkgreen;
 }
-
-/* @import relative secondary.css */
-@import url("nested/secondary.css");
-
-/* @import rootbased.css (relative safer form) */
-@import url("nested/rootbased.css");
