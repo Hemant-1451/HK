@@ -12,6 +12,6 @@
 
 /* Background image test */
 .case5 {
-  background: url("../assets/bg.png") no-repeat center/contain;
+  background: url("../images.jpeg") no-repeat center/contain;
   height: 100px;
 }
