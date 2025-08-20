@@ -1,15 +1,20 @@
-/* ✅ Deep nested CSS */
-
-/* Case 5: Font import (relative path) */
+/* Case 3: Font test */
 @font-face {
   font-family: 'CustomFont';
   src: url("../../assets/fonts/custom.woff2") format("woff2");
 }
 
-/* Case 6: Icon (root-based path) */
-.icon {
-  width: 50px;
-  height: 50px;
-  background-image: url("/css/assets/icons/star.svg");
-  background-size: cover;
+.case3 {
+  background: pink;
+  border: 3px dotted red;
+  font-family: 'CustomFont', cursive;
+  font-size: 20px;
+}
+
+/* Case 6: Icon test */
+.case6 {
+  width: 80px;
+  height: 80px;
+  background: url("/css/assets/icons/star.svg") no-repeat center/cover;
+  border: 3px solid gold;
 }
