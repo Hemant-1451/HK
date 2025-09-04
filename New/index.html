@@ -20,99 +20,150 @@ hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;ba
 f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
 
 </script>
-<!-- End VWO Async SmartCode -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Button Inside 20th Nested Div</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background-color: #f4f4f4;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .box {
-      background-color: #e0e0e0;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      font-size: 18px;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      background-color: #3498db;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 5px;
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .aria-element {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 18px;
+      border: 2px solid #333;
+      border-radius: 6px;
       cursor: pointer;
-      margin-top: 20px;
-      display: block;
-      width: 100%;
-      transition: background-color 0.3s;
+      user-select: none;
+      transition: 0.3s;
     }
-
-    .btn:hover {
-      background-color: #2980b9;
+    .aria-element[aria-disabled="true"] {
+      background: #ddd;
+      color: #666;
+      cursor: not-allowed;
+    }
+    .aria-element.active {
+      background: #0077cc;
+      color: white;
+    }
+    .hidden { display: none; }
+    .modal {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white; border: 2px solid black;
+      padding: 20px; z-index: 1000;
+    }
+    #overlay {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
     }
   </style>
 </head>
 <body>
+  <h2>Interactive ARIA Attributes Playground</h2>
 
-  <div class="container">
-    <!-- Start with the first div -->
-    <div class="box" id="div1">
-      <div class="box" id="div2">
-        <div class="box" id="div3">
-          <div class="box" id="div4">
-            <div class="box" id="div5">
-              <div class="box" id="div6">
-                <div class="box" id="div7">
-                  <div class="box" id="div8">
-                    <div class="box" id="div9">
-                      <div class="box" id="div10">
-                        <div class="box" id="div11">
-                          <div class="box" id="div12">
-                            <div class="box" id="div13">
-                              <div class="box" id="div14">
-                                <div class="box" id="div15">
-                                  <div class="box" id="div16">
-                                    <div class="box" id="div17">
-                                      <div class="box" id="div18">
-                                        <div class="box" id="div19">
-                                          <!-- The 20th div with the button inside -->
-                                          <div class="box" id="div20">
-                                            <p>This is the 20th div.</p>
-                                            <button class="btn">Click Me!</button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="aria-element" aria-hidden="false">aria-hidden (hide me)</div>
+  <div class="aria-element" aria-expanded="false" aria-controls="panel1">aria-expanded</div>
+  <div id="panel1" class="hidden">This panel expands/collapses.</div>
 
+  <div class="aria-element" aria-modal="false" aria-controls="modal1">aria-modal</div>
+  <div id="overlay"></div>
+  <div id="modal1" class="modal hidden">This is a modal. Click anywhere to close.</div>
+
+  <div class="aria-element" aria-pressed="false">aria-pressed</div>
+  <div class="aria-element" aria-selected="false">aria-selected</div>
+  <div class="aria-element" aria-checked="false">aria-checked</div>
+
+  <div class="aria-element" aria-disabled="false">aria-disabled</div>
+  <div class="aria-element" aria-busy="false">aria-busy</div>
+  <div class="aria-element" aria-invalid="false">aria-invalid</div>
+  <div class="aria-element" aria-current="false">aria-current</div>
+
+  <div class="aria-element" aria-haspopup="false" aria-controls="menu1">aria-haspopup</div>
+  <div id="menu1" class="hidden">Menu content</div>
+
+  <div class="aria-element" aria-owns="child1">aria-owns</div>
+  <div id="child1">I am owned</div>
+
+  <div class="aria-element" aria-describedby="desc1">aria-describedby</div>
+  <div id="desc1" class="hidden">This is description text</div>
+
+  <div class="aria-element" aria-labelledby="label1">aria-labelledby</div>
+  <div id="label1" class="hidden">This is label text</div>
+
+  <div class="aria-element" role="button">role=button</div>
+
+  <script>
+    document.querySelectorAll('.aria-element').forEach(el => {
+      el.addEventListener('click', () => {
+        if (el.getAttribute("aria-disabled") === "true") return; // disable clicks when aria-disabled=true
+
+        // aria-hidden → hides itself
+        if (el.hasAttribute("aria-hidden")) {
+          let val = el.getAttribute("aria-hidden") === "true" ? "false" : "true";
+          el.setAttribute("aria-hidden", val);
+          if (val === "true") el.style.display = "none"; else el.style.display = "inline-block";
+        }
+
+        // aria-expanded → toggles panel
+        if (el.hasAttribute("aria-expanded")) {
+          let val = el.getAttribute("aria-expanded") === "true" ? "false" : "true";
+          el.setAttribute("aria-expanded", val);
+          let panel = document.getElementById(el.getAttribute("aria-controls"));
+          panel.classList.toggle("hidden", val === "false");
+        }
+
+        // aria-modal → opens/closes modal
+        if (el.hasAttribute("aria-modal")) {
+          let modal = document.getElementById(el.getAttribute("aria-controls"));
+          let overlay = document.getElementById("overlay");
+          let val = el.getAttribute("aria-modal") === "true" ? "false" : "true";
+          el.setAttribute("aria-modal", val);
+          if (val === "true") {
+            modal.classList.remove("hidden"); overlay.style.display = "block";
+          } else {
+            modal.classList.add("hidden"); overlay.style.display = "none";
+          }
+          overlay.onclick = () => { modal.classList.add("hidden"); overlay.style.display = "none"; el.setAttribute("aria-modal","false"); };
+        }
+
+        // aria-pressed, selected, checked → toggle state
+        ["aria-pressed","aria-selected","aria-checked","aria-busy","aria-invalid","aria-current","aria-haspopup"].forEach(attr => {
+          if (el.hasAttribute(attr)) {
+            let val = el.getAttribute(attr) === "true" ? "false" : "true";
+            el.setAttribute(attr, val);
+            el.classList.toggle("active", val === "true");
+
+            // extra action for aria-haspopup
+            if (attr === "aria-haspopup") {
+              let menu = document.getElementById(el.getAttribute("aria-controls"));
+              menu.classList.toggle("hidden", val === "false");
+            }
+          }
+        });
+
+        // aria-disabled → disable further clicks
+        if (el.hasAttribute("aria-disabled")) {
+          let val = el.getAttribute("aria-disabled") === "true" ? "false" : "true";
+          el.setAttribute("aria-disabled", val);
+          if (val === "true") el.classList.remove("active");
+        }
+
+        // aria-describedby → reveal/hide description
+        if (el.hasAttribute("aria-describedby")) {
+          let target = document.getElementById(el.getAttribute("aria-describedby"));
+          target.classList.toggle("hidden");
+        }
+
+        // aria-labelledby → reveal/hide label
+        if (el.hasAttribute("aria-labelledby")) {
+          let target = document.getElementById(el.getAttribute("aria-labelledby"));
+          target.classList.toggle("hidden");
+        }
+
+        // role → acts like button
+        if (el.getAttribute("role") === "button") {
+          alert("You clicked a role=button element");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
