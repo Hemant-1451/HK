@@ -20,150 +20,472 @@ hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;ba
 f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
 
 </script>
+  <meta charset="utf-8" />
+  <title>ARIA Playground — Production-quality Interactive Examples</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .aria-element {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 18px;
-      border: 2px solid #333;
-      border-radius: 6px;
-      cursor: pointer;
-      user-select: none;
-      transition: 0.3s;
-    }
-    .aria-element[aria-disabled="true"] {
-      background: #ddd;
-      color: #666;
-      cursor: not-allowed;
-    }
-    .aria-element.active {
-      background: #0077cc;
-      color: white;
-    }
-    .hidden { display: none; }
-    .modal {
-      position: fixed; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: white; border: 2px solid black;
-      padding: 20px; z-index: 1000;
-    }
-    #overlay {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-    }
+    :root { --accent: #0b6cff; --success: #28a745; --danger: #d93025; --muted: #666; font-family: Inter, Roboto, Arial, sans-serif; }
+    body { margin: 0; padding: 24px; background: #f7f8fb; color: #111; }
+    header { margin-bottom: 18px; }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    p.lead { margin: 0 0 18px; color: var(--muted); }
+    main { display: grid; gap: 16px; grid-template-columns: 1fr 360px; align-items: start; }
+    .panel { background: #fff; padding: 14px; border-radius: 8px; box-shadow: 0 1px 2px rgba(16,24,40,0.04); border: 1px solid #e6e9ef; }
+    section.example { margin-bottom: 12px; }
+    section.example h2 { margin: 0 0 8px; font-size: 16px; }
+    .controls { display:flex; gap:8px; flex-wrap:wrap; }
+    button, .btn, .tab, .checkbox, .radio { border:1px solid #cbd5e1; background: #fff; padding:8px 10px; border-radius:6px; cursor:pointer; }
+    .btn:focus, button:focus, .tab:focus, .checkbox:focus, .radio:focus { outline:3px solid rgba(11,108,255,0.15); }
+    .accordion-content { margin-top:8px; padding:10px; border-radius:6px; background:#fbfdff; border:1px dashed #dbeafe; display:none; }
+    .accordion-content[aria-hidden="false"] { display:block; }
+    .modal-backdrop { display:none; position:fixed; inset:0; background:rgba(2,6,23,0.6); align-items:center; justify-content:center; z-index:60; }
+    .modal-backdrop[aria-modal="true"] { display:flex; }
+    .modal-card { width: min(480px, 95%); background:#fff; padding:16px; border-radius:8px; box-shadow: 0 6px 20px rgba(2,6,23,0.12); }
+    .tabs { display:flex; gap:6px; }
+    .tab[aria-selected="true"] { background:var(--accent); color:#fff; border-color:transparent; }
+    .checkbox[aria-checked="true"] { background:var(--success); color:#fff; border-color:transparent; }
+    .toggle[aria-pressed="true"] { background:#ffb020; color:#111; border-color:transparent; }
+    .dropdown { border:1px solid #cbd5e1; padding:10px; border-radius:6px; position:relative; display:inline-block; }
+    .menu { display:none; position:absolute; top:calc(100% + 6px); left:0; background:#fff; border:1px solid #e2e8f0; padding:8px; border-radius:6px; min-width:160px; box-shadow:0 6px 18px rgba(2,6,23,0.08); z-index:10; }
+    .menu[aria-hidden="false"] { display:block; }
+    .controlled { margin-top:8px; padding:8px; border-radius:6px; background:#f1f5f9; border:1px solid #e2e8f0; }
+    .field.error { border:1px solid var(--danger); padding:8px; border-radius:6px; background:#fff5f5; }
+    .mutations { max-height:70vh; overflow:auto; font-family:monospace; font-size:12px; background:#0f1724; color:#e2e8f0; padding:10px; border-radius:6px; }
+    .mutations .row { margin-bottom:6px; border-bottom:1px dashed rgba(255,255,255,0.04); padding-bottom:6px; }
+    .mutations time { display:block; color:#94a3b8; font-size:11px; }
+    .live { padding:8px; border-radius:6px; background:#f0fdf4; border:1px solid #bbf7d0; color:#065f46; margin-top:8px; }
+    small.note { display:block; color:var(--muted); margin-top:6px; }
   </style>
 </head>
 <body>
-  <h2>Interactive ARIA Attributes Playground</h2>
+  <header>
+    <h1>ARIA Playground — Production-quality Interactive Examples</h1>
+    <p class="lead">Interactive, keyboard-accessible examples with focus management, live region, radio group, async progress (aria-busy), aria-invalid + aria-describedby, aria-owns, and a MutationObserver log for all ARIA changes.</p>
+  </header>
 
-  <div class="aria-element" aria-hidden="false">aria-hidden (hide me)</div>
-  <div class="aria-element" aria-expanded="false" aria-controls="panel1">aria-expanded</div>
-  <div id="panel1" class="hidden">This panel expands/collapses.</div>
+  <main>
+    <div class="panel" aria-label="Examples">
+      <!-- aria-hidden -->
+      <section class="example" id="ex-aria-hidden">
+        <h2>aria-hidden</h2>
+        <p>Visible text that is intentionally hidden from assistive tech: <span aria-hidden="true">(this part is aria-hidden)</span></p>
+        <small class="note">Screen readers will ignore the <code>aria-hidden</code> span.</small>
+      </section>
 
-  <div class="aria-element" aria-modal="false" aria-controls="modal1">aria-modal</div>
-  <div id="overlay"></div>
-  <div id="modal1" class="modal hidden">This is a modal. Click anywhere to close.</div>
+      <!-- accordion / aria-expanded + aria-controls -->
+      <section class="example" id="ex-accordion">
+        <h2>Accordion — <code>aria-expanded</code> + <code>aria-controls</code></h2>
+        <button class="btn accordion-toggle" aria-expanded="false" aria-controls="acc-panel" id="acc-btn">Show curriculum details</button>
+        <div id="acc-panel" class="accordion-content" role="region" aria-labelledby="acc-btn" aria-hidden="true">
+          <p><strong>Panel content:</strong> curriculum includes modules A, B, C. This panel toggles visibility and updates ARIA attributes.</p>
+        </div>
+        <small class="note">Keyboard: <kbd>Enter</kbd> / <kbd>Space</kbd> toggle — correct for production accordions.</small>
+      </section>
 
-  <div class="aria-element" aria-pressed="false">aria-pressed</div>
-  <div class="aria-element" aria-selected="false">aria-selected</div>
-  <div class="aria-element" aria-checked="false">aria-checked</div>
+      <!-- modal with focus trap and return -->
+      <section class="example" id="ex-modal">
+        <h2>Modal — <code>aria-modal</code> + Focus Trap</h2>
+        <button class="btn" id="openModal">Open Modal</button>
+        <div id="modal" class="modal-backdrop" role="dialog" aria-modal="false" aria-labelledby="modal-title" tabindex="-1">
+          <div class="modal-card" role="document">
+            <h3 id="modal-title">Confirm Profile Save</h3>
+            <p id="modal-desc">Please confirm that you want to save changes to your profile.</p>
+            <div style="display:flex; gap:8px; margin-top:10px;">
+              <button id="confirmSave" class="btn">Confirm</button>
+              <button id="cancelModal" class="btn">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <small class="note">Modal traps focus while open and returns focus to opener on close.</small>
+      </section>
 
-  <div class="aria-element" aria-disabled="false">aria-disabled</div>
-  <div class="aria-element" aria-busy="false">aria-busy</div>
-  <div class="aria-element" aria-invalid="false">aria-invalid</div>
-  <div class="aria-element" aria-current="false">aria-current</div>
+      <!-- toggle (aria-pressed) -->
+      <section class="example" id="ex-pressed">
+        <h2>Toggle Button — <code>aria-pressed</code></h2>
+        <button class="toggle" aria-pressed="false" id="notifToggle">🔔 Enable notifications</button>
+        <small class="note">Toggles via <kbd>Enter</kbd> / <kbd>Space</kbd>.</small>
+      </section>
 
-  <div class="aria-element" aria-haspopup="false" aria-controls="menu1">aria-haspopup</div>
-  <div id="menu1" class="hidden">Menu content</div>
+      <!-- tabs (aria-selected) -->
+      <section class="example" id="ex-tabs">
+        <h2>Tabs — <code>aria-selected</code> + keyboard arrows</h2>
+        <div class="tabs" role="tablist" aria-label="Example tabs">
+          <div class="tab" role="tab" tabindex="0" aria-selected="true" id="tab1">Overview</div>
+          <div class="tab" role="tab" tabindex="-1" aria-selected="false" id="tab2">Specs</div>
+          <div class="tab" role="tab" tabindex="-1" aria-selected="false" id="tab3">Reviews</div>
+        </div>
+        <div id="tabpanel" role="tabpanel" aria-labelledby="tab1" style="margin-top:8px; padding:10px; border-radius:6px; background:#f8fafc;">
+          <strong>Overview:</strong> This is the currently selected tab content.
+        </div>
+        <small class="note">Use <kbd>ArrowLeft</kbd> / <kbd>ArrowRight</kbd> to move tabs and <kbd>Enter</kbd> / <kbd>Space</kbd> to activate.</small>
+      </section>
 
-  <div class="aria-element" aria-owns="child1">aria-owns</div>
-  <div id="child1">I am owned</div>
+      <!-- checkbox (aria-checked) -->
+      <section class="example" id="ex-checkbox">
+        <h2>Custom Checkbox — <code>role="checkbox"</code> + <code>aria-checked</code></h2>
+        <div class="checkbox" role="checkbox" aria-checked="false" tabindex="0" id="chk">Subscribe to newsletter</div>
+        <small class="note">Space/Enter toggles the value; demonstrates role-based control.</small>
+      </section>
 
-  <div class="aria-element" aria-describedby="desc1">aria-describedby</div>
-  <div id="desc1" class="hidden">This is description text</div>
+      <!-- radio group (aria-checked role=radio) -->
+      <section class="example" id="ex-radio">
+        <h2>Radio group (role="radiogroup") + radios</h2>
+        <div role="radiogroup" aria-label="Delivery speed">
+          <div class="radio" role="radio" aria-checked="true" tabindex="0">Standard</div>
+          <div class="radio" role="radio" aria-checked="false" tabindex="-1">Express</div>
+          <div class="radio" role="radio" aria-checked="false" tabindex="-1">Overnight</div>
+        </div>
+        <small class="note">Arrow keys navigate; Space/Enter selects.</small>
+      </section>
 
-  <div class="aria-element" aria-labelledby="label1">aria-labelledby</div>
-  <div id="label1" class="hidden">This is label text</div>
+      <!-- aria-disabled -->
+      <section class="example" id="ex-disabled">
+        <h2>Disabled element — <code>aria-disabled</code></h2>
+        <button class="btn" aria-disabled="true" disabled>Submit (disabled)</button>
+      </section>
 
-  <div class="aria-element" role="button">role=button</div>
+      <!-- aria-busy (async simulation) -->
+      <section class="example" id="ex-busy">
+        <h2>Progress / Async — <code>aria-busy</code></h2>
+        <div id="progress" class="panel controlled" aria-busy="false">Ready</div>
+        <div style="margin-top:8px;">
+          <button class="btn" id="startJob">Start job (simulate async)</button>
+        </div>
+        <small class="note">When aria-busy="true" a screen reader will be informed of ongoing updates.</small>
+      </section>
+
+      <!-- aria-invalid + aria-describedby (error) -->
+      <section class="example" id="ex-invalid">
+        <h2>Form error — <code>aria-invalid</code> + <code>aria-describedby</code></h2>
+        <div class="field" id="nameField">
+          <label for="nameInput">Full name</label>
+          <input id="nameInput" type="text" aria-invalid="false" aria-describedby="nameDesc" />
+          <div id="nameDesc">Enter your legal name.</div>
+        </div>
+        <div style="margin-top:8px;">
+          <button class="btn" id="triggerError">Mark invalid</button>
+          <button class="btn" id="clearError">Clear</button>
+        </div>
+        <small class="note">When invalid, the input will have <code>aria-invalid="true"</code> and a descriptive message via <code>aria-describedby</code>.</small>
+      </section>
+
+      <!-- aria-current -->
+      <section class="example" id="ex-current">
+        <h2>Nav — <code>aria-current</code></h2>
+        <nav aria-label="Primary">
+          <a href="#" id="navHome">Home</a> |
+          <a href="#" id="navAbout" aria-current="page">About</a> |
+          <a href="#" id="navContact">Contact</a>
+        </nav>
+      </section>
+
+      <!-- aria-haspopup (separate) -->
+      <section class="example" id="ex-haspopup">
+        <h2>aria-haspopup (indicates a popup)</h2>
+        <button id="btnHasPopup" aria-haspopup="true" aria-controls="popupInfo" aria-expanded="false">More info ▾</button>
+        <div id="popupInfo" class="dropdown" role="dialog" aria-hidden="true">This is additional information that behaves like a popup.</div>
+      </section>
+
+      <!-- aria-controls (separate) -->
+      <section class="example" id="ex-controls">
+        <h2>aria-controls (control relationship)</h2>
+        <button id="btnControl" aria-controls="controlledBlock">Toggle details</button>
+        <div id="controlledBlock" class="controlled" hidden>Controlled block is visible now.</div>
+      </section>
+
+      <!-- aria-owns -->
+      <section class="example" id="ex-owns">
+        <h2>aria-owns (relationship)</h2>
+        <div id="owner" aria-owns="owned">Owner element (aria-owns="owned")</div>
+        <div id="owned" style="margin-top:8px; padding:8px; background:#fff;">Owned element referenced by owner.</div>
+        <small class="note">This shows logical ownership separate from DOM order.</small>
+      </section>
+
+      <!-- aria-describedby & aria-labelledby separated -->
+      <section class="example" id="ex-describedby">
+        <h2>aria-describedby (separate)</h2>
+        <label for="bio">Bio</label>
+        <textarea id="bio" aria-describedby="bioHelp"></textarea>
+        <div id="bioHelp">Describe your role and responsibilities.</div>
+      </section>
+
+      <section class="example" id="ex-labelledby">
+        <h2>aria-labelledby (separate)</h2>
+        <h3 id="profileLbl">Profile name</h3>
+        <input aria-labelledby="profileLbl" />
+      </section>
+
+      <!-- role example -->
+      <section class="example" id="ex-role">
+        <h2>role example</h2>
+        <div role="alert">This is an <code>role="alert"</code> — screen readers announce it immediately.</div>
+        <div id="live" aria-live="polite" class="live" role="status">Status: idle</div>
+      </section>
+    </div>
+
+    <!-- Right column: mutations log + quick notes -->
+    <aside class="panel" aria-label="Mutation log and notes">
+      <h2 style="margin-top:0">ARIA Mutation Log</h2>
+      <div class="mutations" id="mutationLog" aria-live="polite" aria-atomic="true"></div>
+
+      <h3 style="margin-top:12px">Quick notes</h3>
+      <ul>
+        <li><small>Keyboard: ensure <kbd>Enter</kbd>/<kbd>Space</kbd> and arrow keys are implemented for custom widgets.</small></li>
+        <li><small>Modal traps focus while open and returns focus to opener.</small></li>
+        <li><small><code>aria-busy</code> should reflect asynchronous work in the region.</small></li>
+      </ul>
+
+      <h3 style="margin-top:12px">Observed attributes monitored</h3>
+      <pre style="background:#fff;padding:8px;border-radius:6px">[
+'aria-hidden','aria-expanded','aria-modal','aria-pressed','aria-selected',
+'aria-checked','aria-disabled','aria-busy','aria-invalid','aria-current',
+'aria-haspopup','aria-controls','aria-owns','aria-describedby','aria-labelledby','role'
+]</pre>
+    </aside>
+  </main>
 
   <script>
-    document.querySelectorAll('.aria-element').forEach(el => {
-      el.addEventListener('click', () => {
-        if (el.getAttribute("aria-disabled") === "true") return; // disable clicks when aria-disabled=true
+    /***** Utilities *****/
+    const logContainer = document.getElementById('mutationLog');
+    function logMutation(el, attr, oldVal, newVal) {
+      const time = new Date().toLocaleTimeString();
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.innerHTML = `<time>${time}</time><div><strong>${attr}</strong> on <code>${el.tagName.toLowerCase()}${el.id ? '#'+el.id:''}${el.className ? '.'+el.className.split(' ').join('.') : ''}</code> — <em>${oldVal}</em> → <em>${newVal}</em></div>`;
+      logContainer.prepend(row);
+    }
 
-        // aria-hidden → hides itself
-        if (el.hasAttribute("aria-hidden")) {
-          let val = el.getAttribute("aria-hidden") === "true" ? "false" : "true";
-          el.setAttribute("aria-hidden", val);
-          if (val === "true") el.style.display = "none"; else el.style.display = "inline-block";
-        }
+    // Attributes to observe
+    const ariaAttributes = [
+      'aria-hidden','aria-expanded','aria-modal','aria-pressed','aria-selected',
+      'aria-checked','aria-disabled','aria-busy','aria-invalid','aria-current',
+      'aria-haspopup','aria-controls','aria-owns','aria-describedby','aria-labelledby','role'
+    ];
 
-        // aria-expanded → toggles panel
-        if (el.hasAttribute("aria-expanded")) {
-          let val = el.getAttribute("aria-expanded") === "true" ? "false" : "true";
-          el.setAttribute("aria-expanded", val);
-          let panel = document.getElementById(el.getAttribute("aria-controls"));
-          panel.classList.toggle("hidden", val === "false");
-        }
-
-        // aria-modal → opens/closes modal
-        if (el.hasAttribute("aria-modal")) {
-          let modal = document.getElementById(el.getAttribute("aria-controls"));
-          let overlay = document.getElementById("overlay");
-          let val = el.getAttribute("aria-modal") === "true" ? "false" : "true";
-          el.setAttribute("aria-modal", val);
-          if (val === "true") {
-            modal.classList.remove("hidden"); overlay.style.display = "block";
-          } else {
-            modal.classList.add("hidden"); overlay.style.display = "none";
-          }
-          overlay.onclick = () => { modal.classList.add("hidden"); overlay.style.display = "none"; el.setAttribute("aria-modal","false"); };
-        }
-
-        // aria-pressed, selected, checked → toggle state
-        ["aria-pressed","aria-selected","aria-checked","aria-busy","aria-invalid","aria-current","aria-haspopup"].forEach(attr => {
-          if (el.hasAttribute(attr)) {
-            let val = el.getAttribute(attr) === "true" ? "false" : "true";
-            el.setAttribute(attr, val);
-            el.classList.toggle("active", val === "true");
-
-            // extra action for aria-haspopup
-            if (attr === "aria-haspopup") {
-              let menu = document.getElementById(el.getAttribute("aria-controls"));
-              menu.classList.toggle("hidden", val === "false");
-            }
-          }
-        });
-
-        // aria-disabled → disable further clicks
-        if (el.hasAttribute("aria-disabled")) {
-          let val = el.getAttribute("aria-disabled") === "true" ? "false" : "true";
-          el.setAttribute("aria-disabled", val);
-          if (val === "true") el.classList.remove("active");
-        }
-
-        // aria-describedby → reveal/hide description
-        if (el.hasAttribute("aria-describedby")) {
-          let target = document.getElementById(el.getAttribute("aria-describedby"));
-          target.classList.toggle("hidden");
-        }
-
-        // aria-labelledby → reveal/hide label
-        if (el.hasAttribute("aria-labelledby")) {
-          let target = document.getElementById(el.getAttribute("aria-labelledby"));
-          target.classList.toggle("hidden");
-        }
-
-        // role → acts like button
-        if (el.getAttribute("role") === "button") {
-          alert("You clicked a role=button element");
+    // Mutation observer to capture attribute changes
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        if (m.type === 'attributes' && ariaAttributes.includes(m.attributeName)) {
+          const el = m.target;
+          const oldVal = m.oldValue;
+          const newVal = el.getAttribute(m.attributeName);
+          logMutation(el, m.attributeName, oldVal, newVal);
         }
       });
     });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      subtree: true,
+      attributeOldValue: true,
+      attributeFilter: ariaAttributes
+    });
+
+    /***** Accordion (aria-expanded + aria-controls) *****/
+    const accBtn = document.querySelector('.accordion-toggle');
+    accBtn.addEventListener('click', toggleAccordion);
+    accBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAccordion(); }
+    });
+    function toggleAccordion() {
+      const panelId = accBtn.getAttribute('aria-controls');
+      const panel = document.getElementById(panelId);
+      const expanded = accBtn.getAttribute('aria-expanded') === 'true';
+      accBtn.setAttribute('aria-expanded', String(!expanded));
+      panel.setAttribute('aria-hidden', String(expanded));
+      // ensure panel is focusable when opened
+      if (!expanded) panel.setAttribute('tabindex','-1'), panel.focus();
+      else panel.removeAttribute('tabindex');
+    }
+
+    /***** Modal (aria-modal) with focus trap & returnFocus *****/
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModal');
+    const cancelModal = document.getElementById('cancelModal');
+    const confirmSave = document.getElementById('confirmSave');
+    let lastFocusedBeforeModal = null;
+
+    openModalBtn.addEventListener('click', openModal);
+    openModalBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); } });
+
+    function openModal() {
+      lastFocusedBeforeModal = document.activeElement;
+      modal.setAttribute('aria-modal','true');
+      modal.querySelector('.modal-card').focus();
+      trapFocus(modal);
+    }
+    function closeModal() {
+      modal.setAttribute('aria-modal','false');
+      releaseFocusTrap();
+      if (lastFocusedBeforeModal) lastFocusedBeforeModal.focus();
+    }
+    cancelModal.addEventListener('click', closeModal);
+    confirmSave.addEventListener('click', () => {
+      // example action
+      document.getElementById('live').textContent = 'Status: saved';
+      closeModal();
+    });
+
+    // Focus trap
+    let focusableNodes = [];
+    let handleKeydownForTrap = null;
+    function trapFocus(root) {
+      focusableNodes = root.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusableNodes.length === 0) return;
+      const first = focusableNodes[0], last = focusableNodes[focusableNodes.length-1];
+      handleKeydownForTrap = (e) => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        } else if (e.key === 'Escape') {
+          closeModal();
+        }
+      };
+      document.addEventListener('keydown', handleKeydownForTrap);
+    }
+    function releaseFocusTrap() {
+      document.removeEventListener('keydown', handleKeydownForTrap);
+      handleKeydownForTrap = null;
+    }
+
+    /***** aria-pressed toggle button *****/
+    const notifToggle = document.getElementById('notifToggle');
+    notifToggle.addEventListener('click', () => toggleAttr(notifToggle, 'aria-pressed'));
+    notifToggle.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleAttr(notifToggle, 'aria-pressed'); } });
+
+    function toggleAttr(el, attr) {
+      const val = el.getAttribute(attr) === 'true';
+      el.setAttribute(attr, String(!val));
+    }
+
+    /***** Tabs (aria-selected, keyboard navigation) *****/
+    const tabs = Array.from(document.querySelectorAll('#ex-tabs .tab'));
+    let activeTabIndex = 0;
+    tabs.forEach((t, idx) => {
+      t.addEventListener('click', () => activateTab(idx));
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); focusTab((idx+1)%tabs.length); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); focusTab((idx-1+tabs.length)%tabs.length); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateTab(idx); }
+      });
+    });
+    function focusTab(i) {
+      tabs[i].focus();
+    }
+    function activateTab(i) {
+      tabs.forEach((t, idx) => {
+        const sel = idx === i;
+        t.setAttribute('aria-selected', sel ? 'true' : 'false');
+        t.setAttribute('tabindex', sel ? '0' : '-1');
+      });
+      const panel = document.getElementById('tabpanel');
+      panel.setAttribute('aria-labelledby', tabs[i].id);
+      panel.innerHTML = `<strong>${tabs[i].textContent}:</strong> Content for ${tabs[i].textContent}.`;
+    }
+
+    /***** Custom checkbox (role=checkbox) *****/
+    const chk = document.getElementById('chk');
+    chk.addEventListener('click', () => toggleChecked(chk));
+    chk.addEventListener('keydown', (e) => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggleChecked(chk); } });
+    function toggleChecked(el) {
+      const val = el.getAttribute('aria-checked') === 'true';
+      el.setAttribute('aria-checked', String(!val));
+    }
+
+    /***** Radio group keyboard navigation *****/
+    const radios = Array.from(document.querySelectorAll('[role="radio"]'));
+    radios.forEach((r, idx) => {
+      r.addEventListener('click', () => selectRadio(idx));
+      r.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); selectRadio((idx+1) % radios.length); radios[(idx+1)%radios.length].focus(); }
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); selectRadio((idx-1+radios.length) % radios.length); radios[(idx-1+radios.length)%radios.length].focus(); }
+        if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); selectRadio(idx); }
+      });
+    });
+    function selectRadio(i) {
+      radios.forEach((r, idx) => {
+        const sel = idx === i;
+        r.setAttribute('aria-checked', sel ? 'true' : 'false');
+        r.setAttribute('tabindex', sel ? '0' : '-1');
+        if (sel) r.classList.add('selected');
+        else r.classList.remove('selected');
+      });
+    }
+
+    /***** Dropdown aria-haspopup (separate) *****/
+    const btnHasPopup = document.getElementById('btnHasPopup');
+    const popupInfo = document.getElementById('popupInfo');
+    btnHasPopup.addEventListener('click', togglePopup);
+    btnHasPopup.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePopup(); } });
+    function togglePopup() {
+      const open = btnHasPopup.getAttribute('aria-expanded') === 'true';
+      btnHasPopup.setAttribute('aria-expanded', String(!open));
+      popupInfo.setAttribute('aria-hidden', String(open));
+    }
+
+    /***** aria-controls separate example *****/
+    const btnControl = document.getElementById('btnControl');
+    const controlledBlock = document.getElementById('controlledBlock');
+    btnControl.addEventListener('click', () => {
+      const hidden = controlledBlock.hidden;
+      controlledBlock.hidden = !hidden;
+    });
+
+    /***** aria-owns is static in this demo (logical ownership) *****/
+
+    /***** aria-busy simulation *****/
+    const startJob = document.getElementById('startJob');
+    const progress = document.getElementById('progress');
+    startJob.addEventListener('click', () => {
+      progress.setAttribute('aria-busy','true');
+      progress.textContent = 'Processing...';
+      // simulate async
+      setTimeout(() => {
+        progress.setAttribute('aria-busy','false');
+        progress.textContent = 'Complete';
+        document.getElementById('live').textContent = 'Status: job completed';
+      }, 3000);
+    });
+
+    /***** aria-invalid + aria-describedby *****/
+    const nameInput = document.getElementById('nameInput');
+    const triggerError = document.getElementById('triggerError');
+    const clearError = document.getElementById('clearError');
+    const nameField = document.getElementById('nameField');
+    triggerError.addEventListener('click', () => {
+      nameInput.setAttribute('aria-invalid','true');
+      nameInput.setAttribute('aria-describedby','nameError');
+      // add error text if not present
+      if (!document.getElementById('nameError')) {
+        const err = document.createElement('div');
+        err.id = 'nameError';
+        err.textContent = 'Name cannot be blank.';
+        err.style.color = 'var(--danger)';
+        nameField.appendChild(err);
+      }
+      nameInput.classList.add('error');
+    });
+    clearError.addEventListener('click', () => {
+      nameInput.setAttribute('aria-invalid','false');
+      nameInput.removeAttribute('aria-describedby');
+      const err = document.getElementById('nameError');
+      if (err) err.remove();
+      nameInput.classList.remove('error');
+    });
+
+    /***** aria-controls (menu) demo accessible usage *****/
+    // Nothing else required
+
+    /***** keyboard helper for elements that use space to toggle - prevent scroll *****/
+    window.addEventListener('keydown', (e) => {
+      const active = document.activeElement;
+      if (e.key === ' ' && (active && (active.getAttribute && (active.getAttribute('role') === 'checkbox' || active.getAttribute('role') === 'switch')))) {
+        e.preventDefault();
+      }
+    });
+
+    /***** initial log line *****/
+    logContainer.innerHTML = `<div class="row"><time>${new Date().toLocaleTimeString()}</time><div><strong>Info</strong> — ARIA mutation observer started</div></div>`;
   </script>
 </body>
 </html>
