@@ -94,8 +94,8 @@ window._vwo_pc_custom = {
 </form>
 
 <!-- FORM 3: input shadow field -->
-<form id="form-input-1" action="contact_us3.html" method="post">
-  <input id="host-input"></section>
+<form id="form-input-11" action="contact_us3.html" method="post">
+  <div id="host-input"></div>   <!-- shadow host -->
   <input type="submit" value="Submit">
   <input type="reset" value="Reset">
 </form>
@@ -125,9 +125,10 @@ window._vwo_pc_custom = {
   const inputHost = document.getElementById("host-input");
   const inputShadow = inputHost.attachShadow({ mode: "open" });
   inputShadow.innerHTML = `
-    <input nls_fa_el_name="shadow-input-field" type="text" placeholder="Shadow input field">
+    <input id="shadow-input-field" type="text" placeholder="Shadow input field">
   `;
 </script>
+
 
 
   <!-- 3. Without Native Fields -->
