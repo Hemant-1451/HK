@@ -174,113 +174,229 @@ window._vwo_pc_custom = {
 
   <!-- 7. Angular-like Form -->
   <h2>7. Angular-like Form</h2>
-<form novalidate="" id="current-insurance-form" class="ng-untouched ng-pristine ng-valid">
+<form novalidate id="current-insurance-form" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
 
   <!-- Question 1 -->
   <section fxlayout="column" style="flex-direction: column; display: flex;">
-    <section class="rmv-content ng-star-inserted">
-      <mat-label class="mat-label ng-star-inserted">
-        Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <section class="alignCenter mrbt24 ng-star-inserted">
-        <mat-button-toggle-group
-          nls_fa_el_name="currentInsuranceCoverage"
-          role="group"
-          color="primary"
-          formcontrolname="currentInsuranceCoverage"
-          aria-label="Font Style"
-          id="currentInsuranceCoverage"
-          class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard ng-untouched ng-pristine ng-valid"
-          aria-disabled="false"
-        >
-          <mat-button-toggle role="presentation" id="currenltyHaveAutoInsuranceYes" class="mat-button-toggle left-toggle-button mat-button-toggle-checked mat-button-toggle-appearance-standard">
-            <button type="button" nls_fa_el_name="currentInsuranceYes" class="mat-button-toggle-button mat-focus-indicator" id="currenltyHaveAutoInsuranceYes-button">
-              <span class="mat-button-toggle-label-content">Yes</span>
-            </button>
-          </mat-button-toggle>
-          <mat-button-toggle role="presentation" id="currenltyHaveAutoInsuranceNo" class="mat-button-toggle right-toggle-button mat-button-toggle-appearance-standard">
-            <button type="button" nls_fa_el_name="currentInsuranceNo" class="mat-button-toggle-button mat-focus-indicator" id="currenltyHaveAutoInsuranceNo-button">
-              <span class="mat-button-toggle-label-content">No</span>
-            </button>
-          </mat-button-toggle>
-        </mat-button-toggle-group>
-      </section>
+    <mat-label>
+      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="currentInsuranceCoverage"
+        name="currentInsuranceCoverage"
+        [(ngModel)]="currentInsuranceCoverage"
+        aria-label="Current Insurance Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
     </section>
 
     <!-- Question 2 -->
-    <mat-label class="mat-label ng-star-inserted">
+    <mat-label>
       Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
     </mat-label>
-    <section class="alignCenter mrbt24 ng-star-inserted">
+    <section class="alignCenter mrbt24">
       <mat-button-toggle-group
         nls_fa_el_name="lapseInCoverage"
-        role="group"
-        color="primary"
-        formcontrolname="lapseInCoverage"
-        id="lapseInCoverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard ng-untouched ng-pristine ng-valid"
+        name="lapseInCoverage"
+        [(ngModel)]="lapseInCoverage"
+        aria-label="Continuous Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
       >
-        <mat-button-toggle role="presentation" id="hadAutoInsuranceForPast3YearsYes" class="mat-button-toggle left-toggle-button mat-button-toggle-checked mat-button-toggle-appearance-standard">
-          <button type="button" nls_fa_el_name="continuousCoverageYes" class="mat-button-toggle-button mat-focus-indicator" id="hadAutoInsuranceForPast3YearsYes-button">
-            <span class="mat-button-toggle-label-content">Yes</span>
-          </button>
-        </mat-button-toggle>
-        <mat-button-toggle role="presentation" id="hadAutoInsuranceForPast3YearsNo" class="mat-button-toggle right-toggle-button mat-button-toggle-appearance-standard">
-          <button type="button" nls_fa_el_name="continuousCoverageNo" class="mat-button-toggle-button mat-focus-indicator" id="hadAutoInsuranceForPast3YearsNo-button">
-            <span class="mat-button-toggle-label-content">No</span>
-          </button>
-        </mat-button-toggle>
+        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
       </mat-button-toggle-group>
     </section>
 
     <!-- Question 3 -->
-    <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;" class="ng-star-inserted">
-      <mat-label class="mat-label">
+    <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
+      <mat-label>
         What is your current auto insurance company? <span class="starmarkrequired"> * </span>
       </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName" class="mat-form-field mat-form-field-custom-class ng-tns-c90-23 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid">
-        <mat-select placeholder="Select" formcontrolname="priorCarrierName" id="priorCarrierName" class="mat-select ng-untouched ng-pristine ng-valid"></mat-select>
+      <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
+        <mat-select placeholder="Select" name="priorCarrierName" [(ngModel)]="priorCarrierName" required>
+          <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
+          <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
+        </mat-select>
       </mat-form-field>
     </section>
 
     <!-- Question 4 -->
-    <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;" class="ng-star-inserted">
-      <mat-label class="mat-label">
+    <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
+      <mat-label>
         How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
       </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured" class="mat-form-field mat-form-field-custom-class ng-tns-c90-25 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid">
-        <mat-select placeholder="Select" formcontrolname="yearsInsured" id="yearsInsured" class="mat-select ng-untouched ng-pristine ng-valid"></mat-select>
+      <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
+        <mat-select placeholder="Select" name="yearsInsured" [(ngModel)]="yearsInsured" required>
+          <mat-option value="0-6 months">0-6 months</mat-option>
+          <mat-option value="6-24 months">6-24 months</mat-option>
+          <mat-option value="more than 24 months">More than 24 months</mat-option>
+        </mat-select>
       </mat-form-field>
     </section>
 
     <!-- Question 5 -->
     <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
-      <mat-label class="mat-label">
+      <mat-label>
         What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
       </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="biLimits" class="mat-form-field mat-form-field-custom-class ng-tns-c90-27 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid">
-        <mat-select placeholder="Select" formcontrolname="biLimits" id="biLimits" class="mat-select ng-untouched ng-pristine ng-valid"></mat-select>
+      <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
+        <mat-select placeholder="Select" name="biLimits" [(ngModel)]="biLimits" required>
+          <mat-option value="20/40">20/40</mat-option>
+          <mat-option value="50/100">50/100</mat-option>
+        </mat-select>
+        <mat-hint>
+          <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
+        </mat-hint>
       </mat-form-field>
     </section>
+
   </section>
 
   <!-- Navigation Buttons -->
   <verti-sticky-navigation-buttons>
     <section class="sticky-buttons">
-      <div class="ftr-sticky ng-star-inserted">
-        <verti-back-button class="ng-star-inserted">
-          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn"> Back </a>
+      <div class="ftr-sticky">
+        <verti-back-button>
+          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
         </verti-back-button>
 
-        <button nls_fa_el_name="continueButton" mat-raised-button="" class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn ng-star-inserted">
+        <button
+          nls_fa_el_name="continueButton"
+          mat-raised-button
+          type="submit"
+          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
+        >
           <span class="mat-button-wrapper">
-            Continue 
-            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon ng-star-inserted">
+            Continue
+            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
           </span>
         </button>
       </div>
     </section>
   </verti-sticky-navigation-buttons>
+
+</form>
+<h2>8. Shadow Angular Form</h2>
+<form novalidate id="current-insurance-form-shadow" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
+
+  <!-- Question 1 -->
+  <section fxlayout="column" style="flex-direction: column; display: flex;">
+    <mat-label>
+      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="currentInsuranceCoverage"
+        name="currentInsuranceCoverage"
+        [(ngModel)]="currentInsuranceCoverage"
+        aria-label="Current Insurance Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+    <!-- Question 2 -->
+    <mat-label>
+      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="lapseInCoverage"
+        name="lapseInCoverage"
+        [(ngModel)]="lapseInCoverage"
+        aria-label="Continuous Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+  </section>
+
+  <!-- Shadow root container for remaining fields -->
+  <div id="shadowContainer"></div>
+
+  <script>
+    const shadowHost = document.querySelector('#shadowContainer');
+    const shadow = shadowHost.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `
+      <section fxlayout="column" style="flex-direction: column; display: flex; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;">
+        <!-- Question 3 -->
+        <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            What is your current auto insurance company? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
+            <mat-select placeholder="Select" name="priorCarrierName" required>
+              <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
+              <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+        <!-- Question 4 -->
+        <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
+            <mat-select placeholder="Select" name="yearsInsured" required>
+              <mat-option value="0-6 months">0-6 months</mat-option>
+              <mat-option value="6-24 months">6-24 months</mat-option>
+              <mat-option value="more than 24 months">More than 24 months</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+        <!-- Question 5 -->
+        <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
+            <mat-select placeholder="Select" name="biLimits" required>
+              <mat-option value="20/40">20/40</mat-option>
+              <mat-option value="50/100">50/100</mat-option>
+            </mat-select>
+            <mat-hint>
+              <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
+            </mat-hint>
+          </mat-form-field>
+        </section>
+      </section>
+    `;
+  </script>
+
+  <!-- Navigation Buttons -->
+  <verti-sticky-navigation-buttons>
+    <section class="sticky-buttons">
+      <div class="ftr-sticky">
+        <verti-back-button>
+          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
+        </verti-back-button>
+
+        <button
+          nls_fa_el_name="continueButton"
+          mat-raised-button
+          type="submit"
+          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
+        >
+          <span class="mat-button-wrapper">
+            Continue
+            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
+          </span>
+        </button>
+      </div>
+    </section>
+  </verti-sticky-navigation-buttons>
+
 </form>
 
 </body>
