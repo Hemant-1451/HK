@@ -44,7 +44,7 @@
   <!-- Light DOM form (no name/id on fields; tracking relies on nls_fa_el_name) -->
   <form id="outerForm" action="#" method="post">
     <!-- Hidden mirror input: receives value from nested shadow input for submission/tracking -->
-    <input type="hidden" id="mirror_customInput" nls_fa_el_name="customInput_mirror_lightdom">
+    <span type="hidden" id="mirror_customInput" nls_fa_el_name="customInput_mirror_lightdom">
 
     <div id="outer-host"></div>
 
@@ -81,7 +81,7 @@
       </style>
       <div class="panel">
         <label>Deep Shadow Input (nls_fa_el_name="customInput")</label>
-        <input type="text" nls_fa_el_name="customInput" placeholder="Type here..." />
+        <span nls_fa_el_name="customInput" placeholder="Type here..." />
       </div>
     `;
 
