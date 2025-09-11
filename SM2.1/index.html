@@ -74,11 +74,37 @@ const host = document.createElement("div");
 const shadow = host.attachShadow({ mode: "open" });
 shadow.innerHTML = `
   <form action="contact.html">
-    <div nls_fa_el_name="shadow-field" contenteditable="true"></div>
+    <div nls_fa_el_name="shadow-field-1" contenteditable="true"></div>
+    <input type="submit" value="Submit">
+  </form>`;
+document.body.appendChild(host);
+
+
+
+<script>
+const host = document.createElement("span");
+const shadow = host.attachShadow({ mode: "open" });
+shadow.innerHTML = `
+  <form nls_fa_name="spanshadowform" action="contact.html">
+    <span nls_fa_el_name="shadow-field-2" contenteditable="true"></div>
     <input type="submit" value="Submit">
   </form>`;
 document.body.appendChild(host);
 </script>
+</script>
+
+<script>
+const host = document.createElement("section");
+const shadow = host.attachShadow({ mode: "open" });
+shadow.innerHTML = `
+  <form action="contact.html">
+    <input type="text" id="shadow-field-3" contenteditable="true"></div>
+    <input type="submit" value="Submit">
+  </form>`;
+document.body.appendChild(host);
+</script>
+</script>
+
 
   <!-- 2. Shadow Form -->
   <h2>2. Shadow Form</h2>
