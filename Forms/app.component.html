@@ -1,0 +1,49 @@
+<!-- app.component.html -->
+<form [formGroup]="insuranceForm" (ngSubmit)="onSubmit()" id="current-insurance-form">
+
+    <mat-label>Do you currently have auto insurance? *</mat-label>
+    <mat-button-toggle-group formControlName="currentInsuranceCoverage" color="primary">
+      <mat-button-toggle value="yes">Yes</mat-button-toggle>
+      <mat-button-toggle value="no">No</mat-button-toggle>
+    </mat-button-toggle-group>
+  
+    <mat-label>Have you had continuous coverage for the past 3 years? *</mat-label>
+    <mat-button-toggle-group formControlName="lapseInCoverage" color="primary">
+      <mat-button-toggle value="yes">Yes</mat-button-toggle>
+      <mat-button-toggle value="no">No</mat-button-toggle>
+    </mat-button-toggle-group>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Current Insurance Company *</mat-label>
+      <mat-select formControlName="priorCarrierName">
+        <mat-option value="allstate">AllState</mat-option>
+        <mat-option value="geico">Geico</mat-option>
+        <mat-option value="statefarm">StateFarm</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Years with Current Company *</mat-label>
+      <mat-select formControlName="yearsInsured">
+        <mat-option value="6-24">Between 6 and 24 months</mat-option>
+        <mat-option value="24-60">2–5 years</mat-option>
+        <mat-option value="60+">More than 5 years</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Optional Bodily Injury Limits *</mat-label>
+      <mat-select formControlName="biLimits">
+        <mat-option value="20/40">20/40</mat-option>
+        <mat-option value="50/100">50/100</mat-option>
+        <mat-option value="100/300">100/300</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">Continue</button>
+      <button mat-button type="reset">Reset</button>
+    </div>
+  
+  </form>
+  
