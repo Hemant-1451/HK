@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+ <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
     (function () {
         // Extract query parameters
@@ -22,140 +22,452 @@
 </script>
 
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup Form Example</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+  <title>Form Types Demo</title>
+  <script>
+    // For dynamic form
+    function addDynamicField() {
+      const container = document.getElementById("dynamic-container");
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = "dynamicField[]";
+      input.placeholder = "Dynamic Field";
+      container.appendChild(input);
     }
-
-    .content {
-      text-align: center;
-      margin-top: 50px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    /* Popup Styles */
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1000;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      width: 80%;
-      max-width: 400px;
-    }
-
-    .popup h2 {
-      margin-top: 0;
-    }
-
-    .popup input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-    }
-
-    .popup input[type="submit"] {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .popup input[type="submit"]:hover {
-      background-color: #218838;
-    }
-
-    .popup-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-    }
-
-    .popup-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-size: 20px;
-      color: #333;
-    }
-
-    .popup-close:hover {
-      color: red;
-    }
-  </style>
+  </script>
 </head>
 <body>
-  <!-- Main Content -->
-  <div class="content">
-    <h1>Welcome to Our Example</h1>
-    <button id="openPopup">Open Feedback Form</button>
-  </div>
+  <h1>Form Types Demo</h1>
 
-  <!-- Popup Form -->
-  <div class="popup-overlay" id="popupOverlay"></div>
-  <div class="popup" id="popup">
-    <button class="popup-close" id="closePopup">&times;</button>
-    <h2>Feedback Form</h2>
-    <form action="feedback.html" id="feedbackForm">
-      <label for="feedback">If you're facing any problem, please write to us.</label>
-      <br><br>
-      <input class="feedBackForm" id="answer" name="feedback" placeholder="Text" size="100" type="text" value="" autocomplete="off">
-      <br><br>
-      <input type="submit" value="Submit">
-    </form>
-  </div>
+  <!-- 1. Normal Form -->
+  <h2>1. Normal Form</h2>
+  <form action="contact_us1.html" id="normal-form">
+    <input type="text" name="username" placeholder="Username" />
+<input id="no-type">
+<input type="hidden" value="hidden-val">
+
+    <select name="role">
+      <option>User</option>
+      <option>Admin</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+<form id="test-form" action="contact.html">
+  <div nls_fa_el_name="custom-input" contenteditable="true">Type here</div>
+  <button type="button" onclick="alert('Option 1 clicked')">Option 1</button>
+  <button nls_fa_el_name="custom-button"type="button" onclick="alert('Option 2 clicked')">Option 2</button>
+  <input id="no-type">
+<input type="hidden" value="hidden-val">
+
+  <input type="submit" value="Submit">
+</form>
+
+
+<form nls_fa_name="h" action="contact.html">
+  <div nls_fa_el_name="custom-input-1" contenteditable="true">Type here</div>
+  <input type="submit" value="Submit">
+</form>
+
+<form nls_fa_name="h" action="contact.html">
+  <div id="custom-input-2" contenteditable="true">Type here</div>
+<input id="no-type">
+<input type="hidden" value="hidden-val">
+
+  <input type="submit" value="Submit">
+</form>
+
+
+
+  <!-- 2. Shadow Form -->
+  <h2>2. Shadow Form</h2>
+  <!-- FORM 1: div shadow field -->
+<form id="form-div" action="contact_us1.html" method="post">
+  <div id="host-div"></div>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<!-- FORM 2: span shadow field -->
+<form nls_fa_name="Custom-name" action="contact_us2.html" method="post">
+  <span id="host-span"></span>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<!-- FORM 3: input shadow field -->
+<form id="form-input-11" action="contact_us3.html" method="post">
+  <div id="host-input"></div>   <!-- shadow host -->
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<script>
+  // FORM 1: shadow root with div field
+  const divHost = document.getElementById("host-div");
+  const divShadow = divHost.attachShadow({ mode: "open" });
+  divShadow.innerHTML = `
+    <div nls_fa_el_name="shadow-div-field" contenteditable="true"
+         style="border:1px solid #000; padding:5px; margin-bottom:5px;">
+      Type inside shadow div
+    </div>
+  `;
+
+  // FORM 2: shadow root with span field
+  const spanHost = document.getElementById("host-span");
+  const spanShadow = spanHost.attachShadow({ mode: "open" });
+  spanShadow.innerHTML = `
+    <span nls_fa_el_name="shadow-span-field" contenteditable="true"
+          style="border:1px solid #000; padding:5px; display:block; margin-bottom:5px;">
+      Type inside shadow span
+    </span>
+  `;
+
+  // FORM 3: shadow root with input field
+  const inputHost = document.getElementById("host-input");
+  const inputShadow = inputHost.attachShadow({ mode: "open" });
+  inputShadow.innerHTML = `
+    <input id="shadow-input-field" type="text" placeholder="Shadow input field">
+  `;
+</script>
+
+
+
+  <!-- 3. Without Native Fields -->
+  <h2>3. Form Without Native Fields</h2>
+  <form action="contact_us1.html" id="no-native-form">
+    <div contenteditable="true" name="custom-username">Type Username</div>
+    <span contenteditable="true" name="custom-password">Type Password</span>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <!-- 4. Normal Form with Div/Span -->
+  <h2>4. Normal Form with Div/Span</h2>
+  <form action="contact_us1.html" id="div-span-form">
+    <div contenteditable="true" name="firstname">First Name</div>
+    <span contenteditable="true" name="lastname">Last Name</span>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <!-- 5. Form with nls_fa_name and nls_fa_el_name -->
+  <h2>5. Form with nls_fa_name and nls_fa_el_name</h2>
+  <form action="contact_us1.html" id="nls-form" nls_fa_name="dummy-form-name">
+    <input type="text" nls_fa_el_name="dummy-input" placeholder="Custom Named Field"/>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <!-- 6. Dynamic Form -->
+  <h2>6. Dynamic Form</h2>
+  <form action="contact_us1.html" id="dynamic-form">
+    <div id="dynamic-container"></div>
+    <button type="button" onclick="addDynamicField()">Add Field</button>
+    <br><br>
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <!-- 7. Angular-like Form -->
+  <h2>7. Angular-like Form</h2>
+<form novalidate id="current-insurance-form" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
+
+  <!-- Question 1 -->
+  <section fxlayout="column" style="flex-direction: column; display: flex;">
+    <mat-label>
+      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="currentInsuranceCoverage"
+        name="currentInsuranceCoverage"
+        [(ngModel)]="currentInsuranceCoverage"
+        aria-label="Current Insurance Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+    <!-- Question 2 -->
+    <mat-label>
+      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="lapseInCoverage"
+        name="lapseInCoverage"
+        [(ngModel)]="lapseInCoverage"
+        aria-label="Continuous Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+    <!-- Question 3 -->
+    <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
+      <mat-label>
+        What is your current auto insurance company? <span class="starmarkrequired"> * </span>
+      </mat-label>
+      <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
+        <mat-select placeholder="Select" name="priorCarrierName" [(ngModel)]="priorCarrierName" required>
+          <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
+          <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <!-- Question 4 -->
+    <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
+      <mat-label>
+        How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
+      </mat-label>
+      <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
+        <mat-select placeholder="Select" name="yearsInsured" [(ngModel)]="yearsInsured" required>
+          <mat-option value="0-6 months">0-6 months</mat-option>
+          <mat-option value="6-24 months">6-24 months</mat-option>
+          <mat-option value="more than 24 months">More than 24 months</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+    <!-- Question 5 -->
+    <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
+      <mat-label>
+        What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
+      </mat-label>
+      <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
+        <mat-select placeholder="Select" name="biLimits" [(ngModel)]="biLimits" required>
+          <mat-option value="20/40">20/40</mat-option>
+          <mat-option value="50/100">50/100</mat-option>
+        </mat-select>
+        <mat-hint>
+          <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
+        </mat-hint>
+      </mat-form-field>
+    </section>
+
+  </section>
+
+  <!-- Navigation Buttons -->
+  <verti-sticky-navigation-buttons>
+    <section class="sticky-buttons">
+      <div class="ftr-sticky">
+        <verti-back-button>
+          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
+        </verti-back-button>
+
+        <button
+          nls_fa_el_name="continueButton"
+          mat-raised-button
+          type="submit"
+          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
+        >
+          <span class="mat-button-wrapper">
+            Continue
+            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
+          </span>
+        </button>
+      </div>
+    </section>
+  </verti-sticky-navigation-buttons>
+
+</form>
+<h2>8. Shadow Angular Form</h2>
+<form novalidate id="current-insurance-form-shadow" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
+
+  <!-- Question 1 -->
+  <section fxlayout="column" style="flex-direction: column; display: flex;">
+    <mat-label>
+      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="currentInsuranceCoverage"
+        name="currentInsuranceCoverage"
+        [(ngModel)]="currentInsuranceCoverage"
+        aria-label="Current Insurance Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+    <!-- Question 2 -->
+    <mat-label>
+      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
+    </mat-label>
+    <section class="alignCenter mrbt24">
+      <mat-button-toggle-group
+        nls_fa_el_name="lapseInCoverage"
+        name="lapseInCoverage"
+        [(ngModel)]="lapseInCoverage"
+        aria-label="Continuous Coverage"
+        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
+      >
+        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
+        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
+      </mat-button-toggle-group>
+    </section>
+
+  </section>
+
+  <!-- Shadow root container for remaining fields -->
+  <div id="shadowContainer"></div>
 
   <script>
-    // Show the popup
-    document.getElementById("openPopup").addEventListener("click", () => {
-      document.getElementById("popupOverlay").style.display = "block";
-      document.getElementById("popup").style.display = "block";
-    });
+    const shadowHost = document.querySelector('#shadowContainer');
+    const shadow = shadowHost.attachShadow({ mode: 'open' });
+    shadow.innerHTML = `
+      <section fxlayout="column" style="flex-direction: column; display: flex; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;">
+        <!-- Question 3 -->
+        <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            What is your current auto insurance company? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
+            <mat-select placeholder="Select" name="priorCarrierName" required>
+              <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
+              <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
 
-    // Hide the popup
-    document.getElementById("closePopup").addEventListener("click", () => {
-      document.getElementById("popupOverlay").style.display = "none";
-      document.getElementById("popup").style.display = "none";
-    });
+        <!-- Question 4 -->
+        <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
+            <mat-select placeholder="Select" name="yearsInsured" required>
+              <mat-option value="0-6 months">0-6 months</mat-option>
+              <mat-option value="6-24 months">6-24 months</mat-option>
+              <mat-option value="more than 24 months">More than 24 months</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
 
-    // Close popup when clicking outside the form
-    document.getElementById("popupOverlay").addEventListener("click", () => {
-      document.getElementById("popupOverlay").style.display = "none";
-      document.getElementById("popup").style.display = "none";
-    });
+        <!-- Question 5 -->
+        <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
+          <mat-label>
+            What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
+          </mat-label>
+          <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
+            <mat-select placeholder="Select" name="biLimits" required>
+              <mat-option value="20/40">20/40</mat-option>
+              <mat-option value="50/100">50/100</mat-option>
+            </mat-select>
+            <mat-hint>
+              <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
+            </mat-hint>
+          </mat-form-field>
+        </section>
+      </section>
+    `;
   </script>
+
+  <!-- Navigation Buttons -->
+  <verti-sticky-navigation-buttons>
+    <section class="sticky-buttons">
+      <div class="ftr-sticky">
+        <verti-back-button>
+          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
+        </verti-back-button>
+
+        <button
+          nls_fa_el_name="continueButton"
+          mat-raised-button
+          type="submit"
+          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
+        >
+          <span class="mat-button-wrapper">
+            Continue
+            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
+          </span>
+        </button>
+      </div>
+    </section>
+  </verti-sticky-navigation-buttons>
+</form>
+<div id="stepFormContainer">
+  <h2>Step-by-Step Form</h2>
+  <form id="stepForm">
+    <div class="step active">
+      <h3>Step 1: Personal Info</h3>
+      <input type="text" name="firstName" placeholder="First Name" required>
+      <input type="text" name="lastName" placeholder="Last Name" required>
+      <button type="button" class="nextBtn">Next</button>
+    </div>
+
+    <div class="step">
+      <h3>Step 2: Contact Info</h3>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone">
+      <button type="button" class="prevBtn">Previous</button>
+      <button type="button" class="nextBtn">Next</button>
+    </div>
+
+    <div class="step">
+      <h3>Step 3: Address</h3>
+      <input type="text" name="address" placeholder="Address" required>
+      <input type="text" name="city" placeholder="City">
+      <button type="button" class="prevBtn">Previous</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+<style>
+  #stepFormContainer .step { display: none; }
+  #stepFormContainer .step.active { display: block; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  let currentStep = 0;
+  const steps = document.querySelectorAll("#stepFormContainer .step");
+
+  function showStep(index) {
+    steps.forEach((step, i) => step.classList.toggle("active", i === index));
+  }
+
+  document.querySelectorAll("#stepFormContainer .nextBtn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const inputs = steps[currentStep].querySelectorAll("input[required]");
+      for (let input of inputs) {
+        if (!input.value) {
+          alert("Please fill all required fields.");
+          return;
+        }
+      }
+      if (currentStep < steps.length - 1) currentStep++;
+      showStep(currentStep);
+    });
+  });
+
+  document.querySelectorAll("#stepFormContainer .prevBtn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      if (currentStep > 0) currentStep--;
+      showStep(currentStep);
+    });
+  });
+
+  document.getElementById("stepForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Form submitted successfully!");
+  });
+});
+</script>
+
+
 </body>
 </html>
