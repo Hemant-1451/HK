@@ -467,7 +467,210 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+  <!-- 9. Remaining Edge Cases -->
+  <h2>9. Remaining Edge Cases</h2>
 
+  <!-- Disabled and Readonly -->
+  <form id="disabled-readonly-form" action="contact_us9.html">
+    <input type="text" name="normalField" placeholder="Normal Field">
+    <input type="text" name="readonlyField" placeholder="Readonly Field" readonly>
+    <input type="text" name="disabledField" placeholder="Disabled Field" disabled>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Textarea -->
+  <form id="textarea-form" action="contact_us9.html">
+    <textarea name="comments" rows="4" cols="30" placeholder="Enter comments here"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Checkbox and Radio -->
+  <form id="checkbox-radio-form" action="contact_us9.html">
+    <label><input type="checkbox" name="interests" value="sports"> Sports</label>
+    <label><input type="checkbox" name="interests" value="music"> Music</label><br>
+    <label><input type="radio" name="gender" value="male"> Male</label>
+    <label><input type="radio" name="gender" value="female"> Female</label>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- File Upload -->
+  <form id="file-form" action="contact_us9.html" enctype="multipart/form-data">
+    <input type="file" name="resume">
+    <input type="submit" value="Upload">
+  </form>
+
+  <!-- Password Field -->
+  <form id="password-form" action="contact_us9.html">
+    <input type="password" name="password" placeholder="Enter password">
+    <input type="submit" value="Login">
+  </form>
+
+  <!-- Number and Range -->
+  <form id="number-range-form" action="contact_us9.html">
+    <input type="number" name="age" placeholder="Age">
+    <input type="range" name="volume" min="0" max="100">
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Date and Time -->
+  <form id="date-time-form" action="contact_us9.html">
+    <input type="date" name="dob">
+    <input type="time" name="appointment">
+    <input type="datetime-local" name="meeting">
+    <input type="month" name="billingMonth">
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Select Multiple -->
+  <form id="multi-select-form" action="contact_us9.html">
+    <select name="fruits" multiple>
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Orange</option>
+    </select>
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Form inside iframe -->
+  <h3>Form inside iframe</h3>
+  <iframe srcdoc='
+    <form id="iframe-form" action="contact_us9.html">
+      <input type="text" name="iframeField" placeholder="Inside iframe">
+      <input type="submit" value="Submit">
+    </form>
+  ' style="width:100%; height:150px; border:1px solid #ccc;"></iframe>
+
+  <!-- Custom Web Component -->
+  <h3>Form with custom web component</h3>
+  <form id="custom-element-form" action="contact_us9.html">
+    <custom-input></custom-input>
+    <input type="submit" value="Submit">
+  </form>
+  <script>
+    class CustomInput extends HTMLElement {
+      connectedCallback() {
+        this.innerHTML = '<input type="text" name="customInput" placeholder="Custom Input">';
+      }
+    }
+    customElements.define('custom-input', CustomInput);
+  </script>
+
+  <!-- Angular Reactive Form Simulation -->
+  <h3>Angular Reactive-like Form</h3>
+  <form id="reactive-form" action="contact_us9.html">
+    <input formControlName="firstName" placeholder="First Name">
+    <input formControlName="lastName" placeholder="Last Name">
+    <input type="submit" value="Submit">
+  </form>
+
+  <!-- Form with only a button -->
+  <h3>Form with Only a Button</h3>
+  <form id="button-only-form" action="contact_us9.html">
+    <button type="submit">Click Me</button>
+  </form>
+
+
+<!-- 10.. Remaining Edge Cases with nls_fa-->
+<h2>10. Remaining Edge Cases with nls_fa_el_name</h2>
+
+<!-- Disabled and Readonly -->
+<form action="contact_us9.html">
+  <input type="text" nls_fa_el_name="normalField" placeholder="Normal Field">
+  <input type="text" nls_fa_el_name="readonlyField" placeholder="Readonly Field" readonly>
+  <input type="text" nls_fa_el_name="disabledField" placeholder="Disabled Field" disabled>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Textarea -->
+<form action="contact_us9.html">
+  <textarea nls_fa_el_name="comments" rows="4" cols="30" placeholder="Enter comments here"></textarea>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Checkbox and Radio -->
+<form action="contact_us9.html">
+  <label><input type="checkbox" nls_fa_el_name="interests_sports" value="sports"> Sports</label>
+  <label><input type="checkbox" nls_fa_el_name="interests_music" value="music"> Music</label><br>
+  <label><input type="radio" nls_fa_el_name="gender_male" value="male"> Male</label>
+  <label><input type="radio" nls_fa_el_name="gender_female" value="female"> Female</label>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- File Upload -->
+<form action="contact_us9.html" enctype="multipart/form-data">
+  <input type="file" nls_fa_el_name="resume">
+  <input type="submit" value="Upload">
+</form>
+
+<!-- Password Field -->
+<form action="contact_us9.html">
+  <input type="password" nls_fa_el_name="password" placeholder="Enter password">
+  <input type="submit" value="Login">
+</form>
+
+<!-- Number and Range -->
+<form action="contact_us9.html">
+  <input type="number" nls_fa_el_name="age" placeholder="Age">
+  <input type="range" nls_fa_el_name="volume" min="0" max="100">
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Date and Time -->
+<form action="contact_us9.html">
+  <input type="date" nls_fa_el_name="dob">
+  <input type="time" nls_fa_el_name="appointment">
+  <input type="datetime-local" nls_fa_el_name="meeting">
+  <input type="month" nls_fa_el_name="billingMonth">
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Select Multiple -->
+<form action="contact_us9.html">
+  <select nls_fa_el_name="fruits" multiple>
+    <option>Apple</option>
+    <option>Banana</option>
+    <option>Orange</option>
+  </select>
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Form inside iframe -->
+<h3>Form inside iframe</h3>
+<iframe srcdoc='
+  <form action="contact_us9.html">
+    <input type="text" nls_fa_el_name="iframeField" placeholder="Inside iframe">
+    <input type="submit" value="Submit">
+  </form>
+' style="width:100%; height:150px; border:1px solid #ccc;"></iframe>
+
+<!-- Custom Web Component -->
+<h3>Form with custom web component</h3>
+<form action="contact_us9.html">
+  <custom-input></custom-input>
+  <input type="submit" value="Submit">
+</form>
+<script>
+  class CustomInput extends HTMLElement {
+    connectedCallback() {
+      this.innerHTML = '<input type="text" nls_fa_el_name="customInput" placeholder="Custom Input">';
+    }
+  }
+  customElements.define('custom-input', CustomInput);
+</script>
+
+<!-- Angular Reactive Form Simulation -->
+<h3>Angular Reactive-like Form</h3>
+<form action="contact_us9.html">
+  <input formControlName="firstName" nls_fa_el_name="firstName" placeholder="First Name">
+  <input formControlName="lastName" nls_fa_el_name="lastName" placeholder="Last Name">
+  <input type="submit" value="Submit">
+</form>
+
+<!-- Form with only a button -->
+<h3>Form with Only a Button</h3>
+<form action="contact_us9.html">
+  <button type="submit" nls_fa_el_name="onlyButton">Click Me</button>
+</form>
 
 </body>
 </html>
