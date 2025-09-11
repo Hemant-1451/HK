@@ -23,6 +23,153 @@
 
   <meta charset="UTF-8">
   <title>Form Types Demo</title>
+  <style>
+    /* Maximal, modern theme (CSS-only) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --bg: #0b1220;
+      --bg-grad-1:#0b1220; --bg-grad-2:#0e172a; --bg-grad-3:#111827;
+      --surface:#0f172a; --card:#111827; --elev:#0b1220;
+      --text:#e5e7eb; --muted:#94a3b8;
+      --primary:#5b9cff; --primary-600:#3f83f8; --primary-700:#2563eb;
+      --ring: rgba(91,156,255,.5);
+      --border:#243145;
+      --success:#22c55e; --danger:#ef4444;
+      --radius:14px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
+      --shadow-md: 0 12px 36px rgba(2,6,23,.45);
+      --shadow-lg: 0 24px 64px rgba(2,6,23,.55);
+      --container: 980px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at -10% -10%, #1e293b 0%, transparent 50%),
+                  radial-gradient(1200px 800px at 110% -10%, #0b4cc9 0%, transparent 40%),
+                  linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2) 35%, var(--bg-grad-3));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding: 40px 20px 96px;
+    }
+    /* Page container without editing HTML */
+    body > *:not(script):not(style){
+      max-width: var(--container);
+      margin-left:auto; margin-right:auto;
+    }
+
+    /* Headings */
+    h1,h2,h3{line-height:1.2; margin:0 0 16px}
+    h1{
+      font-size:32px; font-weight:800; letter-spacing:.2px; text-align:center;
+      background: linear-gradient(90deg,#fff, #9ec5ff 60%, #cbd5e1);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      margin-bottom: 28px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.05);
+    }
+    h2{font-size:22px; font-weight:700; color:#e2e8f0; margin-top:28px}
+    h3{font-size:18px; font-weight:600; color:#e5e7eb}
+
+    /* Elevation cards for all forms */
+    form{
+      background: linear-gradient(180deg, rgba(17,24,39,.9), rgba(17,24,39,.85));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 22px;
+      margin: 16px auto 26px;
+      backdrop-filter: blur(6px);
+    }
+    form:hover{ box-shadow: var(--shadow-lg); transition: box-shadow .25s ease }
+
+    /* Labels */
+    label, mat-label{ display:block; font-weight:600; color:#f1f5f9; margin-bottom:8px }
+    .starmarkrequired{ color:var(--danger); font-weight:700 }
+
+    /* Inputs & fields */
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"],
+    input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="file"],
+    select, textarea, [contenteditable="true"]{
+      width:100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0b1220;
+      color: var(--text);
+      outline: none; transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+      box-shadow: inset 0 0 0 0 rgba(91,156,255,0);
+      margin: 6px 0 14px;
+    }
+    [contenteditable="true"]{ min-height:46px; }
+    textarea{ resize:vertical; min-height:120px }
+    select[multiple]{ min-height:140px }
+    input:focus, select:focus, textarea:focus, [contenteditable="true"]:focus{
+      border-color:#3b82f6; box-shadow: 0 0 0 4px var(--ring);
+      background:#0a1222;
+    }
+    input[readonly], textarea[readonly]{ background:#0c1424; color:#93a2b8 }
+    input:disabled, textarea:disabled, select:disabled{ background:#0b1320; color:#5b6b84; cursor:not-allowed }
+
+    /* Inline checkbox/radio */
+    input[type="checkbox"], input[type="radio"]{ width:auto; margin-right:8px }
+    form label>input[type="checkbox"], form label>input[type="radio"]{ margin-right:8px }
+
+    /* Nice helper text */
+    mat-hint a.needHelpTxt{ color:var(--primary); text-decoration:none }
+    mat-hint a.needHelpTxt:hover{ text-decoration:underline }
+
+    /* Buttons */
+    button, input[type="submit"], input[type="reset"], .back-btn-contact, .back-btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 12px 18px; border-radius: 12px; border: 1px solid transparent;
+      font-weight:700; cursor:pointer; transition: transform .06s ease, background-color .15s ease, box-shadow .15s ease;
+    }
+    button, input[type="submit"]{
+      background: linear-gradient(180deg, var(--primary), var(--primary-700));
+      color:#0b1220; color:#fff; box-shadow: 0 6px 18px rgba(91,156,255,.35);
+    }
+    button:hover, input[type="submit"]:hover{ filter: brightness(1.05) }
+    button:active, input[type="submit"]:active{ transform: translateY(1px) }
+    input[type="reset"], .back-btn-contact, .back-btn{
+      background: #0b1220; color:#e5e7eb; border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    input[type="reset"]:hover, .back-btn-contact:hover, .back-btn:hover{ background:#0d1526 }
+
+    /* Segmented toggle look (for Angular-like toggles) */
+    .mat-button-toggle-group, mat-button-toggle-group{
+      display:inline-flex; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#0b1220
+    }
+    .mat-button-toggle-group>* , mat-button-toggle-group>mat-button-toggle{
+      appearance:none; padding:10px 14px; border:none; background:transparent; color:#e5e7eb; cursor:pointer; border-right:1px solid var(--border); font-weight:600
+    }
+    .mat-button-toggle-group>*:last-child, mat-button-toggle-group>mat-button-toggle:last-child{ border-right:0 }
+    .mat-button-toggle-group>*.active, .mat-button-toggle-group>*[aria-pressed="true"], mat-button-toggle[aria-pressed="true"]{
+      background: var(--primary-700); color:#fff
+    }
+
+    /* Sticky area */
+    .sticky-buttons .ftr-sticky{ display:flex; gap:12px; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px dashed var(--border) }
+    .verti-next-btn{ min-width:150px }
+    .right-arrow-icon{ filter: brightness(0) invert(1) }
+
+    /* Shadow hosts spacing */
+    #host-div, #host-span, #host-input{ display:block; margin:10px 0 14px }
+
+    /* Delightful focus motion */
+    @keyframes softlyGlow { from { box-shadow: 0 0 0 0 rgba(91,156,255,0) } to { box-shadow: 0 0 0 6px rgba(91,156,255,.25) } }
+    input:focus, select:focus, textarea:focus, [contenteditable="true"]:focus{ animation: softlyGlow .18s ease-out }
+
+    /* Responsive */
+    @media (max-width: 720px){
+      body{ padding:26px 14px 72px }
+      h1{ font-size:26px }
+      form{ padding:18px; border-radius:12px }
+      button, input[type="submit"], input[type="reset"]{ width:100% }
+      .sticky-buttons .ftr-sticky{ flex-wrap:wrap }
+    }
+  </style>
   <script>
     // For dynamic form
     function addDynamicField() {
@@ -36,100 +183,12 @@
   </script>
 </head>
 <body>
-
-
-
-<h2>Nested Shadow DOM — form field in deepest shadow root</h2>
-
-  <!-- Light DOM form (no name/id on fields; tracking relies on nls_fa_el_name) -->
-  <form id="outerForm" action="#" method="post">
-    <!-- Hidden mirror input: receives value from nested shadow input for submission/tracking -->
-    <span type="hidden" id="mirror_customInput" nls_fa_el_name="customInput_mirror_lightdom">
-
-    <div id="outer-host"></div>
-
-    <button type="submit">Submit (light DOM)</button>
-  </form>
-
-  <script>
-    // Create outer shadow host
-    const outerHost = document.querySelector('#outer-host');
-    const outerShadow = outerHost.attachShadow({ mode: 'open' });
-
-    // Outer shadow markup contains an inner host element (which will have its own shadow root)
-    outerShadow.innerHTML = `
-      <style>
-        .box { padding: 12px; border: 2px dashed #6c7; border-radius:6px; }
-        .inner-host { display:block; margin-top:8px; }
-      </style>
-      <div class="box">
-        <div>Outer Shadow: contains an inner host below</div>
-        <div class="inner-host" id="inner-host"></div>
-      </div>
-    `;
-
-    // Get the inner host from the outer shadow root and attach nested shadow root
-    const innerHost = outerShadow.getElementById('inner-host');
-    const innerShadow = innerHost.attachShadow({ mode: 'open' });
-
-    // Deep shadow content: the actual input (no name/id, but with nls_fa_el_name)
-    // It dispatches a CustomEvent on 'input' with composed:true so it bubbles out of the shadow tree.
-    innerShadow.innerHTML = `
-      <style>
-        .panel { background:#f7fff7; padding:10px; border-radius:4px; }
-        input { padding:6px; width:100%; box-sizing:border-box; }
-      </style>
-      <div class="panel">
-        <label>Deep Shadow Input (nls_fa_el_name="customInput")</label>
-        <span nls_fa_el_name="nested-shadow-span-field" contenteditable="true"
-          style="border:1px solid #000; padding:5px; display:block; margin-bottom:5px;">
-      Type inside nested shadow span
-    </span>
-      </div>
-    `;
-
-    // Hook: when the nested input changes, bubble an event and mirror value to light DOM hidden input
-    const nestedInput = innerShadow.querySelector('input[nls_fa_el_name="customInput"]');
-
-    nestedInput.addEventListener('input', (ev) => {
-      const value = ev.target.value;
-
-      // 1) Dispatch a composed event so listeners on document / outside shadows can catch it
-      const eventDetail = { nls_fa_el_name: 'customInput', value };
-      const customEvent = new CustomEvent('field-change', {
-        detail: eventDetail,
-        bubbles: true,
-        composed: true // IMPORTANT: allows event to cross shadow boundaries
-      });
-      nestedInput.dispatchEvent(customEvent);
-
-      // 2) Mirror value to a hidden light-DOM input (so native form submission / trackers that read the light DOM can see it)
-      const mirror = document.getElementById('mirror_customInput');
-      if (mirror) mirror.value = value;
-    });
-
-    // Example: listener in the page capturing the bubbled event
-    document.addEventListener('field-change', (e) => {
-      // e.detail contains { nls_fa_el_name, value }
-      console.log('Captured field-change on document:', e.detail);
-      // Here you can call your tracking function, e.g. _vwo_track(...) or push to dataLayer
-      // Example: window.dataLayer?.push({ event: 'field_change', ...e.detail })
-    });
-
-    // Optional: on form submit, show the mirrored value (demonstrates form can submit the value)
-    document.querySelector('#outerForm').addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      alert('Form submitting. Mirrored value: ' + document.getElementById('mirror_customInput').value);
-    });
-  </script>
-  <h1>Form Types Demo</h1>
+  <h1>Form Types</h1>
 
   <!-- 1. Normal Form -->
   <h2>1. Normal Form</h2>
   <form action="contact_us1.html" id="normal-form">
     <input type="text" name="username" placeholder="Username" />
-<input id="no-type">
-<input type="hidden" value="hidden-val">
 
     <select name="role">
       <option>User</option>
@@ -219,544 +278,6 @@
 </script>
 
 
-
-  <!-- 3. Without Native Fields -->
-  <h2>3. Form Without Native Fields</h2>
-  <form action="contact_us1.html" id="no-native-form">
-    <div contenteditable="true" name="custom-username">Type Username</div>
-    <span contenteditable="true" name="custom-password">Type Password</span>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 4. Normal Form with Div/Span -->
-  <h2>4. Normal Form with Div/Span</h2>
-  <form action="contact_us1.html" id="div-span-form">
-    <div contenteditable="true" name="firstname">First Name</div>
-    <span contenteditable="true" name="lastname">Last Name</span>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 5. Form with nls_fa_name and nls_fa_el_name -->
-  <h2>5. Form with nls_fa_name and nls_fa_el_name</h2>
-  <form action="contact_us1.html" id="nls-form" nls_fa_name="dummy-form-name">
-    <input type="text" nls_fa_el_name="dummy-input" placeholder="Custom Named Field"/>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 6. Dynamic Form -->
-  <h2>6. Dynamic Form</h2>
-  <form action="contact_us1.html" id="dynamic-form">
-    <div id="dynamic-container"></div>
-    <button type="button" onclick="addDynamicField()">Add Field</button>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 7. Angular-like Form -->
-  <h2>7. Angular-like Form</h2>
-<form novalidate id="current-insurance-form" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
-
-  <!-- Question 1 -->
-  <section fxlayout="column" style="flex-direction: column; display: flex;">
-    <mat-label>
-      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="currentInsuranceCoverage"
-        name="currentInsuranceCoverage"
-        [(ngModel)]="currentInsuranceCoverage"
-        aria-label="Current Insurance Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 2 -->
-    <mat-label>
-      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="lapseInCoverage"
-        name="lapseInCoverage"
-        [(ngModel)]="lapseInCoverage"
-        aria-label="Continuous Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 3 -->
-    <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        What is your current auto insurance company? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
-        <mat-select placeholder="Select" name="priorCarrierName" [(ngModel)]="priorCarrierName" required>
-          <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
-          <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </section>
-
-    <!-- Question 4 -->
-    <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
-        <mat-select placeholder="Select" name="yearsInsured" [(ngModel)]="yearsInsured" required>
-          <mat-option value="0-6 months">0-6 months</mat-option>
-          <mat-option value="6-24 months">6-24 months</mat-option>
-          <mat-option value="more than 24 months">More than 24 months</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </section>
-
-    <!-- Question 5 -->
-    <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
-        <mat-select placeholder="Select" name="biLimits" [(ngModel)]="biLimits" required>
-          <mat-option value="20/40">20/40</mat-option>
-          <mat-option value="50/100">50/100</mat-option>
-        </mat-select>
-        <mat-hint>
-          <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
-        </mat-hint>
-      </mat-form-field>
-    </section>
-
-  </section>
-
-  <!-- Navigation Buttons -->
-  <verti-sticky-navigation-buttons>
-    <section class="sticky-buttons">
-      <div class="ftr-sticky">
-        <verti-back-button>
-          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
-        </verti-back-button>
-
-        <button
-          nls_fa_el_name="continueButton"
-          mat-raised-button
-          type="submit"
-          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
-        >
-          <span class="mat-button-wrapper">
-            Continue
-            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
-          </span>
-        </button>
-      </div>
-    </section>
-  </verti-sticky-navigation-buttons>
-
-</form>
-<h2>8. Shadow Angular Form</h2>
-<form novalidate id="current-insurance-form-shadow" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
-
-  <!-- Question 1 -->
-  <section fxlayout="column" style="flex-direction: column; display: flex;">
-    <mat-label>
-      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="currentInsuranceCoverage"
-        name="currentInsuranceCoverage"
-        [(ngModel)]="currentInsuranceCoverage"
-        aria-label="Current Insurance Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 2 -->
-    <mat-label>
-      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="lapseInCoverage"
-        name="lapseInCoverage"
-        [(ngModel)]="lapseInCoverage"
-        aria-label="Continuous Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-  </section>
-
-  <!-- Shadow root container for remaining fields -->
-  <div id="shadowContainer"></div>
-
-  <script>
-    const shadowHost = document.querySelector('#shadowContainer');
-    const shadow = shadowHost.attachShadow({ mode: 'open' });
-    shadow.innerHTML = `
-      <section fxlayout="column" style="flex-direction: column; display: flex; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;">
-        <!-- Question 3 -->
-        <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            What is your current auto insurance company? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
-            <mat-select placeholder="Select" name="priorCarrierName" required>
-              <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
-              <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </section>
-
-        <!-- Question 4 -->
-        <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
-            <mat-select placeholder="Select" name="yearsInsured" required>
-              <mat-option value="0-6 months">0-6 months</mat-option>
-              <mat-option value="6-24 months">6-24 months</mat-option>
-              <mat-option value="more than 24 months">More than 24 months</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </section>
-
-        <!-- Question 5 -->
-        <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
-            <mat-select placeholder="Select" name="biLimits" required>
-              <mat-option value="20/40">20/40</mat-option>
-              <mat-option value="50/100">50/100</mat-option>
-            </mat-select>
-            <mat-hint>
-              <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
-            </mat-hint>
-          </mat-form-field>
-        </section>
-      </section>
-    `;
-  </script>
-
-  <!-- Navigation Buttons -->
-  <verti-sticky-navigation-buttons>
-    <section class="sticky-buttons">
-      <div class="ftr-sticky">
-        <verti-back-button>
-          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
-        </verti-back-button>
-
-        <button
-          nls_fa_el_name="continueButton"
-          mat-raised-button
-          type="submit"
-          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
-        >
-          <span class="mat-button-wrapper">
-            Continue
-            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
-          </span>
-        </button>
-      </div>
-    </section>
-  </verti-sticky-navigation-buttons>
-</form>
-<div id="stepFormContainer">
-  <h2>Step-by-Step Form</h2>
-  <form id="stepForm">
-    <div class="step active">
-      <h3>Step 1: Personal Info</h3>
-      <input type="text" name="firstName" placeholder="First Name" required>
-      <input type="text" name="lastName" placeholder="Last Name" required>
-      <button type="button" class="nextBtn">Next</button>
-    </div>
-
-    <div class="step">
-      <h3>Step 2: Contact Info</h3>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone">
-      <button type="button" class="prevBtn">Previous</button>
-      <button type="button" class="nextBtn">Next</button>
-    </div>
-
-    <div class="step">
-      <h3>Step 3: Address</h3>
-      <input type="text" name="address" placeholder="Address" required>
-      <input type="text" name="city" placeholder="City">
-      <button type="button" class="prevBtn">Previous</button>
-      <button type="submit">Submit</button>
-    </div>
-  </form>
-</div>
-
-<style>
-  #stepFormContainer .step { display: none; }
-  #stepFormContainer .step.active { display: block; }
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  let currentStep = 0;
-  const steps = document.querySelectorAll("#stepFormContainer .step");
-
-  function showStep(index) {
-    steps.forEach((step, i) => step.classList.toggle("active", i === index));
-  }
-
-  document.querySelectorAll("#stepFormContainer .nextBtn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      const inputs = steps[currentStep].querySelectorAll("input[required]");
-      for (let input of inputs) {
-        if (!input.value) {
-          alert("Please fill all required fields.");
-          return;
-        }
-      }
-      if (currentStep < steps.length - 1) currentStep++;
-      showStep(currentStep);
-    });
-  });
-
-  document.querySelectorAll("#stepFormContainer .prevBtn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      if (currentStep > 0) currentStep--;
-      showStep(currentStep);
-    });
-  });
-
-  document.getElementById("stepForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Form submitted successfully!");
-  });
-});
-</script>
-  <!-- 9. Remaining Edge Cases -->
-  <h2>9. Remaining Edge Cases</h2>
-
-  <!-- Disabled and Readonly -->
-  <form id="disabled-readonly-form" action="contact_us9.html">
-    <input type="text" name="normalField" placeholder="Normal Field">
-    <input type="text" name="readonlyField" placeholder="Readonly Field" readonly>
-    <input type="text" name="disabledField" placeholder="Disabled Field" disabled>
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Textarea -->
-  <form id="textarea-form" action="contact_us9.html">
-    <textarea name="comments" rows="4" cols="30" placeholder="Enter comments here"></textarea>
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Checkbox and Radio -->
-  <form id="checkbox-radio-form" action="contact_us9.html">
-    <label><input type="checkbox" name="interests" value="sports"> Sports</label>
-    <label><input type="checkbox" name="interests" value="music"> Music</label><br>
-    <label><input type="radio" name="gender" value="male"> Male</label>
-    <label><input type="radio" name="gender" value="female"> Female</label>
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- File Upload -->
-  <form id="file-form" action="contact_us9.html" enctype="multipart/form-data">
-    <input type="file" name="resume">
-    <input type="submit" value="Upload">
-  </form>
-
-  <!-- Password Field -->
-  <form id="password-form" action="contact_us9.html">
-    <input type="password" name="password" placeholder="Enter password">
-    <input type="submit" value="Login">
-  </form>
-
-  <!-- Number and Range -->
-  <form id="number-range-form" action="contact_us9.html">
-    <input type="number" name="age" placeholder="Age">
-    <input type="range" name="volume" min="0" max="100">
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Date and Time -->
-  <form id="date-time-form" action="contact_us9.html">
-    <input type="date" name="dob">
-    <input type="time" name="appointment">
-    <input type="datetime-local" name="meeting">
-    <input type="month" name="billingMonth">
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Select Multiple -->
-  <form id="multi-select-form" action="contact_us9.html">
-    <select name="fruits" multiple>
-      <option>Apple</option>
-      <option>Banana</option>
-      <option>Orange</option>
-    </select>
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Form inside iframe -->
-  <h3>Form inside iframe</h3>
-  <iframe srcdoc='
-    <form id="iframe-form" action="contact_us9.html">
-      <input type="text" name="iframeField" placeholder="Inside iframe">
-      <input type="submit" value="Submit">
-    </form>
-  ' style="width:100%; height:150px; border:1px solid #ccc;"></iframe>
-
-  <!-- Custom Web Component -->
-  <h3>Form with custom web component</h3>
-  <form id="custom-element-form" action="contact_us9.html">
-    <custom-input></custom-input>
-    <input type="submit" value="Submit">
-  </form>
-  <script>
-    class CustomInput extends HTMLElement {
-      connectedCallback() {
-        this.innerHTML = '<input type="text" name="customInput" placeholder="Custom Input">';
-      }
-    }
-    customElements.define('custom-input', CustomInput);
-  </script>
-
-  <!-- Angular Reactive Form Simulation -->
-  <h3>Angular Reactive-like Form</h3>
-  <form id="reactive-form" action="contact_us9.html">
-    <input formControlName="firstName" placeholder="First Name">
-    <input formControlName="lastName" placeholder="Last Name">
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Form with only a button -->
-  <h3>Form with Only a Button</h3>
-  <form id="button-only-form" action="contact_us9.html">
-    <button type="submit">Click Me</button>
-  </form>
-
-
-<!-- 10.. Remaining Edge Cases with nls_fa-->
-<h2>10. Remaining Edge Cases with nls_fa_el_name</h2>
-
-<!-- Disabled and Readonly -->
-<form action="contact_us9.html">
-  <input type="text" nls_fa_el_name="normalField" placeholder="Normal Field">
-  <input type="text" nls_fa_el_name="readonlyField" placeholder="Readonly Field" readonly>
-  <input type="text" nls_fa_el_name="disabledField" placeholder="Disabled Field" disabled>
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Textarea -->
-<form action="contact_us9.html">
-  <textarea nls_fa_el_name="comments" rows="4" cols="30" placeholder="Enter comments here"></textarea>
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Checkbox and Radio -->
-<form action="contact_us9.html">
-  <label><input type="checkbox" nls_fa_el_name="interests_sports" value="sports"> Sports</label>
-  <label><input type="checkbox" nls_fa_el_name="interests_music" value="music"> Music</label><br>
-  <label><input type="radio" nls_fa_el_name="gender_male" value="male"> Male</label>
-  <label><input type="radio" nls_fa_el_name="gender_female" value="female"> Female</label>
-  <input type="submit" value="Submit">
-</form>
-
-<!-- File Upload -->
-<form action="contact_us9.html" enctype="multipart/form-data">
-  <input type="file" nls_fa_el_name="resume">
-  <input type="submit" value="Upload">
-</form>
-
-<!-- Password Field -->
-<form action="contact_us9.html">
-  <input type="password" nls_fa_el_name="password" placeholder="Enter password">
-  <input type="submit" value="Login">
-</form>
-
-<!-- Number and Range -->
-<form action="contact_us9.html">
-  <input type="number" nls_fa_el_name="age" placeholder="Age">
-  <input type="range" nls_fa_el_name="volume" min="0" max="100">
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Date and Time -->
-<form action="contact_us9.html">
-  <input type="date" nls_fa_el_name="dob">
-  <input type="time" nls_fa_el_name="appointment">
-  <input type="datetime-local" nls_fa_el_name="meeting">
-  <input type="month" nls_fa_el_name="billingMonth">
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Select Multiple -->
-<form action="contact_us9.html">
-  <select nls_fa_el_name="fruits" multiple>
-    <option>Apple</option>
-    <option>Banana</option>
-    <option>Orange</option>
-  </select>
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Form inside iframe -->
-<h3>Form inside iframe</h3>
-<iframe srcdoc='
-  <form action="contact_us9.html">
-    <input type="text" nls_fa_el_name="iframeField" placeholder="Inside iframe">
-    <input type="submit" value="Submit">
-  </form>
-' style="width:100%; height:150px; border:1px solid #ccc;"></iframe>
-
-<!-- Custom Web Component -->
-<h3>Form with custom web component</h3>
-<form action="contact_us9.html">
-  <custom-input></custom-input>
-  <input type="submit" value="Submit">
-</form>
-<script>
-  class CustomInput extends HTMLElement {
-    connectedCallback() {
-      this.innerHTML = '<input type="text" nls_fa_el_name="customInput" placeholder="Custom Input">';
-    }
-  }
-  customElements.define('custom-input', CustomInput);
-</script>
-
-<!-- Angular Reactive Form Simulation -->
-<h3>Angular Reactive-like Form</h3>
-<form action="contact_us9.html">
-  <input formControlName="firstName" nls_fa_el_name="firstName" placeholder="First Name">
-  <input formControlName="lastName" nls_fa_el_name="lastName" placeholder="Last Name">
-  <input type="submit" value="Submit">
-</form>
-
-<!-- Form with only a button -->
-<h3>Form with Only a Button</h3>
-<form action="contact_us9.html">
-  <button type="submit" nls_fa_el_name="onlyButton">Click Me</button>
-</form>
 
 </body>
 </html>
