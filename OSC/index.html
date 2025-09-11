@@ -36,6 +36,89 @@
   </script>
 </head>
 <body>
+
+
+
+<h2>Nested Shadow DOM — form field in deepest shadow root</h2>
+
+  <!-- Light DOM form (no name/id on fields; tracking relies on nls_fa_el_name) -->
+  <form id="outerForm" action="#" method="post">
+    <!-- Hidden mirror input: receives value from nested shadow input for submission/tracking -->
+    <input type="hidden" id="mirror_customInput" nls_fa_el_name="customInput_mirror_lightdom">
+
+    <div id="outer-host"></div>
+
+    <button type="submit">Submit (light DOM)</button>
+  </form>
+
+  <script>
+    // Create outer shadow host
+    const outerHost = document.querySelector('#outer-host');
+    const outerShadow = outerHost.attachShadow({ mode: 'open' });
+
+    // Outer shadow markup contains an inner host element (which will have its own shadow root)
+    outerShadow.innerHTML = `
+      <style>
+        .box { padding: 12px; border: 2px dashed #6c7; border-radius:6px; }
+        .inner-host { display:block; margin-top:8px; }
+      </style>
+      <div class="box">
+        <div>Outer Shadow: contains an inner host below</div>
+        <div class="inner-host" id="inner-host"></div>
+      </div>
+    `;
+
+    // Get the inner host from the outer shadow root and attach nested shadow root
+    const innerHost = outerShadow.getElementById('inner-host');
+    const innerShadow = innerHost.attachShadow({ mode: 'open' });
+
+    // Deep shadow content: the actual input (no name/id, but with nls_fa_el_name)
+    // It dispatches a CustomEvent on 'input' with composed:true so it bubbles out of the shadow tree.
+    innerShadow.innerHTML = `
+      <style>
+        .panel { background:#f7fff7; padding:10px; border-radius:4px; }
+        input { padding:6px; width:100%; box-sizing:border-box; }
+      </style>
+      <div class="panel">
+        <label>Deep Shadow Input (nls_fa_el_name="customInput")</label>
+        <input type="text" nls_fa_el_name="customInput" placeholder="Type here..." />
+      </div>
+    `;
+
+    // Hook: when the nested input changes, bubble an event and mirror value to light DOM hidden input
+    const nestedInput = innerShadow.querySelector('input[nls_fa_el_name="customInput"]');
+
+    nestedInput.addEventListener('input', (ev) => {
+      const value = ev.target.value;
+
+      // 1) Dispatch a composed event so listeners on document / outside shadows can catch it
+      const eventDetail = { nls_fa_el_name: 'customInput', value };
+      const customEvent = new CustomEvent('field-change', {
+        detail: eventDetail,
+        bubbles: true,
+        composed: true // IMPORTANT: allows event to cross shadow boundaries
+      });
+      nestedInput.dispatchEvent(customEvent);
+
+      // 2) Mirror value to a hidden light-DOM input (so native form submission / trackers that read the light DOM can see it)
+      const mirror = document.getElementById('mirror_customInput');
+      if (mirror) mirror.value = value;
+    });
+
+    // Example: listener in the page capturing the bubbled event
+    document.addEventListener('field-change', (e) => {
+      // e.detail contains { nls_fa_el_name, value }
+      console.log('Captured field-change on document:', e.detail);
+      // Here you can call your tracking function, e.g. _vwo_track(...) or push to dataLayer
+      // Example: window.dataLayer?.push({ event: 'field_change', ...e.detail })
+    });
+
+    // Optional: on form submit, show the mirrored value (demonstrates form can submit the value)
+    document.querySelector('#outerForm').addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      alert('Form submitting. Mirrored value: ' + document.getElementById('mirror_customInput').value);
+    });
+  </script>
   <h1>Form Types Demo</h1>
 
   <!-- 1. Normal Form -->
