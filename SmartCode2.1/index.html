@@ -262,7 +262,7 @@ VWO.push(['onEventReceive', 'tSC', ()=>{
         .container {
             margin-top: 40px;
             text-align: center;
-        }
+        }}
 
         .shadow-button, .nested-shadow-button {
             display: inline-block;
@@ -1434,6 +1434,2136 @@ document.addEventListener('DOMContentLoaded', function () {
     <a href="https://homeboy445.github.io/Testing-Site/?accountId=636231">Akshit's Page</a><br>
    
 </p>
+
+<!-- ============================================= -->
+<!-- COMPREHENSIVE FORM TYPES SHOWCASE -->
+<!-- ============================================= -->
+
+<!-- 1️⃣ HTML NATIVE FORMS -->
+<!-- Classic <form> element with native browser controls -->
+<!-- Handled by the browser, sends data with GET/POST -->
+<div class="form-section">
+    <h2>1️⃣ HTML Native Forms</h2>
+    <p><strong>Description:</strong> Classic &lt;form&gt; element with &lt;input&gt;, &lt;select&gt;, &lt;textarea&gt;, etc. Handled by the browser, sends data with GET/POST.</p>
+    
+    <form method="POST" action="/submit" class="native-form">
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <!-- Text Input -->
+            <label for="native-name">Full Name:</label>
+            <input type="text" id="native-name" name="fullName" required>
+            
+            <!-- Email Input -->
+            <label for="native-email">Email:</label>
+            <input type="email" id="native-email" name="email" required>
+            
+            <!-- Password Input -->
+            <label for="native-password">Password:</label>
+            <input type="password" id="native-password" name="password" required>
+            
+            <!-- Number Input -->
+            <label for="native-age">Age:</label>
+            <input type="number" id="native-age" name="age" min="18" max="100">
+            
+            <!-- Date Input -->
+            <label for="native-birthdate">Birth Date:</label>
+            <input type="date" id="native-birthdate" name="birthDate">
+            
+            <!-- Select Dropdown -->
+            <label for="native-country">Country:</label>
+            <select id="native-country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="in">India</option>
+            </select>
+            
+            <!-- Radio Buttons -->
+            <fieldset>
+                <legend>Gender:</legend>
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+                <label><input type="radio" name="gender" value="other"> Other</label>
+            </fieldset>
+            
+            <!-- Checkboxes -->
+            <fieldset>
+                <legend>Interests:</legend>
+                <label><input type="checkbox" name="interests" value="sports"> Sports</label>
+                <label><input type="checkbox" name="interests" value="music"> Music</label>
+                <label><input type="checkbox" name="interests" value="travel"> Travel</label>
+            </fieldset>
+            
+            <!-- Textarea -->
+            <label for="native-comments">Comments:</label>
+            <textarea id="native-comments" name="comments" rows="4" cols="50"></textarea>
+            
+            <!-- File Upload -->
+            <label for="native-file">Upload Resume:</label>
+            <input type="file" id="native-file" name="resume" accept=".pdf,.doc,.docx">
+            
+            <!-- Range Slider -->
+            <label for="native-rating">Rating: <span id="rating-value">5</span></label>
+            <input type="range" id="native-rating" name="rating" min="1" max="10" value="5" oninput="document.getElementById('rating-value').textContent = this.value">
+            
+            <!-- Color Picker -->
+            <label for="native-color">Favorite Color:</label>
+            <input type="color" id="native-color" name="favoriteColor" value="#000000">
+            
+            <!-- Submit and Reset -->
+            <div class="form-buttons">
+                <input type="submit" value="Submit Native Form">
+                <input type="reset" value="Reset">
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<!-- 2️⃣ NORMAL / CUSTOM FORMS -->
+<!-- UI built with custom elements (div, span, styled inputs) instead of native fields -->
+<!-- Developers manually capture values with JavaScript -->
+<div class="form-section">
+    <h2>2️⃣ Normal / Custom Forms</h2>
+    <p><strong>Description:</strong> UI built with custom elements (div, span, styled inputs, etc.) instead of native fields. Developers manually capture values with JS.</p>
+    
+    <div class="custom-form" id="custom-form">
+        <div class="custom-form-header">
+            <h3>Custom Styled Form</h3>
+            <p>This form uses custom styling and JavaScript for data handling</p>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Username</div>
+            <div class="custom-input-wrapper">
+                <input type="text" class="custom-input" data-field="username" placeholder="Enter username">
+                <div class="custom-input-icon">👤</div>
+            </div>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Email Address</div>
+            <div class="custom-input-wrapper">
+                <input type="email" class="custom-input" data-field="email" placeholder="Enter email">
+                <div class="custom-input-icon">📧</div>
+            </div>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Password</div>
+            <div class="custom-input-wrapper">
+                <input type="password" class="custom-input" data-field="password" placeholder="Enter password">
+                <div class="custom-input-icon">🔒</div>
+                <button type="button" class="password-toggle" onclick="togglePassword(this)">👁️</button>
+            </div>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Subscription Plan</div>
+            <div class="custom-radio-group">
+                <div class="custom-radio-item">
+                    <input type="radio" id="plan-basic" name="plan" value="basic" class="custom-radio">
+                    <label for="plan-basic" class="custom-radio-label">
+                        <div class="radio-content">
+                            <div class="radio-title">Basic Plan</div>
+                            <div class="radio-price">$9.99/month</div>
+                        </div>
+                    </label>
+                </div>
+                <div class="custom-radio-item">
+                    <input type="radio" id="plan-premium" name="plan" value="premium" class="custom-radio">
+                    <label for="plan-premium" class="custom-radio-label">
+                        <div class="radio-content">
+                            <div class="radio-title">Premium Plan</div>
+                            <div class="radio-price">$19.99/month</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Notifications</div>
+            <div class="custom-toggle-group">
+                <div class="custom-toggle">
+                    <input type="checkbox" id="notif-email" class="custom-checkbox" data-field="notifications.email">
+                    <label for="notif-email" class="custom-toggle-label">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">Email Notifications</span>
+                    </label>
+                </div>
+                <div class="custom-toggle">
+                    <input type="checkbox" id="notif-sms" class="custom-checkbox" data-field="notifications.sms">
+                    <label for="notif-sms" class="custom-toggle-label">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-text">SMS Notifications</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom-field">
+            <div class="custom-label">Bio</div>
+            <div class="custom-textarea-wrapper">
+                <textarea class="custom-textarea" data-field="bio" placeholder="Tell us about yourself..."></textarea>
+                <div class="char-counter">
+                    <span class="char-count">0</span>/500 characters
+                </div>
+            </div>
+        </div>
+        
+        <div class="custom-form-actions">
+            <button type="button" class="custom-btn custom-btn-secondary" onclick="clearCustomForm()">Clear</button>
+            <button type="button" class="custom-btn custom-btn-primary" onclick="submitCustomForm()">Submit Custom Form</button>
+        </div>
+        
+        <div class="custom-form-output" id="custom-form-output" style="display: none;">
+            <h4>Form Data:</h4>
+            <pre id="custom-form-data"></pre>
+        </div>
+    </div>
+</div>
+
+<!-- 3️⃣ FRAMEWORK-SPECIFIC FORMS -->
+<!-- Forms created using libraries/frameworks like Angular, React, Vue -->
+<!-- They provide validation, state management, and reactivity -->
+<div class="form-section">
+    <h2>3️⃣ Framework-Specific Forms</h2>
+    <p><strong>Description:</strong> Forms created using libraries/frameworks like Angular (Template-driven, Reactive), React (Controlled/Uncontrolled), Vue, etc. They provide validation, state management, and reactivity.</p>
+    
+    <!-- Angular Reactive Form -->
+    <div class="framework-form">
+        <h3>Angular Reactive Form</h3>
+        <div id="angular-reactive-form">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="angular-form">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="Enter first name">
+                    <div class="error-message" *ngIf="userForm.get('firstName')?.hasError('required') && userForm.get('firstName')?.touched">
+                        First name is required
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
+                    <div class="error-message" *ngIf="userForm.get('email')?.hasError('email') && userForm.get('email')?.touched">
+                        Please enter a valid email
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" formControlName="age" class="form-control" placeholder="Enter age">
+                    <div class="error-message" *ngIf="userForm.get('age')?.hasError('min') && userForm.get('age')?.touched">
+                        Age must be at least 18
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Country</label>
+                    <select formControlName="country" class="form-control">
+                        <option value="">Select Country</option>
+                        <option value="us">United States</option>
+                        <option value="ca">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Newsletter</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" formControlName="newsletter">
+                            Subscribe to newsletter
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit Angular Form</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- React-like Controlled Form (Simulated) -->
+    <div class="framework-form">
+        <h3>React-like Controlled Form (Simulated)</h3>
+        <div id="react-controlled-form">
+            <form class="react-form" onsubmit="handleReactSubmit(event)">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="react-username" class="form-control" placeholder="Enter username" 
+                           onInput="updateReactState('username', this.value)">
+                    <div class="error-message" id="react-username-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="react-password" class="form-control" placeholder="Enter password"
+                           onInput="updateReactState('password', this.value)">
+                    <div class="error-message" id="react-password-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="react-confirm-password" class="form-control" placeholder="Confirm password"
+                           onInput="updateReactState('confirmPassword', this.value)">
+                    <div class="error-message" id="react-confirm-password-error"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Terms & Conditions</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="react-terms" onInput="updateReactState('terms', this.checked)">
+                            I agree to the terms and conditions
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit React Form</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 4️⃣ SHADOW DOM / WEB COMPONENT FORMS -->
+<!-- Forms embedded inside Web Components with Shadow DOM -->
+<!-- Requires special handling to pass form data outside the shadow root -->
+<div class="form-section">
+    <h2>4️⃣ Shadow DOM / Web Component Forms</h2>
+    <p><strong>Description:</strong> Forms embedded inside Web Components with Shadow DOM. Requires special handling to pass form data outside the shadow root.</p>
+    
+    <div class="shadow-form-container">
+        <h3>Shadow DOM Form Component</h3>
+        <div id="shadow-form-host"></div>
+        
+        <h3>Nested Shadow DOM Form</h3>
+        <div id="nested-shadow-form-host"></div>
+        
+        <h3>Shadow DOM Form Data Output</h3>
+        <div id="shadow-form-output">
+            <pre id="shadow-form-data">No data submitted yet</pre>
+        </div>
+    </div>
+</div>
+
+<!-- 5️⃣ DYNAMIC FORMS -->
+<!-- Forms generated at runtime, often with APIs -->
+<div class="form-section">
+    <h2>5️⃣ Dynamic Forms</h2>
+    <p><strong>Description:</strong> Forms generated at runtime, often with APIs. Fields are created dynamically based on configuration.</p>
+    
+    <div class="dynamic-form-container">
+        <h3>Dynamic Form Generator</h3>
+        <div class="form-builder">
+            <h4>Add Form Fields:</h4>
+            <div class="field-builder">
+                <select id="field-type" class="form-control">
+                    <option value="text">Text Input</option>
+                    <option value="email">Email Input</option>
+                    <option value="number">Number Input</option>
+                    <option value="select">Select Dropdown</option>
+                    <option value="checkbox">Checkbox</option>
+                    <option value="radio">Radio Button</option>
+                    <option value="textarea">Textarea</option>
+                </select>
+                <input type="text" id="field-label" class="form-control" placeholder="Field Label">
+                <input type="text" id="field-name" class="form-control" placeholder="Field Name">
+                <button type="button" class="btn btn-secondary" onclick="addDynamicField()">Add Field</button>
+            </div>
+        </div>
+        
+        <div class="dynamic-form" id="dynamic-form">
+            <h4>Generated Form:</h4>
+            <form id="generated-form" onsubmit="handleDynamicFormSubmit(event)">
+                <div class="form-fields" id="form-fields">
+                    <p class="no-fields">No fields added yet. Use the builder above to add fields.</p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="submit-dynamic-form" style="display: none;">Submit Dynamic Form</button>
+            </form>
+        </div>
+        
+        <div class="dynamic-form-output" id="dynamic-form-output" style="display: none;">
+            <h4>Dynamic Form Data:</h4>
+            <pre id="dynamic-form-data"></pre>
+        </div>
+    </div>
+</div>
+
+<!-- 6️⃣ ACCESSIBLE FORMS -->
+<!-- WCAG-compliant forms with ARIA attributes -->
+<div class="form-section">
+    <h2>6️⃣ Accessible Forms (WCAG-Compliant)</h2>
+    <p><strong>Description:</strong> WCAG-compliant forms with ARIA attributes for screen readers and accessibility tools.</p>
+    
+    <form class="accessible-form" id="accessible-form" role="form" aria-labelledby="accessible-form-title">
+        <h3 id="accessible-form-title">Accessible Contact Form</h3>
+        
+        <div class="form-group" role="group" aria-labelledby="name-label">
+            <label id="name-label" for="accessible-name">Full Name <span class="required" aria-label="required">*</span></label>
+            <input type="text" id="accessible-name" name="name" class="form-control" 
+                   aria-required="true" aria-describedby="name-error" required>
+            <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+        
+        <div class="form-group" role="group" aria-labelledby="email-label">
+            <label id="email-label" for="accessible-email">Email Address <span class="required" aria-label="required">*</span></label>
+            <input type="email" id="accessible-email" name="email" class="form-control" 
+                   aria-required="true" aria-describedby="email-error email-help" required>
+            <div id="email-help" class="help-text">We'll never share your email with anyone else.</div>
+            <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+        
+        <fieldset class="form-group">
+            <legend>Preferred Contact Method <span class="required" aria-label="required">*</span></legend>
+            <div class="radio-group" role="radiogroup" aria-labelledby="contact-method-legend">
+                <label class="radio-label">
+                    <input type="radio" name="contact-method" value="email" aria-describedby="contact-method-help">
+                    <span>Email</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="contact-method" value="phone" aria-describedby="contact-method-help">
+                    <span>Phone</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="contact-method" value="sms" aria-describedby="contact-method-help">
+                    <span>SMS</span>
+                </label>
+            </div>
+            <div id="contact-method-help" class="help-text">Choose how you'd like us to contact you.</div>
+        </fieldset>
+        
+        <div class="form-group" role="group" aria-labelledby="message-label">
+            <label id="message-label" for="accessible-message">Message</label>
+            <textarea id="accessible-message" name="message" class="form-control" rows="4" 
+                      aria-describedby="message-help message-counter"></textarea>
+            <div id="message-help" class="help-text">Please describe your inquiry in detail.</div>
+            <div id="message-counter" class="char-counter" aria-live="polite">0 characters</div>
+        </div>
+        
+        <div class="form-group">
+            <label class="checkbox-label">
+                <input type="checkbox" name="newsletter" aria-describedby="newsletter-help">
+                <span>Subscribe to our newsletter</span>
+            </label>
+            <div id="newsletter-help" class="help-text">Receive updates about new features and services.</div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="clearAccessibleForm()" aria-describedby="clear-help">Clear Form</button>
+            <button type="submit" class="btn btn-primary" aria-describedby="submit-help">Submit Accessible Form</button>
+        </div>
+        
+        <div id="clear-help" class="help-text">Clear all form fields and start over.</div>
+        <div id="submit-help" class="help-text">Submit your form data for processing.</div>
+    </form>
+</div>
+
+<!-- 7️⃣ MULTI-STEP / WIZARD FORMS -->
+<!-- Forms broken into multiple steps -->
+<div class="form-section">
+    <h2>7️⃣ Multi-Step / Wizard Forms</h2>
+    <p><strong>Description:</strong> Forms broken into steps with navigation between them. Often used for complex data collection.</p>
+    
+    <div class="wizard-form" id="wizard-form">
+        <div class="wizard-header">
+            <div class="wizard-steps">
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Personal Info</div>
+                </div>
+                <div class="wizard-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Contact Details</div>
+                </div>
+                <div class="wizard-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Preferences</div>
+                </div>
+                <div class="wizard-step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Review</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wizard-content">
+            <!-- Step 1: Personal Information -->
+            <div class="wizard-step-content active" id="step-1">
+                <h3>Personal Information</h3>
+                <div class="form-group">
+                    <label for="wizard-firstname">First Name</label>
+                    <input type="text" id="wizard-firstname" name="firstName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="wizard-lastname">Last Name</label>
+                    <input type="text" id="wizard-lastname" name="lastName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="wizard-birthdate">Date of Birth</label>
+                    <input type="date" id="wizard-birthdate" name="birthDate" class="form-control" required>
+                </div>
+            </div>
+            
+            <!-- Step 2: Contact Details -->
+            <div class="wizard-step-content" id="step-2">
+                <h3>Contact Details</h3>
+                <div class="form-group">
+                    <label for="wizard-email">Email Address</label>
+                    <input type="email" id="wizard-email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="wizard-phone">Phone Number</label>
+                    <input type="tel" id="wizard-phone" name="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="wizard-address">Address</label>
+                    <textarea id="wizard-address" name="address" class="form-control" rows="3" required></textarea>
+                </div>
+            </div>
+            
+            <!-- Step 3: Preferences -->
+            <div class="wizard-step-content" id="step-3">
+                <h3>Preferences</h3>
+                <div class="form-group">
+                    <label>Communication Preferences</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="preferences" value="email">
+                            Email notifications
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="preferences" value="sms">
+                            SMS notifications
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="preferences" value="push">
+                            Push notifications
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="wizard-timezone">Timezone</label>
+                    <select id="wizard-timezone" name="timezone" class="form-control">
+                        <option value="UTC">UTC</option>
+                        <option value="EST">Eastern Time</option>
+                        <option value="PST">Pacific Time</option>
+                        <option value="CST">Central Time</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Step 4: Review -->
+            <div class="wizard-step-content" id="step-4">
+                <h3>Review Your Information</h3>
+                <div class="review-section">
+                    <h4>Personal Information</h4>
+                    <div class="review-item">
+                        <strong>Name:</strong> <span id="review-name"></span>
+                    </div>
+                    <div class="review-item">
+                        <strong>Date of Birth:</strong> <span id="review-birthdate"></span>
+                    </div>
+                    
+                    <h4>Contact Details</h4>
+                    <div class="review-item">
+                        <strong>Email:</strong> <span id="review-email"></span>
+                    </div>
+                    <div class="review-item">
+                        <strong>Phone:</strong> <span id="review-phone"></span>
+                    </div>
+                    <div class="review-item">
+                        <strong>Address:</strong> <span id="review-address"></span>
+                    </div>
+                    
+                    <h4>Preferences</h4>
+                    <div class="review-item">
+                        <strong>Communication:</strong> <span id="review-preferences"></span>
+                    </div>
+                    <div class="review-item">
+                        <strong>Timezone:</strong> <span id="review-timezone"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wizard-navigation">
+            <button type="button" class="btn btn-secondary" id="wizard-prev" onclick="wizardPrevious()" style="display: none;">Previous</button>
+            <button type="button" class="btn btn-primary" id="wizard-next" onclick="wizardNext()">Next</button>
+            <button type="button" class="btn btn-success" id="wizard-submit" onclick="wizardSubmit()" style="display: none;">Submit Wizard</button>
+        </div>
+    </div>
+</div>
+
+<!-- Angular Material Reactive Form -->
+<div id="angular-material-form">
+    <h2>Angular Material Reactive Form</h2>
+    <form novalidate="" id="user-info-form" class="ng-untouched ng-pristine ng-valid">
+        <section fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
+            
+            <!-- Current Insurance Question -->
+            <section class="rmv-content ng-star-inserted">
+                <mat-label class="mat-label ng-star-inserted">
+                    Do you currently have auto insurance? 
+                    <span class="starmarkrequired"> * </span>
+                </mat-label>
+                <section class="alignCenter mrbt24 ng-star-inserted">
+                    <mat-button-toggle-group role="group" color="primary" formcontrolname="currentInsuranceCoverage" 
+                        aria-label="Font Style" id="currentInsuranceCoverage" 
+                        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard ng-untouched ng-pristine ng-valid" 
+                        aria-disabled="false">
+                        <mat-button-toggle role="presentation" id="currenltyHaveAutoInsuranceYes" 
+                            class="mat-button-toggle left-toggle-button mat-button-toggle-checked mat-button-toggle-appearance-standard">
+                            <button type="button" class="mat-button-toggle-button mat-focus-indicator" 
+                                id="currenltyHaveAutoInsuranceYes-button" tabindex="0" aria-pressed="true" name="mat-button-toggle-group-1">
+                                <span class="mat-button-toggle-label-content">Yes</span>
+                            </button>
+                            <span class="mat-button-toggle-focus-overlay"></span>
+                            <span matripple="" class="mat-ripple mat-button-toggle-ripple"></span>
+                        </mat-button-toggle>
+                        <mat-button-toggle role="presentation" id="currenltyHaveAutoInsuranceNo" 
+                            class="mat-button-toggle right-toggle-button mat-button-toggle-appearance-standard">
+                            <button type="button" class="mat-button-toggle-button mat-focus-indicator" 
+                                id="currenltyHaveAutoInsuranceNo-button" tabindex="0" aria-pressed="false" name="mat-button-toggle-group-1">
+                                <span class="mat-button-toggle-label-content">No</span>
+                            </button>
+                            <span class="mat-button-toggle-focus-overlay"></span>
+                            <span matripple="" class="mat-ripple mat-button-toggle-ripple"></span>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </section>
+            </section>
+
+            <!-- Continuous Coverage Question -->
+            <section class="rmv-content ng-star-inserted">
+                <mat-label class="mat-label ng-star-inserted">
+                    Have you had continuous auto insurance coverage for the past 3 years or more? 
+                    <span class="starmarkrequired"> * </span>
+                </mat-label>
+                <section class="alignCenter mrbt24 ng-star-inserted">
+                    <mat-button-toggle-group role="group" color="primary" formcontrolname="lapseInCoverage" 
+                        aria-label="Font Style" id="lapseInCoverage" 
+                        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard ng-untouched ng-pristine ng-valid" 
+                        aria-disabled="false">
+                        <mat-button-toggle role="presentation" id="hadAutoInsuranceForPast3YearsYes" 
+                            class="mat-button-toggle left-toggle-button mat-button-toggle-checked mat-button-toggle-appearance-standard">
+                            <button type="button" class="mat-button-toggle-button mat-focus-indicator" 
+                                id="hadAutoInsuranceForPast3YearsYes-button" tabindex="0" aria-pressed="true" name="mat-button-toggle-group-2">
+                                <span class="mat-button-toggle-label-content">Yes</span>
+                            </button>
+                            <span class="mat-button-toggle-focus-overlay"></span>
+                            <span matripple="" class="mat-ripple mat-button-toggle-ripple"></span>
+                        </mat-button-toggle>
+                        <mat-button-toggle role="presentation" id="hadAutoInsuranceForPast3YearsNo" 
+                            class="mat-button-toggle right-toggle-button mat-button-toggle-appearance-standard">
+                            <button type="button" class="mat-button-toggle-button mat-focus-indicator" 
+                                id="hadAutoInsuranceForPast3YearsNo-button" tabindex="0" aria-pressed="false" name="mat-button-toggle-group-2">
+                                <span class="mat-button-toggle-label-content">No</span>
+                            </button>
+                            <span class="mat-button-toggle-focus-overlay"></span>
+                            <span matripple="" class="mat-ripple mat-button-toggle-ripple"></span>
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+                </section>
+            </section>
+
+            <!-- Current Insurance Company -->
+            <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; box-sizing: border-box; display: flex;" class="ng-star-inserted">
+                <mat-label class="mat-label">
+                    What is your current auto insurance company? 
+                    <span class="starmarkrequired"> * </span>
+                </mat-label>
+                <mat-form-field appearance="outline" class="mat-form-field mat-form-field-custom-class ng-tns-c90-23 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted mat-form-field-should-float">
+                    <div class="mat-form-field-wrapper ng-tns-c90-23">
+                        <div class="mat-form-field-flex ng-tns-c90-23">
+                            <div class="mat-form-field-outline ng-tns-c90-23 ng-star-inserted">
+                                <div class="mat-form-field-outline-start ng-tns-c90-23" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-gap ng-tns-c90-23" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-end ng-tns-c90-23"></div>
+                            </div>
+                            <div class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c90-23 ng-star-inserted">
+                                <div class="mat-form-field-outline-start ng-tns-c90-23" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-gap ng-tns-c90-23" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-end ng-tns-c90-23"></div>
+                            </div>
+                            <div class="mat-form-field-infix ng-tns-c90-23">
+                                <mat-select role="combobox" aria-autocomplete="none" aria-haspopup="true" placeholder="Select" 
+                                    formcontrolname="priorCarrierName" id="priorCarrierName" 
+                                    class="mat-select ng-tns-c153-24 ng-tns-c90-23 mat-select-required ng-untouched ng-pristine ng-valid ng-star-inserted" 
+                                    aria-labelledby="mat-select-value-13" tabindex="0" aria-expanded="false" aria-required="true" aria-disabled="false" aria-invalid="false">
+                                    <div cdk-overlay-origin="" class="mat-select-trigger ng-tns-c153-24">
+                                        <div class="mat-select-value ng-tns-c153-24" id="mat-select-value-13">
+                                            <span class="mat-select-value-text ng-tns-c153-24 ng-star-inserted">
+                                                <span class="mat-select-min-line ng-tns-c153-24 ng-star-inserted">AllState Insurance Company</span>
+                                            </span>
+                                        </div>
+                                        <div class="mat-select-arrow-wrapper ng-tns-c153-24">
+                                            <div class="mat-select-arrow ng-tns-c153-24"></div>
+                                        </div>
+                                    </div>
+                                </mat-select>
+                                <span class="mat-form-field-label-wrapper ng-tns-c90-23"></span>
+                            </div>
+                        </div>
+                        <div class="mat-form-field-subscript-wrapper ng-tns-c90-23">
+                            <div class="mat-form-field-hint-wrapper ng-tns-c90-23 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="opacity: 1; transform: translateY(0%);">
+                                <div class="mat-form-field-hint-spacer ng-tns-c90-23"></div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-form-field>
+            </section>
+
+            <!-- Years Insured Question -->
+            <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; box-sizing: border-box; display: flex;" class="ng-star-inserted">
+                <mat-label class="mat-label">
+                    How long have you had auto insurance coverage with AllState Insurance Company? 
+                    <span class="starmarkrequired"> * </span>
+                </mat-label>
+                <mat-form-field appearance="outline" class="mat-form-field mat-form-field-custom-class ng-tns-c90-25 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted mat-form-field-should-float">
+                    <div class="mat-form-field-wrapper ng-tns-c90-25">
+                        <div class="mat-form-field-flex ng-tns-c90-25">
+                            <div class="mat-form-field-outline ng-tns-c90-25 ng-star-inserted">
+                                <div class="mat-form-field-outline-start ng-tns-c90-25" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-gap ng-tns-c90-25" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-end ng-tns-c90-25"></div>
+                            </div>
+                            <div class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c90-25 ng-star-inserted">
+                                <div class="mat-form-field-outline-start ng-tns-c90-25" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-gap ng-tns-c90-25" style="width: 0px;"></div>
+                                <div class="mat-form-field-outline-end ng-tns-c90-25"></div>
+                            </div>
+                            <div class="mat-form-field-infix ng-tns-c90-25">
+                                <mat-select role="combobox" aria-autocomplete="none" aria-haspopup="true" placeholder="Select" 
+                                    formcontrolname="yearsInsured" id="yearsInsured" 
+                                    class="mat-select ng-tns-c153-26 ng-tns-c90-25 mat-select-required ng-untouched ng-pristine ng-valid ng-star-inserted" 
+                                    aria-labelledby="mat-select-value-15" tabindex="0" aria-expanded="false" aria-required="true" aria-disabled="false" aria-invalid="false">
+                                    <div cdk-overlay-origin="" class="mat-select-trigger ng-tns-c153-26">
+                                        <div class="mat-select-value ng-tns-c153-26" id="mat-select-value-15">
+                                            <span class="mat-select-value-text ng-tns-c153-26 ng-star-inserted">
+                                                <span class="mat-select-min-line ng-tns-c153-26 ng-star-inserted">Between 6 months to 24 months</span>
+                                            </span>
+                                        </div>
+                                        <div class="mat-select-arrow-wrapper ng-tns-c153-26">
+                                            <div class="mat-select-arrow ng-tns-c153-26"></div>
+                                        </div>
+                                    </div>
+                                </mat-select>
+                                <span class="mat-form-field-label-wrapper ng-tns-c90-25"></span>
+                            </div>
+                        </div>
+                        <div class="mat-form-field-subscript-wrapper ng-tns-c90-25">
+                            <div class="mat-form-field-hint-wrapper ng-tns-c90-25 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="opacity: 1; transform: translateY(0%);">
+                                <div class="mat-form-field-hint-spacer ng-tns-c90-25"></div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-form-field>
+            </section>
+
+            <!-- Bodily Injury Limits -->
+            <section class="displayFlexcolumn ng-star-inserted">
+                <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; box-sizing: border-box; display: flex;">
+                    <mat-label class="mat-label">
+                        What are your current optional bodily injury limits? 
+                        <span class="starmarkrequired"> * </span>
+                    </mat-label>
+                    <mat-form-field appearance="outline" class="mat-form-field mat-form-field-custom-class currentOptionalBILimits biLimitMa ng-tns-c90-27 mat-primary mat-form-field-type-mat-select mat-form-field-appearance-outline mat-form-field-can-float ng-untouched ng-pristine ng-valid ng-star-inserted mat-form-field-should-float">
+                        <div class="mat-form-field-wrapper ng-tns-c90-27">
+                            <div class="mat-form-field-flex ng-tns-c90-27">
+                                <div class="mat-form-field-outline ng-tns-c90-27 ng-star-inserted">
+                                    <div class="mat-form-field-outline-start ng-tns-c90-27" style="width: 0px;"></div>
+                                    <div class="mat-form-field-outline-gap ng-tns-c90-27" style="width: 0px;"></div>
+                                    <div class="mat-form-field-outline-end ng-tns-c90-27"></div>
+                                </div>
+                                <div class="mat-form-field-outline mat-form-field-outline-thick ng-tns-c90-27 ng-star-inserted">
+                                    <div class="mat-form-field-outline-start ng-tns-c90-27" style="width: 0px;"></div>
+                                    <div class="mat-form-field-outline-gap ng-tns-c90-27" style="width: 0px;"></div>
+                                    <div class="mat-form-field-outline-end ng-tns-c90-27"></div>
+                                </div>
+                                <div class="mat-form-field-infix ng-tns-c90-27">
+                                    <mat-select role="combobox" aria-autocomplete="none" aria-haspopup="true" placeholder="Select" 
+                                        formcontrolname="biLimits" id="biLimits" 
+                                        class="mat-select ng-tns-c153-28 ng-tns-c90-27 mat-select-required ng-untouched ng-pristine ng-valid ng-star-inserted" 
+                                        aria-labelledby="mat-select-value-17" tabindex="0" aria-expanded="false" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="mat-hint-8">
+                                        <div cdk-overlay-origin="" class="mat-select-trigger ng-tns-c153-28">
+                                            <div class="mat-select-value ng-tns-c153-28" id="mat-select-value-17">
+                                                <span class="mat-select-value-text ng-tns-c153-28 ng-star-inserted">
+                                                    <span class="mat-select-min-line ng-tns-c153-28 ng-star-inserted">20/40</span>
+                                                </span>
+                                            </div>
+                                            <div class="mat-select-arrow-wrapper ng-tns-c153-28">
+                                                <div class="mat-select-arrow ng-tns-c153-28"></div>
+                                            </div>
+                                        </div>
+                                    </mat-select>
+                                    <span class="mat-form-field-label-wrapper ng-tns-c90-27"></span>
+                                </div>
+                            </div>
+                            <div class="mat-form-field-subscript-wrapper ng-tns-c90-27">
+                                <div class="mat-form-field-hint-wrapper ng-tns-c90-27 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="opacity: 1; transform: translateY(0%);">
+                                    <mat-hint class="mat-hint ng-tns-c90-27" id="mat-hint-8">
+                                        <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
+                                    </mat-hint>
+                                    <div class="mat-form-field-hint-spacer ng-tns-c90-27"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                </section>
+            </section>
+
+        </section>
+
+        <!-- Navigation Buttons -->
+        <verti-sticky-navigation-buttons>
+            <section class="sticky-buttons">
+                <div class="ftr-sticky ng-star-inserted">
+                    <verti-back-button class="ng-star-inserted">
+                        <a href="javascript:void(0)" color="primary" class="back-btn-contact back-btn"> Back</a>
+                    </verti-back-button>
+                    <button mat-raised-button="" class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn ng-star-inserted">
+                        <span class="mat-button-wrapper">
+                            Continue 
+                            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon ng-star-inserted">
+                        </span>
+                        <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                        <span class="mat-button-focus-overlay"></span>
+                    </button>
+                </div>
+            </section>
+        </verti-sticky-navigation-buttons>
+
+    </form>
+</div>
+
+<!-- Angular Material CDN and Styles -->
+<link rel="stylesheet" href="https://unpkg.com/@angular/material@17/prebuilt-themes/indigo-pink.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://unpkg.com/@angular/core@17/bundles/core.umd.js"></script>
+<script src="https://unpkg.com/@angular/common@17/bundles/common.umd.js"></script>
+<script src="https://unpkg.com/@angular/forms@17/bundles/forms.umd.js"></script>
+<script src="https://unpkg.com/@angular/material@17/bundles/material.umd.js"></script>
+<script src="https://unpkg.com/@angular/animations@17/bundles/animations.umd.js"></script>
+<script src="https://unpkg.com/@angular/platform-browser@17/bundles/platform-browser.umd.js"></script>
+<script src="https://unpkg.com/@angular/platform-browser-dynamic@17/bundles/platform-browser-dynamic.umd.js"></script>
+<script src="https://unpkg.com/@angular/cdk@17/bundles/cdk.umd.js"></script>
+
+<style>
+    #angular-material-form {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .mat-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .starmarkrequired {
+        color: red;
+    }
+    
+    .alignCenter {
+        text-align: center;
+    }
+    
+    .mrbt24 {
+        margin-bottom: 24px;
+    }
+    
+    .verti-button-toggle-group {
+        display: inline-flex;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    
+    .verti-button-toggle-group .mat-button-toggle {
+        border: 1px solid #ccc;
+    }
+    
+    .verti-button-toggle-group .mat-button-toggle:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    
+    .verti-button-toggle-group .mat-button-toggle:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    
+    .mat-form-field {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+    
+    .sticky-buttons {
+        position: sticky;
+        bottom: 0;
+        background: white;
+        padding: 16px 0;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 20px;
+    }
+    
+    .ftr-sticky {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .back-btn {
+        color: #1976d2;
+        text-decoration: none;
+        padding: 8px 16px;
+    }
+    
+    .verti-next-btn {
+        background-color: #1976d2;
+        color: white;
+    }
+    
+    .needHelpTxt {
+        color: #1976d2;
+        text-decoration: none;
+        font-size: 12px;
+    }
+    
+    .right-arrow-icon {
+        margin-left: 8px;
+    }
+    
+    /* ============================================= */
+    /* COMPREHENSIVE FORM STYLES */
+    /* ============================================= */
+    
+    .form-section {
+        margin: 40px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid #007bff;
+    }
+    
+    .form-section h2 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 1.5em;
+    }
+    
+    .form-section p {
+        margin-bottom: 20px;
+        color: #666;
+        font-style: italic;
+    }
+    
+    /* Native Form Styles */
+    .native-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .native-form fieldset {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .native-form legend {
+        font-weight: bold;
+        padding: 0 10px;
+    }
+    
+    .native-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .native-form input, .native-form select, .native-form textarea {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+    }
+    
+    .native-form .form-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .native-form input[type="submit"], .native-form input[type="reset"] {
+        width: auto;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .native-form input[type="reset"] {
+        background: #6c757d;
+    }
+    
+    /* Custom Form Styles */
+    .custom-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .custom-form-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .custom-field {
+        margin-bottom: 20px;
+    }
+    
+    .custom-label {
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #333;
+    }
+    
+    .custom-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    .custom-input {
+        width: 100%;
+        padding: 12px 40px 12px 12px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+    
+    .custom-input:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+    
+    .custom-input-icon {
+        position: absolute;
+        right: 12px;
+        font-size: 18px;
+        color: #6c757d;
+    }
+    
+    .password-toggle {
+        position: absolute;
+        right: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    
+    .custom-radio-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .custom-radio-item {
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .custom-radio {
+        display: none;
+    }
+    
+    .custom-radio-label {
+        display: block;
+        padding: 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .custom-radio:checked + .custom-radio-label {
+        border-color: #007bff;
+        background: #f0f8ff;
+    }
+    
+    .radio-content {
+        text-align: center;
+    }
+    
+    .radio-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    
+    .radio-price {
+        color: #007bff;
+        font-weight: 500;
+    }
+    
+    .custom-toggle-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .custom-toggle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .custom-checkbox {
+        display: none;
+    }
+    
+    .custom-toggle-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+    
+    .toggle-slider {
+        width: 50px;
+        height: 24px;
+        background: #ccc;
+        border-radius: 12px;
+        position: relative;
+        transition: background 0.3s ease;
+    }
+    
+    .toggle-slider::before {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s ease;
+    }
+    
+    .custom-checkbox:checked + .custom-toggle-label .toggle-slider {
+        background: #007bff;
+    }
+    
+    .custom-checkbox:checked + .custom-toggle-label .toggle-slider::before {
+        transform: translateX(26px);
+    }
+    
+    .custom-textarea-wrapper {
+        position: relative;
+    }
+    
+    .custom-textarea {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        resize: vertical;
+        min-height: 100px;
+    }
+    
+    .char-counter {
+        text-align: right;
+        font-size: 12px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .custom-form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+        margin-top: 30px;
+    }
+    
+    .custom-btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .custom-btn-primary {
+        background: #007bff;
+        color: white;
+    }
+    
+    .custom-btn-primary:hover {
+        background: #0056b3;
+    }
+    
+    .custom-btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .custom-btn-secondary:hover {
+        background: #545b62;
+    }
+    
+    .custom-form-output {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border: 1px solid #e9ecef;
+    }
+    
+    /* Framework Form Styles */
+    .framework-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    
+    .angular-form, .react-form {
+        max-width: 500px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        box-sizing: border-box;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+    }
+    
+    .error-message {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .btn-primary {
+        background: #007bff;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background: #0056b3;
+    }
+    
+    .btn-secondary {
+        background: #6c757d;
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background: #545b62;
+    }
+    
+    .btn-success {
+        background: #28a745;
+        color: white;
+    }
+    
+    .btn-success:hover {
+        background: #1e7e34;
+    }
+    
+    /* Shadow DOM Form Styles */
+    .shadow-form-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    #shadow-form-host, #nested-shadow-form-host {
+        border: 2px dashed #007bff;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 8px;
+        min-height: 100px;
+    }
+    
+    #shadow-form-output {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 6px;
+    }
+    
+    /* Dynamic Form Styles */
+    .dynamic-form-container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .form-builder {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+    
+    .field-builder {
+        display: flex;
+        gap: 10px;
+        align-items: end;
+        flex-wrap: wrap;
+    }
+    
+    .field-builder select, .field-builder input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .dynamic-form {
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .no-fields {
+        color: #6c757d;
+        font-style: italic;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .dynamic-form-output {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 6px;
+        border: 1px solid #e9ecef;
+    }
+    
+    /* Accessible Form Styles */
+    .accessible-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .required {
+        color: #dc3545;
+    }
+    
+    .help-text {
+        font-size: 14px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .radio-group {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .radio-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        justify-content: flex-end;
+        margin-top: 30px;
+    }
+    
+    /* Wizard Form Styles */
+    .wizard-form {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .wizard-header {
+        margin-bottom: 30px;
+    }
+    
+    .wizard-steps {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+    }
+    
+    .wizard-steps::before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #e9ecef;
+        z-index: 1;
+    }
+    
+    .wizard-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        background: white;
+        padding: 0 10px;
+    }
+    
+    .wizard-step.active .step-number {
+        background: #007bff;
+        color: white;
+    }
+    
+    .wizard-step.completed .step-number {
+        background: #28a745;
+        color: white;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+    
+    .step-title {
+        font-size: 14px;
+        text-align: center;
+        color: #6c757d;
+    }
+    
+    .wizard-step.active .step-title {
+        color: #007bff;
+        font-weight: 500;
+    }
+    
+    .wizard-content {
+        min-height: 300px;
+        margin-bottom: 30px;
+    }
+    
+    .wizard-step-content {
+        display: none;
+    }
+    
+    .wizard-step-content.active {
+        display: block;
+    }
+    
+    .wizard-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .review-section {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 6px;
+    }
+    
+    .review-section h4 {
+        color: #007bff;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 5px;
+    }
+    
+    .review-item {
+        margin-bottom: 10px;
+        padding: 8px 0;
+    }
+    
+    .review-item strong {
+        color: #495057;
+    }
+</style>
+
+<!-- ============================================= -->
+<!-- COMPREHENSIVE FORM JAVASCRIPT -->
+<!-- ============================================= -->
+
+<script>
+// Global state for React-like form simulation
+let reactFormState = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    terms: false
+};
+
+// Global state for wizard form
+let wizardState = {
+    currentStep: 1,
+    totalSteps: 4,
+    formData: {}
+};
+
+// =============================================
+// 2️⃣ CUSTOM FORM FUNCTIONS
+// =============================================
+
+function togglePassword(button) {
+    const input = button.previousElementSibling.previousElementSibling;
+    if (input.type === 'password') {
+        input.type = 'text';
+        button.textContent = '🙈';
+    } else {
+        input.type = 'password';
+        button.textContent = '👁️';
+    }
+}
+
+function clearCustomForm() {
+    const form = document.getElementById('custom-form');
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+        } else {
+            input.value = '';
+        }
+    });
+    
+    // Reset character counter
+    const charCount = form.querySelector('.char-count');
+    if (charCount) charCount.textContent = '0';
+    
+    // Hide output
+    document.getElementById('custom-form-output').style.display = 'none';
+}
+
+function submitCustomForm() {
+    const form = document.getElementById('custom-form');
+    const formData = {};
+    
+    // Collect form data
+    const inputs = form.querySelectorAll('input, textarea');
+    inputs.forEach(input => {
+        if (input.type === 'checkbox') {
+            if (input.checked) {
+                const fieldName = input.getAttribute('data-field');
+                if (fieldName) {
+                    formData[fieldName] = true;
+                }
+            }
+        } else if (input.type === 'radio') {
+            if (input.checked) {
+                formData[input.name] = input.value;
+            }
+        } else {
+            const fieldName = input.getAttribute('data-field');
+            if (fieldName && input.value) {
+                formData[fieldName] = input.value;
+            }
+        }
+    });
+    
+    // Display form data
+    const output = document.getElementById('custom-form-output');
+    const dataElement = document.getElementById('custom-form-data');
+    dataElement.textContent = JSON.stringify(formData, null, 2);
+    output.style.display = 'block';
+    
+    console.log('Custom Form Data:', formData);
+}
+
+// Character counter for textarea
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.querySelector('.custom-textarea');
+    const charCount = document.querySelector('.char-count');
+    
+    if (textarea && charCount) {
+        textarea.addEventListener('input', function() {
+            charCount.textContent = this.value.length;
+        });
+    }
+});
+
+// =============================================
+// 3️⃣ FRAMEWORK FORM FUNCTIONS
+// =============================================
+
+// React-like form state management
+function updateReactState(field, value) {
+    reactFormState[field] = value;
+    validateReactField(field, value);
+}
+
+function validateReactField(field, value) {
+    const errorElement = document.getElementById(`react-${field}-error`);
+    if (!errorElement) return;
+    
+    let errorMessage = '';
+    
+    switch (field) {
+        case 'username':
+            if (value.length < 3) {
+                errorMessage = 'Username must be at least 3 characters';
+            }
+            break;
+        case 'password':
+            if (value.length < 8) {
+                errorMessage = 'Password must be at least 8 characters';
+            }
+            break;
+        case 'confirmPassword':
+            if (value !== reactFormState.password) {
+                errorMessage = 'Passwords do not match';
+            }
+            break;
+    }
+    
+    errorElement.textContent = errorMessage;
+}
+
+function handleReactSubmit(event) {
+    event.preventDefault();
+    
+    // Validate all fields
+    let isValid = true;
+    
+    if (reactFormState.username.length < 3) {
+        validateReactField('username', reactFormState.username);
+        isValid = false;
+    }
+    
+    if (reactFormState.password.length < 8) {
+        validateReactField('password', reactFormState.password);
+        isValid = false;
+    }
+    
+    if (reactFormState.confirmPassword !== reactFormState.password) {
+        validateReactField('confirmPassword', reactFormState.confirmPassword);
+        isValid = false;
+    }
+    
+    if (!reactFormState.terms) {
+        alert('Please accept the terms and conditions');
+        isValid = false;
+    }
+    
+    if (isValid) {
+        alert('React Form Submitted Successfully!\n\nData: ' + JSON.stringify(reactFormState, null, 2));
+        console.log('React Form Data:', reactFormState);
+    }
+}
+
+// =============================================
+// 4️⃣ SHADOW DOM FORM FUNCTIONS
+// =============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Create Shadow DOM Form Component
+    const shadowHost = document.getElementById('shadow-form-host');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    
+    shadowRoot.innerHTML = `
+        <style>
+            .shadow-form {
+                padding: 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 8px;
+                color: white;
+            }
+            .shadow-form h4 {
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .shadow-field {
+                margin-bottom: 15px;
+            }
+            .shadow-label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+            .shadow-input {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            .shadow-button {
+                width: 100%;
+                padding: 12px;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 500;
+            }
+            .shadow-button:hover {
+                background: rgba(255,255,255,0.3);
+            }
+        </style>
+        <div class="shadow-form">
+            <h4>Shadow DOM Form</h4>
+            <div class="shadow-field">
+                <label class="shadow-label">Name:</label>
+                <input type="text" class="shadow-input" id="shadow-name" placeholder="Enter your name">
+            </div>
+            <div class="shadow-field">
+                <label class="shadow-label">Email:</label>
+                <input type="email" class="shadow-input" id="shadow-email" placeholder="Enter your email">
+            </div>
+            <div class="shadow-field">
+                <label class="shadow-label">Message:</label>
+                <textarea class="shadow-input" id="shadow-message" rows="3" placeholder="Enter your message"></textarea>
+            </div>
+            <button class="shadow-button" onclick="submitShadowForm()">Submit Shadow Form</button>
+        </div>
+    `;
+    
+    // Create Nested Shadow DOM Form
+    const nestedShadowHost = document.getElementById('nested-shadow-form-host');
+    const nestedShadowRoot = nestedShadowHost.attachShadow({ mode: 'open' });
+    
+    nestedShadowRoot.innerHTML = `
+        <style>
+            .nested-shadow-form {
+                padding: 20px;
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                border-radius: 8px;
+                color: white;
+            }
+            .nested-shadow-form h4 {
+                margin-bottom: 15px;
+                text-align: center;
+            }
+            .nested-field {
+                margin-bottom: 15px;
+            }
+            .nested-label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 500;
+            }
+            .nested-input {
+                width: 100%;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            .nested-button {
+                width: 100%;
+                padding: 12px;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                border: 1px solid rgba(255,255,255,0.3);
+                border-radius: 4px;
+                cursor: pointer;
+                font-weight: 500;
+            }
+            .nested-button:hover {
+                background: rgba(255,255,255,0.3);
+            }
+        </style>
+        <div class="nested-shadow-form">
+            <h4>Nested Shadow DOM Form</h4>
+            <div class="nested-field">
+                <label class="nested-label">Company:</label>
+                <input type="text" class="nested-input" id="nested-company" placeholder="Enter company name">
+            </div>
+            <div class="nested-field">
+                <label class="nested-label">Position:</label>
+                <input type="text" class="nested-input" id="nested-position" placeholder="Enter your position">
+            </div>
+            <div class="nested-field">
+                <label class="nested-label">Experience:</label>
+                <select class="nested-input" id="nested-experience">
+                    <option value="">Select experience</option>
+                    <option value="0-1">0-1 years</option>
+                    <option value="2-5">2-5 years</option>
+                    <option value="5+">5+ years</option>
+                </select>
+            </div>
+            <button class="nested-button" onclick="submitNestedShadowForm()">Submit Nested Form</button>
+        </div>
+    `;
+});
+
+function submitShadowForm() {
+    const shadowHost = document.getElementById('shadow-form-host');
+    const shadowRoot = shadowHost.shadowRoot;
+    
+    const formData = {
+        name: shadowRoot.getElementById('shadow-name').value,
+        email: shadowRoot.getElementById('shadow-email').value,
+        message: shadowRoot.getElementById('shadow-message').value
+    };
+    
+    displayShadowFormData('Shadow DOM Form', formData);
+}
+
+function submitNestedShadowForm() {
+    const nestedShadowHost = document.getElementById('nested-shadow-form-host');
+    const nestedShadowRoot = nestedShadowHost.shadowRoot;
+    
+    const formData = {
+        company: nestedShadowRoot.getElementById('nested-company').value,
+        position: nestedShadowRoot.getElementById('nested-position').value,
+        experience: nestedShadowRoot.getElementById('nested-experience').value
+    };
+    
+    displayShadowFormData('Nested Shadow DOM Form', formData);
+}
+
+function displayShadowFormData(formType, data) {
+    const output = document.getElementById('shadow-form-data');
+    const timestamp = new Date().toLocaleTimeString();
+    const outputData = {
+        formType: formType,
+        timestamp: timestamp,
+        data: data
+    };
+    
+    output.textContent = JSON.stringify(outputData, null, 2);
+    console.log('Shadow DOM Form Data:', outputData);
+}
+
+// =============================================
+// 5️⃣ DYNAMIC FORM FUNCTIONS
+// =============================================
+
+let dynamicFieldCounter = 0;
+
+function addDynamicField() {
+    const fieldType = document.getElementById('field-type').value;
+    const fieldLabel = document.getElementById('field-label').value;
+    const fieldName = document.getElementById('field-name').value;
+    
+    if (!fieldLabel || !fieldName) {
+        alert('Please enter both label and name for the field');
+        return;
+    }
+    
+    dynamicFieldCounter++;
+    const fieldId = `dynamic-field-${dynamicFieldCounter}`;
+    
+    const formFields = document.getElementById('form-fields');
+    const noFieldsMessage = formFields.querySelector('.no-fields');
+    
+    if (noFieldsMessage) {
+        noFieldsMessage.remove();
+    }
+    
+    const fieldElement = document.createElement('div');
+    fieldElement.className = 'form-group';
+    fieldElement.innerHTML = createDynamicFieldHTML(fieldType, fieldLabel, fieldName, fieldId);
+    
+    formFields.appendChild(fieldElement);
+    
+    // Show submit button
+    document.getElementById('submit-dynamic-form').style.display = 'block';
+    
+    // Clear builder inputs
+    document.getElementById('field-label').value = '';
+    document.getElementById('field-name').value = '';
+}
+
+function createDynamicFieldHTML(type, label, name, id) {
+    switch (type) {
+        case 'text':
+        case 'email':
+        case 'number':
+            return `
+                <label for="${id}">${label}</label>
+                <input type="${type}" id="${id}" name="${name}" class="form-control" placeholder="Enter ${label.toLowerCase()}">
+            `;
+        case 'select':
+            return `
+                <label for="${id}">${label}</label>
+                <select id="${id}" name="${name}" class="form-control">
+                    <option value="">Select ${label.toLowerCase()}</option>
+                    <option value="option1">Option 1</option>
+                    <option value="option2">Option 2</option>
+                    <option value="option3">Option 3</option>
+                </select>
+            `;
+        case 'checkbox':
+            return `
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="${id}" name="${name}" value="yes">
+                        ${label}
+                    </label>
+                </div>
+            `;
+        case 'radio':
+            return `
+                <fieldset>
+                    <legend>${label}</legend>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="${name}" value="option1">
+                            Option 1
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="${name}" value="option2">
+                            Option 2
+                        </label>
+                    </div>
+                </fieldset>
+            `;
+        case 'textarea':
+            return `
+                <label for="${id}">${label}</label>
+                <textarea id="${id}" name="${name}" class="form-control" rows="3" placeholder="Enter ${label.toLowerCase()}"></textarea>
+            `;
+        default:
+            return '';
+    }
+}
+
+function handleDynamicFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = document.getElementById('generated-form');
+    const formData = new FormData(form);
+    const data = {};
+    
+    for (let [key, value] of formData.entries()) {
+        data[key] = value;
+    }
+    
+    const output = document.getElementById('dynamic-form-output');
+    const dataElement = document.getElementById('dynamic-form-data');
+    dataElement.textContent = JSON.stringify(data, null, 2);
+    output.style.display = 'block';
+    
+    console.log('Dynamic Form Data:', data);
+}
+
+// =============================================
+// 6️⃣ ACCESSIBLE FORM FUNCTIONS
+// =============================================
+
+function clearAccessibleForm() {
+    const form = document.getElementById('accessible-form');
+    const inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = false;
+        } else {
+            input.value = '';
+        }
+    });
+    
+    // Clear error messages
+    const errorMessages = form.querySelectorAll('.error-message');
+    errorMessages.forEach(error => error.textContent = '');
+    
+    // Reset character counter
+    const counter = document.getElementById('message-counter');
+    if (counter) counter.textContent = '0 characters';
+}
+
+// Character counter for accessible form
+document.addEventListener('DOMContentLoaded', function() {
+    const messageTextarea = document.getElementById('accessible-message');
+    const messageCounter = document.getElementById('message-counter');
+    
+    if (messageTextarea && messageCounter) {
+        messageTextarea.addEventListener('input', function() {
+            const length = this.value.length;
+            messageCounter.textContent = `${length} characters`;
+        });
+    }
+});
+
+// =============================================
+// 7️⃣ WIZARD FORM FUNCTIONS
+// =============================================
+
+function wizardNext() {
+    if (wizardState.currentStep < wizardState.totalSteps) {
+        // Validate current step
+        if (validateWizardStep(wizardState.currentStep)) {
+            wizardState.currentStep++;
+            updateWizardDisplay();
+        }
+    }
+}
+
+function wizardPrevious() {
+    if (wizardState.currentStep > 1) {
+        wizardState.currentStep--;
+        updateWizardDisplay();
+    }
+}
+
+function validateWizardStep(step) {
+    const stepContent = document.getElementById(`step-${step}`);
+    const requiredFields = stepContent.querySelectorAll('[required]');
+    
+    for (let field of requiredFields) {
+        if (!field.value.trim()) {
+            alert(`Please fill in ${field.previousElementSibling.textContent}`);
+            field.focus();
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+function updateWizardDisplay() {
+    // Update step indicators
+    const steps = document.querySelectorAll('.wizard-step');
+    steps.forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index + 1 < wizardState.currentStep) {
+            step.classList.add('completed');
+        } else if (index + 1 === wizardState.currentStep) {
+            step.classList.add('active');
+        }
+    });
+    
+    // Update step content
+    const stepContents = document.querySelectorAll('.wizard-step-content');
+    stepContents.forEach((content, index) => {
+        content.classList.remove('active');
+        if (index + 1 === wizardState.currentStep) {
+            content.classList.add('active');
+        }
+    });
+    
+    // Update navigation buttons
+    const prevBtn = document.getElementById('wizard-prev');
+    const nextBtn = document.getElementById('wizard-next');
+    const submitBtn = document.getElementById('wizard-submit');
+    
+    prevBtn.style.display = wizardState.currentStep > 1 ? 'block' : 'none';
+    nextBtn.style.display = wizardState.currentStep < wizardState.totalSteps ? 'block' : 'none';
+    submitBtn.style.display = wizardState.currentStep === wizardState.totalSteps ? 'block' : 'none';
+    
+    // Update review step
+    if (wizardState.currentStep === wizardState.totalSteps) {
+        updateWizardReview();
+    }
+}
+
+function updateWizardReview() {
+    const formData = {
+        firstName: document.getElementById('wizard-firstname').value,
+        lastName: document.getElementById('wizard-lastname').value,
+        birthDate: document.getElementById('wizard-birthdate').value,
+        email: document.getElementById('wizard-email').value,
+        phone: document.getElementById('wizard-phone').value,
+        address: document.getElementById('wizard-address').value,
+        timezone: document.getElementById('wizard-timezone').value
+    };
+    
+    // Update review display
+    document.getElementById('review-name').textContent = `${formData.firstName} ${formData.lastName}`;
+    document.getElementById('review-birthdate').textContent = formData.birthDate;
+    document.getElementById('review-email').textContent = formData.email;
+    document.getElementById('review-phone').textContent = formData.phone;
+    document.getElementById('review-address').textContent = formData.address;
+    document.getElementById('review-timezone').textContent = formData.timezone;
+    
+    // Get preferences
+    const preferences = [];
+    const preferenceCheckboxes = document.querySelectorAll('input[name="preferences"]:checked');
+    preferenceCheckboxes.forEach(checkbox => preferences.push(checkbox.value));
+    document.getElementById('review-preferences').textContent = preferences.join(', ') || 'None selected';
+    
+    wizardState.formData = formData;
+}
+
+function wizardSubmit() {
+    if (validateWizardStep(wizardState.currentStep)) {
+        alert('Wizard Form Submitted Successfully!\n\nData: ' + JSON.stringify(wizardState.formData, null, 2));
+        console.log('Wizard Form Data:', wizardState.formData);
+    }
+}
+
+// Initialize wizard
+document.addEventListener('DOMContentLoaded', function() {
+    updateWizardDisplay();
+});
+</script>
 
 </body>
 </html>
