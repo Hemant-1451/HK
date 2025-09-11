@@ -48,15 +48,300 @@ VWO.push(['onEventReceive', 'tSC', ()=>{
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Kumar Page</title>
     <style>
+        /* ============================================= */
+        /* ENHANCED GLOBAL STYLES */
+        /* ============================================= */
+        
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
-    background-color: #E6E6FA; /* Light purple color */
-}
-
-        body {
-            font-family: 'Arial', sans-serif;
-            
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .branding h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .branding p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .user-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .user-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .user-nav li {
+            margin: 0;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .username {
+            font-weight: 500;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* ============================================= */
+        /* ENHANCED FORM SECTIONS */
+        /* ============================================= */
+        
+        .form-section {
+            background: white;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 1000px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .form-section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-section p {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        /* ============================================= */
+        /* ENHANCED FORM STYLES */
+        /* ============================================= */
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+            transform: translateY(-1px);
+        }
+        
+        .form-control:hover {
+            border-color: #bdc3c7;
+        }
+        
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        select.form-control {
+            cursor: pointer;
+        }
+        
+        /* ============================================= */
+        /* ENHANCED BUTTON STYLES */
+        /* ============================================= */
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #1f4e79);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #229954, #1e8449);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #7f8c8d, #6c7b7d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        /* ============================================= */
+        /* ENHANCED FORM OUTPUT STYLES */
+        /* ============================================= */
+        
+        .form-output {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .form-output h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .form-output pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        /* ============================================= */
+        /* RESPONSIVE DESIGN */
+        /* ============================================= */
+        
+        @media (max-width: 768px) {
+            .dashboard-header {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .branding h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .form-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .branding h1 {
+                font-size: 1.5rem;
+            }
+            
+            .form-section {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
         }
 
         h1, h2, h3 {
@@ -344,9 +629,10 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
     <div class="app">
       <div class="dashboard">
         <header class="dashboard-header">
-          <div class="branding">
-            <h1></h1>
-          </div>
+        <div class="branding">
+            <h1>🚀 Advanced Form Testing Suite</h1>
+            <p>Comprehensive VWO Testing Platform</p>
+        </div>
           <div class="user-nav">
             <ul>
               <li>
@@ -1446,7 +1732,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2>1️⃣ HTML Native Forms</h2>
     <p><strong>Description:</strong> Classic &lt;form&gt; element with &lt;input&gt;, &lt;select&gt;, &lt;textarea&gt;, etc. Handled by the browser, sends data with GET/POST.</p>
     
-    <form method="POST" action="/submit" class="native-form">
+    <form method="POST" action="/api/submit-native-form" class="native-form" onsubmit="handleNativeFormSubmit(event)">
         <fieldset>
             <legend>Personal Information</legend>
             
@@ -1461,6 +1747,18 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- Password Input -->
             <label for="native-password">Password:</label>
             <input type="password" id="native-password" name="password" required>
+            
+            <!-- Confirm Password -->
+            <label for="native-confirm-password">Confirm Password:</label>
+            <input type="password" id="native-confirm-password" name="confirmPassword" required>
+            
+            <!-- Phone Input -->
+            <label for="native-phone">Phone Number:</label>
+            <input type="tel" id="native-phone" name="phone" placeholder="Enter your phone number">
+            
+            <!-- Website Input -->
+            <label for="native-website">Website:</label>
+            <input type="url" id="native-website" name="website" placeholder="https://your-website.com">
             
             <!-- Number Input -->
             <label for="native-age">Age:</label>
@@ -1478,6 +1776,63 @@ document.addEventListener('DOMContentLoaded', function () {
                 <option value="ca">Canada</option>
                 <option value="uk">United Kingdom</option>
                 <option value="in">India</option>
+                <option value="au">Australia</option>
+                <option value="de">Germany</option>
+                <option value="fr">France</option>
+                <option value="jp">Japan</option>
+                <option value="br">Brazil</option>
+                <option value="mx">Mexico</option>
+            </select>
+            
+            <!-- State/Province -->
+            <label for="native-state">State/Province:</label>
+            <input type="text" id="native-state" name="state" placeholder="Enter your state/province">
+            
+            <!-- City -->
+            <label for="native-city">City:</label>
+            <input type="text" id="native-city" name="city" placeholder="Enter your city">
+            
+            <!-- ZIP Code -->
+            <label for="native-zip">ZIP/Postal Code:</label>
+            <input type="text" id="native-zip" name="zipcode" placeholder="Enter ZIP/postal code">
+            
+            <!-- Occupation -->
+            <label for="native-occupation">Occupation:</label>
+            <input type="text" id="native-occupation" name="occupation" placeholder="Enter your occupation">
+            
+            <!-- Income Range -->
+            <label for="native-income">Annual Income Range:</label>
+            <select id="native-income" name="income">
+                <option value="">Select Income Range</option>
+                <option value="under-25k">Under $25,000</option>
+                <option value="25k-50k">$25,000 - $50,000</option>
+                <option value="50k-75k">$50,000 - $75,000</option>
+                <option value="75k-100k">$75,000 - $100,000</option>
+                <option value="100k-150k">$100,000 - $150,000</option>
+                <option value="over-150k">Over $150,000</option>
+            </select>
+            
+            <!-- Education Level -->
+            <label for="native-education">Education Level:</label>
+            <select id="native-education" name="education">
+                <option value="">Select Education Level</option>
+                <option value="high-school">High School</option>
+                <option value="some-college">Some College</option>
+                <option value="associate">Associate Degree</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+                <option value="doctorate">Doctorate</option>
+            </select>
+            
+            <!-- Marital Status -->
+            <label for="native-marital">Marital Status:</label>
+            <select id="native-marital" name="maritalStatus">
+                <option value="">Select Status</option>
+                <option value="single">Single</option>
+                <option value="married">Married</option>
+                <option value="divorced">Divorced</option>
+                <option value="widowed">Widowed</option>
+                <option value="separated">Separated</option>
             </select>
             
             <!-- Radio Buttons -->
@@ -1494,7 +1849,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 <label><input type="checkbox" name="interests" value="sports"> Sports</label>
                 <label><input type="checkbox" name="interests" value="music"> Music</label>
                 <label><input type="checkbox" name="interests" value="travel"> Travel</label>
+                <label><input type="checkbox" name="interests" value="technology"> Technology</label>
+                <label><input type="checkbox" name="interests" value="cooking"> Cooking</label>
+                <label><input type="checkbox" name="interests" value="reading"> Reading</label>
+                <label><input type="checkbox" name="interests" value="gaming"> Gaming</label>
+                <label><input type="checkbox" name="interests" value="art"> Art</label>
+                <label><input type="checkbox" name="interests" value="photography"> Photography</label>
+                <label><input type="checkbox" name="interests" value="fitness"> Fitness</label>
             </fieldset>
+            
+            <!-- Preferred Contact Method -->
+            <fieldset>
+                <legend>Preferred Contact Method:</legend>
+                <label><input type="radio" name="preferredContact" value="email"> Email</label>
+                <label><input type="radio" name="preferredContact" value="phone"> Phone</label>
+                <label><input type="radio" name="preferredContact" value="text"> Text Message</label>
+            </fieldset>
+            
+            <!-- Timezone -->
+            <label for="native-timezone">Timezone:</label>
+            <select id="native-timezone" name="timezone">
+                <option value="">Select Timezone</option>
+                <option value="EST">Eastern Time (EST)</option>
+                <option value="CST">Central Time (CST)</option>
+                <option value="MST">Mountain Time (MST)</option>
+                <option value="PST">Pacific Time (PST)</option>
+                <option value="GMT">Greenwich Mean Time (GMT)</option>
+                <option value="CET">Central European Time (CET)</option>
+                <option value="JST">Japan Standard Time (JST)</option>
+            </select>
+            
+            <!-- Preferred Contact Time -->
+            <label for="native-time">Preferred Contact Time:</label>
+            <input type="time" id="native-time" name="preferredTime">
             
             <!-- Textarea -->
             <label for="native-comments">Comments:</label>
@@ -1512,10 +1899,22 @@ document.addEventListener('DOMContentLoaded', function () {
             <label for="native-color">Favorite Color:</label>
             <input type="color" id="native-color" name="favoriteColor" value="#000000">
             
+            <!-- Terms and Conditions -->
+            <fieldset>
+                <legend>Agreements:</legend>
+                <label><input type="checkbox" name="newsletter" required> Subscribe to newsletter *</label>
+                <label><input type="checkbox" name="terms" required> I agree to the Terms of Service and Privacy Policy *</label>
+                <label><input type="checkbox" name="marketing"> I consent to receive marketing communications</label>
+            </fieldset>
+            
+            <!-- Hidden Fields -->
+            <input type="hidden" name="formType" value="native">
+            <input type="hidden" name="submissionTimestamp" value="">
+            
             <!-- Submit and Reset -->
             <div class="form-buttons">
                 <input type="submit" value="Submit Native Form">
-                <input type="reset" value="Reset">
+                <input type="reset" value="Reset Form">
             </div>
         </fieldset>
     </form>
@@ -1528,7 +1927,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <h2>2️⃣ Normal / Custom Forms</h2>
     <p><strong>Description:</strong> UI built with custom elements (div, span, styled inputs, etc.) instead of native fields. Developers manually capture values with JS.</p>
     
-    <div class="custom-form" id="custom-form">
+    <form method="POST" action="/api/submit-custom-form" class="custom-form" id="custom-form" onsubmit="handleCustomFormSubmit(event)">
         <div class="custom-form-header">
             <h3>Custom Styled Form</h3>
             <p>This form uses custom styling and JavaScript for data handling</p>
@@ -1622,7 +2021,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <h4>Form Data:</h4>
             <pre id="custom-form-data"></pre>
         </div>
-    </div>
+    </form>
 </div>
 
 <!-- 3️⃣ FRAMEWORK-SPECIFIC FORMS -->
@@ -3563,6 +3962,97 @@ function wizardSubmit() {
 document.addEventListener('DOMContentLoaded', function() {
     updateWizardDisplay();
 });
+
+// =============================================
+// NATIVE FORM SUBMISSION HANDLER
+// =============================================
+
+function handleNativeFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Convert FormData to regular object
+    for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+            // Handle multiple values (like checkboxes)
+            if (Array.isArray(data[key])) {
+                data[key].push(value);
+            } else {
+                data[key] = [data[key], value];
+            }
+        } else {
+            data[key] = value;
+        }
+    }
+    
+    // Add timestamp
+    data.submissionTimestamp = new Date().toISOString();
+    
+    // Simulate form submission
+    console.log('Native Form Data:', data);
+    
+    // Show success message
+    alert('Native Form Submitted Successfully!\n\nData: ' + JSON.stringify(data, null, 2));
+    
+    // In a real application, you would send this data to the server
+    // fetch('/api/submit-native-form', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data)
+    // })
+    // .then(response => response.json())
+    // .then(result => {
+    //     console.log('Success:', result);
+    // })
+    // .catch(error => {
+    //     console.error('Error:', error);
+    // });
+}
+
+// Initialize native form timestamp
+document.addEventListener('DOMContentLoaded', function() {
+    const timestampField = document.querySelector('input[name="submissionTimestamp"]');
+    if (timestampField) {
+        timestampField.value = new Date().toISOString();
+    }
+});
+
+// =============================================
+// CUSTOM FORM SUBMISSION HANDLER
+// =============================================
+
+function handleCustomFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Convert FormData to regular object
+    for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+            if (Array.isArray(data[key])) {
+                data[key].push(value);
+            } else {
+                data[key] = [data[key], value];
+            }
+        } else {
+            data[key] = value;
+        }
+    }
+    
+    // Add timestamp
+    data.submissionTimestamp = new Date().toISOString();
+    data.formType = 'custom';
+    
+    console.log('Custom Form Data:', data);
+    alert('Custom Form Submitted Successfully!\n\nData: ' + JSON.stringify(data, null, 2));
+}
 </script>
 
 <!-- ============================================= -->
@@ -3575,7 +4065,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <div class="specific-angular-form" id="specific-angular-form">
         <h3>Current Insurance Form</h3>
-        <form novalidate="" id="current-insurance-form" class="ng-untouched ng-pristine ng-valid">
+        <form method="POST" action="/api/submit-current-insurance-form" novalidate="" id="current-insurance-form" class="ng-untouched ng-pristine ng-valid" onsubmit="handleCurrentInsuranceFormSubmit(event)">
             <section fxlayout="column" style="flex-direction: column; box-sizing: border-box; display: flex;">
                 <section class="rmv-content ng-star-inserted">
                     <mat-label class="mat-label ng-star-inserted"> 
@@ -3860,6 +4350,34 @@ function submitCurrentInsuranceForm() {
     
     console.log('Current Insurance Form Data:', formData);
     alert('Current Insurance Form Submitted Successfully!\n\nData: ' + JSON.stringify(formData, null, 2));
+}
+
+function handleCurrentInsuranceFormSubmit(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Convert FormData to regular object
+    for (let [key, value] of formData.entries()) {
+        if (data[key]) {
+            if (Array.isArray(data[key])) {
+                data[key].push(value);
+            } else {
+                data[key] = [data[key], value];
+            }
+        } else {
+            data[key] = value;
+        }
+    }
+    
+    // Add timestamp and form type
+    data.submissionTimestamp = new Date().toISOString();
+    data.formType = 'current-insurance';
+    
+    console.log('Current Insurance Form Data:', data);
+    alert('Current Insurance Form Submitted Successfully!\n\nData: ' + JSON.stringify(data, null, 2));
 }
 
 // Initialize specific form functionality
