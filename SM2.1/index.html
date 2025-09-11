@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+ <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 <script type='text/javascript' id='vwoCode'>
 const params = new URLSearchParams(window.location.search);
 const accId = parseInt(params.get("id"));
@@ -20,8 +20,222 @@ window._vwo_pc_custom = {
         t: 100
     };
 </script>
+
   <meta charset="UTF-8">
   <title>Form Types Demo</title>
+  <style>
+    /* Maximal, modern theme (CSS-only) */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    :root{
+      --bg: #0b1220;
+      --bg-grad-1:#0b1220; --bg-grad-2:#0e172a; --bg-grad-3:#111827;
+      --surface:#0f172a; --card:#111827; --elev:#0b1220;
+      --text:#e5e7eb; --muted:#94a3b8;
+      --primary:#5b9cff; --primary-600:#3f83f8; --primary-700:#2563eb;
+      --ring: rgba(91,156,255,.5);
+      --border:#243145;
+      --success:#22c55e; --danger:#ef4444;
+      --radius:14px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
+      --shadow-md: 0 12px 36px rgba(2,6,23,.45);
+      --shadow-lg: 0 24px 64px rgba(2,6,23,.55);
+      --container: 980px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at -10% -10%, #1e293b 0%, transparent 50%),
+                  radial-gradient(1200px 800px at 110% -10%, #0b4cc9 0%, transparent 40%),
+                  linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2) 35%, var(--bg-grad-3));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      padding: 40px 20px 96px;
+    }
+    /* Page container without editing HTML */
+    body > *:not(script):not(style){
+      max-width: var(--container);
+      margin-left:auto; margin-right:auto;
+    }
+
+    /* Headings */
+    h1,h2,h3{line-height:1.2; margin:0 0 16px}
+    h1{
+      font-size:32px; font-weight:800; letter-spacing:.2px; text-align:center;
+      background: linear-gradient(90deg,#fff, #9ec5ff 60%, #cbd5e1);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      margin-bottom: 28px;
+      text-shadow: 0 1px 0 rgba(255,255,255,.05);
+    }
+    h2{font-size:22px; font-weight:700; color:#e2e8f0; margin-top:28px}
+    h3{font-size:18px; font-weight:600; color:#e5e7eb}
+
+    /* Elevation cards for all forms */
+    form{
+      background: linear-gradient(180deg, rgba(17,24,39,.9), rgba(17,24,39,.85));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      padding: 22px;
+      margin: 16px auto 26px;
+      backdrop-filter: blur(6px);
+    }
+    form:hover{ box-shadow: var(--shadow-lg); transition: box-shadow .25s ease }
+
+    /* Labels */
+    label, mat-label{ display:block; font-weight:600; color:#f1f5f9; margin-bottom:8px }
+    .starmarkrequired{ color:var(--danger); font-weight:700 }
+
+    /* Inputs & fields */
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="number"],
+    input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="file"],
+    select, textarea, [contenteditable="true"]{
+      width:100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #0b1220;
+      color: var(--text);
+      outline: none; transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+      box-shadow: inset 0 0 0 0 rgba(91,156,255,0);
+      margin: 6px 0 14px;
+    }
+    [contenteditable="true"]{ min-height:46px; }
+    textarea{ resize:vertical; min-height:120px }
+    select[multiple]{ min-height:140px }
+    input:focus, select:focus, textarea:focus, [contenteditable="true"]:focus{
+      border-color:#3b82f6; box-shadow: 0 0 0 4px var(--ring);
+      background:#0a1222;
+    }
+    input[readonly], textarea[readonly]{ background:#0c1424; color:#93a2b8 }
+    input:disabled, textarea:disabled, select:disabled{ background:#0b1320; color:#5b6b84; cursor:not-allowed }
+
+    /* Inline checkbox/radio */
+    input[type="checkbox"], input[type="radio"]{ width:auto; margin-right:8px }
+    form label>input[type="checkbox"], form label>input[type="radio"]{ margin-right:8px }
+
+    /* Nice helper text */
+    mat-hint a.needHelpTxt{ color:var(--primary); text-decoration:none }
+    mat-hint a.needHelpTxt:hover{ text-decoration:underline }
+
+    /* Buttons */
+    button, input[type="submit"], input[type="reset"], .back-btn-contact, .back-btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding: 12px 18px; border-radius: 12px; border: 1px solid transparent;
+      font-weight:700; cursor:pointer; transition: transform .06s ease, background-color .15s ease, box-shadow .15s ease;
+    }
+    button, input[type="submit"]{
+      background: linear-gradient(180deg, var(--primary), var(--primary-700));
+      color:#0b1220; color:#fff; box-shadow: 0 6px 18px rgba(91,156,255,.35);
+    }
+    button:hover, input[type="submit"]:hover{ filter: brightness(1.05) }
+    button:active, input[type="submit"]:active{ transform: translateY(1px) }
+    input[type="reset"], .back-btn-contact, .back-btn{
+      background: #0b1220; color:#e5e7eb; border-color: var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    input[type="reset"]:hover, .back-btn-contact:hover, .back-btn:hover{ background:#0d1526 }
+
+    /* Segmented toggle look (for Angular-like toggles) */
+    .mat-button-toggle-group, mat-button-toggle-group{
+      display:inline-flex; gap:0; border:1px solid var(--border); border-radius:12px; overflow:hidden; background:#0b1220
+    }
+    .mat-button-toggle-group>* , mat-button-toggle-group>mat-button-toggle{
+      appearance:none; padding:10px 14px; border:none; background:transparent; color:#e5e7eb; cursor:pointer; border-right:1px solid var(--border); font-weight:600
+    }
+    .mat-button-toggle-group>*:last-child, mat-button-toggle-group>mat-button-toggle:last-child{ border-right:0 }
+    .mat-button-toggle-group>*.active, .mat-button-toggle-group>*[aria-pressed="true"], mat-button-toggle[aria-pressed="true"]{
+      background: var(--primary-700); color:#fff
+    }
+
+    /* Sticky area */
+    .sticky-buttons .ftr-sticky{ display:flex; gap:12px; justify-content:space-between; align-items:center; padding-top:10px; border-top:1px dashed var(--border) }
+    .verti-next-btn{ min-width:150px }
+    .right-arrow-icon{ filter: brightness(0) invert(1) }
+
+    /* Shadow hosts spacing */
+    #host-div, #host-span, #host-input{ display:block; margin:10px 0 14px }
+
+    /* Delightful focus motion */
+    @keyframes softlyGlow { from { box-shadow: 0 0 0 0 rgba(91,156,255,0) } to { box-shadow: 0 0 0 6px rgba(91,156,255,.25) } }
+    input:focus, select:focus, textarea:focus, [contenteditable="true"]:focus{ animation: softlyGlow .18s ease-out }
+
+    /* Responsive */
+    @media (max-width: 720px){
+      body{ padding:26px 14px 72px }
+      h1{ font-size:26px }
+      form{ padding:18px; border-radius:12px }
+      button, input[type="submit"], input[type="reset"]{ width:100% }
+      .sticky-buttons .ftr-sticky{ flex-wrap:wrap }
+    }
+  </style>
+  <style>
+    /* Engagement & clarity enhancements (CSS-only, no HTML changes) */
+    body{ line-height: 1.6 }
+    ::selection{ background: rgba(91,156,255,.35); color: #fff }
+    ::-moz-selection{ background: rgba(91,156,255,.35); color: #fff }
+
+    /* Numbered sections for quick scanning */
+    body{ counter-reset: section }
+    h2{ counter-increment: section; position: relative; padding-left: 38px }
+    h2::before{
+      content: counter(section);
+      position: absolute; left: 0; top: 0.1rem;
+      width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 999px; font-weight: 700; font-size: 14px;
+      color: #0b1220; background: linear-gradient(180deg,#9ec5ff,#5b9cff);
+      box-shadow: 0 6px 14px rgba(91,156,255,.35);
+    }
+    h2::after{
+      content: ""; display: block; height: 1px; margin-top: 10px;
+      background: linear-gradient(90deg, rgba(94,117,153,.0), rgba(158,197,255,.6), rgba(94,117,153,.0));
+    }
+
+    /* Form focus-within elevation for clarity of context */
+    form{ transition: box-shadow .25s ease, border-color .25s ease }
+    form:focus-within{ box-shadow: 0 20px 60px rgba(2,6,23,.6); border-color: #3b82f6 }
+
+    /* Inputs: clearer states */
+    input::placeholder, textarea::placeholder{ color: #93a3b8 }
+    input:invalid, textarea:invalid, select:invalid{ border-color: #f59e0b }
+    input:required:invalid:focus, textarea:required:invalid:focus{ box-shadow: 0 0 0 4px rgba(245,158,11,.25) }
+    input:valid, textarea:valid, select:valid{ border-color: #22c55e }
+
+    /* Buttons: stronger focus and hover */
+    button:focus-visible, input[type="submit"]:focus-visible, input[type="reset"]:focus-visible{
+      outline: 2px solid #a7c7ff; outline-offset: 2px; box-shadow: 0 0 0 6px rgba(91,156,255,.2)
+    }
+
+    /* Helper links */
+    mat-hint a.needHelpTxt{ text-underline-offset: 3px }
+
+    /* Subtle entrance animation for forms */
+    @keyframes cardIn{ from{ opacity:0; transform: translateY(6px)} to{ opacity:1; transform: translateY(0)} }
+    form{ animation: cardIn .24s ease-out both }
+
+    /* Light mode palette (respects user preference) */
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f5f7fb; --bg-grad-1:#f5f7fb; --bg-grad-2:#eef2f7; --bg-grad-3:#eaf0f8;
+        --surface:#ffffff; --card:#ffffff; --text:#0f172a; --muted:#64748b;
+        --primary:#2563eb; --primary-700:#1d4ed8; --border:#e5e7eb; --ring: rgba(37,99,235,.25);
+      }
+      body{ color: var(--text); background: linear-gradient(180deg, var(--bg-grad-1), var(--bg-grad-2) 35%, var(--bg-grad-3)); }
+      form{ background: #ffffff; box-shadow: 0 10px 30px rgba(2,6,23,.08) }
+      input, select, textarea, [contenteditable="true"]{ background:#fff; color:#0f172a }
+      h1{ background: linear-gradient(90deg,#0f172a,#2563eb 60%, #334155); -webkit-background-clip:text; background-clip:text; color:transparent }
+      h2::before{ color: #fff }
+      input:focus, select:focus, textarea:focus, [contenteditable="true"]:focus{ background:#ffffff }
+      input[type="reset"], .back-btn, .back-btn-contact{ background:#fff; color:#0f172a }
+      .right-arrow-icon{ filter: none }
+    }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important }
+    }
+  </style>
   <script>
     // For dynamic form
     function addDynamicField() {
@@ -35,14 +249,12 @@ window._vwo_pc_custom = {
   </script>
 </head>
 <body>
-  <h1>Form Types Demo</h1>
+  <h1>Form Types</h1>
 
   <!-- 1. Normal Form -->
   <h2>1. Normal Form</h2>
   <form action="contact_us1.html" id="normal-form">
     <input type="text" name="username" placeholder="Username" />
-<input id="no-type">
-<input type="hidden" value="hidden-val">
 
     <select name="role">
       <option>User</option>
@@ -57,8 +269,6 @@ window._vwo_pc_custom = {
   <div nls_fa_el_name="custom-input" contenteditable="true">Type here</div>
   <button type="button" onclick="alert('Option 1 clicked')">Option 1</button>
   <button nls_fa_el_name="custom-button"type="button" onclick="alert('Option 2 clicked')">Option 2</button>
-  <input id="no-type">
-<input type="hidden" value="hidden-val">
 
   <input type="submit" value="Submit">
 </form>
@@ -131,341 +341,6 @@ window._vwo_pc_custom = {
   `;
 </script>
 
-
-
-  <!-- 3. Without Native Fields -->
-  <h2>3. Form Without Native Fields</h2>
-  <form action="contact_us1.html" id="no-native-form">
-    <div contenteditable="true" name="custom-username">Type Username</div>
-    <span contenteditable="true" name="custom-password">Type Password</span>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 4. Normal Form with Div/Span -->
-  <h2>4. Normal Form with Div/Span</h2>
-  <form action="contact_us1.html" id="div-span-form">
-    <div contenteditable="true" name="firstname">First Name</div>
-    <span contenteditable="true" name="lastname">Last Name</span>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 5. Form with nls_fa_name and nls_fa_el_name -->
-  <h2>5. Form with nls_fa_name and nls_fa_el_name</h2>
-  <form action="contact_us1.html" id="nls-form" nls_fa_name="dummy-form-name">
-    <input type="text" nls_fa_el_name="dummy-input" placeholder="Custom Named Field"/>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 6. Dynamic Form -->
-  <h2>6. Dynamic Form</h2>
-  <form action="contact_us1.html" id="dynamic-form">
-    <div id="dynamic-container"></div>
-    <button type="button" onclick="addDynamicField()">Add Field</button>
-    <br><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
-  </form>
-
-  <!-- 7. Angular-like Form -->
-  <h2>7. Angular-like Form</h2>
-<form novalidate id="current-insurance-form" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
-
-  <!-- Question 1 -->
-  <section fxlayout="column" style="flex-direction: column; display: flex;">
-    <mat-label>
-      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="currentInsuranceCoverage"
-        name="currentInsuranceCoverage"
-        [(ngModel)]="currentInsuranceCoverage"
-        aria-label="Current Insurance Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 2 -->
-    <mat-label>
-      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="lapseInCoverage"
-        name="lapseInCoverage"
-        [(ngModel)]="lapseInCoverage"
-        aria-label="Continuous Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 3 -->
-    <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        What is your current auto insurance company? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
-        <mat-select placeholder="Select" name="priorCarrierName" [(ngModel)]="priorCarrierName" required>
-          <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
-          <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </section>
-
-    <!-- Question 4 -->
-    <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
-        <mat-select placeholder="Select" name="yearsInsured" [(ngModel)]="yearsInsured" required>
-          <mat-option value="0-6 months">0-6 months</mat-option>
-          <mat-option value="6-24 months">6-24 months</mat-option>
-          <mat-option value="more than 24 months">More than 24 months</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </section>
-
-    <!-- Question 5 -->
-    <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
-      <mat-label>
-        What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
-      </mat-label>
-      <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
-        <mat-select placeholder="Select" name="biLimits" [(ngModel)]="biLimits" required>
-          <mat-option value="20/40">20/40</mat-option>
-          <mat-option value="50/100">50/100</mat-option>
-        </mat-select>
-        <mat-hint>
-          <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
-        </mat-hint>
-      </mat-form-field>
-    </section>
-
-  </section>
-
-  <!-- Navigation Buttons -->
-  <verti-sticky-navigation-buttons>
-    <section class="sticky-buttons">
-      <div class="ftr-sticky">
-        <verti-back-button>
-          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
-        </verti-back-button>
-
-        <button
-          nls_fa_el_name="continueButton"
-          mat-raised-button
-          type="submit"
-          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
-        >
-          <span class="mat-button-wrapper">
-            Continue
-            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
-          </span>
-        </button>
-      </div>
-    </section>
-  </verti-sticky-navigation-buttons>
-
-</form>
-<h2>8. Shadow Angular Form</h2>
-<form novalidate id="current-insurance-form-shadow" #insuranceForm="ngForm" (ngSubmit)="insuranceForm.valid && alert('Form Submitted!')" class="ng-untouched ng-pristine ng-valid">
-
-  <!-- Question 1 -->
-  <section fxlayout="column" style="flex-direction: column; display: flex;">
-    <mat-label>
-      Do you currently have auto insurance? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="currentInsuranceCoverage"
-        name="currentInsuranceCoverage"
-        [(ngModel)]="currentInsuranceCoverage"
-        aria-label="Current Insurance Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="currentInsuranceYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="currentInsuranceNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-    <!-- Question 2 -->
-    <mat-label>
-      Have you had continuous auto insurance coverage for the past 3 years or more? <span class="starmarkrequired"> * </span>
-    </mat-label>
-    <section class="alignCenter mrbt24">
-      <mat-button-toggle-group
-        nls_fa_el_name="lapseInCoverage"
-        name="lapseInCoverage"
-        [(ngModel)]="lapseInCoverage"
-        aria-label="Continuous Coverage"
-        class="mat-button-toggle-group verti-button-toggle-group standard-two-choice mat-button-toggle-group-appearance-standard"
-      >
-        <mat-button-toggle value="yes" nls_fa_el_name="continuousCoverageYes">Yes</mat-button-toggle>
-        <mat-button-toggle value="no" nls_fa_el_name="continuousCoverageNo">No</mat-button-toggle>
-      </mat-button-toggle-group>
-    </section>
-
-  </section>
-
-  <!-- Shadow root container for remaining fields -->
-  <div id="shadowContainer"></div>
-
-  <script>
-    const shadowHost = document.querySelector('#shadowContainer');
-    const shadow = shadowHost.attachShadow({ mode: 'open' });
-    shadow.innerHTML = `
-      <section fxlayout="column" style="flex-direction: column; display: flex; padding: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 8px;">
-        <!-- Question 3 -->
-        <section fxlayout="column" id="priorCarrierNameQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            What is your current auto insurance company? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="priorCarrierName">
-            <mat-select placeholder="Select" name="priorCarrierName" required>
-              <mat-option value="AllState Insurance Company">AllState Insurance Company</mat-option>
-              <mat-option value="Other Insurance Company">Other Insurance Company</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </section>
-
-        <!-- Question 4 -->
-        <section fxlayout="column" id="yearsInsuredQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            How long have you had auto insurance coverage with AllState Insurance Company? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="yearsInsured">
-            <mat-select placeholder="Select" name="yearsInsured" required>
-              <mat-option value="0-6 months">0-6 months</mat-option>
-              <mat-option value="6-24 months">6-24 months</mat-option>
-              <mat-option value="more than 24 months">More than 24 months</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </section>
-
-        <!-- Question 5 -->
-        <section fxlayout="column" id="biLimitsQuestion" style="flex-direction: column; display: flex;">
-          <mat-label>
-            What are your current optional bodily injury limits? <span class="starmarkrequired"> * </span>
-          </mat-label>
-          <mat-form-field appearance="outline" nls_fa_el_name="biLimits">
-            <mat-select placeholder="Select" name="biLimits" required>
-              <mat-option value="20/40">20/40</mat-option>
-              <mat-option value="50/100">50/100</mat-option>
-            </mat-select>
-            <mat-hint>
-              <a href="javascript:void(0)" class="needHelpTxt"> Need help finding your current BI limits? </a>
-            </mat-hint>
-          </mat-form-field>
-        </section>
-      </section>
-    `;
-  </script>
-
-  <!-- Navigation Buttons -->
-  <verti-sticky-navigation-buttons>
-    <section class="sticky-buttons">
-      <div class="ftr-sticky">
-        <verti-back-button>
-          <a href="javascript:void(0)" nls_fa_el_name="backButton" color="primary" class="back-btn-contact back-btn">Back</a>
-        </verti-back-button>
-
-        <button
-          nls_fa_el_name="continueButton"
-          mat-raised-button
-          type="submit"
-          class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn"
-        >
-          <span class="mat-button-wrapper">
-            Continue
-            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon">
-          </span>
-        </button>
-      </div>
-    </section>
-  </verti-sticky-navigation-buttons>
-</form>
-<div id="stepFormContainer">
-  <h2>Step-by-Step Form</h2>
-  <form id="stepForm">
-    <div class="step active">
-      <h3>Step 1: Personal Info</h3>
-      <input type="text" name="firstName" placeholder="First Name" required>
-      <input type="text" name="lastName" placeholder="Last Name" required>
-      <button type="button" class="nextBtn">Next</button>
-    </div>
-
-    <div class="step">
-      <h3>Step 2: Contact Info</h3>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone">
-      <button type="button" class="prevBtn">Previous</button>
-      <button type="button" class="nextBtn">Next</button>
-    </div>
-
-    <div class="step">
-      <h3>Step 3: Address</h3>
-      <input type="text" name="address" placeholder="Address" required>
-      <input type="text" name="city" placeholder="City">
-      <button type="button" class="prevBtn">Previous</button>
-      <button type="submit">Submit</button>
-    </div>
-  </form>
-</div>
-
-<style>
-  #stepFormContainer .step { display: none; }
-  #stepFormContainer .step.active { display: block; }
-</style>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  let currentStep = 0;
-  const steps = document.querySelectorAll("#stepFormContainer .step");
-
-  function showStep(index) {
-    steps.forEach((step, i) => step.classList.toggle("active", i === index));
-  }
-
-  document.querySelectorAll("#stepFormContainer .nextBtn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      const inputs = steps[currentStep].querySelectorAll("input[required]");
-      for (let input of inputs) {
-        if (!input.value) {
-          alert("Please fill all required fields.");
-          return;
-        }
-      }
-      if (currentStep < steps.length - 1) currentStep++;
-      showStep(currentStep);
-    });
-  });
-
-  document.querySelectorAll("#stepFormContainer .prevBtn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      if (currentStep > 0) currentStep--;
-      showStep(currentStep);
-    });
-  });
-
-  document.getElementById("stepForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    alert("Form submitted successfully!");
-  });
-});
-</script>
 
 
 </body>
