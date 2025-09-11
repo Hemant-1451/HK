@@ -69,58 +69,59 @@ window._vwo_pc_custom = {
 </form>
 
 
-<script>
-const host = document.createElement("div");
-const shadow = host.attachShadow({ mode: "open" });
-shadow.innerHTML = `
-  <form action="contact.html">
-    <div nls_fa_el_name="shadow-field-1" contenteditable="true"></div>
-    <input type="submit" value="Submit">
-  </form>`;
-document.body.appendChild(host);
-
-
-
-<script>
-const host = document.createElement("span");
-const shadow = host.attachShadow({ mode: "open" });
-shadow.innerHTML = `
-  <form nls_fa_name="spanshadowform" action="contact.html">
-    <span nls_fa_el_name="shadow-field-2" contenteditable="true"></div>
-    <input type="submit" value="Submit">
-  </form>`;
-document.body.appendChild(host);
-</script>
-</script>
-
-<script>
-const host = document.createElement("input");
-const shadow = host.attachShadow({ mode: "open" });
-shadow.innerHTML = `
-  <form action="contact.html">
-    <input type="text" id="shadow-field-3" contenteditable="true"></div>
-    <input type="submit" value="Submit">
-  </form>`;
-document.body.appendChild(host);
-</script>
-</script>
-
 
   <!-- 2. Shadow Form -->
   <h2>2. Shadow Form</h2>
-  <div id="shadow-host"></div>
-  <script>
-    const shadowHost = document.getElementById("shadow-host");
-    const shadowRoot = shadowHost.attachShadow({ mode: "open" });
-    shadowRoot.innerHTML = `
-      <form action="contact_us1.html" id="shadow-form">
-        <input type="email" name="email" placeholder="Email in Shadow DOM"/>
-        <br><br>
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
-      </form>
-    `;
-  </script>
+  <!-- FORM 1: div shadow field -->
+<form id="form-div" action="contact_us1.html" method="post">
+  <div id="host-div"></div>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<!-- FORM 2: span shadow field -->
+<form nls_fa_name="Custom-name" action="contact_us2.html" method="post">
+  <span id="host-span"></span>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<!-- FORM 3: input shadow field -->
+<form id="form-input-1" action="contact_us3.html" method="post">
+  <input id="host-input"></section>
+  <input type="submit" value="Submit">
+  <input type="reset" value="Reset">
+</form>
+
+<script>
+  // FORM 1: shadow root with div field
+  const divHost = document.getElementById("host-div");
+  const divShadow = divHost.attachShadow({ mode: "open" });
+  divShadow.innerHTML = `
+    <div nls_fa_el_name="shadow-div-field" contenteditable="true"
+         style="border:1px solid #000; padding:5px; margin-bottom:5px;">
+      Type inside shadow div
+    </div>
+  `;
+
+  // FORM 2: shadow root with span field
+  const spanHost = document.getElementById("host-span");
+  const spanShadow = spanHost.attachShadow({ mode: "open" });
+  spanShadow.innerHTML = `
+    <span nls_fa_el_name="shadow-span-field" contenteditable="true"
+          style="border:1px solid #000; padding:5px; display:block; margin-bottom:5px;">
+      Type inside shadow span
+    </span>
+  `;
+
+  // FORM 3: shadow root with input field
+  const inputHost = document.getElementById("host-input");
+  const inputShadow = inputHost.attachShadow({ mode: "open" });
+  inputShadow.innerHTML = `
+    <input nls_fa_el_name="shadow-input-field" type="text" placeholder="Shadow input field">
+  `;
+</script>
+
 
   <!-- 3. Without Native Fields -->
   <h2>3. Form Without Native Fields</h2>
