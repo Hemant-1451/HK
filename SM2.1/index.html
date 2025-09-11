@@ -55,6 +55,30 @@ window._vwo_pc_custom = {
   <input type="submit" value="Submit">
 </form>
 
+<input id="no-type">
+<input type="hidden" value="hidden-val">
+
+<form nls_fa_name="h" action="contact.html">
+  <div nls_fa_el_name="custom-input-1" contenteditable="true">Type here</div>
+  <input type="submit" value="Submit">
+</form>
+
+<form nls_fa_name="h" action="contact.html">
+  <div id="custom-input-2" contenteditable="true">Type here</div>
+  <input type="submit" value="Submit">
+</form>
+
+
+<script>
+const host = document.createElement("div");
+const shadow = host.attachShadow({ mode: "open" });
+shadow.innerHTML = `
+  <form action="contact.html">
+    <div nls_fa_el_name="shadow-field" contenteditable="true"></div>
+    <input type="submit" value="Submit">
+  </form>`;
+document.body.appendChild(host);
+</script>
 
   <!-- 2. Shadow Form -->
   <h2>2. Shadow Form</h2>
