@@ -396,6 +396,86 @@ window._vwo_pc_custom = {
       </div>
     </section>
   </verti-sticky-navigation-buttons>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step-by-Step Form</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  .step { display: none; }
+  .step.active { display: block; }
+  input { display: block; margin: 10px 0; padding: 8px; width: 100%; }
+  button { padding: 8px 16px; margin: 5px; }
+</style>
+</head>
+<body>
+
+<h2>Step-by-Step Form</h2>
+
+<form id="stepForm">
+  <!-- Step 1 -->
+  <div class="step active">
+    <h3>Step 1: Personal Info</h3>
+    <input type="text" name="firstName" placeholder="First Name" required>
+    <input type="text" name="lastName" placeholder="Last Name" required>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step">
+    <h3>Step 2: Contact Info</h3>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Phone">
+    <button type="button" onclick="prevStep()">Previous</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step">
+    <h3>Step 3: Address</h3>
+    <input type="text" name="address" placeholder="Address">
+    <input type="text" name="city" placeholder="City">
+    <button type="button" onclick="prevStep()">Previous</button>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+
+<script>
+let currentStep = 0;
+const steps = document.querySelectorAll(".step");
+
+function showStep(index) {
+  steps.forEach((step, i) => step.classList.toggle("active", i === index));
+}
+
+function nextStep() {
+  const inputs = steps[currentStep].querySelectorAll("input[required]");
+  for (let input of inputs) {
+    if (!input.value) {
+      alert("Please fill all required fields.");
+      return;
+    }
+  }
+  if (currentStep < steps.length - 1) {
+    currentStep++;
+    showStep(currentStep);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+}
+
+document.getElementById("stepForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Form submitted successfully!");
+});
+</script>
 
 </form>
 
