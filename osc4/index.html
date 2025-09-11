@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Start VWO SmartCode --> 
+<script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/918946.js" id="vwoCode">
+</script>
+<!-- End VWO SmartCode -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemant Kumar Page</title>
+    <style> 
+          #contact_us,
+      #about,
+      #suggestions {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        border: 2px outset black;
+        background-color: white;
+        text-align: center;
+        color: black;
+        text-decoration: none;
+        border-radius: 100px;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 20px;
+      }
+      .wrapper {
+        position: absolute;
+        top: 100px;
+        left: 450px;
+        background: #fff;
+        max-width: 365px;
+        border-radius: 15px;
+        text-align: center;
+        padding: 25px 25px 30px 25px;
+        box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.15);
+      }
+      .wrapper.hide {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.8);
+        transition: all 0.3s ease;
+      }
+      .wrapper img {
+        max-width: 150px;
+      }
+      .wrapper .content {
+        margin-top: 20px;
+      }
+      .wrapper header {
+        font-size: 25px;
+        font-weight: 600;
+      }
+/* Define styles for shadow DOM */
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .scenario-label {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* CSS styles for all scenarios */
+        .scenario-container {
+            margin-bottom: 20px;
+        }
+
+        /* CSS styles for Scenario 1 */
+        .scenario01-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario01-child {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 2 */
+        .scenario02-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario02-child {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+        /* CSS styles for Scenario 3 */
+        .scenario003-parent {
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        .scenario003-shadowContainer {
+            background-color: lightblue;
+            padding: 10px;
+        }
+
+
+        .scenario03-parent {
+            background-color: lightgray;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .scenario03-child-container {
+            margin-top: 10px;
+        }
+
+        .scenario03-child {
+            background-color: lightblue;
+            padding: 10px;
+            border: 1px solid #ccc;
+        .container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .shadow-button, .nested-shadow-button {
+            display: inline-block;
+            padding: 12px 24px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-right: 20px; /* Add margin between buttons */
+            text-decoration: none; /* Remove default underline */
+        }
+
+        .shadow-button {
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+        }
+
+        .nested-shadow-button {
+            background: linear-gradient(to right, #11998e, #38ef7d);
+            margin-right: 0; /* Remove margin from last button */
+        }
+
+        .shadow-button:hover, .nested-shadow-button:hover {
+            filter: brightness(110%); /* Add brightness on hover */
+        }
+    </style>
+</head>
+<body>
+<div id = "abc">
+<div id = "def">
+<div id="0">
+<button id="0cta-click-element" class="btn btn-primary">Click to Start Campaign Button</button>
+</div>
+</div>
+</div>
+<h1 id="registration-heading" style="text-align: center">
+      Registration Form
+    </h1>
+    <div class="div1">
+      <h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
+      <p id="Welpara">
+        Let's start now, just try to fill in the details carefully and
+        correctly.<br /><br />
+        <b>NOTE:-</b>Please enter a password that is at least 8 characters long.
+      </p>
+    </div>
+    <p id="p2"><strong>SPA BUTTON</strong></p>
+    <button onclick="historyPushUrl()">SPA URL</button>
+    <br />
+    <br />
+    <form action="contact_us1.html" id="registrationForm">
+      <table>
+        <tr>
+          <td>Name:</td>
+          <td>
+            <input type="text" placeholder="Name" name="" />
+          </td>
+        </tr>
+        <tr>
+          <td>Phone Number:</td>
+          <td>
+            <input type="phone" placeholder="9867******" />
+          </td>
+        </tr>
+        <tr>
+          <td>Email Id:</td>
+          <td>
+            <input type="email" placeholder="example1@*8" />
+          </td>
+        </tr>
+        <tr>
+          <td>Password:</td>
+          <td>
+            <input type="password" placeholder="Password" />
+          </td>
+        </tr>
+        <tr>
+          <td>Gender:</td>
+          <td>
+            <input type="radio" name="gender" />Male
+            <input type="radio" name="gender" />Female
+          </td>
+        </tr>
+        <tr>
+          <td>Date of Birth:</td>
+          <td>
+            <input type="date" />
+          </td>
+        </tr>
+        <tr>
+          <td>Hobbies:</td>
+          <td>
+            <input type="checkbox" singing />Singing
+            <input type="checkbox" Dancing />Dancing
+            <input type="checkbox" playing />Sports
+          </td>
+        </tr>
+        <tr>
+          <td>Education Qualification:</td>
+          <td>
+            <select>
+              <option>Select Option</option>
+              <option>10+2</option>
+              <option>Graduation</option>
+              <option>Postgraduation</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>
+            <textarea rows="5" col="17" placeholder="Address"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+          </td>
+        </tr>
+      </table>
+    </form>
+    <h3>
+      By clicking submit, you agree to our terms of service and privacy policy.
+    </h3>
+    <p>
+      After registering please check your email for a confirmation message.<br /><br />
+      Already a registered user? <a href="#">Click here</a>
+    </p>
+    <br />
+    <p id="p1"><strong>FEEDBACK-FORM</strong></p>
+    <div>
+      <form action="feedback.html" id="feedbackForm">
+        <label for="question"
+          >If you're facing any problem please write to us.We'll solve the issue
+          at the earliest.</label
+        ><br />
+        <br />
+        <br />
+        <input
+          class="feedBackForm"
+          id="answer"
+          name="feedback"
+          placeholder="Text"
+          size="100"
+          style="height: 100px"
+          type="text"
+          value=""
+        /><br />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+    <br />
+    <button onclick="spaNavigation()">SPA Navigation</button>
+    <br />
+    <br />
+    <a href="javascript:void(0)" onclick="location.hash='spa/1.html'"
+      >Change hash</a
+    >
+    <p></p>
+    <button id="clickonlinkDummy">ClickElement</button>
+    <button id="testelement2">ClickElement2</button>
+    <button id="testelement3">ClickElement3</button>
+    <button id="testelement4">ClickElement4</button>
+    <button id="activateButton" onclick="activateVWO()">Activate API</button>
+
+    <p>
+      <br />
+      <br />
+      <a href="suggestions.html" id="suggestions">Suggestions</a><br />
+      <br />
+      <br />
+      <br />
+      <a href="contact_us.html" id="contact_us">Contact us</a><br />
+      <br />
+      <br />
+      <br />
+      <a href="about.html" id="about">About</a>
+
+      <br />
+      <br />
+      <br />
+    </p>
+
+    <div style="height: 30px"></div>
+    <a id="dynamicLink"></a>
+    <p>
+      <button onclick="myFunction()">Generate Link</button>
+      <input id="input" />
+    <h2 class="scenario-label">Scenario 1: Parent onto Shadow DOM and its child is inside Shadow DOM</h2>
+    <div class="scenario-container" id="scenario01-container">
+        <div class="scenario01-parent" id="scenario01-parent">
+            <slot name="scenario01-content"></slot>
+            <div class="scenario01-child"></div>
+        </div>
+    </div>
+
+    <h2 class="scenario-label">Scenario 2: Parent and its child both are outside Shadow DOM</h2>
+    <div class="scenario-container" id="scenario02-container">
+        <div class="scenario02-parent" id="scenario02-parent">
+            <slot name="scenario02-content"></slot>
+            <div class="scenario02-child"></div>
+        </div>
+    </div>
+
+
+    <h2 class="scenario-label">Scenario 3: Nested Shadow DOM</h2>
+    <div class="scenario-container" id="scenario03-container">
+        <div class="scenario03-parent" id="scenario03-parent">
+            <!-- Add content for the parent in nested shadow DOM -->
+            <slot name="scenario03-parent-content"></slot>
+
+            <!-- Start of nested shadow DOM for child -->
+            <div class="scenario03-child-container" id="scenario03-child">
+                <!-- Add content for the child in nested shadow DOM -->
+            </div>
+            <!-- End of nested shadow DOM for child -->
+        </div>
+    </div>
+
+     <script>
+        function myFunction() {
+          document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
+          document.getElementById("dynamicLink").href =
+            document.getElementById("input").value;
+          //   location.href=document.getElementById("input").value;
+        }
+      </script>
+    </p>
+  
+<h1>Shadow Buttons</h1>
+    <!-- Create a container for shadow DOM elements -->
+    <div class="container">
+        <!-- Shadow DOM with a button -->
+        <div id="shadow-container">
+        </div>
+    </div>
+
+    <script>
+       // Wait for the DOM content to be fully loaded before executing the script
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the element with the id 'shadow-container'
+    const shadowContainer = document.getElementById('shadow-container');
+
+    // Check if the element exists before proceeding
+    if (shadowContainer) {
+        // Create a shadow root
+        const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside shadow DOM
+        const shadowButton = document.createElement('button');
+        shadowButton.textContent = 'Button under Shadow DOM';
+        shadowButton.className = 'shadow-button'; // Add class for styling
+        shadowRoot.appendChild(shadowButton);
+
+        // Create a nested shadow root
+        const nestedShadowContainer = document.createElement('div');
+        nestedShadowContainer.id = 'nested-shadow-container'; // Set the id
+        shadowRoot.appendChild(nestedShadowContainer); // Append to shadow DOM
+
+        const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside nested shadow DOM
+        const nestedShadowButton = document.createElement('button');
+        nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
+        nestedShadowButton.className = 'nested-shadow-button'; // Add class for styling
+        nestedShadowRoot.appendChild(nestedShadowButton);
+    } else {
+        console.error("Element with id not found");
+    }
+});
+    </script>
+    <script>
+      let spaCount = 1;
+
+      function historyPushUrl() {
+        const url = new URL(window.location);
+        url.searchParams.set("spa", spaCount);
+        window.history.pushState({}, "", url);
+        spaCount++;
+      }
+
+      function spaNavigation() {
+        history.pushState(null, null, "?query=" + Date.now());
+      }
+    </script>
+
+  
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scenario 1: Parent with Shadow DOM, and child inside Shadow DOM
+            const scenario01Parent = document.getElementById('scenario01-parent');
+            if (scenario01Parent) {
+                const scenario01Root = scenario01Parent.attachShadow({ mode: 'open' });
+                scenario01Root.innerHTML = `
+                    <style>
+                        .scenario01-parent {
+                            background-color: lightgray;
+                            padding: 10px;
+                        }
+                        .scenario01-child {
+                            background-color: lightblue;
+                            padding: 10px;
+                        }
+                    </style>
+                    <slot name="scenario01-content"></slot>
+                    <div class="scenario01-child">Child inside Shadow DOM</div>
+                `;
+            } else {
+                console.error("Scenario 1 parent not found");
+            }
+
+            // Scenario 3: Nested Shadow DOM
+            const scenario03Parent = document.getElementById('scenario03-parent');
+            if (scenario03Parent) {
+                const scenario03Root = scenario03Parent.attachShadow({ mode: 'open' });
+                scenario03Root.innerHTML = `
+                    <style>
+                        .scenario03-parent {
+                            background-color: lightcoral;
+                            padding: 10px;
+                        }
+                    </style>
+                    <slot name="scenario03-parent-content"></slot>
+                    <div class="scenario03-child-container" id="scenario03-child-container"></div>
+                `;
+
+                const scenario03ChildContainer = scenario03Root.getElementById('scenario03-child-container');
+                if (scenario03ChildContainer) {
+                    const scenario03ChildRoot = scenario03ChildContainer.attachShadow({ mode: 'open' });
+                    scenario03ChildRoot.innerHTML = `
+                       <style>
+                            .scenario03-child-content {
+                                background-color: lightgreen;
+                                padding: 10px;
+                                border: 2px solid darkgreen;
+                            }
+                            button {
+                                margin-top: 10px;
+                                background-color: lightgreen;
+                                padding: 10px;
+                                border: 2px solid darkgreen;
+                                cursor: pointer;
+                            }
+                        </style>
+                        <p class="scenario03-child-content">This is content within the inner shadow DOM.</p>
+                        <button>Click Me</button>
+                    `;
+
+                    const button = scenario03ChildRoot.querySelector('button');
+                    if (button) {
+                        button.addEventListener('click', () => {
+                            alert('Button inside nested shadow DOM clicked!');
+                        });
+                    }
+                } else {
+                    console.error("Scenario 3 child container not found");
+                }
+            } else {
+                console.error("Scenario 3 parent not found");
+            }
+        });
+    </script>
+</body>
+</html>

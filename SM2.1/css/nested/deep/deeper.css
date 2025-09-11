@@ -1,0 +1,20 @@
+/* Case 3: Font test */
+@font-face {
+  font-family: 'CustomFont';
+  src: url("../../assets/fonts/custom.woff2") format("woff2");
+} 
+ 
+.case3 {
+  background: pink;
+  border: 3px dotted red;
+  font-family: 'CustomFont', cursive;
+  font-size: 20px;
+}
+
+/* Case 6: Icon test */
+.case6 {
+  width: 80px;
+  height: 80px;
+  background: url("/css/assets/icons/star.svg") no-repeat center/cover;
+  border: 3px solid gold;
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Insurance Form - Angular Material Reactive Form
 
 A complete Angular Material Reactive Form implementation with the following features:

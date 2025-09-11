@@ -1,0 +1,17 @@
+/* Nested import to deeper.css */
+@import url("deep/deeper.css");
+
+/* Case 2: Loaded via @import (relative) */
+.case2 {
+  background: lightblue;
+  border: 3px dashed navy;
+  color: navy;
+}
+ 
+
+
+/* Background image test */
+.case5 {
+  background: url("../images.jpeg") no-repeat center/contain;
+  height: 100px;
+}

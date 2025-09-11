@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow DOM on Button</title>
+    <style>
+        /* Styles for the button in the main document */
+        #my-button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button id="my-button">Click me</button>
+
+    <script>
+        // Select the button element
+        const button = document.getElementById('my-button');
+
+        // Attach a shadow root to the button
+        const shadow = button.attachShadow({ mode: 'open' });
+
+        // Add content to the shadow DOM
+        shadow.innerHTML = `
+            <style>
+                /* Shadow DOM styles */
+                p {
+                    color: red;
+                    font-size: 14px;
+                    margin: 0; /* Ensure no margin is applied */
+                }
+            </style>
+            <p>This is inside the Shadow DOM of the button.</p>
+        `;
+    </script>
+</body>
+</html>

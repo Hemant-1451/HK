@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script type="text/javascript" id="vwoCode">
+	   
+            const params = new URLSearchParams(window.location.search);
+            const accId = parseInt(params.get('id'));
+            const accountId = accId || 918943;
+            document.title += '-' + accountId;
+            /* eslint-disable no-undef */
+           window._vwo_code ||
+	(function () {
+		var w = window,
+			d = document;
+		if (d.URL.indexOf('__vwo_disable__') > -1 || w._vwo_code) {
+			return;
+		}
+		var account_id = accountId, // replace 1 with ${accountId} in release string
+			version = 2.2,
+			settings_tolerance = 2000,
+			hide_element = 'body',
+			hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important',
+			/* DO NOT EDIT BELOW THIS LINE */
+			f = false,
+			v = d.querySelector('#vwoCode'),
+			cc = {};
+		try {
+			var c = JSON.parse(localStorage.getItem('_vwo_' + account_id + '_config'));
+			cc = c && typeof c === 'object' ? c : {};
+		} catch (e) {}
+		function getMatchedCookies(matchPattern) {
+			var matchedCookies = [];
+			if (document.cookie) {
+				matchedCookies = document.cookie.match(matchPattern) || [];
+			}
+			return matchedCookies;
+		}
+		/**
+		 * Retrieves and processes VWO experiment combination cookies.
+		 * This function finds all cookies matching the pattern _vis_opt_exp_*_combi,
+		 * validates and decodes them, extracts the combination values,
+		 * and returns them in a formatted string (experiment combinations joined by '-'
+		 * and multiple experiments joined by '|').
+		 * @returns {string} Formatted string of bucketed campaigns combinations.
+		 */
+		function getCombinationCookie() {
+			var matchedCookies = getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_\d+_combi=[^;$]*)/gi);
+			matchedCookies = matchedCookies.map(function (cookie) {
+				try {
+					var decodedCookie = decodeURIComponent(cookie);
+					if (!/_vis_opt_exp_\d+_combi=(?:\d+,?)+\s*$/.test(decodedCookie)) {
+						return '';
+					}
+					return decodedCookie;
+				} catch (e) {
+					return '';
+				}
+			});
+			var combinations = [];
+			matchedCookies.forEach(function (each) {
+				var cookiePair = each.match(/([\d,]+)/g);
+				cookiePair && combinations.push(cookiePair.join('-'));
+			});
+			return combinations.join('|');
+		}
+		/**
+		 * Retrieves the VWO UUID cookie value.
+		 * @returns {string|null} The UUID value if found, null otherwise.
+		 */
+		function getUuidCookie() {
+			var matchedCookies = getMatchedCookies(/(?:^|;\s*)_vwo_uuid=([^;]*)/);
+			return matchedCookies.length > 0
+				? decodeURIComponent(matchedCookies[0].match(/=([^;]*)/)[1])
+				: null;
+		}
+		/**
+		 * Checks if the visitor has opted out of VWO.
+		 * This function looks for cookies matching the pattern _vis_opt_out_*
+		 * and returns true if any such cookie exists.
+		 * @returns {boolean} True if the visitor has opted out, false otherwise.
+		 */
+		function getOptOutCookie() {
+			return getMatchedCookies(/(?:^|;)\s?(_vis_opt_out_(\d+)=[^;$]*)/gi).length > 0;
+		}
+		/**
+		 * Retrieves the IDs of all excluded campaigns.
+		 * This function finds all cookies matching the pattern _vis_opt_exp_*_exclude,
+		 * extracts the campaign IDs
+		 * @returns {string} |-separated string of excluded campaign IDs.
+		 */
+		function getExcludedCampaigns() {
+			var excludedIds = getMatchedCookies(/(?:^|;)\s?(_vis_opt_exp_(\d+)_exclude=[^;$]*)/gi)
+				.map(function (cookie) {
+					try {
+						return decodeURIComponent(cookie).match(/_vis_opt_exp_(\d+)_exclude/)[1];
+					} catch (e) {
+						return null;
+					}
+				})
+				.filter(Boolean);
+			return excludedIds.join('|');
+		}
+		code = {
+			use_existing_jquery: function () {
+				return typeof use_existing_jquery !== 'undefined' ? use_existing_jquery : undefined;
+			},
+			library_tolerance: function () {
+				return typeof library_tolerance !== 'undefined' ? library_tolerance : undefined;
+			},
+			settings_tolerance: function () {
+				return cc.sT || settings_tolerance;
+			},
+			hide_element_style: function () {
+				return '{' + (cc.hES || hide_element_style) + '}';
+			},
+			hide_element: function () {
+				if (performance.getEntriesByName('first-contentful-paint')[0]) {
+					// This is done for injected SC for account having non-testing accounts only, where we intend to avoid white-flash
+					return '';
+				}
+				return typeof cc.hE === 'string' ? cc.hE : hide_element;
+			},
+			getVersion: function () {
+				return version;
+			},
+			finish: function (errQueryStrParams) {
+				if (!f) {
+					f = true;
+					var a = d.getElementById('_vis_opt_path_hides');
+					if (a) a.parentNode.removeChild(a);
+					if (errQueryStrParams)
+						new Image().src =
+							'https://dev.visualwebsiteoptimizer.com/ee.gif?a=' + account_id + errQueryStrParams;
+				}
+			},
+			finished: function () {
+				return f;
+			},
+			addScript: function (content) {
+				var script = d.createElement('script');
+				script.type = 'text/javascript';
+				if (content.src) {
+					script.src = content.src;
+				} else {
+					script.text = content.text;
+				}
+				d.getElementsByTagName('head')[0].appendChild(script);
+			},
+			load: function (a, options) {
+				options = options || {};
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', a, true);
+				//dSC -> dont send Cookies
+				xhr.withCredentials = !options.dSC;
+				xhr.responseType = options.responseType || 'text';
+				xhr.onload = function () {
+					if (options.onloadCb) {
+						return options.onloadCb(xhr, a);
+					}
+					if (xhr.status === 200) {
+						// var redirectUrl = options.l && xhr.getResponseHeader('Location');
+						// Redirect to the URL if the response is a 302, for case of split URL.
+						var redirectUrl = undefined;
+						if (redirectUrl) return (window.location.href = redirectUrl);
+						_vwo_code.addScript({ text: xhr.responseText });
+					} else {
+						_vwo_code.finish('&e=loading_failure:' + a);
+					}
+				};
+				xhr.onerror = function () {
+					if (options.onerrorCb) {
+						return options.onerrorCb(a);
+					}
+					_vwo_code.finish('&e=loading_failure:' + a);
+				};
+				xhr.send();
+			},
+			init: function () {
+				var sT = this.settings_tolerance();
+				w._vwo_settings_timer = setTimeout(function () {
+					_vwo_code.finish();
+				}, sT);
+				var a;
+				if (this.hide_element() !== 'body') {
+					a = d.createElement('style');
+					var hE = this.hide_element(),
+						b = hE ? hE + this.hide_element_style() : '',
+						h = d.getElementsByTagName('head')[0];
+					a.setAttribute('id', '_vis_opt_path_hides');
+					v && a.setAttribute('nonce', v.nonce);
+					a.setAttribute('type', 'text/css');
+					if (a.styleSheet) a.styleSheet.cssText = b;
+					else a.appendChild(d.createTextNode(b));
+					h.appendChild(a);
+				} else {
+					a = d.getElementsByTagName('head')[0];
+					var b = d.createElement('div');
+					b.style.cssText =
+						'z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';
+					b.setAttribute('id', '_vis_opt_path_hides');
+					b.classList.add('_vis_hide_layer');
+					a.parentNode.insertBefore(b, a.nextSibling);
+				}
+				var c = getCombinationCookie(),
+					o = getOptOutCookie(),
+					e = getExcludedCampaigns(),
+					id = getUuidCookie(),
+					j =
+						'https://dev.visualwebsiteoptimizer.com/j.php?a=' +
+						account_id +
+						'&u=' +
+						encodeURIComponent(d.URL) +
+						'&vn=' +
+						version +
+						(c ? '&c=' + c : '') +
+						(o ? '&o=' + o : '') +
+						(e ? '&e=' + e : '') +
+						(id ? '&id=' + id : '');
+				if (w.location.search.indexOf('_vwo_xhr') !== -1) {
+					this.addScript({ src: j });
+				} else {
+					this.load(j + '&x=true', { l: 1 });
+				}
+			},
+		};
+		w._vwo_code = code;
+		code.init();
+	})();
+        </script>
+ <script>
+    // Function to generate a random ID
+    function generateDynamicId(prefix = "form") {
+      return prefix + "_" + Math.random().toString(36).substr(2, 9);
+    }
+
+    window.onload = function () {
+      const form = document.getElementById("dynamicForm1");
+      const dynamicId = generateDynamicId();
+      form.setAttribute("id", dynamicId);
+      document.getElementById("idDisplay").textContent = "Form ID: " + dynamicId;
+    };
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemant Kumar Page</title>
+<style>
+#contact_us,
+#about,
+#suggestions {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 40%;
+border: 2px outset black;
+background-color: white;
+text-align: center;
+color: black;
+text-decoration: none;
+border-radius: 100px;
+box-sizing: border-box;
+padding: 10px;
+font-size: 20px;
+}
+.wrapper {
+position: absolute;
+top: 100px;
+left: 450px;
+background: #fff;
+max-width: 365px;
+border-radius: 15px;
+text-align: center;
+padding: 25px 25px 30px 25px;
+box-shadow: 1px 7px 14px -5px rgba(0, 0, 0, 0.15);
+}
+.wrapper.hide {
+opacity: 0;
+pointer-events: none;
+transform: scale(0.8);
+transition: all 0.3s ease;
+}
+.wrapper img {
+max-width: 150px;
+}
+.wrapper .content {
+margin-top: 20px;
+}
+.wrapper header {
+font-size: 25px;
+font-weight: 600;
+}
+#registration-heading {
+text-align: center;
+}
+.feedBackForm {
+height: 100px;
+}
+.custom-height {
+ height: 30px;
+}
+</style>
+</head>
+<body>
+
+<div id="idDisplay"></div>
+
+  <form id="dynamicForm1" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" name="email" required><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+<h1 id="registration-heading">Registration Form</h1>
+<div class="div1">
+<h2 id="WelMsg">Welcome to the website, Registration Starts Here...</h2>
+<p id="Welpara">
+Let's start now, just try to fill in the details carefully and
+correctly.<br /><br />
+<b>NOTE:-</b>Please enter a password that is at least 8 characters long.
+</p>
+</div>
+<p id="p2"><strong>SPA BUTTON</strong></p>
+<button onclick="historyPushUrl()">SPA URL</button>
+<br />
+<br />
+<form action="contact_us1.html" id="registrationForm">
+<table>
+<tr>
+<td>Name:</td>
+<td>
+<input type="text" placeholder="Name" name="" autocomplete="name" />
+</td>
+</tr>
+<tr>
+<td>Phone Number:</td>
+<td>
+<input type="tel" placeholder="9867******" autocomplete="tel" />
+</td>
+</tr>
+<tr>
+<td>Email Id:</td>
+<td>
+<input type="email" placeholder="example@example.com" autocomplete="email" />
+</td>
+</tr>
+<tr>
+<td>Password:</td>
+<td>
+<input type="password" placeholder="Password" autocomplete="current-password" />
+</td>
+</tr>
+<tr>
+<td>Gender:</td>
+<td>
+<input type="radio" name="gender" />Male
+<input type="radio" name="gender" />Female
+</td>
+</tr>
+<tr>
+<td>Date of Birth:</td>
+<td>
+<input type="date" />
+</td>
+</tr>
+<tr>
+<td>Hobbies:</td>
+<td>
+<input type="checkbox" singing />Singing
+<input type="checkbox" Dancing />Dancing
+<input type="checkbox" playing />Sports
+</td>
+</tr>
+<tr>
+<td>Education Qualification:</td>
+<td>
+<select autocomplete="education">
+<option>Select Option</option>
+<option>10+2</option>
+<option>Graduation</option>
+<option>Postgraduation</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Address:</td>
+<td>
+<textarea rows="5" col="17" placeholder="Address" autocomplete="street-address"></textarea>
+</td>
+</tr>
+<tr>
+<td>
+<input type="submit" value="Submit" />
+<input type="reset" value="Reset" />
+</td>
+</tr>
+</table>
+</form>
+<h3>
+By clicking submit, you agree to our terms of service and privacy policy.
+</h3>
+<p>
+After registering please check your email for a confirmation message.<br /><br />
+Already a registered user? <a href="#">Click here</a>
+</p>
+<br />
+<p id="p1"><strong>FEEDBACK-FORM</strong></p>
+<div>
+<form action="feedback.html" id="feedbackForm">
+<label for="question">
+If you're facing any problem please write to us. We'll solve the issue at the earliest.
+</label>
+<br />
+<br />
+<br />
+<input class="feedBackForm" id="answer" name="feedback" placeholder="Text" size="100" type="text" value="" autocomplete="off" />
+<br />
+<br />
+<input type="submit" value="Submit" />
+</form>
+</div>
+<br />
+<button onclick="spaNavigation()">SPA Navigation</button>
+<br />
+<br />
+<a href="javascript:void(0)" onclick="location.hash='spa/1.html'">Change hash</a>
+<button id="clickonlinkDummy">ClickElement</button>
+<button id="testelement2">ClickElement2</button>
+<button id="testelement3">ClickElement3</button>
+<button id="testelement4">ClickElement4</button>
+<button id="activateButton" onclick="activateVWO()">Activate API</button>
+<p>
+<br />
+<br />
+<a href="suggestions.html" id="suggestions">Suggestions</a><br />
+<br />
+<br />
+<br />
+<a href="contact_us.html" id="contact_us">Contact us</a><br />
+<br />
+<br />
+<br />
+<a href="about.html" id="about">About</a>
+<br />
+<br />
+<br />
+</p>
+<div class="custom-height"></div>
+<a id="dynamicLink"></a>
+<p>
+<button onclick="myFunction()">Generate Link</button>
+<input id="input" />
+<script>
+function myFunction() {
+document.getElementById("dynamicLink").innerHTML = "GENERATED LINK";
+document.getElementById("dynamicLink").href =
+document.getElementById("input").value;
+// location.href=document.getElementById("input").value;
+}
+</script>
+</p>
+<script>
+let spaCount = 1;
+function historyPushUrl() {
+const url = new URL(window.location);
+url.searchParams.set("spa", spaCount);
+window.history.pushState({}, "", url);
+spaCount++;
+}
+function spaNavigation() {
+history.pushState(null, null, "?query=" + Date.now());
+}
+</script>
+<h1>Shadow Buttons</h1>
+    <!-- Create a container for shadow DOM elements -->
+    <div class="container">
+        <!-- Shadow DOM with a button -->
+        <div id="shadow-container">
+        </div>
+    </div>
+
+    <script>
+       // Wait for the DOM content to be fully loaded before executing the script
+document.addEventListener('DOMContentLoaded', function() {
+    // Find the element with the id 'shadow-container'
+    const shadowContainer = document.getElementById('shadow-container');
+
+    // Check if the element exists before proceeding
+    if (shadowContainer) {
+        // Create a shadow root
+        const shadowRoot = shadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside shadow DOM
+        const shadowButton = document.createElement('button');
+        shadowButton.textContent = 'Button under Shadow DOM';
+        shadowButton.className = 'shadow-button'; // Add class for styling
+        shadowRoot.appendChild(shadowButton);
+
+        // Create a nested shadow root
+        const nestedShadowContainer = document.createElement('div');
+        nestedShadowContainer.id = 'nested-shadow-container'; // Set the id
+        shadowRoot.appendChild(nestedShadowContainer); // Append to shadow DOM
+
+        const nestedShadowRoot = nestedShadowContainer.attachShadow({ mode: 'open' });
+
+        // Create a button inside nested shadow DOM
+        const nestedShadowButton = document.createElement('button');
+        nestedShadowButton.textContent = 'Button under Nested Shadow DOM';
+        nestedShadowButton.className = 'nested-shadow-button'; // Add class for styling
+        nestedShadowRoot.appendChild(nestedShadowButton);
+    } else {
+        console.error("Element with id not found");
+    }
+});
+    </script>
+    
+</body>
+</html>
