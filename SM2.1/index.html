@@ -397,71 +397,75 @@ window._vwo_pc_custom = {
     </section>
   </verti-sticky-navigation-buttons>
 </form>
-<h2>9. Step-by-Step Form</h2>
+<div id="stepFormContainer">
+  <h2>Step-by-Step Form</h2>
+  <form id="stepForm">
+    <div class="step active">
+      <h3>Step 1: Personal Info</h3>
+      <input type="text" name="firstName" placeholder="First Name" required>
+      <input type="text" name="lastName" placeholder="Last Name" required>
+      <button type="button" class="nextBtn">Next</button>
+    </div>
 
-<form id="stepForm">
-  <!-- Step 1 -->
-  <div class="step active">
-    <h3>Step 1: Personal Info</h3>
-    <input type="text" name="firstName" placeholder="First Name" required>
-    <input type="text" name="lastName" placeholder="Last Name" required>
-    <button type="button" onclick="nextStep()">Next</button>
-  </div>
+    <div class="step">
+      <h3>Step 2: Contact Info</h3>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="phone" placeholder="Phone">
+      <button type="button" class="prevBtn">Previous</button>
+      <button type="button" class="nextBtn">Next</button>
+    </div>
 
-  <!-- Step 2 -->
-  <div class="step">
-    <h3>Step 2: Contact Info</h3>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone">
-    <button type="button" onclick="prevStep()">Previous</button>
-    <button type="button" onclick="nextStep()">Next</button>
-  </div>
+    <div class="step">
+      <h3>Step 3: Address</h3>
+      <input type="text" name="address" placeholder="Address" required>
+      <input type="text" name="city" placeholder="City">
+      <button type="button" class="prevBtn">Previous</button>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
 
-  <!-- Step 3 -->
-  <div class="step">
-    <h3>Step 3: Address</h3>
-    <input type="text" name="address" placeholder="Address">
-    <input type="text" name="city" placeholder="City">
-    <button type="button" onclick="prevStep()">Previous</button>
-    <button type="submit">Submit</button>
-  </div>
-</form>
+<style>
+  #stepFormContainer .step { display: none; }
+  #stepFormContainer .step.active { display: block; }
+</style>
 
 <script>
-let currentStep = 0;
-const steps = document.querySelectorAll(".step");
+document.addEventListener("DOMContentLoaded", function() {
+  let currentStep = 0;
+  const steps = document.querySelectorAll("#stepFormContainer .step");
 
-function showStep(index) {
-  steps.forEach((step, i) => step.classList.toggle("active", i === index));
-}
-
-function nextStep() {
-  const inputs = steps[currentStep].querySelectorAll("input[required]");
-  for (let input of inputs) {
-    if (!input.value) {
-      alert("Please fill all required fields.");
-      return;
-    }
+  function showStep(index) {
+    steps.forEach((step, i) => step.classList.toggle("active", i === index));
   }
-  if (currentStep < steps.length - 1) {
-    currentStep++;
-    showStep(currentStep);
-  }
-}
 
-function prevStep() {
-  if (currentStep > 0) {
-    currentStep--;
-    showStep(currentStep);
-  }
-}
+  document.querySelectorAll("#stepFormContainer .nextBtn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const inputs = steps[currentStep].querySelectorAll("input[required]");
+      for (let input of inputs) {
+        if (!input.value) {
+          alert("Please fill all required fields.");
+          return;
+        }
+      }
+      if (currentStep < steps.length - 1) currentStep++;
+      showStep(currentStep);
+    });
+  });
 
-document.getElementById("stepForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  alert("Form submitted successfully!");
+  document.querySelectorAll("#stepFormContainer .prevBtn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      if (currentStep > 0) currentStep--;
+      showStep(currentStep);
+    });
+  });
+
+  document.getElementById("stepForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Form submitted successfully!");
+  });
 });
 </script>
-
 
 
 </body>
