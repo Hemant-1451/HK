@@ -97,11 +97,15 @@ window._vwo_pc_custom = {
 </form>
 
 <form nls_fa_name="NoLandedForm" action="contact.html">
-  <div id="custom-input-2" contenteditable="true">Type here</div>
-<input id="no-type">
-<input type="hidden" value="hidden-val">
+  <label class="label" for="notes">Notes</label>
+    <div id="notes" class="field" contenteditable="true" role="textbox" aria-multiline="true" data-name="notes">
+      Any notes...
+    </div>
 
-  <input type="submit" value="Submit">
+    <!-- submit button (allowed) -->
+    <button type="submit" class="submit">Send</button>
+
+    <div class="note" id="status"></div>
 </form>
 
 
