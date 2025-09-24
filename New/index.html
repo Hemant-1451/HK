@@ -21,69 +21,79 @@ f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+
 
 </script>
   <meta charset="UTF-8">
-  <title>Dead Click ARIA Tester</title>
+  <title>isNodeVisible Test Cases</title>
   <style>
-    body { font-family: sans-serif; margin: 20px; }
-    .aria-box { 
-      border: 1px solid #ccc; 
-      padding: 10px; 
-      margin: 8px; 
-      cursor: pointer; 
-      border-radius: 5px;
-      background: #f9f9f9;
+    body { font-family: sans-serif; padding: 20px; }
+    button { margin: 10px 0; }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      background: tomato;
+      margin: 10px 0;
     }
-    .aria-box:hover { background: #eee; }
-    .log { font-size: 12px; color: #555; margin-top: 4px; }
+
+    /* Case 1: Visibility Transition (✅ covered) */
+    #visibilityBox {
+      transition: visibility 1s;
+      visibility: visible;
+    }
+    #visibilityBox.hidden { visibility: hidden; }
+
+    /* Case 2: Display Toggle (✅ covered but not animatable) */
+    #displayBox.hidden { display: none; }
+
+    /* Case 3: Opacity Transition (❌ not covered) */
+    #opacityBox {
+      transition: opacity 1s;
+      opacity: 1;
+    }
+    #opacityBox.hidden { opacity: 0; }
+
+    /* Case 4: Width/Height Transition (❌ not covered) */
+    #sizeBox {
+      transition: width 1s, height 1s;
+      width: 150px; height: 150px;
+    }
+    #sizeBox.hidden { width: 0; height: 0; }
+
+    /* Case 5: Slide (Transform) Transition (❌ not covered) */
+    #slideBox {
+      transition: transform 1s;
+      transform: translateX(0);
+    }
+    #slideBox.hidden { transform: translateX(300px); }
   </style>
 </head>
 <body>
-  <h2>Dead Click Simulation (ARIA attributes)</h2>
-  <div id="container"></div>
+  <h2>isNodeVisible Test Cases</h2>
+
+  <button onclick="toggle('visibilityBox')">Toggle Visibility Box</button>
+  <div id="visibilityBox" class="box">Visibility</div>
+
+  <button onclick="toggle('displayBox')">Toggle Display Box</button>
+  <div id="displayBox" class="box">Display</div>
+
+  <button onclick="toggle('opacityBox')">Toggle Opacity Box</button>
+  <div id="opacityBox" class="box">Opacity</div>
+
+  <button onclick="toggle('sizeBox')">Toggle Size Box</button>
+  <div id="sizeBox" class="box">Size</div>
+
+  <button onclick="toggle('slideBox')">Toggle Slide Box</button>
+  <div id="slideBox" class="box">Slide</div>
 
   <script>
-    const ariaAttributes = [
-      'aria-hidden',
-      'aria-expanded',
-      'aria-modal',
-      'aria-pressed',
-      'aria-selected',
-      'aria-checked',
-      'aria-disabled',
-      'aria-busy',
-      'aria-invalid',
-      'aria-current',
-      'aria-haspopup',
-      'aria-controls',
-      'aria-owns',
-      'aria-describedby',
-      'aria-labelledby',
-      'role'
-    ];
+    // Toggle helper
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
 
-    const container = document.getElementById("container");
-
-    ariaAttributes.forEach(attr => {
-      const box = document.createElement("div");
-      box.className = "aria-box";
-      box.setAttribute(attr, "false"); // start with false
-      box.textContent = `Click me (${attr})`;
-      
-      const log = document.createElement("div");
-      log.className = "log";
-      log.textContent = `${attr}=false`;
-
-      box.addEventListener("click", () => {
-        // Toggle attribute only, no visible UI change
-        let current = box.getAttribute(attr);
-        let next = (current === "false") ? "true" : "false";
-        box.setAttribute(attr, next);
-        log.textContent = `${attr}=${next} (UI unchanged → Dead click)`;
-        console.log(`Clicked ${attr}: now ${next}`);
-      });
-
-      container.appendChild(box);
-      container.appendChild(log);
-    });
+      // Run your function here
+      console.log(id, "→ visible?", window.deadClickUtils?.isNodeVisible 
+        ? window.deadClickUtils.isNodeVisible(el) 
+        : "deadClickUtils not loaded");
+    }
   </script>
 </body>
 </html>
