@@ -21,107 +21,145 @@ hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;ba
 f=false,w=window,d=document,v=d.querySelector('#vwoCode'),cK='_vwo_'+account_id+'_settings',cc={};try{var c=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=c&&typeof c==='object'?c:{}}catch(e){}var stT=cc.stT==='session'?w.sessionStorage:w.localStorage;code={use_existing_jquery:function(){return typeof use_existing_jquery!=='undefined'?use_existing_jquery:undefined},library_tolerance:function(){return typeof library_tolerance!=='undefined'?library_tolerance:undefined},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){if(performance.getEntriesByName('first-contentful-paint')[0]){return''}return typeof cc.hE==='string'?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){if(!f){f=true;var t=d.getElementById('_vis_opt_path_hides');if(t)t.parentNode.removeChild(t);if(e)(new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e}},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript';if(e.src){t.src=e.src}else{t.text=e.text}d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){var i=this.getSettings(),n=d.createElement('script'),r=this;t=t||{};if(i){n.textContent=i;d.getElementsByTagName('head')[0].appendChild(n);if(!w.VWO||VWO.caE){stT.removeItem(cK);r.load(e)}}else{var o=new XMLHttpRequest;o.open('GET',e,true);o.withCredentials=!t.dSC;o.responseType=t.responseType||'text';o.onload=function(){if(t.onloadCb){return t.onloadCb(o,e)}if(o.status===200||o.status===304){_vwo_code.addScript({text:o.responseText})}else{_vwo_code.finish('&e=loading_failure:'+e)}};o.onerror=function(){if(t.onerrorCb){return t.onerrorCb(e)}_vwo_code.finish('&e=loading_failure:'+e)};o.send()}},getSettings:function(){try{var e=stT.getItem(cK);if(!e){return}e=JSON.parse(e);if(Date.now()>e.e){stT.removeItem(cK);return}return e.s}catch(e){return}},init:function(){if(d.URL.indexOf('__vwo_disable__')>-1)return;var e=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish();stT.removeItem(cK)},e);var t;if(this.hide_element()!=='body'){t=d.createElement('style');var i=this.hide_element(),n=i?i+this.hide_element_style():'',r=d.getElementsByTagName('head')[0];t.setAttribute('id','_vis_opt_path_hides');v&&t.setAttribute('nonce',v.nonce);t.setAttribute('type','text/css');if(t.styleSheet)t.styleSheet.cssText=n;else t.appendChild(d.createTextNode(n));r.appendChild(t)}else{t=d.getElementsByTagName('head')[0];var n=d.createElement('div');n.style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;';n.setAttribute('id','_vis_opt_path_hides');n.classList.add('_vis_hide_layer');t.parentNode.insertBefore(n,t.nextSibling)}var o=window._vis_opt_url||d.URL,s='https://dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(o)+'&vn='+version;if(w.location.search.indexOf('_vwo_xhr')!==-1){this.addScript({src:s})}else{this.load(s+'&x=true')}}};w._vwo_code=code;code.init();})();
 
 </script>
-<meta charset="UTF-8">
-<title>Transition Test Cases (Normal + Shadow DOM)</title>
-<style>
-  body { font-family: sans-serif; padding: 20px; }
-  h2 { margin-top: 30px; }
 
-  .case {
-    margin: 10px 0;
-    padding: 12px 16px;
-    border: 1px solid #444;
-    display: inline-block;
-    cursor: pointer;
-  }
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dead Click Test Cases</title>
+  <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .container { margin-bottom: 30px; }
 
-  /* ---- Opacity ---- */
-  .opacity-toggle { opacity: 1; transition: opacity 500ms ease; }
-  .opacity-toggle.hidden { opacity: 0; }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      background: #4caf50;
+      color: white;
+    }
 
-  /* ---- Width ---- */
-  .width-toggle { width: 200px; transition: width 500ms ease; }
-  .width-toggle.shrunk { width: 50px; }
+    /* --- Case 1: Opacity + pointer-events --- */
+    .fade-out {
+      opacity: 1;
+      transition: opacity 1s ease; /* 👈 fade animation */
+    }
+    .fade-out.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
 
-  /* ---- Height ---- */
-  .height-toggle { height: 50px; transition: height 500ms ease; overflow: hidden; }
-  .height-toggle.collapsed { height: 0; }
+    /* --- Case 2: Visibility transition --- */
+    .vis-toggle {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 1s ease; /* 👈 fade effect with visibility */
+    }
+    .vis-toggle.hide {
+      visibility: hidden;
+      opacity: 0;
+    }
 
-  /* ---- Visibility + Opacity pattern ---- */
-  .visibility-toggle { opacity: 1; visibility: visible; pointer-events: auto;
-                       transition: opacity 500ms ease; }
-  .visibility-toggle.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 500ms ease, visibility 0s linear 500ms;
-  }
-</style>
+    /* --- Case 3: Width/Height collapse --- */
+    .shrink {
+      width: 150px;
+      height: 40px;
+      overflow: hidden;
+      transition: all 1s ease; /* 👈 smooth collapse */
+    }
+    .shrink.hide {
+      width: 0;
+      height: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .note { font-size: 14px; color: #555; }
+  </style>
 </head>
 <body>
+  <h1>Dead Click Test Page</h1>
 
-<h1>CSS Transition Cases</h1>
+  <div class="container">
+    <h2>Case 1: Opacity + pointer-events</h2>
+    <button id="fadeBtn" class="fade-out">Click Me</button>
+    <p class="note">After clicking, the button fades out. Clicks during fade should be ignored.</p>
+  </div>
 
-<h2>Normal DOM</h2>
-<button class="case opacity-toggle" id="opacityBtn">Opacity Transition</button>
-<br>
-<button class="case width-toggle" id="widthBtn">Width Transition</button>
-<br>
-<button class="case height-toggle" id="heightBtn">Height Transition</button>
-<br>
-<button class="case visibility-toggle" id="visibilityBtn">Visibility + Opacity Transition</button>
+  <div class="container">
+    <h2>Case 2: Visibility transition</h2>
+    <button id="visBtn" class="vis-toggle">Click Me</button>
+    <p class="note">After clicking, visibility is toggled. Dead clicks possible mid-transition.</p>
+  </div>
 
-<h2>Shadow DOM</h2>
-<div id="shadow-host"></div>
+  <div class="container">
+    <h2>Case 3: Width/Height collapse</h2>
+    <button id="shrinkBtn" class="shrink">Click Me</button>
+    <p class="note">After clicking, the button collapses. Dead clicks possible when shrunk.</p>
+  </div>
 
-<script>
-  // Normal DOM toggles
-  document.getElementById('opacityBtn').onclick = e => e.target.classList.toggle('hidden');
-  document.getElementById('widthBtn').onclick = e => e.target.classList.toggle('shrunk');
-  document.getElementById('heightBtn').onclick = e => e.target.classList.toggle('collapsed');
-  document.getElementById('visibilityBtn').onclick = e => e.target.classList.toggle('hidden');
+  <hr>
 
-  // Shadow DOM setup
-  const host = document.getElementById('shadow-host');
-  const shadow = host.attachShadow({ mode: 'open' });
+  <h2>Same Cases Inside Shadow DOM</h2>
+  <div id="shadow-host"></div>
 
-  shadow.innerHTML = `
-    <style>
-      .case {
-        margin: 10px 0;
-        padding: 12px 16px;
-        border: 1px solid #444;
-        display: inline-block;
-        cursor: pointer;
-      }
-      .opacity-toggle { opacity: 1; transition: opacity 500ms ease; }
-      .opacity-toggle.hidden { opacity: 0; }
-      .width-toggle { width: 200px; transition: width 500ms ease; }
-      .width-toggle.shrunk { width: 50px; }
-      .height-toggle { height: 50px; transition: height 500ms ease; overflow: hidden; }
-      .height-toggle.collapsed { height: 0; }
-      .visibility-toggle { opacity: 1; visibility: visible; pointer-events: auto;
-                           transition: opacity 500ms ease; }
-      .visibility-toggle.hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 500ms ease, visibility 0s linear 500ms;
-      }
-    </style>
+  <script>
+    // Case 1
+    const fadeBtn = document.getElementById('fadeBtn');
+    fadeBtn.addEventListener('click', () => fadeBtn.classList.add('hide'));
 
-    <button class="case opacity-toggle" id="opacityBtnS">Opacity Transition (Shadow)</button><br>
-    <button class="case width-toggle" id="widthBtnS">Width Transition (Shadow)</button><br>
-    <button class="case height-toggle" id="heightBtnS">Height Transition (Shadow)</button><br>
-    <button class="case visibility-toggle" id="visibilityBtnS">Visibility + Opacity (Shadow)</button>
-  `;
+    // Case 2
+    const visBtn = document.getElementById('visBtn');
+    visBtn.addEventListener('click', () => visBtn.classList.add('hide'));
 
-  // Attach event listeners inside shadow root
-  shadow.getElementById('opacityBtnS').onclick = e => e.target.classList.toggle('hidden');
-  shadow.getElementById('widthBtnS').onclick = e => e.target.classList.toggle('shrunk');
-  shadow.getElementById('heightBtnS').onclick = e => e.target.classList.toggle('collapsed');
-  shadow.getElementById('visibilityBtnS').onclick = e => e.target.classList.toggle('hidden');
-</script>
+    // Case 3
+    const shrinkBtn = document.getElementById('shrinkBtn');
+    shrinkBtn.addEventListener('click', () => shrinkBtn.classList.add('hide'));
 
+    // Shadow DOM setup
+    const shadowHost = document.getElementById('shadow-host');
+    const shadowRoot = shadowHost.attachShadow({ mode: 'open' });
+    shadowRoot.innerHTML = `
+      <style>
+        button {
+          padding: 10px 20px;
+          margin: 10px;
+          border: none;
+          cursor: pointer;
+          border-radius: 6px;
+          background: #2196f3;
+          color: white;
+        }
+        /* Fade */
+        .fade-out { opacity: 1; transition: opacity 1s ease; }
+        .fade-out.hide { opacity: 0; pointer-events: none; }
+
+        /* Visibility */
+        .vis-toggle { visibility: visible; opacity: 1; transition: opacity 1s ease; }
+        .vis-toggle.hide { visibility: hidden; opacity: 0; }
+
+        /* Collapse */
+        .shrink { width: 150px; height: 40px; overflow: hidden; transition: all 1s ease; }
+        .shrink.hide { width: 0; height: 0; padding: 0; border: none; }
+      </style>
+      <div>
+        <h3>Shadow: Case 1 (Opacity + pointer-events)</h3>
+        <button id="shadowFade" class="fade-out">Click Me</button>
+
+        <h3>Shadow: Case 2 (Visibility)</h3>
+        <button id="shadowVis" class="vis-toggle">Click Me</button>
+
+        <h3>Shadow: Case 3 (Shrink)</h3>
+        <button id="shadowShrink" class="shrink">Click Me</button>
+      </div>
+    `;
+
+    shadowRoot.getElementById('shadowFade').addEventListener('click', e => e.target.classList.add('hide'));
+    shadowRoot.getElementById('shadowVis').addEventListener('click', e => e.target.classList.add('hide'));
+    shadowRoot.getElementById('shadowShrink').addEventListener('click', e => e.target.classList.add('hide'));
+  </script>
 </body>
 </html>
