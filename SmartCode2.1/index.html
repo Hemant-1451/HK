@@ -608,8 +608,96 @@ VWO.push(['onEventReceive', 'tSC', ()=>{
 }
 
     </style>
+        <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self' blob: data:; style-src 'self' blob: 'unsafe-inline'; script-src 'self' blob: 'unsafe-inline';"
+  >
+
+  <script>
+    // --- Blob-based external CSS (loaded via <link>) ---
+    const cssContent = `
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f9fa;
+        text-align: center;
+        padding-top: 60px;
+      }
+      button {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    `;
+    const cssBlob = new Blob([cssContent], { type: "text/css" });
+    const cssBlobURL = URL.createObjectURL(cssBlob);
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cssBlobURL;
+    document.head.appendChild(link);
+  </script>
 </head>
 <body class="ce20v2-template">
+<p>This page uses Blob URLs for CSS, Styles, and a Popup.</p>
+  <button id="openPopup">Open Blob Popup</button>
+
+  <script>
+    document.getElementById("openPopup").addEventListener("click", () => {
+      // --- Blob-based popup content ---
+      const popupHTML = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Blob Popup</title>
+          <style>
+            body {
+              margin: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 100vh;
+              background: #fff;
+              font-family: Arial, sans-serif;
+            }
+            h3 {
+              color: #007bff;
+            }
+            button {
+              margin-top: 20px;
+              padding: 8px 16px;
+              border: none;
+              background-color: #007bff;
+              color: white;
+              border-radius: 6px;
+              cursor: pointer;
+            }
+            button:hover {
+              background-color: #0056b3;
+            }
+          </style>
+        </head>
+        <body>
+          <h3>Hello from a Blob Popup!</h3>
+          <p>This popup page is fully created from a Blob URL.</p>
+          <button onclick="window.close()">Close</button>
+        </body>
+        </html>
+      `;
+
+      const popupBlob = new Blob([popupHTML], { type: "text/html" });
+      const popupURL = URL.createObjectURL(popupBlob);
+      window.open(popupURL, "BlobPopup", "width=400,height=300");
+    });
+  </script>
 <script type="text/javascript">
 
 window.VWO = window.VWO || [];
@@ -635,8 +723,6 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
       <div class="dashboard">
         <header class="dashboard-header">
         <div class="branding">
-            <h1>🚀 Advanced Form Testing Suite</h1>
-            <p>Comprehensive VWO Testing Platform</p>
         </div>
           <div class="user-nav">
             <ul>
