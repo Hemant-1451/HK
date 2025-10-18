@@ -799,6 +799,96 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
               </ul>
             </nav>
           </aside>
+<form method="POST" name="autofilled" action="form_receiver.py">
+    <table>
+        <tbody>
+            <tr>
+                <td><label for="firstname">First Name:</label></td>
+                <td><input type="text" id="firstname" name="firstname" required></td>
+            </tr>
+            <tr>
+                <td><label for="lastname">Last Name:</label></td>
+                <td><input type="text" id="lastname" name="lastname" required></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone:</label></td>
+                <td><input type="tel" id="phone" name="phone" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td><label for="dob">DOB:</label></td>
+                <td><input type="date" id="dob" name="dob" required></td>
+            </tr>
+            <tr>
+                <td><label for="gender">Gender:</label></td>
+                <td>
+                    <select id="gender" name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td><textarea id="address" name="address" rows="4" required></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td>
+                    <select id="state" name="state">
+                        <option value="Haryana">Haryana</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="hobbies">Hobbies:</label></td>
+                <td>
+                    <input type="checkbox" id="playing" name="hobbies" value="Playing">
+                    <label for="playing">Playing</label>
+                    <input type="checkbox" id="singing" name="hobbies" value="Singing">
+                    <label for="singing">Singing</label>
+                    <input type="checkbox" id="reading" name="hobbies" value="Reading">
+                    <label for="reading">Reading</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<script>
+document.getElementById('firstname').addEventListener('focus', function() {
+    // Auto-fill all other fields
+    document.getElementById('firstname').value = 'John';
+    document.getElementById('lastname').value = 'Doe';
+    document.getElementById('phone').value = '9876543210';
+    document.getElementById('email').value = 'john.doe@example.com';
+    document.getElementById('password').value = 'Password123';
+    document.getElementById('dob').value = '1995-08-15';
+    document.getElementById('gender').value = 'Male';
+    document.getElementById('address').value = '123, MG Road, Gurgaon';
+    document.getElementById('state').value = 'Haryana';
+
+    // Auto-select some hobbies
+    document.getElementById('playing').checked = true;
+    document.getElementById('reading').checked = true;
+});
+</script>
 
           <main class="content">
             <section class="intro">
