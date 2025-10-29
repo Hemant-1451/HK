@@ -2,6 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script>
+	window.VWO = window.VWO || [];
+window.VWO.push(['setSessionId', () => {
+  const retVal = 1759842782;
+  console.log("Set Value is", retVal);
+  return retVal; // Convert milliseconds to seconds
+}]);
+
+//getter API
+window.VWO = window.VWO || [];
+window.VWO.get('visitor.sessionId');
+	</script>
    <script type="text/javascript" id="vwoCode">
 	   
             const params = new URLSearchParams(window.location.search);
