@@ -1,7 +1,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><script>
+        function setRandomCookie(name) {
+  const value = 'val' + Math.random().toString(36).slice(2) + Date.now();
+  document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+  console.log(`Cookie set: ${name}=${value}`);
+}
+
+// Example usage
+setRandomCookie('hemant');
+</script>
 <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 <!-- <script src="//hemant-1451.github.io/HK/SmartCode2.1/vwo_static.js"></script> -->
 <!-- Start VWO Async SmartCode -->
