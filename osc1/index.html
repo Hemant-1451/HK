@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+         var abcd = "testVisitor123";
+        function setRandomCookie(name) {
+  const value = 'val' + Math.random().toString(36).slice(2) + Date.now();
+  document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+  console.log(`Cookie set: ${name}=${value}`);
+
+
+}
+
+// Example usage
+setRandomCookie('hemant');
+</script>
 <!-- Start VWO SmartCode --> 
 <script referrerPolicy="no-referrer-when-downgrade" src="https://dev.visualwebsiteoptimizer.com/lib/4000606.js" id="vwoCode"></script> 
 <!-- End VWO SmartCode -->
