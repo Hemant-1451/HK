@@ -20,7 +20,15 @@
         }
     })();
 </script>
+<script>
+window.VWO = window.VWO || [];
+window.VWO.push(['setSessionId', () => {
+  const retVal = 1763021163;
+  console.log("Set Value is", retVal);
+  return retVal; // Convert milliseconds to seconds
+}]);
 
+ </script>
   <meta charset="UTF-8">
   <title>Form Types Demo</title>
   <script>
