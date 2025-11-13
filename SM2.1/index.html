@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+ 
  <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 <script type='text/javascript' id='vwoCode'>
 const params = new URLSearchParams(window.location.search);
@@ -19,6 +20,17 @@ window._vwo_pc_custom = {
         a: 100,
         t: 100
     };
+
+ window.VWO = window.VWO || [];
+window.VWO.push(['setSessionId', () => {
+  const retVal = 1759842782;
+  console.log("Set Value is", retVal);
+  return retVal; // Convert milliseconds to seconds
+}]);
+
+//getter API
+window.VWO = window.VWO || [];
+window.VWO.get('visitor.sessionId');
 </script>
 
   <meta charset="UTF-8">
