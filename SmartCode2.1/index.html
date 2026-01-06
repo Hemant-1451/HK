@@ -714,7 +714,39 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
 }]);
 </script>
  <form id="shadowForm" method="POST" action="contact_us1.html"></form>
+<form id="signup_customize" novalidate="">
+        <!-- name row -->
+        
+        
+        
+        <div class="toggle-specialties">
+          <label style="display:block; margin-bottom:8px;">
+            <div class="toggle-pair" role="checkgroup" aria-label="">
+              <div class="toggle-square" role="checkbox" tabindex="0" data-value="1" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/acupuncture-white.png" height="20px"><img src="/static/homepage/_other/images/icons/acupuncture-black.png" height="20px">Acupuncture</div>
+              <div class="toggle-square active" role="checkbox" tabindex="0" data-value="2" data-target="specialties" aria-checked="true"><img src="/static/homepage/_other/images/icons/chiropractic-white.png" height="20px"><img src="/static/homepage/_other/images/icons/chiropractic-black.png" height="20px">Chiropractic</div>
+            </div>
+            <div class="toggle-pair" role="checkgroup" aria-label="">
+              <div class="toggle-square" role="checkbox" tabindex="0" data-value="7" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/massage-white.png" height="20px"><img src="/static/homepage/_other/images/icons/massage-black.png" height="20px">Massage Therapy</div>
+              <div class="toggle-square" role="checkbox" tabindex="0" data-value="16" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/osteopathy-white.png" height="20px"><img src="/static/homepage/_other/images/icons/osteopathy-black.png" height="20px">Osteopathy</div>
+            </div>
+            <div class="toggle-pair" role="checkgroup" aria-label="">
+              <div class="toggle-square" role="checkbox" tabindex="0" data-value="12" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/physio-white.png" height="20px"><img src="/static/homepage/_other/images/icons/physio-black.png" height="20px">Physical Therapy</div>
+              <div style="visibility: hidden" class="toggle-square" role="checkbox" tabindex="0" data-value="" data-target="specialties" aria-checked="false"></div>
+            </div>
+          </label>
+          <input type="hidden" name="specialties" id="specialties" value="2">
+          <div class="field-error" data-field-for="specialties" aria-live="polite"></div>
+        </div>
+        
 
+        
+
+        <!-- actions -->
+        <div class="actions" style="margin-top:18px;">
+          <button type="button" id="backBtn">Back</button>
+          <button type="button" id="nextBtn" class="primary">Next</button>
+        </div>
+      </form>
   <script>
     const form = document.getElementById('shadowForm');
     const shadow = form.attachShadow({ mode: 'open' });
