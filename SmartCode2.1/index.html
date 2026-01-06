@@ -747,6 +747,42 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
           <button type="button" id="nextBtn" class="primary">Next</button>
         </div>
       </form>
+         <script>
+(function () {
+  const toggles = document.querySelectorAll('.toggle-square[data-target="specialties"]');
+  const hiddenInput = document.getElementById('specialties');
+
+  if (!toggles.length || !hiddenInput) return;
+
+  function selectToggle(selectedToggle) {
+    toggles.forEach(toggle => {
+      const isActive = toggle === selectedToggle;
+      toggle.classList.toggle('active', isActive);
+      toggle.setAttribute('aria-checked', isActive ? 'true' : 'false');
+    });
+
+    hiddenInput.value = selectedToggle.dataset.value;
+
+    // 🔥 Important: trigger real events for analytics
+    hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
+    hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  toggles.forEach(toggle => {
+    // Mouse click
+    toggle.addEventListener('click', () => selectToggle(toggle));
+
+    // Keyboard support (Enter / Space)
+    toggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selectToggle(toggle);
+      }
+    });
+  });
+})();
+</script>
+
   <script>
     const form = document.getElementById('shadowForm');
     const shadow = form.attachShadow({ mode: 'open' });
