@@ -1395,36 +1395,49 @@ window.VWO.push(['onSplitRedirectionDecided', (data) => {
             <input type="submit" value="Submit">
         </form>
     </div>
- <div class="container">
-        <h2>Single Page Application Navigation</h2>
-        <p id="p2"><strong>SPA BUTTON</strong></p>
-        <button onclick="historyPushUrl()">SPA URL</button>
+<div class="container">
+    <h2>Single Page Application Navigation</h2>
+    <p id="p2"><strong>SPA BUTTON</strong></p>
 
-<script>
-  // VWO bootstrap (do not change)
-  window.VWO = window.VWO || [];
-  VWO.event = VWO.event || function () {
-    VWO.push(["event"].concat([].slice.call(arguments)));
-  };
+    <button id="spaBtn">SPA URL</button>
+  </div>
 
-  // Hook into SPA navigation
-  (function () {
-    const originalPushState = history.pushState;
-
-    history.pushState = function () {
-      originalPushState.apply(history, arguments);
-
-      // Fire VWO event automatically on SPA URL change
-      VWO.event("revenue", {
-        price: <number_value>
-      });
+  <script>
+    /* ===============================
+       VWO bootstrap (DO NOT CHANGE)
+    =============================== */
+    window.VWO = window.VWO || [];
+    VWO.event = VWO.event || function () {
+      VWO.push(["event"].concat([].slice.call(arguments)));
     };
-  })();
 
-  function historyPushUrl() {
-    history.pushState({}, "", "/spa-url");
-  }
-</script>
+    /* ===============================
+       SPA navigation hook
+    =============================== */
+    (function () {
+      ["pushState", "replaceState"].forEach(function (method) {
+        var original = history[method];
+
+        history[method] = function () {
+          original.apply(history, arguments);
+
+          // Fire event only for target SPA route
+          if (location.pathname === "/spa-url") {
+            VWO.event("revenue", {
+              price: 1
+            });
+          }
+        };
+      });
+    })();
+
+    /* ===============================
+       Button click → SPA URL change
+    =============================== */
+    document.getElementById("spaBtn").addEventListener("click", function () {
+      history.pushState({}, "", "/spa-url");
+    });
+  </script>
 
         <br /><br />
         <button onclick="spaNavigation()">SPA Navigation</button>
