@@ -1399,6 +1399,33 @@ window.VWO.push(['onSplitRedirectionDecided', (data) => {
         <h2>Single Page Application Navigation</h2>
         <p id="p2"><strong>SPA BUTTON</strong></p>
         <button onclick="historyPushUrl()">SPA URL</button>
+
+<script>
+  // VWO bootstrap (do not change)
+  window.VWO = window.VWO || [];
+  VWO.event = VWO.event || function () {
+    VWO.push(["event"].concat([].slice.call(arguments)));
+  };
+
+  // Hook into SPA navigation
+  (function () {
+    const originalPushState = history.pushState;
+
+    history.pushState = function () {
+      originalPushState.apply(history, arguments);
+
+      // Fire VWO event automatically on SPA URL change
+      VWO.event("revenue", {
+        price: <number_value>
+      });
+    };
+  })();
+
+  function historyPushUrl() {
+    history.pushState({}, "", "/spa-url");
+  }
+</script>
+
         <br /><br />
         <button onclick="spaNavigation()">SPA Navigation</button>
         <br /><br />
