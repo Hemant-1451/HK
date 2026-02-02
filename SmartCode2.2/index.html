@@ -310,6 +310,35 @@ height: 100px;
 </style>
 </head>
 <body>
+<canvas
+  id="testCanvas"
+  width="800"
+  height="400"
+  style="border:1px solid #ccc; display:block; margin:20px auto;">
+</canvas>
+
+<script>
+  const canvas = document.getElementById("testCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Background
+  ctx.fillStyle = "#f5f5f5";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Text
+  ctx.fillStyle = "#333";
+  ctx.font = "20px Arial";
+  ctx.fillText("Canvas Recording Test", 20, 40);
+
+  // Dynamic drawing (to create mutations)
+  let x = 20;
+  setInterval(() => {
+    ctx.fillStyle = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
+    ctx.fillRect(x, 80, 30, 30);
+    x += 35;
+    if (x > canvas.width) x = 20;
+  }, 800);
+</script>
 
 <div id="idDisplay"></div>
 
