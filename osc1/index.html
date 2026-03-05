@@ -2,6 +2,27 @@
 <html lang="en">
 <head>
     <script>
+document.addEventListener('abtasty_resetActionTracking', () => {
+  console.log('Event fired: abtasty_resetActionTracking');
+});
+
+window.addEventListener('abtasty_consentValid', (e) => {
+  console.log('Event fired: abtasty_consentValid', e);
+});
+
+window.addEventListener('abtasty_executedCampaign', (e) => {
+  console.log('Event fired: abtasty_executedCampaign', e);
+});
+
+window.addEventListener('abtasty_tagContentExecuted', () => {
+  console.log('Event fired: abtasty_tagContentExecuted');
+});
+
+window.addEventListener('abtasty_trackingInitialized', () => {
+  console.log('Event fired: abtasty_trackingInitialized');
+});
+</script>
+    <script>
          var abcd = "testVisitor123";
         function setRandomCookie(name) {
   const value = 'val' + Math.random().toString(36).slice(2) + Date.now();
