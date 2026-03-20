@@ -4,8 +4,13 @@
   <!-- Start VWO Async V3.0 SmartCode -->
 <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 <script type="text/javascript" id="vwoCode">
+const params = new URLSearchParams(window.location.search);
+  const accId = parseInt(params.get("id"));
+  const accountId = accId || 981075;
+  console.log("Account-Id ->", accountId);
+  /* eslint-disable no-undef */    
 window._vwo_code || (function() {        
-    var account_id = 31000475,
+    var account_id = accountId,
         version = 3.0,
         settings_tolerance = 5000,
         hide_element = 'body',
