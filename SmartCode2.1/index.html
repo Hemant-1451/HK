@@ -719,24 +719,7 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
         
         
         
-        <div class="toggle-specialties">
-          <label style="display:block; margin-bottom:8px;">
-            <div class="toggle-pair" role="checkgroup" aria-label="">
-              <div class="toggle-square" role="checkbox" nls_fa_el_name="tab1" tabindex="0" data-value="1" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/acupuncture-white.png" height="20px"><img src="/static/homepage/_other/images/icons/acupuncture-black.png" height="20px">Acupuncture</div>
-              <div class="toggle-square active" role="checkbox" nls_fa_el_name="tab2" tabindex="0" data-value="2" data-target="specialties" aria-checked="true"><img src="/static/homepage/_other/images/icons/chiropractic-white.png" height="20px"><img src="/static/homepage/_other/images/icons/chiropractic-black.png" height="20px">Chiropractic</div>
-            </div>
-            <div class="toggle-pair" role="checkgroup" aria-label="">
-              <div class="toggle-square" role="checkbox" tabindex="0" data-value="7" nls_fa_el_name="tab3" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/massage-white.png" height="20px"><img src="/static/homepage/_other/images/icons/massage-black.png" height="20px">Massage Therapy</div>
-              <div class="toggle-square" role="checkbox" tabindex="0" data-value="16" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/osteopathy-white.png" height="20px"><img src="/static/homepage/_other/images/icons/osteopathy-black.png" height="20px">Osteopathy</div>
-            </div>
-            <div class="toggle-pair" role="checkgroup" aria-label="">
-              <div class="toggle-square" role="checkbox" tabindex="0" data-value="12" data-target="specialties" aria-checked="false"><img src="/static/homepage/_other/images/icons/physio-white.png" height="20px"><img src="/static/homepage/_other/images/icons/physio-black.png" height="20px">Physical Therapy</div>
-              <div style="visibility: hidden" class="toggle-square" role="checkbox" tabindex="0" data-value="" data-target="specialties" aria-checked="false"></div>
-            </div>
-          </label>
-          <input type="hidden" name="specialties" id="specialties" value="2">
-          <div class="field-error" data-field-for="specialties" aria-live="polite"></div>
-        </div>
+     
         
 
         
@@ -782,16 +765,6 @@ VWO.push(['onEventReceive', 'nSC', ()=>{
   });
 })();
 </script>
-
-  <script>
-    const form = document.getElementById('shadowForm');
-    const shadow = form.attachShadow({ mode: 'open' });
-
-    shadow.innerHTML = `
-      <input type="text" id="suggestion" name="suggestion" placeholder="Enter your suggestion here..." required>
-      <input type="submit" value="Submit">
-    `;
-  </script>
 <div id="root12">
     <div class="app">
       <div class="dashboard">
@@ -1545,8 +1518,6 @@ window.VWO.push(['onSplitRedirectionDecided', (data) => {
 
     <script>
         // Main Shadow DOM
-        const hostElement = document.getElementById('hostElement');
-        const shadowRoot = hostElement.attachShadow({ mode: 'open' });
 
         // Adding content to the main shadow DOM
         shadowRoot.innerHTML = `
@@ -2921,7 +2892,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     <button mat-raised-button="" class="mat-focus-indicator mat-button-base mat-raised-button mat-primary verti-next-btn ng-star-inserted">
                         <span class="mat-button-wrapper">
                             Continue 
-                            <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon ng-star-inserted">
                         </span>
                         <span matripple="" class="mat-ripple mat-button-ripple"></span>
                         <span class="mat-button-focus-overlay"></span>
@@ -4589,8 +4559,7 @@ function handleCustomFormSubmit(event) {
                             onclick="submitCurrentInsuranceForm()">
                             <span class="mat-button-wrapper"> 
                                 Continue 
-                                <img src="./assets/img/icon-simple-arrow-right.svg" width="24" height="24" alt="right arrow icon" class="right-arrow-icon ng-star-inserted">
-                            </span>
+                                </span>
                             <span matripple="" class="mat-ripple mat-button-ripple"></span>
                             <span class="mat-button-focus-overlay"></span>
                         </button>
