@@ -4690,6 +4690,20 @@ document.addEventListener('DOMContentLoaded', function() {
 });
          var hk=1;
 </script>
-
+<script>
+         window.VWO._.triggerStandardHit?.("vwo_item",
+                  {
+  tid: "OD564",         //Transaction ID
+  ta: "Purchase",         //Transaction Affiliation - Name of the transaction goal
+  tr: 15.47,            //Transaction Revenue
+  ts: 3.5,              //Transaction Shipping
+  tt: 2.60,             //Transaction Tax
+  tc: "EUR",            //Transaction Currency
+  tcc: "Coupon",        //Transaction Coupon Code
+  pm: "Paypal",         //Transaction Payment Method
+  sm: "Fedex",          //Transaction Shipping Method
+  icn: 12               //Number of items
+});
+</script>
 </body>
 </html>
