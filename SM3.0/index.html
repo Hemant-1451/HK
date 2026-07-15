@@ -341,7 +341,25 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error("Element with id not found");
     }
 });
+
+		
     </script>
-    
+    <iframe
+  id="test-iframe"
+  srcdoc='
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <div id="container">
+          <button id="target-btn" class="cta-button">
+            Click Me
+          </button>
+        </div>
+      </body>
+    </html>
+  '
+  width="500"
+  height="250">
+</iframe>
 </body>
 </html>
