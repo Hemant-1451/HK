@@ -344,6 +344,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		
     </script>
+
+	<iframe
+  id="outer-iframe"
+  width="600"
+  height="350"
+  srcdoc='
+    <!DOCTYPE html>
+    <html>
+      <body>
+        <h3>Outer Iframe</h3>
+
+        <iframe
+          id="inner-iframe"
+          width="400"
+          height="200"
+          srcdoc="
+            <!DOCTYPE html>
+            <html>
+              <body>
+                <div id=&quot;container&quot;>
+                  <button
+                    id=&quot;target-btn&quot;
+                    class=&quot;cta-button&quot;>
+                    Click Me
+                  </button>
+                </div>
+              </body>
+            </html>
+          ">
+        </iframe>
+
+      </body>
+    </html>
+  '>
+</iframe>
     <iframe
   id="test-iframe"
   srcdoc='
