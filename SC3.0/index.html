@@ -20,8 +20,12 @@ setRandomCookie('hemant');
 <!-- Start Wingify Async V3.0 SmartCode -->
 <link rel="preconnect" href="https://edge.wingify.net"/>
 <script type="text/javascript">
+  const params = new URLSearchParams(window.location.search);
+  const accId = parseInt(params.get("id"));
+  const accountId = accId || 981075;
+  console.log("Account-Id ->", accountId);
 window._wingify_code || (function() {        
-    var account_id = 1251744,
+    var account_id = accountId,
         version = 3.0,
         settings_tolerance = 2000,
         hide_element = 'body',
