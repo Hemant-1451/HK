@@ -127,7 +127,28 @@ height: 100px;
   height="400"
   style="border:1px solid #ccc; display:block; margin:20px auto;">
 </canvas>
-
+<script>
+const order = {
+  transactionId: "ORD12345",
+  revenue: 2499,
+  items: [
+    {
+      name: "T-Shirt",
+      sku: "TS001",
+      quantity: 2,
+      price: 799,
+      category: "Clothing"
+    },
+    {
+      name: "Jeans",
+      sku: "JN002",
+      quantity: 1,
+      price: 899,
+      category: "Clothing"
+    }
+  ]
+};
+</script>
 <script>
   const canvas = document.getElementById("testCanvas");
   const ctx = canvas.getContext("2d");
