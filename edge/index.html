@@ -189,7 +189,26 @@ const order = {
     if (x > canvas.width) x = 20;
   }, 800);
 </script>
+<div class="icontainer">
 
+    <iframe
+        id="payment-frame"
+        title="Payment Frame"
+        srcdoc="
+            <!DOCTYPE html>
+            <html>
+            <body>
+                <div id='payment-container'>
+                    <button class='payment-button'>
+                        Pay Now
+                    </button>
+                </div>
+            </body>
+            </html>
+        ">
+    </iframe>
+
+</div>
 <div id="idDisplay"></div>
 
   <form id="dynamicForm1" method="post">
