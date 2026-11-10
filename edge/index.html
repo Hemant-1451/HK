@@ -92,6 +92,26 @@ height: 100px;
 </style>
 </head>
 <body>
+	<button id="show-btn" type="button">
+  Show Learn More
+</button>
+
+<div id="learn-more-container" style="display: none;">
+  <button
+    id="learn-more-btn"
+    class="primary-btn"
+    type="button"
+    aria-label="Learn more"
+    data-action="learn-more">
+    Learn more
+  </button>
+</div>
+
+<script>
+  document.getElementById("show-btn").addEventListener("click", function () {
+    document.getElementById("learn-more-container").style.display = "block";
+  });
+</script>
 	<div id="transaction">
   <span id="transaction-id">ORD-10001</span>
   <span id="transaction-revenue">1499.50</span>
